@@ -1,7 +1,7 @@
 html {
-    scroll-behavior: smooth;
-    width: 100%;
-    max-width: 100%;
+  scroll-behavior: smooth;
+  width: 100%;
+  max-width: 100%;
 }
 
 a {
@@ -18,13 +18,16 @@ header {
   text-align: left;
 
 }
+
 .logo {
   font-family: 'Montserrat', sans-serif;
   position: relative;
   left: 1.5rem;
 }
+
 .source {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 600;
   color: dimgray;
   position: absolute;
   right: 1.5rem;
@@ -41,7 +44,8 @@ body {
 }
 
 .warning {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 700;
   color: lightgray;
   font-size: 20px;
 }
