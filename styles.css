@@ -8,7 +8,7 @@ a {
   text-decoration: none;
 }
 
-header {
+.header {
   background: #1b1e24!important;
   position: absolute;
   top: 0;
