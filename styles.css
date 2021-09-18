@@ -52,6 +52,7 @@ body {
   font-weight: 700;
   color: lightgray;
   font-size: 20px;
+  line-height: 1.8em;
 }
 
 .pageheader {
@@ -65,4 +66,11 @@ body {
   float: center;
   margin: auto;
   width: 95%;
+}
+
+.link404 {
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #28497d;
 }
