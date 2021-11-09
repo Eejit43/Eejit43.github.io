@@ -34,9 +34,19 @@
 				<input type='file' id="fileUpload" />
 			</section>
 			<section>
-				<h3>Render from base64</h3>
+				<h3>Render from NBT Data</h3>
+				<div class="sec-err" id="nbtError"></div>
+				<textarea id="nbt" placeholder="Use the NBT data from the SBA or WikiTools mods"></textarea>
+				<br />
+				<span class="unselectable">
+					<button class="sec-subm" id="nbtSubmit">Render</button>
+					<button class="sec-clr" id="nbtClear">Clear</button>
+				</span>
+			</section>
+			<section>
+				<h3>Render from NameMC</h3>
 				<div class="sec-err" id="valError"></div>
-				<textarea id="val" placeholder="Base64 goes here"></textarea>
+				<textarea id="val" placeholder="Use any head command from a NameMC *skin* page"></textarea>
 				<br />
 				<span class="unselectable">
 					<button class="sec-subm" id="valSubmit">Render</button>
@@ -69,6 +79,17 @@
 									<div>
 										<button id="copy-id" class="copy" disabled>Copy</button>
 										<button id="open-id" class="link" disabled>Open as link</button>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>Texture Template</th>
+								<td class="unselectable">
+									<input type="text" id="textureTemplate" readonly>
+									<div>
+										<button id="copy-template" class="copy" disabled>Copy</button>
+										<button id="open-template" class="link soft-hidden" disabled>Open as
+											link</button>
 									</div>
 								</td>
 							</tr>
