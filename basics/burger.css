@@ -20,6 +20,8 @@ h1 {
 
 #burger {
   max-height: 30%;
+  display: block;
+  margin: auto;
 }
 
 #overlay {
@@ -35,7 +37,6 @@ h1 {
   display: block;
   margin: auto;
 }
-
 
 .toppings label, .cheesy label {
   margin-right: 25px;
