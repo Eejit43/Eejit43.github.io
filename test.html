@@ -3,7 +3,7 @@
   <head>
     <title>Eejit's Tools</title>
     <link rel="stylesheet" href="styles.css" />
-    <link href="https://fonts.googleapis.com/css?family=Urbanist:400,600,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Urbanist:400,600,700|Montserrat:400,700" rel="stylesheet" />
     <link rel="favicon" href="favicon.ico" />
     <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
     <script src="./scripts/emoji.js"></script>
@@ -22,31 +22,8 @@
     <h1>Test:</h1>
     <br>
     <h1>🙂❤️🐷👑</h1>
-    <p id="curtime"></p>
-    <script>
-      timer();
-      
-      function timer(){
-      var currentTime = new Date()
-      var fullhours = currentTime.getHours()
-      var hours = ((fullhours + 11) % 12 + 1)
-      var minutes = currentTime.getMinutes()
-      var sec = currentTime.getSeconds()
-      if (minutes < 10){
-          minutes = "0" + minutes
-      }
-      if (sec < 10){
-          sec = "0" + sec
-      }
-      
-      var suffix = fullhours >= 12 ? "PM":"AM";
-      
-      var finaltime = hours + ":" + minutes + ":" + sec + " " + suffix;
-      
-       document.getElementById('curtime').innerHTML = finaltime;
-       setTimeout(timer,1000);
-      }
-    </script>
+    <p style="font-family: 'Montserrat', sans-serif; font-weight: bold; color: #0b5394;">Current time: <span id='curtime'></span></p>
+    <script src="./scripts/time.js"></script>
     <br>
     <noscript>
       <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
