@@ -36,6 +36,7 @@ nav {
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
   font-size: 80px;
+  line-height: 150%;
 }
 
 .source {
@@ -67,7 +68,7 @@ header {
   color: gray;
   font-size: 20px;
   border: 2px solid gray;
-  padding: 0em 0.1em 10em 1em;
+  padding: 0em 0.1em 5em 1em;
   float: center;
   margin: auto;
   width: 95%;
