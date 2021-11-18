@@ -1,13 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-  <title>Eejit's Tools</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="favicon" href="favicon.ico" />
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Urbanist&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@600&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@700&display=swap');
-  </style>
+  <head>
+    <title>Eejit's Tools</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css?family=Urbanist:400,600,700" rel="stylesheet" />
+    <link rel="favicon" href="favicon.ico" />
+    <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+
+    <!-- Emoji rendering -->
+    <script>
+        window.onload = function() {    
+            twemoji.parse(document.body, 
+                    {folder: 'svg', ext: '.svg'}
+            );
+        }
+    </script>
+    <style>
+        img.emoji {
+            width:1em;
+            pointer-events: none;
+        }
+    </style>
+
+  </head>
   <div class="header">
     <a href="https://eejit43.github.io/">
     <span style="color:#FF5555;font-weight:bold;font-size:150%">
@@ -46,9 +61,10 @@
       }
           
     </script>
+    <br>
     <noscript>
       <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
-      <div class="warning">Looks like this script couldn't be displayed on your browser!</div>
+      <div class="warning">Looks like this script couldn't be displayed for some reason! 😔</div>
     </noscript>
   </div>
 </html>
