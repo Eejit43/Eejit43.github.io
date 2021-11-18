@@ -3,53 +3,57 @@
   <head>
     <style>
       html {
-      scroll-behavior: smooth;
-      width: 100%;
-      max-width: 100%;
+      background: #1F2227;
       }
       a {
       text-decoration: none;
+      color: #007bff;
       }
-      .header {
-      background: #1b1e24!important;
+      nav {
+      background-color: #1b1e24 !important;
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
-      height: 4rem;
-      padding: 0.5rem 1rem;
+      padding: 30px 20px 30px 20px;
+      overflow: hidden;
+      display: felx;
+      }
+      .nav {
       display: flex;
       align-items: center;
-      text-align: left;
+      justify-content: space-between;
       }
       .logo {
       font-family: 'Montserrat', sans-serif;
-      position: relative;
-      left: 1.5rem;
+      font-weight: bold;
+      font-size: 25px;
+      text-align: left;
+      float: left;
+      }
+      .mainlogo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: bold;
+      font-size: 80px;
       }
       .source {
       font-family: 'Urbanist', sans-serif;
       font-weight: 600;
       font-size: 20px;
       color: dimgray;
-      position: absolute;
-      right: 1.5rem;
-      top: 1.9rem;
+      float: right;
       }
-      body {
+      header {
       font-family: 'Montserrat', sans-serif;
-      background: #1F2227;
       text-align: center;
-      padding-top: 4rem;
-      min-height: 100vh;
-      max-width: 100vw;
+      padding-top: 6rem;
       }
       .warning {
       font-family: 'Urbanist', sans-serif;
       font-weight: 700;
+      line-height: 150%;
       color: lightgray;
       font-size: 20px;
-      line-height: 1.8em;
       }
       .pageheader {
       font-family: 'Urbanist', sans-serif;
@@ -63,6 +67,23 @@
       margin: auto;
       width: 95%;
       }
+      body {
+      font-family: 'Urbanist', sans-serif;
+      background: #1F2227;
+      text-align: center;
+      padding-top: 4rem;
+      min-height: 100vh;
+      max-width: 100vw;
+      }
+      img.emoji {
+      display: inline-block;
+      height: .9em;
+      width: .9em;
+      margin: 0 .05em 0 .1em;
+      vertical-align: -0.1em;
+      background-size: .9em .9em;
+      pointer-events: none;
+      }
       .link404 {
       font-family: 'Urbanist', sans-serif;
       font-weight: 600;
@@ -71,24 +92,37 @@
       }
     </style>
     <title>Eejit's Tools</title>
-    <link href="https://fonts.googleapis.com/css?family=Urbanist:400,600,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Urbanist:400,600,700|Montserrat:400,700" rel="stylesheet" />
     <link rel="favicon" href="favicon.ico" />
   </head>
   <body>
-    <header>
-      <div class="header">
+    <nav>
+      <div class="nav">
         <a href="https://eejit43.github.io/">
-        <span style="color:#FF5555;font-weight:bold;font-size:150%">
-        <span style="font-size:100%;">E<span style="color:#FFAA00">e<span style="color:#FFFF55">j</span><span style="color:#55FF55">i</span><span style="color:#00AA00">t</span><span style="color:#00AAAA">'</span><span style="color:#5555FF">s</span></span></span><span style="color:#AA00AA;font-size:80%;;"> Tools</span></span>
+          <span class="logo">
+            <!--
+              --><span style="color:#FF5555">E</span><!--
+              --><span style="color:#FFAA00">e</span><!--
+              --><span style="color:#FFFF55">j</span><!--
+              --><span style="color:#55FF55">i</span><!--
+              --><span style="color:#00AA00">t</span><!--
+              --><span style="color:#00AAAA">'</span><!--
+              --><span style="color:#5555FF">s</span><!--
+              -->
+            <span style="color:#AA00AA;font-size:20px!important;">
+              Tools<!--
+                -->
+            </span>
+          </span>
         </a>
+        </span>
+        </a>
+        <a href="https://github.com/Eejit43/Eejit43.github.io" class="source">Source</a>
       </div>
-      <span style="float:right;">
-      <a href="https://github.com/Eejit43/Eejit43.github.io" class="source">Source</a>
-      </span>
-    </header>
+    </nav>
     <div>
       <br />
-      <span style="color:#FF5555;font-weight:bold;font-size:500%">Oh no!</span><br /><br />
+      <span style="color:#FF5555;font-weight:bold;font-size:500%;line-height:140%;">Oh no!</span>
       <div class="warning">Looks like you've ended up in a weird place...<br /><a href="https://eejit43.github.io/" class="link404">Take me back to safety!</a></div>
     </div>
   </body>
