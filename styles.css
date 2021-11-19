@@ -65,14 +65,14 @@ header {
   margin-top: 20px;
 }
 
-.pageheader {
+.toolbox {
   font-family: 'Urbanist', sans-serif;
   text-align: left;
   font-weight: 500;
   color: gray;
   font-size: 20px;
   border: 2px solid gray;
-  padding: 0em 0.1em 3em 1em;
+  padding: 0em 0.1em 2em 1em;
   float: center;
   margin: auto;
   width: 95%;
