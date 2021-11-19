@@ -17,9 +17,6 @@
       right: 0;
       padding: 30px 20px 30px 20px;
       overflow: hidden;
-      display: felx;
-      }
-      .nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -31,17 +28,18 @@
       text-align: left;
       float: left;
       }
-      .mainlogo {
+      .timer {
       font-family: 'Montserrat', sans-serif;
       font-weight: bold;
-      font-size: 80px;
+      font-size: 20px;
+      margin-right: 100px;
+      color: #0b5394;
       }
       .source {
       font-family: 'Urbanist', sans-serif;
       font-weight: 600;
       font-size: 20px;
       color: dimgray;
-      float: right;
       }
       header {
       font-family: 'Montserrat', sans-serif;
@@ -55,25 +53,11 @@
       color: lightgray;
       font-size: 20px;
       }
-      .pageheader {
-      font-family: 'Urbanist', sans-serif;
-      text-align: left;
-      font-weight: 500;
-      color: gray;
-      font-size: 20px;
-      border: 2px solid gray;
-      padding: 0em 0.1em 10em 1em;
-      float: center;
-      margin: auto;
-      width: 95%;
-      }
       body {
       font-family: 'Urbanist', sans-serif;
       background: #1F2227;
       text-align: center;
       padding-top: 4rem;
-      min-height: 100vh;
-      max-width: 100vw;
       }
       img.emoji {
       display: inline-block;
@@ -92,33 +76,60 @@
       }
     </style>
     <title>Eejit's Tools</title>
+    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css?family=Urbanist:400,600,700|Montserrat:400,700" rel="stylesheet">
     <link rel="favicon" href="favicon.ico">
   </head>
   <body>
     <nav>
-      <div class="nav">
-        <a href="https://eejit43.github.io/">
-          <span class="logo">
-            <!--
-              --><span style="color:#FF5555">E</span><!--
-              --><span style="color:#FFAA00">e</span><!--
-              --><span style="color:#FFFF55">j</span><!--
-              --><span style="color:#55FF55">i</span><!--
-              --><span style="color:#00AA00">t</span><!--
-              --><span style="color:#00AAAA">'</span><!--
-              --><span style="color:#5555FF">s</span><!--
+      <a href="https://eejit43.github.io/">
+        <span class="logo">
+          <!--
+            --><span style="color:#FF5555">E</span><!--
+            --><span style="color:#FFAA00">e</span><!--
+            --><span style="color:#FFFF55">j</span><!--
+            --><span style="color:#55FF55">i</span><!--
+            --><span style="color:#00AA00">t</span><!--
+            --><span style="color:#00AAAA">'</span><!--
+            --><span style="color:#5555FF">s</span><!--
+            -->
+          <span style="color:#AA00AA;font-size:20px!important;">
+            Tools<!--
               -->
-            <span style="color:#AA00AA;font-size:20px!important;">
-              Tools<!--
-                -->
-            </span>
           </span>
-        </a>
         </span>
-        </a>
+      </a>
+      </span>
+      </a>
+      <span style="float:right!important;">
+        <a href="./test.html" class="timer"><span id="navtime"></span></a>
         <a href="https://github.com/Eejit43/Eejit43.github.io" class="source">Source</a>
-      </div>
+        <script>
+          navtime();
+          function navtime(){
+          var currentTime = new Date();
+          var fullhours = currentTime.getHours();
+          var hours = ((fullhours + 11) % 12 + 1);
+          var minutes = currentTime.getMinutes();
+          var sec = currentTime.getSeconds();
+          if (minutes < 10){
+          minutes = "0" + minutes
+          }
+          if (sec < 10){
+          sec = "0" + sec
+          }
+          
+          var suffix = fullhours >= 12 ? "PM":"AM";
+          
+          var timeemoji = fullhours >= 7 && fullhours < 18 ? '<img draggable="false" class="emoji" alt="☀️" src="https://twemoji.maxcdn.com/v/13.1.0/svg/2600.svg">':'<img draggable="false" class="emoji" alt="🌒" src="https://twemoji.maxcdn.com/v/13.1.0/svg/1f312.svg">';
+          
+          var finaltime = hours + ":" + minutes + ":" + sec + " " + suffix + " " + timeemoji;
+          
+          document.getElementById('navtime').innerHTML = finaltime;
+          setTimeout(navtime,100);
+          }
+        </script>
+      </span>
     </nav>
     <div>
       <br>

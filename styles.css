@@ -15,10 +15,6 @@ nav {
   right: 0;
   padding: 30px 20px 30px 20px;
   overflow: hidden;
-  display: felx;
-}
-
-.nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -32,11 +28,12 @@ nav {
   float: left;
 }
 
-.mainlogo {
+.timer {
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
-  font-size: 80px;
-  line-height: 150%;
+  font-size: 20px;
+  margin-right: 100px;
+  color: #0b5394;
 }
 
 .source {
@@ -44,7 +41,13 @@ nav {
   font-weight: 600;
   font-size: 20px;
   color: dimgray;
-  float: right;
+}
+
+.mainlogo {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 80px;
+  line-height: 150%;
 }
 
 header {
@@ -68,18 +71,16 @@ header {
   color: gray;
   font-size: 20px;
   border: 2px solid gray;
-  padding: 0em 0.1em 5em 1em;
+  padding: 0em 0.1em 3em 1em;
   float: center;
   margin: auto;
   width: 95%;
-  margin-top: 6rem;
+  margin-top: 8rem;
 }
 
 body {
   font-family: 'Urbanist', sans-serif;
   text-align: center;
-  min-height: 100vh;
-  max-width: 100vw;
 }
 
 img.emoji {
