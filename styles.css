@@ -13,7 +13,7 @@ nav {
   top: 0;
   left: 0;
   right: 0;
-  padding: 30px 20px 30px 20px;
+  padding: 30px 20px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -47,14 +47,14 @@ nav {
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
   font-size: 80px;
-  line-height: 150%;
+  clear: both;
 }
 
 header {
   font-family: 'Montserrat', sans-serif;
-  background: #1F2227;
   text-align: center;
-  padding-top: 6rem;
+  position: relative;
+  top: 100px;
 }
 
 .warning {
@@ -62,6 +62,7 @@ header {
   font-weight: 700;
   color: lightgray;
   font-size: 20px;
+  margin-top: 20px;
 }
 
 .pageheader {
@@ -75,7 +76,8 @@ header {
   float: center;
   margin: auto;
   width: 95%;
-  margin-top: 8rem;
+  position: relative;
+  margin-top: 130px;
 }
 
 body {
