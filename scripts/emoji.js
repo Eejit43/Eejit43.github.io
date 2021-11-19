@@ -7,5 +7,5 @@ window.onload = function() {
     twemoji.parse(document.body,
         {folder: 'svg', ext: '.svg'}
         );
-}, 100);
+}, 200);
 }
