@@ -108,6 +108,34 @@ body {
   color: #28497d;
 }
 
+table {
+  border-collapse: collapse;
+  border: 4px solid #1b1e24;
+  color: #a8a8a8;
+  backgroud: #1b1e24;
+  height: 40%;
+  left: 10%;
+  margin: 175px auto;
+  overflow-y: scroll;
+  position: static;
+  width: 70%;
+}
+
+tr {
+  background: #31363d;
+  border-bottom: 1px solid #1b1e24;
+  margin-bottom: 5px;
+}
+
+td {
+  border: 3px solid #1b1e24;
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 20px;
+  text-align: left;
+}
+
 img.emoji {
   display: inline-block;
   height: .9em;
