@@ -28,7 +28,7 @@ nav {
   float: left;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 768px) {
   .logo {
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
@@ -46,7 +46,7 @@ nav {
   color: #0b5394;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 768px) {
   .timer {
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
@@ -63,7 +63,7 @@ nav {
   color: dimgray;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 768px) {
   .source {
   font-family: 'Urbanist', sans-serif;
   font-weight: 600;
