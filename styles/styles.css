@@ -173,6 +173,13 @@ td {
   text-align: left;
 }
 
+.tooltext {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  color: #0b5394;
+  line-height: 150%;
+}
+
 img.emoji {
   display: inline-block;
   height: .9em;
