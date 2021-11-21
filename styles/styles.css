@@ -7,6 +7,11 @@ a {
   color: #007bff;
 }
 
+a:hover {
+  text-decoration: none;
+  color: #0957b3;
+}
+
 nav {
   background-color: #1b1e24 !important;
   position: absolute;
@@ -30,15 +35,16 @@ nav {
 
 @media only screen and (max-width: 768px) {
   .logo {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: bold;
-  font-size: 20px;
-  text-align: left;
-  float: left;
-}
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: left;
+    float: left;
+  }
 }
 
-.timer {
+.timer,
+.timer:hover {
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
   font-size: 20px;
@@ -60,15 +66,30 @@ nav {
   font-family: 'Urbanist', sans-serif;
   font-weight: 600;
   font-size: 20px;
-  color: dimgray;
+  color: #696969;
+  /* haha–ha– */
+}
+
+.source:hover {
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #505050;
 }
 
 @media only screen and (max-width: 768px) {
   .source {
-  font-family: 'Urbanist', sans-serif;
-  font-weight: 600;
-  font-size: 16px;
-  color: dimgray;
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #696969;
+    /* haha–ha– */
+  }
+  .source:hover {
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #505050;
   }
 }
 
@@ -81,10 +102,10 @@ nav {
 
 @media only screen and (max-width: 700px) {
   .mainlogo {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: bold;
-  font-size: 70px;
-  clear: both;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 70px;
+    clear: both;
   }
 }
 
