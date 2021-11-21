@@ -7,7 +7,6 @@
 .tooltip {
   position: relative;
   cursor: pointer;
-  font-family: 'Urbanist', sans-serif;
   text-decoration: underline dotted;
   text-align: center;
 }
