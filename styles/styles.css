@@ -46,6 +46,16 @@ nav {
   color: #0b5394;
 }
 
+@media only screen and (max-width: 768px) {
+  .timer {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    margin-right: 35px;
+    color: #0b5394;
+  }
+}
+
 .source {
   font-family: 'Urbanist', sans-serif;
   font-weight: 600;
@@ -53,11 +63,29 @@ nav {
   color: dimgray;
 }
 
+@media only screen and (max-width: 768px) {
+  .source {
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: dimgray;
+  }
+}
+
 .mainlogo {
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
   font-size: 80px;
   clear: both;
+}
+
+@media only screen and (max-width: 700px) {
+  .mainlogo {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 70px;
+  clear: both;
+  }
 }
 
 header {
