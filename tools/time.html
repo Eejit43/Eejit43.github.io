@@ -3,6 +3,7 @@
   <head>
     <title>Eejit's Tools</title>
     <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../tooltip-styles.css">
     <link href="https://fonts.googleapis.com/css?family=Urbanist:400,600,700|Montserrat:400,700" rel="stylesheet">
     <link rel="favicon" href="favicon.ico">
     <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
@@ -29,8 +30,6 @@
             </span>
           </span>
         </a>
-        </span>
-        </a>
         <span style="float:right!important;">
         <a href="time" class="timer"><span id="navtime"></span></a>
         <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
@@ -39,7 +38,14 @@
     </nav>
     <div class="toolbox">
       <h1>Time:</h1>
-      <p style="font-family: 'Montserrat', sans-serif; font-weight: bold; color: #0b5394; line-height: 150%;"><span id='curtime'></span></p>
+      <p style="font-family: 'Montserrat', sans-serif; font-weight: bold; color: #0b5394; line-height: 150%;">
+        Time: <span id='time'></span><br>
+        Date: <span id='date'></span><br>
+        <span class='tooltip-text tooltip-bottom' data-tooltip='Milliseconds since January 1st, 1970 in Coordinated Universal Time (UTC)'>UNIX Epoch</span> Time: <span id='unix'></span><br>
+        Timezone: <span id='timezone'></span><br><br>
+        Time in Costa Rica: <span id='crtime'></span><br>
+        Time in London: <span id='ietime'></span><br>
+      </p>
       <script src="../scripts/time.js"></script>
       <br>
       <noscript>

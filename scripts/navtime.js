@@ -12,11 +12,11 @@ function navtime(){
         sec = "0" + sec
     }
 
-    var suffix = fullhours >= 12 ? "PM":"AM";
+    var timesuffix = fullhours >= 12 ? "PM":"AM";
 
     var timeemoji = fullhours >= 7 && fullhours < 18 ? '<img draggable="false" class="emoji" alt="☀️" src="https://twemoji.maxcdn.com/v/13.1.0/svg/2600.svg">':'<img draggable="false" class="emoji" alt="🌒" src="https://twemoji.maxcdn.com/v/13.1.0/svg/1f312.svg">';
 
-    var finaltime = hours + ":" + minutes + ":" + sec + " " + suffix + " " + timeemoji;
+    var finaltime = hours + ":" + minutes + ":" + sec + " " + timesuffix + " " + timeemoji;
 
     document.getElementById('navtime').innerHTML = finaltime;
     setTimeout(navtime,100);

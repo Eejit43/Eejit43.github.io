@@ -26,10 +26,17 @@ function time(){
         sec = "0" + sec
     }
 
-    var suffix = fullhours >= 12 ? "PM":"AM";
+    var timesuffix = fullhours >= 12 ? "PM":"AM";
 
-    var finaltime = "Current Time: " + hours + ":" + minutes + ":" + sec + " " + suffix + "<br>Current Date: " + day + ", " + month + " " + date + ", " + year + " (" + monthnumber + "/" + date + "/" + shortyear + ")" + "<br>Current UNIX Epoch Time: " + unixtime + "<br>Timezone: " + timezone + " (UTC-" + timeoffset + ")" + "<br><br>Time in Costa Rica: " + crtime + "<br>Time in London: " + ietime;
+    var finaltime = hours + ":" + minutes + ":" + sec + " " + timesuffix;
+    var finaldate = day + ", " + month + " " + date + ", " + year + " (" + monthnumber + "/" + date + "/" + shortyear + ")";
+    var finaltimezone = timezone + " (UTC-" + timeoffset + ")";
 
-    document.getElementById('curtime').innerHTML = finaltime;
+    document.getElementById('time').innerHTML = finaltime;
+    document.getElementById('date').innerHTML = finaldate;
+    document.getElementById('unix').innerHTML = unixtime;
+    document.getElementById('timezone').innerHTML = finaltimezone;
+    document.getElementById('crtime').innerHTML = crtime;
+    document.getElementById('ietime').innerHTML = ietime;
     setTimeout(time,100);
     }
