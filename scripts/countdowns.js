@@ -1,4 +1,4 @@
-var valentines = setInterval(function () {
+/*var valentines = setInterval(function () {
 
   var countdownDate = new Date("February 14, 2022 00:00:00").getTime();
 
@@ -433,7 +433,7 @@ var halloween = setInterval(function () {
 }, 100);
 
 
-var thanksgiving = setInterval(function () {
+*/var thanksgiving = setInterval(function () {
 
   var countdownDate = new Date("November 25, 2021 00:00:00").getTime();
 
