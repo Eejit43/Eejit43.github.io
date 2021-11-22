@@ -1,3 +1,4 @@
+// Refer to https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for time zone names
 time();
 
 function time() {
@@ -18,11 +19,17 @@ function time() {
     var unixtime = currentTime.getTime();
     var timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     var timeoffset = (currentTime.getTimezoneOffset() / 60);
+    var jptime = currentTime.toLocaleString('en-US', {
+        timeZone: 'Japan'
+    });
     var crtime = currentTime.toLocaleString('en-US', {
         timeZone: 'America/Costa_Rica'
     });
-    var ietime = currentTime.toLocaleString('en-US', {
-        timeZone: 'Eire'
+    var gbtime = currentTime.toLocaleString('en-US', {
+        timeZone: 'Europe/London'
+    });
+    var utctime = currentTime.toLocaleString('en-US', {
+        timeZone: 'Etc/UTC'
     });
     if (minutes < 10) {
         minutes = "0" + minutes
@@ -41,7 +48,9 @@ function time() {
     document.getElementById('date').innerHTML = finaldate;
     document.getElementById('unix').innerHTML = unixtime;
     document.getElementById('timezone').innerHTML = finaltimezone;
+    document.getElementById('jptime').innerHTML = jptime;
     document.getElementById('crtime').innerHTML = crtime;
-    document.getElementById('ietime').innerHTML = ietime;
+    document.getElementById('gbtime').innerHTML = gbtime;
+    document.getElementById('utctime').innerHTML = utctime;
     setTimeout(time, 100);
 }
