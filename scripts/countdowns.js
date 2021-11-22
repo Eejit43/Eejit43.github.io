@@ -79,7 +79,7 @@ var valentines = setInterval(function () {
 
 
   if (distance < 0) {
-    clearInterval(countdown);
+    clearInterval(valentines);
     document.getElementById("valentines").innerHTML = "<span style='color:#FF5555;'>This event has already happened!</span>";
   }
 }, 100);
@@ -166,7 +166,7 @@ var patricks = setInterval(function () {
 
 
   if (distance < 0) {
-    clearInterval(countdown);
+    clearInterval(patricks);
     document.getElementById("patricks").innerHTML = "<span style='color:#FF5555;'>This event has already happened!</span>";
   }
 }, 100);
@@ -253,7 +253,7 @@ var easter = setInterval(function () {
 
 
   if (distance < 0) {
-    clearInterval(countdown);
+    clearInterval(easter);
     document.getElementById("easter").innerHTML = "<span style='color:#FF5555;'>This event has already happened!</span>";
   }
 }, 100);
@@ -340,7 +340,7 @@ var independence = setInterval(function () {
 
 
   if (distance < 0) {
-    clearInterval(countdown);
+    clearInterval(independence);
     document.getElementById("independence").innerHTML = "<span style='color:#FF5555;'>This event has already happened!</span>";
   }
 }, 100);
@@ -427,7 +427,7 @@ var halloween = setInterval(function () {
 
 
   if (distance < 0) {
-    clearInterval(countdown);
+    clearInterval(halloween);
     document.getElementById("halloween").innerHTML = "<span style='color:#FF5555;'>This event has already happened!</span>";
   }
 }, 100);
@@ -514,7 +514,7 @@ var thanksgiving = setInterval(function () {
 
 
   if (distance < 0) {
-    clearInterval(countdown);
+    clearInterval(thanksgiving);
     document.getElementById("thanksgiving").innerHTML = "<span style='color:#FF5555;'>This event has already happened!</span>";
   }
 }, 100);
@@ -601,7 +601,7 @@ var xmas = setInterval(function () {
 
 
   if (distance < 0) {
-    clearInterval(countdown);
+    clearInterval(xmas);
     document.getElementById("xmas").innerHTML = "<span style='color:#FF5555;'>This event has already happened!</span>";
   }
 }, 100);
@@ -688,7 +688,7 @@ var newyears = setInterval(function () {
 
 
   if (distance < 0) {
-    clearInterval(countdown);
+    clearInterval(newyears);
     document.getElementById("newyears").innerHTML = "<span style='color:#FF5555;'>This event has already happened!</span>";
   }
 }, 100);

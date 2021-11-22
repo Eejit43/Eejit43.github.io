@@ -33,13 +33,24 @@ nav {
   float: left;
 }
 
-@media only screen and (max-width: 768px) {
+.logo-tools {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+@media only screen and (max-width: 600px) {
   .logo {
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     font-size: 20px;
     text-align: left;
     float: left;
+  }
+  .logo-tools {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 16px;
   }
 }
 
@@ -52,12 +63,12 @@ nav {
   color: #0b5394;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 600px) {
   .timer {
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     font-size: 14px;
-    margin-right: 35px;
+    margin-right: 30px;
     color: #0b5394;
   }
 }
@@ -77,7 +88,7 @@ nav {
   color: #505050;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 600px) {
   .source {
     font-family: 'Urbanist', sans-serif;
     font-weight: 600;
@@ -100,12 +111,23 @@ nav {
   clear: both;
 }
 
+.mainlogo-tools {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 60px;
+}
+
 @media only screen and (max-width: 700px) {
   .mainlogo {
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     font-size: 70px;
     clear: both;
+  }
+  .mainlogo-tools {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 52px;
   }
 }
 
@@ -124,19 +146,42 @@ header {
   margin-top: 20px;
 }
 
+@media only screen and (max-width: 700px) {
+  .warning {
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 700;
+  color: lightgray;
+  font-size: 17px;
+  margin-top: 20px;
+  }
+}
+
 .toolbox {
   font-family: 'Urbanist', sans-serif;
   text-align: left;
   font-weight: 500;
   color: gray;
-  font-size: 20px;
   border: 2px solid gray;
-  padding: 0 0.1em 2em 1em;
-  float: center;
-  margin: auto;
-  width: 95%;
-  position: relative;
-  margin-top: 130px;
+  padding: 10px 30px 10px 30px;
+  position: static;
+  width: 92%;
+  overflow: hidden;
+  margin: 130px auto 30px;
+}
+
+@media only screen and (max-width: 700px) {
+  .toolbox {
+  font-family: 'Urbanist', sans-serif;
+  text-align: left;
+  font-weight: 500;
+  color: gray;
+  border: 2px solid gray;
+  padding: 10px 15px 10px 15px;
+  position: static;
+  width: 92%;
+  overflow: hidden;
+  margin: 130px 2px 30px 2px;
+  }
 }
 
 body {
@@ -173,16 +218,37 @@ table {
   background: #1b1e24;
   height: 40%;
   left: 10%;
-  margin: 175px auto;
+  margin: 160px auto 30px;
   overflow-y: scroll;
   position: static;
   width: 70%;
 }
 
+@media only screen and (max-width: 700px) {
+  table {
+  border-collapse: collapse;
+  border: 3px solid #1b1e24;
+  color: #a8a8a8;
+  background: #1b1e24;
+  height: 40%;
+  left: 10%;
+  margin: 140px auto 30px;
+  overflow-y: scroll;
+  position: static;
+  width: 70%;
+  }
+}
+
 tr {
   background: #31363d;
   border-bottom: 1px solid #1b1e24;
-  margin-bottom: 5px;
+}
+
+@media only screen and (max-width: 700px) {
+  tr {
+  background: #31363d;
+  border-bottom: 1px solid #1b1e24;
+  }
 }
 
 td {
@@ -194,11 +260,33 @@ td {
   text-align: left;
 }
 
+@media only screen and (max-width: 700px) {
+  td {
+  border: 3px solid #1b1e24;
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 14px;
+  text-align: left;
+  }
+}
+
 .tooltext {
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
+  font-size: 20px;
   color: #0b5394;
   line-height: 200%;
+}
+
+@media only screen and (max-width: 700px) {
+  .tooltext {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  color: #0b5394;
+  line-height: 200%;
+  }
 }
 
 img.emoji {
