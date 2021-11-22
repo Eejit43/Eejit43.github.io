@@ -165,7 +165,6 @@ header {
   padding: 10px 30px 10px 30px;
   position: static;
   width: 92%;
-  overflow: hidden;
   margin: 130px auto 30px;
 }
 
@@ -179,7 +178,6 @@ header {
   padding: 10px 8px 10px 15px;
   position: static;
   width: 92%;
-  overflow: hidden;
   margin: 130px auto 30px auto;
   }
 }
