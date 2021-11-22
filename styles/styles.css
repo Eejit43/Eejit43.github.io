@@ -176,11 +176,11 @@ header {
   font-weight: 500;
   color: gray;
   border: 2px solid gray;
-  padding: 10px 15px 10px 15px;
+  padding: 10px 8px 10px 15px;
   position: static;
   width: 92%;
   overflow: hidden;
-  margin: 130px 2px 30px 2px;
+  margin: 130px auto 30px auto;
   }
 }
 
