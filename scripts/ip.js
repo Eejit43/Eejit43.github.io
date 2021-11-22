@@ -21,7 +21,7 @@ $.getJSON("https://ipgeolocation.abstractapi.com/v1/?api_key=7dcea861f91a44579ce
        connectionparsed = JSON.parse(connection);
        isp = connectionparsed.isp_name;
 
-       output = "IP: " + ip + "<br>Internet Service Provider (ISP): " + isp + "<br>City: " + city + "<br>Region: " + region + " (" + region_code + ")" + "<br>Country: " + country + " (" + country_code + ") " + flagemoji + "<br>Continent: " + continent + " (" + continent_code + ")" + "<br>Latitude (north-south): " + latitude + "<br>Longitude (east-west): " + longitude;
+       output = "<span class='tooltip-text tooltip-right' data-tooltip='Internet Protocol'>IP</span> Address: " + ip + "<br><span class='tooltip-text tooltip-right' data-tooltip='Internet Service Provider'>ISP</span>: " + isp + "<br>City: " + city + "<br>Region: " + region + " (" + region_code + ")" + "<br>Country: " + country + " (" + country_code + ") " + flagemoji + "<br>Continent: " + continent + " (" + continent_code + ")" + "<br>Latitude (north-south): " + latitude + "<br>Longitude (east-west): " + longitude;
 
        document.getElementById('ip').innerHTML = output;
 })
