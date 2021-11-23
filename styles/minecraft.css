@@ -29,236 +29,180 @@
 
 /* Minecraft-style shadow for inventory slots' tooltips */
 
-.format-0,
-.ace_format-0 {
+.format-0 {
   color: #000 !important;
   text-shadow: 0.125em 0.125em #000000;
 }
 
 .format-0>.format-l,
-.ace_format-0>.ace_format-l,
-.format-l>.format-0,
-.ace_format-l>.ace_format-0 {
+.format-l>.format-0 {
   text-shadow: 1.6px 0, 1.6px 0.125em #000000, 3.2px 0.125em #000000;
 }
 
-.format-1,
-.ace_format-1 {
+.format-1 {
   color: #00A !important;
   text-shadow: 0.125em 0.125em #00002A;
 }
 
 .format-1>.format-l,
-.ace_format-1>.ace_format-l,
-.format-l>.format-1,
-.ace_format-l>.ace_format-1 {
+.format-l>.format-1 {
   text-shadow: 1.6px 0, 1.6px 0.125em #00002A, 3.2px 0.125em #00002A;
 }
 
-.format-2,
-.ace_format-2 {
+.format-2 {
   color: #0A0 !important;
   text-shadow: 0.125em 0.125em #002A00;
 }
 
 .format-2>.format-l,
-.ace_format-2>.ace_format-l,
-.format-l>.format-2,
-.ace_format-l>.ace_format-2 {
+.format-l>.format-2 {
   text-shadow: 1.6px 0, 1.6px 0.125em #002A00, 3.2px 0.125em #002A00;
 }
 
-.format-3,
-.ace_format-3 {
+.format-3 {
   color: #0AA !important;
   text-shadow: 0.125em 0.125em #002A2A;
 }
 
 .format-3>.format-l,
-.ace_format-3>.ace_format-l,
-.format-l>.format-3,
-.ace_format-l>.ace_format-3 {
+.format-l>.format-3 {
   text-shadow: 1.6px 0, 1.6px 0.125em #002A2A, 3.2px 0.125em #002A2A;
 }
 
-.format-4,
-.ace_format-4 {
+.format-4 {
   color: #A00 !important;
   text-shadow: 0.125em 0.125em #2A0000;
 }
 
 .format-4>.format-l,
-.ace_format-4>.ace_format-l,
-.format-l>.format-4,
-.ace_format-l>.ace_format-4 {
+.format-l>.format-4 {
   text-shadow: 1.6px 0, 1.6px 0.125em #2A0000, 3.2px 0.125em #2A0000;
 }
 
-.format-5,
-.ace_format-5 {
+.format-5 {
   color: #A0A !important;
   text-shadow: 0.125em 0.125em #2A002A;
 }
 
 .format-5>.format-l,
-.ace_format-5>.ace_format-l,
-.format-l>.format-5,
-.ace_format-l>.ace_format-5 {
+.format-l>.format-5 {
   text-shadow: 1.6px 0, 1.6px 0.125em #2A002A, 3.2px 0.125em #2A002A;
 }
 
-.format-6,
-.ace_format-6 {
+.format-6 {
   color: #FA0 !important;
   text-shadow: 0.125em 0.125em #2A2A00;
 }
 
 .format-6>.format-l,
-.ace_format-6>.ace_format-l,
-.format-l>.format-6,
-.ace_format-l>.ace_format-6 {
+.format-l>.format-6 {
   text-shadow: 1.6px 0, 1.6px 0.125em #2A2A00, 3.2px 0.125em #2A2A00;
 }
 
-.format-7,
-.ace_format-7 {
+.format-7 {
   color: #AAA !important;
   text-shadow: 0.125em 0.125em #2A2A2A;
 }
 
 .format-7>.format-l,
-.ace_format-7>.ace_format-l,
-.format-l>.format-7,
-.ace_format-l>.ace_format-7 {
+.format-l>.format-7 {
   text-shadow: 1.6px 0, 1.6px 0.125em #2A2A2A, 3.2px 0.125em #2A2A2A;
 }
 
-.format-8,
-.ace_format-8 {
+.format-8 {
   color: #555 !important;
   text-shadow: 0.125em 0.125em #151515;
 }
 
 .format-8>.format-l,
-.ace_format-8>.ace_format-l,
-.format-l>.format-8,
-.ace_format-l>.ace_format-8 {
+.format-l>.format-8 {
   text-shadow: 1.6px 0, 1.6px 0.125em #151515, 3.2px 0.125em #151515;
 }
 
-.format-9,
-.ace_format-9 {
+.format-9 {
   color: #55F !important;
   text-shadow: 0.125em 0.125em #15153F;
 }
 
 .format-9>.format-l,
-.ace_format-9>.ace_format-l,
-.format-l>.format-9,
-.ace_format-l>.ace_format-9 {
+.format-l>.format-9 {
   text-shadow: 1.6px 0, 1.6px 0.125em #15153F, 3.2px 0.125em #15153F;
 }
 
-.format-a,
-.ace_format-a {
+.format-a {
   color: #5F5 !important;
   text-shadow: 0.125em 0.125em #153F15;
 }
 
 .format-a>.format-l,
-.ace_format-a>.ace_format-l,
-.format-l>.format-a,
-.ace_format-l>.ace_format-a {
+.format-l>.format-a {
   text-shadow: 1.6px 0, 1.6px 0.125em #153F15, 3.2px 0.125em #153F15;
 }
 
-.format-b,
-.ace_format-b {
+.format-b {
   color: #5FF !important;
   text-shadow: 0.125em 0.125em #153F3F;
 }
 
 .format-b>.format-l,
-.ace_format-b>.ace_format-l,
-.format-l>.format-b,
-.ace_format-l>.ace_format-b {
+.format-l>.format-b {
   text-shadow: 1.6px 0, 1.6px 0.125em #153F3F, 3.2px 0.125em #153F3F;
 }
 
-.format-c,
-.ace_format-c {
+.format-c {
   color: #F55 !important;
   text-shadow: 0.125em 0.125em #3F1515;
 }
 
 .format-c>.format-l,
-.ace_format-c>.ace_format-l,
-.format-l>.format-c,
-.ace_format-l>.ace_format-c {
+.format-l>.format-c {
   text-shadow: 1.6px 0, 1.6px 0.125em #3F1515, 3.2px 0.125em #3F1515;
 }
 
-.format-d,
-.ace_format-d {
+.format-d {
   color: #F5F !important;
   text-shadow: 0.125em 0.125em #3F153F;
 }
 
 .format-d>.format-l,
-.ace_format-d>.ace_format-l,
-.format-l>.format-d,
-.ace_format-l>.ace_format-d {
+.format-l>.format-d {
   text-shadow: 1.6px 0, 1.6px 0.125em #3F153F, 3.2px 0.125em #3F153F;
 }
 
-.format-e,
-.ace_format-e {
+.format-e {
   color: #FF5 !important;
   text-shadow: 0.125em 0.125em #3F3F15;
 }
 
 .format-e>.format-l,
-.ace_format-e>.ace_format-l,
-.format-l>.format-e,
-.ace_format-l>.ace_format-e {
+.format-l>.format-e {
   text-shadow: 1.6px 0, 1.6px 0.125em #3F3F15, 3.2px 0.125em #3F3F15;
 }
 
-.format-f,
-.ace_format-f {
+.format-f {
   color: #FFF !important;
   text-shadow: 0.125em 0.125em #3F3F3F;
 }
 
 .format-f>.format-l,
-.ace_format-f>.ace_format-l,
-.format-l>.format-f,
-.ace_format-l>.ace_format-f {
+.format-l>.format-f {
   text-shadow: 1.6px 0, 1.6px 0.125em #3F3F3F, 3.2px 0.125em #3F3F3F;
 }
 
-.format-l,
-.ace_format-l {
+.format-l {
   letter-spacing: 1.6px;
 }
 
-.format-m,
-.ace_format-m {
+.format-m {
   text-decoration: line-through;
 }
 
-.format-n,
-.ace_format-n {
+.format-n {
   text-decoration: underline;
 }
 
-.format-o,
-.ace_format-o {
+.format-o {
   font-style: italic;
-}
-
-#minetip-tooltip {
-  text-shadow: 0.125em 0.125em #3F3F3F;
 }
 
 
