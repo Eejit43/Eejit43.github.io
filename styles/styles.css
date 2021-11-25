@@ -283,9 +283,9 @@ td {
 
 @media only screen and (max-width: 700px) {
   .mc-scroll-msg {
-  display: initial;
-  padding-left: 10px;
-}
+    display: initial;
+    padding-left: 10px;
+  }
 }
 
 .mc-codes {
@@ -348,6 +348,23 @@ td {
     font-size: 16px;
     padding: 14px;
     text-align: left;
+  }
+}
+
+.mobilehidden {
+  display: unset;
+}
+
+.mobileonly {
+  display: none;
+}
+
+@media only screen and (max-width: 700px) {
+  .mobilehidden {
+    display: none;
+  }
+  .mobileonly {
+    display: unset;
   }
 }
 

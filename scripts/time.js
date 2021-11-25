@@ -18,7 +18,9 @@ function time() {
     var msec = currentTime.getMilliseconds();
     var unixtime = currentTime.getTime();
     var timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    var timeoffset = (currentTime.getTimezoneOffset() / 60);
+    let toffset = new Date().getTimezoneOffset();
+    let offsetsign = toffset < 0 ? '+' : '-';
+    var timeoffset = offsetsign + (toffset / 60 | 0);
     var jptime = currentTime.toLocaleString('en-US', {
         timeZone: 'Japan'
     });
@@ -37,12 +39,30 @@ function time() {
     if (sec < 10) {
         sec = "0" + sec
     }
+    
+    // If DST code modified from https://stackoverflow.com/questions/11887934/how-to-check-if-dst-daylight-saving-time-is-in-effect-and-if-so-the-offset
+    Date.prototype.stdTimezoneOffset = function () {
+        var jan = new Date(this.getFullYear(), 0, 1);
+        var jul = new Date(this.getFullYear(), 6, 1);
+        return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
+    }
+
+    Date.prototype.isDstObserved = function () {
+        return this.getTimezoneOffset() < this.stdTimezoneOffset();
+    }
+
+    var today = new Date();
+    if (today.isDstObserved()) {
+        document.getElementById('dst').innerHTML = "In";
+    } else {
+        document.getElementById('dst').innerHTML = "Not";
+    }
 
     var timesuffix = fullhours >= 12 ? "PM" : "AM";
 
     var finaltime = hours + ":" + minutes + ":" + sec + " " + timesuffix;
     var finaldate = day + ", " + month + " " + date + ", " + year + " (" + monthnumber + "/" + date + "/" + shortyear + ")";
-    var finaltimezone = timezone + " (UTC-" + timeoffset + ")";
+    var finaltimezone = timezone + " (UTC" + timeoffset + ")";
 
     document.getElementById('time').innerHTML = finaltime;
     document.getElementById('date').innerHTML = finaldate;
