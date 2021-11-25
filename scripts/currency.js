@@ -3,7 +3,7 @@
 let today = new Date();
 let yesterday = new Date(today);
 
-yesterday.setDate(yesterday.getDate() - 1);
+yesterday.setDate(yesterday.getDate() - 3);
 
 today.toDateString();
 yesterday.toDateString();
@@ -12,7 +12,7 @@ let prevdate = yesterday.getFullYear() + "-" + (yesterday.getMonth() + 1) + "-" 
 
 $.when(
   $.getJSON("https://exchange-rates.abstractapi.com/v1/live/?api_key=dc0955a3bba74d768ea3bd6a48bc522e&base=USD") //,
-  //$.getJSON(`https://exchange-rates.abstractapi.com/v1/historical/?api_key=dc0955a3bba74d768ea3bd6a48bc522e&base=USD&target=EUR,GBP,CAD,BTC,DOGE&date=${prevdate}`)
+  //$.getJSON(`https://exchange-rates.abstractapi.com/v1/historical/?api_key=dc0955a3bba74d768ea3bd6a48bc522e&base=USD&date=${prevdate}`)
 ).done(function (curdata /*, prevdata*/ ) {
   // Current rates
   rates = JSON.stringify(curdata/*[0]*/.exchange_rates);
