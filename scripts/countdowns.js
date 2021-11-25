@@ -433,9 +433,9 @@ var halloween = setInterval(function () {
 }, 100);
 
 
-*/var thanksgiving = setInterval(function () {
+var thanksgiving = setInterval(function () {
 
-  var countdownDate = new Date("November 25, 2021 00:00:00").getTime();
+  var countdownDate = new Date("November 24, 2022 00:00:00").getTime();
 
   var daysfinal = null;
   var hoursfinal = null;
@@ -520,7 +520,7 @@ var halloween = setInterval(function () {
 }, 100);
 
 
-var xmas = setInterval(function () {
+*/var xmas = setInterval(function () {
 
   var countdownDate = new Date("December 25, 2021 00:00:00").getTime();
 
