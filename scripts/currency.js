@@ -17,6 +17,7 @@ $.when(
   // Current rates
   rates = JSON.stringify(curdata/*[0]*/.exchange_rates);
   rp = JSON.parse(rates);
+  lastupdated = curdata.last_updated * 1000;
   usdcad = rp.CAD;
   usdeur = rp.EUR;
   usdgbp = rp.GBP;
@@ -39,6 +40,13 @@ $.when(
     console.log("CAD exchange rate is constant.")
   }*/
 
+let dateupdated = new Date(lastupdated).toLocaleDateString("en-US")
+
+let timeupdated = new Date(lastupdated).toLocaleTimeString("en-US")
+
+let lastupdatedtime = dateupdated + " " + timeupdated;
+
+  document.getElementById('lastupdated').innerHTML = lastupdatedtime;
   document.getElementById('usdcad').innerHTML = usdcad;
   document.getElementById('usdeur').innerHTML = usdeur;
   document.getElementById('usdgbp').innerHTML = usdgbp;
