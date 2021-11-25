@@ -74,7 +74,7 @@ function countdown(date, elementID) {
     var secondsfinal = seconds + " seconds";
   }
   
-  document.getElementById(elementID).innerHTML = daysfinal + hoursfinal + minutesfinal + secondsfinal;
+  distance <= 0 ? document.getElementById(elementID).innerHTML = '<span style="color:#FF5555;">This event has already occurred!</span>' : document.getElementById(elementID).innerHTML = daysfinal + hoursfinal + minutesfinal + secondsfinal;
 }
 
 /*var vanlentines = setInterval(countdown, 100, 'February 14, 2022', 'valentines');
