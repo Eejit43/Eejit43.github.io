@@ -44,13 +44,15 @@ setInterval(function () {
     x = 360;
     y = 235;
     u = 5;
-    w = 1
+    v = 3;
+    w = 1;
   }
   if (x > 640) {
     a++;
     x = 280;
     y = 235;
     u = -5;
+    v = 3;
     w = 1
   }
   c.fillText(a + " " + b, 266, 60)
