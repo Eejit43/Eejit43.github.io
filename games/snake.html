@@ -1,0 +1,57 @@
+<!-- Modified from https://github.com/patorjk/JavaScript-Snake -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Snake</title>
+    <link rel=stylesheet id="style" type="text/css" href="./snake.css" />
+    <style>
+      .snake-toolbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index:10000;
+      padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="snake-toolbar">
+      <div style="display:inline-block;margin-right:10px;">
+        <span>Mode:</span>
+        <select id="selectMode">
+          <option value="100">Easy</option>
+          <option value="75" selected>Medium</option>
+          <option value="50">Hard</option>
+          <option value="25">Impossible</option>
+        </select>
+      </div>
+      <button onclick="go_full_screen()">Full Screen</button><br />
+    </div>
+    <div id="mode-wrapper" style="display: inline; width: auto;">
+    </div>
+    <div id="game-area" tabindex="0">
+    </div>
+    <script type="text/javascript" src="./snake.js"></script>
+    <script type="text/javascript" src="./snake-init.js"></script>
+    <script type="text/javascript">
+      function go_full_screen() {
+        var elem = document.documentElement;
+        try {
+            if (elem.requestFullscreen) {
+              elem.requestFullscreen();
+            } else if (elem.msRequestFullscreen) {
+              elem.msRequestFullscreen();
+            } else if (elem.mozRequestFullScreen) {
+              elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) {
+              elem.webkitRequestFullscreen();
+            }
+        } catch(err) {
+          console.error(err);
+          alert("Sorry, fullscreen won't work in this setup.");
+        }
+      }
+    </script>
+  </body>
+</html>
