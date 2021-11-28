@@ -14,11 +14,11 @@ $.getJSON("https://exchange-rates.abstractapi.com/v1/live/?api_key=1b28c23d9af34
   rates = JSON.stringify(data.exchange_rates);
   rp = JSON.parse(rates);
   lastupdated = data.last_updated * 1000;
-  usdcad = rp.CAD;
-  usdeur = rp.EUR;
-  usdgbp = rp.GBP;
+  usdcad = rp.CAD.toLocaleString();
+  usdeur = rp.EUR.toLocaleString();
+  usdgbp = rp.GBP.toLocaleString();
   usdbtc = rp.BTC;
-  usddoge = rp.DOGE;
+  usddoge = rp.DOGE.toLocaleString();
 
 let dateupdated = new Date(lastupdated).toLocaleDateString("en-US")
 
@@ -35,30 +35,31 @@ let lastupdatedtime = dateupdated + " " + timeupdated;
   document.getElementById('reloadprompt').innerHTML = "";
 });
 
-function gettousd(code) {$.getJSON(`https://exchange-rates.abstractapi.com/v1/live/?api_key=1b28c23d9af34b2ea1cf20cd0ec547b1&base=${code}`, function(data) {
+function gettousd(code, trimamount) {$.getJSON(`https://exchange-rates.abstractapi.com/v1/live/?api_key=1b28c23d9af34b2ea1cf20cd0ec547b1&base=${code}`, function(data) {
   rates = JSON.stringify(data.exchange_rates);
   rp = JSON.parse(rates);
   tousd = rp.USD;
-  document.getElementById(code).innerHTML = `\$${tousd} USD`
+  result = tousd.toLocaleString();
+  document.getElementById(code).innerHTML = `\$${result} USD`;
 })
 }
 
 setTimeout(function() {
-  gettousd('CAD');
-}, 1200);
+  gettousd('CAD', -3);
+}, 1250);
 
 setTimeout(function() {
-  gettousd('EUR');
-}, 2400);
+  gettousd('EUR', -1);
+}, 2500);
 
 setTimeout(function() {
-  gettousd('GBP');
-}, 3600);
+  gettousd('GBP', -3);
+}, 3750);
 
 setTimeout(function() {
-  gettousd('BTC');
-}, 4800);
+  gettousd('BTC', -3);
+}, 5000);
 
 setTimeout(function() {
-  gettousd('DOGE');
-}, 6000);
+  gettousd('DOGE', -3);
+}, 6250);

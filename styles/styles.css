@@ -64,7 +64,7 @@ nav {
 }
 
 @media only screen and (max-width: 600px) {
-  .timer {
+  .timer, .timer:hover {
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     font-size: 14px;
@@ -366,6 +366,11 @@ td {
   .mobileonly {
     display: unset;
   }
+}
+
+.tab {
+  display: inline-block;
+  margin-left: 80px;
 }
 
 img.emoji {
