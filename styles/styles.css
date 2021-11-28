@@ -373,6 +373,13 @@ td {
   margin-left: 80px;
 }
 
+@media only screen and (max-width: 700px) {
+  .tab {
+  display: inline-block;
+  margin-left: 20px;
+  }
+}
+
 img.emoji {
   display: inline-block;
   height: 0.9em;
