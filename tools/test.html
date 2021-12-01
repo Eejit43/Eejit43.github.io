@@ -40,15 +40,18 @@
       <p style="font-family: 'Montserrat', sans-serif;font-weight: bold;font-size: 20px;color: #0b5394;line-height: 140%;">
       Input:<br>
       <textarea id="regexInput"></textarea>
-      <br><button onmouseup="runRegex()">Run regex</button><button id="clear">Clear</button>
-    <span class="alert" id="clearmsg">Cleared!</span>
+      <br><button onmouseup="runRegex()">Run regex</button>
+
+    <span class="alert" id="emptymsg" style="color:#FF5555;">Empty input!</span>
+      <button id="clear">Clear</button>
+    <span class="alert" id="clearmsg" style="color:#15c35b;">Cleared!</span>
     </p>
       <hr style="margin-top:30px;">
       <p style="font-family: 'Montserrat', sans-serif;font-weight: bold;font-size: 20px;color: #0b5394;line-height: 140%;">
       Output:<br>
       <textarea id="result" readonly></textarea>
     <br><button id="copy-result" class="copy" disabled>Copy</button>
-    <span class="alert" id="copymsg">Copied!</span>
+    <span class="alert" id="copymsg" style="color:#15c35b;">Copied!</span>
       </p>
       <script src="../scripts/test.js"></script>
       <br>

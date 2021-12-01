@@ -23,11 +23,11 @@ function showAlert(id) {
 }
 
 function runRegex() {
-  if (document.getElementById("regexInput").value.length == 0) {
-    alert("empty");
+  let input = document.getElementById("regexInput").value
+  if (input.length == 0) {
+    showAlert("emptymsg");
   } else {
-    let testString = document.getElementById('regexInput').value;
-    let output = testString.replace('test', 'test successful!');
+    let output = input.replace(/test/gi, 'test successful!');
     $("#result").val(output);
     $("#copy-result").prop("disabled", false);
     $("#copy-result").on("click", () => {
