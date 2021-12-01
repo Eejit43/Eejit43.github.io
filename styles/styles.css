@@ -1,3 +1,10 @@
+@import './toast.css';
+@import './tooltip-styles.css';
+
+
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 html {
   background: #1F2227;
 }
@@ -389,3 +396,65 @@ img.emoji {
   background-size: 0.9em 0.9em;
   pointer-events: none;
 }
+
+/* Modified from https://skyblock-wiki.github.io/css/styles.css */
+
+.checkbox-custom {
+  position: absolute;
+  opacity: 0;
+}
+.checkbox-label {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+.checkbox-label .checkbox i {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.checkbox-custom:checked ~ label .checkbox i:nth-of-type(1) {
+  display: initial;
+  opacity: 1;
+}
+.checkbox-custom:not(:checked) ~ label .checkbox i:nth-of-type(2) {
+  display: initial;
+  opacity: 1
+}
+
+input {
+  padding: 0.2rem 0.3rem;
+  border-radius: 4px;
+  border: 1px solid #444;
+  background-color: #252525;
+  color: #AAA;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.75rem;
+  width: 15rem;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  box-shadow: 0 0 3px 2px #cc9933;
+}
+
+button {
+  width: max-content;
+  height: max-content;
+  padding: 0.2rem 0.3rem;
+  border-radius: 4px;
+  border: 1px solid #444;
+  background-color: #252525;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+button:disabled {
+  opacity: 50%;
+  color: #AAA;
+  cursor: default;
+}
+
+/* End modified section */
