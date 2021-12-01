@@ -215,7 +215,7 @@ body {
   color: #28497d;
 }
 
-table {
+.toolstable {
   border-collapse: collapse;
   color: #a8a8a8;
   background: #1b1e24;
@@ -228,7 +228,7 @@ table {
 }
 
 @media only screen and (max-width: 700px) {
-  table {
+  .toolstable {
     border-collapse: collapse;
     color: #a8a8a8;
     background: #1b1e24;
@@ -241,11 +241,11 @@ table {
   }
 }
 
-tr {
+.toolstable tr {
   background: #31363d;
 }
 
-td {
+.toolstable td {
   border: 4px solid #1b1e24;
   font-family: 'Urbanist', sans-serif;
   font-weight: 700;
@@ -255,7 +255,7 @@ td {
 }
 
 @media only screen and (max-width: 700px) {
-  td {
+  .toolstable td {
     border: 3px solid #1b1e24;
     font-family: 'Urbanist', sans-serif;
     font-weight: 700;
@@ -299,6 +299,7 @@ td {
   border: 4px solid #1b1e24;
   color: #a8a8a8;
   background: #1b1e24;
+  background-color: #31363d;
   margin: 50px auto 30px;
   overflow-y: scroll;
   position: static;
@@ -343,6 +344,7 @@ td {
   font-family: 'Urbanist', sans-serif;
   font-weight: 700;
   font-size: 18px;
+  padding: 20px;
   text-align: left;
 }
 
@@ -535,3 +537,24 @@ button:disabled {
   to {top: 0; opacity: 0;}
 }
 /* End modified section */
+
+.regexoutput {
+  width: 100%;
+}
+
+.regexoutput td {
+  width: 50%;
+}
+
+.toc {
+  font-family: 'Urbanist', sans-serif;
+  text-align: left;
+  font-weight: 700;
+  font-size: 18px;
+  color: gray;
+  border: 2px solid gray;
+  padding: 15px 30px 10px 30px;
+  position: static;
+  margin: 120px 0 0 40px;
+  width: 15%;
+}

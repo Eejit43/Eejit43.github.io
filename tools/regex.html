@@ -35,10 +35,14 @@
         <script src="../scripts/navtime.js"></script>
       </span>
     </nav>
-    <div class="toolbox">
-      <h1>Regex Test:</h1>
+    <div class="toc">
+      Table of Contents:
+      <br>– <a href="#neu">NEU Lore Format to Wiki Format</a>
+    </div>
+    <div class="toolbox" style="margin: 30px auto 30px;">
+      <h1 id="neu"><span class="tooltip-text tooltip-bottom" data-tooltip="Not Enough Updates">NEU</span> Lore Format to Wiki Format:</h1>
       <p style="font-family: 'Montserrat', sans-serif;font-weight: bold;font-size: 20px;color: #0b5394;line-height: 140%;">
-        Input:<br>
+        NEU Format:<br>
         <textarea id="regexInput"></textarea>
         <br><button onmouseup="runRegex()">Run regex <i class="" style="color:#009c3f;" id="runSuccess"><i class="" style="color:#FF5555;" id="runError"></i></i></button>
         <span class="alert" id="emptymsg" style="color:#FF5555;">Empty input!</span>
@@ -46,13 +50,26 @@
         <span class="alert" id="clearmsg" style="color:#009c3f;">Cleared!</span>
       </p>
       <hr style="margin-top:30px;">
+      <table class="regexoutput">
+      <tr>
+      <td>
       <p style="font-family: 'Montserrat', sans-serif;font-weight: bold;font-size: 20px;color: #0b5394;line-height: 140%;">
-        Output:<br>
-        <textarea id="result" readonly></textarea>
+        Tooltips Editor Format:<br>
+        <textarea id="result" style="width:80%;" readonly></textarea>
         <br><button id="copy-result" class="copy" disabled>Copy</button>
         <span class="alert" id="copymsg" style="color:#009c3f;">Copied!</span>
+      </td>
+      <td>
+      <p style="font-family: 'Montserrat', sans-serif;font-weight: bold;font-size: 20px;color: #0b5394;line-height: 140%;">
+        Source Editor Format:<br>
+        <textarea id="result-2" style="width:80%;" readonly></textarea>
+        <br><button id="copy-result-2" class="copy" disabled>Copy</button>
+        <span class="alert" id="copymsg-2" style="color:#009c3f;">Copied!</span>
+      </td>
+      </tr>
+      </table>
       </p>
-      <script src="../scripts/test.js"></script>
+      <script src="../scripts/regex.js"></script>
       <br>
       <noscript>
         <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
