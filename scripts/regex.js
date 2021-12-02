@@ -155,6 +155,7 @@ function runNeuRegex() {
     }, 2000);
   } else {
     let output = input.replace(/\\"/gmi, 'Ɣ'); //filler character
+    output = output.replace(/\\u0027/gmi, '\'');
     output = output.replace(/    "|",?/gmi, '');
     output = output.replace(/Ɣ/gmi, '"');
     output = output.replace(/§/gmi, '&');
@@ -166,6 +167,7 @@ function runNeuRegex() {
     output2 = output2.replace(/\\(?!\/|\\\/)/gmi, '\\\\\\\\');
     output2 = output2.replace(/\n/gmi, '/');
     output2 = output2.replace(/"/gmi, '\\"');
+    output2 = output2.replace(/\'/gmi, '\\\'');
     runError.className = "";
     runSuccess.className = "fas fa-check";
     setTimeout(function () {
