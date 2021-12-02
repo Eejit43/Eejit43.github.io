@@ -6,22 +6,9 @@ function showAlert(id) {
   }, 2000);
 }
 
-navigator.clipboard.readText()
-  .then(text => {
-    $("#copiedtext").val(text);
-    document.getElementById("clipboardwarning").innerHTML = "";
-  })
-  .catch(err => {
-  if (err.toString().match(/focused/g)) {
-  document.getElementById("clipboardwarning").innerHTML = "<i class='fas fa-exclamation-triangle'></i> Tab not focused, unable to read clipboard!<br>";
-  } else if (err.toString().match(/denied/g)) {
-  document.getElementById("clipboardwarning").innerHTML = "<i class='fas fa-exclamation-triangle'></i> Permission to read clipboard denied!<br>";
-  } else {
-  document.getElementById("clipboardwarning").innerHTML = "<i class='fas fa-exclamation-triangle'></i> Unable to read clipboard!<br>";
-  }
-  })
+clipboardDisplay();
 
-setInterval(async () => {
+async function clipboardDisplay() {
   navigator.clipboard.readText()
   .then(text => {
     if (text.length === 0) {
@@ -47,4 +34,5 @@ setInterval(async () => {
   document.getElementById("clipboardwarning").innerHTML = "<i class='fas fa-exclamation-triangle'></i> Unable to read clipboard!<br>";
   }
   })
-}, 3000);
+  setTimeout(clipboardDisplay, 1000);
+}
