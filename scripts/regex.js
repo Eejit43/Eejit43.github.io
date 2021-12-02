@@ -226,7 +226,6 @@ function runRmRegex() {
   } catch (e) {
     isValid = false;
   }
-  console.log(isValid);
   if (input.length == 0 || regex.length == 0) {
     showAlert("emptymsg-2");
     runSuccess.className = "";
