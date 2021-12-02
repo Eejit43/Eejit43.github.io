@@ -214,6 +214,28 @@ $("#rm-clear-2").on("click", () => {
   }, 2000);
 });
 
+$("#rm-switch").on("click", () => {
+  let output = document.getElementById("rm-result").value;
+  if (output.length == 0) {
+  document.getElementById("rm-switch").innerHTML = "Move output to input <i class='' style='color:#FF5555;' id='rm-moveError'></i>";
+  showAlert("nooutputmsg");
+  let moveError = document.getElementById("rm-moveError");
+  moveError.className = "fas fa-times";
+    setTimeout(function () {
+      moveError.className = moveError.className.replace("fas fa-times", "");
+    }, 2000);
+  } else {
+  $("#rm-regexInput").val(output);
+  $("#rm-result").val("");
+  $("#rm-copy-result").prop("disabled", true);
+  showAlert("switchmsg");
+  document.getElementById("rm-switch").innerHTML = "Moved! <i class='fas fa-arrows-alt-v' style='color:#1c62d4;' id='rm-switchOutput'></i>";
+  setTimeout(function () {
+    document.getElementById("rm-switch").innerHTML = "Move output to input <i class='' style='color:#FF5555;' id='rm-moveError'></i>";
+  }, 2000);
+}
+});
+
 function runRmRegex() {
   let input = document.getElementById("rm-regexInput").value;
   let runError = document.getElementById("rm-runError");

@@ -40,6 +40,8 @@
     <span class="alert" id="clearmsg" style="color:#009c3f;">Cleared!</span>
     <span class="alert" id="copymsg" style="color:#009c3f;">Copied!</span>
     <span class="alert" id="notvalidregex" style="color:#FF5555;">Invalid regex!</span>
+    <span class="alert" id="switchmsg" style="color:#1c62d4;">Moved to input!</span>
+    <span class="alert" id="nooutputmsg" style="color:#FF5555;">No output to move!</span>
     <div class="toc">
       <span style="font-size:22px;line-height:180%;">Table of Contents:</span>
       <br>– <a href="#duplicate-line-remover">Duplicate Line Remover</a>
@@ -162,7 +164,7 @@
         Replace string (leave empty to delete): <input id="rm-replace"></span><br>
         <textarea id="rm-regexInput"></textarea>
         <br><button onmouseup="runRmRegex()">Run regex <i class="" style="color:#009c3f;" id="rm-runSuccess"><i class="" style="color:#FF5555;" id="rm-runError"></i></i></button>
-        <button id="rm-clear">Clear Input</button> <button id="rm-clear-2">Clear All</button>
+        <button id="rm-clear">Clear Input</button> <button id="rm-clear-2">Clear All</button> <button id="rm-switch">Move output to input <i class="" style="color:#FF5555;" id="rm-moveError"></i></button>
       </p>
       <hr style="margin-top:30px;">
       <p class="tooltext">
