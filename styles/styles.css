@@ -1,9 +1,10 @@
 @import './tooltip-styles.css';
+
 /* For Font Awesome icons, see: https://fontawesome.com/v5.15/icons?d=gallery&p=2&m=free */
+
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
 @import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-
 html {
   background: #1F2227;
 }
@@ -64,7 +65,8 @@ nav {
 }
 
 @media only screen and (max-width: 600px) {
-  .timer, .timer:hover {
+  .timer,
+  .timer:hover {
     font-size: 14px;
     margin-right: 30px;
   }
@@ -321,7 +323,7 @@ body {
 
 @media only screen and (max-width: 700px) {
   .tab {
-  margin-left: 20px;
+    margin-left: 20px;
   }
 }
 
@@ -335,27 +337,32 @@ img.emoji {
   pointer-events: none;
 }
 
+
 /* Modified from https://skyblock-wiki.github.io/css/styles.css */
 
 .checkbox-custom {
   position: absolute;
   opacity: 0;
 }
+
 .checkbox-label {
   display: flex;
   gap: 4px;
   align-items: center;
 }
+
 .checkbox-label .checkbox i {
   display: none;
   opacity: 0;
   transition: opacity 0.2s ease;
 }
-.checkbox-custom:checked ~ label .checkbox i:nth-of-type(1) {
+
+.checkbox-custom:checked~label .checkbox i:nth-of-type(1) {
   display: initial;
   opacity: 1;
 }
-.checkbox-custom:not(:checked) ~ label .checkbox i:nth-of-type(2) {
+
+.checkbox-custom:not(:checked)~label .checkbox i:nth-of-type(2) {
   display: initial;
   opacity: 1
 }
@@ -389,7 +396,8 @@ input {
   width: 15rem;
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
   outline: none;
   box-shadow: 0 0 3px 2px #cc9933;
 }
@@ -426,8 +434,8 @@ button:disabled {
   cursor: not-allowed;
 }
 
-/* End modified section */
 
+/* End modified section */
 
 
 /* Modified from https://www.w3schools.com/howto/howto_js_snackbar.asp */
@@ -445,6 +453,8 @@ button:disabled {
   z-index: 1;
   left: 50%;
   top: 25px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
   font-size: 17px;
 }
 
@@ -455,24 +465,50 @@ button:disabled {
 }
 
 @-webkit-keyframes fadein {
-  from {top: 0; opacity: 0;} 
-  to {top: 25px; opacity: 1;}
+  from {
+    top: 0;
+    opacity: 0;
+  }
+  to {
+    top: 25px;
+    opacity: 1;
+  }
 }
 
 @keyframes fadein {
-  from {top: 0; opacity: 0;}
-  to {top: 25px; opacity: 1;}
+  from {
+    top: 0;
+    opacity: 0;
+  }
+  to {
+    top: 25px;
+    opacity: 1;
+  }
 }
 
 @-webkit-keyframes fadeout {
-  from {top: 25px; opacity: 1;} 
-  to {top: 0; opacity: 0;}
+  from {
+    top: 25px;
+    opacity: 1;
+  }
+  to {
+    top: 0;
+    opacity: 0;
+  }
 }
 
 @keyframes fadeout {
-  from {top: 25px; opacity: 1;}
-  to {top: 0; opacity: 0;}
+  from {
+    top: 25px;
+    opacity: 1;
+  }
+  to {
+    top: 0;
+    opacity: 0;
+  }
 }
+
+
 /* End modified section */
 
 .regexoutput {
@@ -499,6 +535,6 @@ button:disabled {
 
 @media only screen and (max-width: 700px) {
   .toc {
-  width: 40%;
+    width: 40%;
   }
 }
