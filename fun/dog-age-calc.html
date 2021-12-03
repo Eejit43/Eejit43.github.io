@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eejit's Tools</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="favicon" href="favicon.ico">
+    <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="../scripts/emoji.js"></script>
+  </head>
+  <body>
+    <nav>
+      <a href="https://eejit43.github.io">
+        <span class="logo">
+          <!--
+            --><span style="color:#FF5555">E</span><!--
+            --><span style="color:#FFAA00">e</span><!--
+            --><span style="color:#FFFF55">j</span><!--
+            --><span style="color:#55FF55">i</span><!--
+            --><span style="color:#00AA00">t</span><!--
+            --><span style="color:#00AAAA">'</span><!--
+            --><span style="color:#5555FF">s</span><!--
+            -->
+          <span style="color:#AA00AA;" class="logo-tools">
+            Tools<!--
+              -->
+          </span>
+        </span>
+      </a>
+      <span style="float:right!important;">
+        <a href="time" class="timer"><span id="navtime"></span></a>
+        <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
+        <script src="../scripts/navtime.js"></script>
+      </span>
+    </nav>
+    <span class="alert" id="invalidinput" style="color:#FF5555;">Input must be 1 or greater!</span>
+    <span class="alert" id="noinput" style="color:#FF5555;">No input given!</span>
+    <div class="toolbox">
+      <h1>Dog Year Calculator:</h1>
+      <p class="tooltext">
+        <a style="font-weight:500;font-size:16px;" href="https://www.akc.org/wp-content/uploads/2015/11/Dog_Age_Chart_Proof_01Blue.jpg" target="_blank">More detailed table of ages based on weight</a><br>
+        Human to dog: <input id="humanAge">
+        <button id="toDog" onmouseup="toDog()">Calculate age <i class="" style="color:#009c3f;" id="td-runSuccess"></i><i class="" style="color:#FF5555;" id="td-runError"></i></button><br>
+        Dog to human: <input id="dogAge">
+        <button id="toHuman" onmouseup="toHuman()">Calculate age <i class="" style="color:#009c3f;" id="th-runSuccess"></i><i class="" style="color:#FF5555;" id="th-runError"></i></button>
+      <div id="result" class="tooltext"></div>
+      </p>
+      <script src="./dog-age-calc.js"></script>
+      <br>
+      <noscript>
+        <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
+        <div class="warning">Looks like this script couldn't be displayed for some reason!</div>
+      </noscript>
+    </div>
+  </body>
+</html>

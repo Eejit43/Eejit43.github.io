@@ -6,7 +6,6 @@
  */
 
 var SNAKE = SNAKE || {};
-window.SNAKE = SNAKE; // this will allow us to access the game in other JS files when the app is loaded up in a codesandbox.com sandbox, that's the only reason it's here
 
 /**
  * @method addEventListener
