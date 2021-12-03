@@ -80,3 +80,4 @@ function toHuman() {
       runError.className = runError.className.replace("fas fa-times", "");
     }, 2000);
   }
+}
