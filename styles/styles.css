@@ -511,11 +511,11 @@ button:disabled {
 
 /* End modified section */
 
-.regexoutput {
+.regexoutput, .quickcopy {
   width: 100%;
 }
 
-.regexoutput td {
+.regexoutput td, .quickcopy td {
   width: 50%;
 }
 
@@ -537,4 +537,8 @@ button:disabled {
   .toc {
     width: 40%;
   }
+}
+
+.hidden {
+  display: none;
 }

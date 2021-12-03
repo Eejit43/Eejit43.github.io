@@ -2,7 +2,6 @@
 
 function copyText(selector, button) {
   const el = $(selector);
-  const btn = $(button);
   el.select();
   document.execCommand("copy");
   el.blur();
