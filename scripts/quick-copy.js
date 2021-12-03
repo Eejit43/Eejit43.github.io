@@ -21,7 +21,7 @@ $("#clearclipboard").on("click", () => {
     document.getElementById("clearclipboard").innerHTML = "Clear Clipboard";
   }, 2000);
   navigator.clipboard.writeText("");
-  showAlert("copymsg");
+  showAlert("clearmsg");
 });
 
 $("#copy-zws").on("click", () => {
