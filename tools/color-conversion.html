@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eejit's Tools</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="favicon" href="favicon.ico">
+    <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="../scripts/emoji.js"></script>
+  </head>
+  <body>
+    <nav>
+      <a href="https://eejit43.github.io">
+        <span class="logo">
+          <!--
+            --><span style="color:#FF5555">E</span><!--
+            --><span style="color:#FFAA00">e</span><!--
+            --><span style="color:#FFFF55">j</span><!--
+            --><span style="color:#55FF55">i</span><!--
+            --><span style="color:#00AA00">t</span><!--
+            --><span style="color:#00AAAA">'</span><!--
+            --><span style="color:#5555FF">s</span><!--
+            -->
+          <span style="color:#AA00AA;" class="logo-tools">
+            Tools<!--
+              -->
+          </span>
+        </span>
+      </a>
+      <span style="float:right!important;">
+        <a href="time" class="timer"><span id="navtime"></span></a>
+        <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
+        <script src="../scripts/navtime.js"></script>
+      </span>
+    </nav>
+    <span class="alert" id="copymsg" style="color:#009c3f;">Copied!</span>
+    <div class="toc">
+      <span style="font-size:22px;line-height:180%;">Table of Contents:</span>
+      <br>– <a href="#hex">Hex Conversions</a>
+      <br>– <a href="#rgb">RBG Conversions</a>
+      <br>– <a href="#hsl">HSL Conversions</a>
+    </div>
+    <div class="toolbox" style="margin: 40px auto 30px;">
+      <h1 id="hex">Hex Code (Hexidecimal) Conversion:</h1>
+      <p class="tooltext">
+        Hex: <input id="hexInput" style="width:8rem;" oninput="hex()"></textarea><span style="display: inline-block;width:25px;height:25px;border:3px solid #16181c;margin-left:30px;transform: translate(0, 37%);text-align:center;vertical-align:center;" id="hex-display"></span>
+      </p>
+      <hr style="margin-top:25px;width:20rem;" align="left">
+      <p class="tooltext">
+        RGB: <input id="hex-rgb" style="width:8rem;" readonly></input> <button id="hex-rgb-copy" disabled>Copy</button><br>
+        HSL: <input id="hex-hsl" style="width:8rem;" readonly></input> <button id="hex-hsl-copy" disabled>Copy</button>
+      </p>
+      <script src="../scripts/color-conversion.js"></script>
+      <br>
+      <noscript>
+        <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
+        <div class="warning">Looks like this script couldn't be displayed for some reason!</div>
+      </noscript>
+    </div>
+    <div class="toolbox" style="margin: 40px auto 30px;">
+      <h1 id="rgb">RGB (Red, Green, Blue) Conversion:</h1>
+      <p class="tooltext">
+        RGB: <input id="rgbInput" style="width:8rem;" oninput="rgb()"></textarea><span style="display: inline-block;width:25px;height:25px;border:3px solid #16181c;margin-left:30px;transform: translate(0, 37%);text-align:center;vertical-align:center;" id="rgb-display"></span>
+      </p>
+      <hr style="margin-top:25px;width:20rem;" align="left">
+      <p class="tooltext">
+        Hex: <input id="rgb-hex" style="width:8rem;" readonly></input> <button id="rgb-hex-copy" disabled>Copy</button><br>
+        HSL: <input id="rgb-hsl" style="width:8rem;" readonly></input> <button id="rgb-hsl-copy" disabled>Copy</button>
+      </p>
+      <script src="../scripts/color-conversion.js"></script>
+      <br>
+      <noscript>
+        <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
+        <div class="warning">Looks like this script couldn't be displayed for some reason!</div>
+      </noscript>
+    </div>
+    <div class="toolbox" style="margin: 40px auto 30px;">
+      <h1 id="hsl">HSL (Hue, Saturation, Lightness) Conversion:</h1>
+      <p class="tooltext">
+        HSL: <input id="hslInput" style="width:8rem;" oninput="hsl()"></textarea><span style="display: inline-block;width:25px;height:25px;border:3px solid #16181c;margin-left:30px;transform: translate(0, 37%);text-align:center;vertical-align:center;" id="hsl-display"></span>
+      </p>
+      <hr style="margin-top:25px;width:20rem;" align="left">
+      <p class="tooltext">
+        Hex: <input id="hsl-hex" style="width:8rem;" readonly></input> <button id="hsl-hex-copy" disabled>Copy</button><br>
+        RGB: <input id="hsl-rgb" style="width:8rem;" readonly></input> <button id="hsl-rgb-copy" disabled>Copy</button>
+      </p>
+      <script src="../scripts/color-conversion.js"></script>
+      <br>
+      <noscript>
+        <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
+        <div class="warning">Looks like this script couldn't be displayed for some reason!</div>
+      </noscript>
+    </div>
+  </body>
+</html>
