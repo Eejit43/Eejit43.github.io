@@ -165,7 +165,7 @@ function hex() {
       copyText("#hex-hsl", "hex-hsl-copy");
     });
   } else {
-    document.getElementById("hex-display").innerHTML = "<i class='fas fa-times' style='color:#FF5555;padding-bottom:5px;vertical-align:middle;display:inline-flex;padding-bottom:20px;font-size:25px;'></i>";
+    document.getElementById("hex-display").innerHTML = "<i class='fas fa-times' style='color:#bf4042;padding-bottom:5px;vertical-align:middle;display:inline-flex;padding-bottom:20px;font-size:25px;'></i>";
     document.getElementById("hex-display").style.backgroundColor = "";
     document.getElementById("hex-rgb").value = "";
     $("#hex-rgb-copy").prop("disabled", true);
@@ -248,7 +248,7 @@ function rgb() {
       copyText("#rgb-hsl", "rgb-hsl-copy");
     });
   } else {
-    document.getElementById("rgb-display").innerHTML = "<i class='fas fa-times' style='color:#FF5555;padding-bottom:5px;vertical-align:middle;display:inline-flex;padding-bottom:20px;font-size:25px;'></i>";
+    document.getElementById("rgb-display").innerHTML = "<i class='fas fa-times' style='color:#bf4042;padding-bottom:5px;vertical-align:middle;display:inline-flex;padding-bottom:20px;font-size:25px;'></i>";
     document.getElementById("rgb-display").style.backgroundColor = "";
     document.getElementById("rgb-hex").value = "";
     $("#rgb-hex-copy").prop("disabled", true);
@@ -383,7 +383,7 @@ function hsl() {
       copyText("#hsl-rgb", "hsl-rgb-copy");
     });
   } else {
-    document.getElementById("hsl-display").innerHTML = "<i class='fas fa-times' style='color:#FF5555;padding-bottom:5px;vertical-align:middle;display:inline-flex;padding-bottom:20px;font-size:25px;'></i>";
+    document.getElementById("hsl-display").innerHTML = "<i class='fas fa-times' style='color:#bf4042;padding-bottom:5px;vertical-align:middle;display:inline-flex;padding-bottom:20px;font-size:25px;'></i>";
     document.getElementById("hsl-display").style.backgroundColor = "";
     document.getElementById("hsl-hex").value = "";
     $("#hsl-hex-copy").prop("disabled", true);
