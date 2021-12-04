@@ -8,7 +8,7 @@ function showAlert(id) {
 
 $("#clear").on("click", () => {
   $("#stringToModify").val("");
-  $("#result").val("");
+  $("#result").html("");
   $("#copy-result").prop("disabled", true);
   showAlert("clearmsg");
   document.getElementById("clear").innerHTML = "Cleared!";
