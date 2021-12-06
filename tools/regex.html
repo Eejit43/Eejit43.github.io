@@ -64,13 +64,13 @@
             <p class="tooltext">
               Output (removes duplicate newlines):<br>
               <textarea id="drl-result" style="width:80%;" readonly></textarea>
-              <br><button id="drl-copy-result" class="copy" disabled>Copy</button>
+              <br><button id="drl-copy-result" disabled>Copy</button>
           </td>
           <td>
             <p class="tooltext">
               Output (ignores duplicate newlines):<br>
               <textarea id="drl-result-2" style="width:80%;" readonly></textarea>
-              <br><button id="drl-copy-result-2" class="copy" disabled>Copy</button>
+              <br><button id="drl-copy-result-2" disabled>Copy</button>
           </td>
         </tr>
       </table>
@@ -97,19 +97,19 @@
             <p class="tooltext">
               Without Whitespace (keeps newlines):<br>
               <textarea id="wr-result" style="width:80%;" readonly></textarea>
-              <br><button id="wr-copy-result" class="copy" disabled>Copy</button>
+              <br><button id="wr-copy-result" disabled>Copy</button>
           </td>
           <td style="width:33%;">
             <p class="tooltext">
               Without Whitespace & Extra Newlines:<br>
               <textarea id="wr-result-2" style="width:80%;" readonly></textarea>
-              <br><button id="wr-copy-result-2" class="copy" disabled>Copy</button>
+              <br><button id="wr-copy-result-2" disabled>Copy</button>
           </td>
           <td style="width:33%;">
             <p class="tooltext">
               Without Whitespace & All Newlines:<br>
               <textarea id="wr-result-3" style="width:80%;" readonly></textarea>
-              <br><button id="wr-copy-result-3" class="copy" disabled>Copy</button>
+              <br><button id="wr-copy-result-3" disabled>Copy</button>
           </td>
         </tr>
       </table>
@@ -127,9 +127,7 @@
         NEU Format:<br>
         <textarea id="neu-regexInput"></textarea>
         <br><button onmouseup="runNeuRegex()">Run regex <i class="" style="color:#009c3f;" id="neu-runSuccess"></i><i class="" style="color:#FF5555;" id="neu-runError"></i></button>
-        <span class="alert" id="neu-emptymsg" style="color:#FF5555;">Empty input!</span>
         <button id="neu-clear">Clear</button>
-        <span class="alert" id="neu-clearmsg" style="color:#009c3f;">Cleared!</span>
       </p>
       <hr style="margin-top:30px;">
       <table class="regexoutput">
@@ -138,13 +136,13 @@
             <p class="tooltext">
               Tooltips Editor Format:<br>
               <textarea id="neu-result" style="width:80%;" readonly></textarea>
-              <br><button id="neu-copy-result" class="copy" disabled>Copy</button>
+              <br><button id="neu-copy-result" disabled>Copy</button>
           </td>
           <td>
             <p class="tooltext">
               Source Editor Format:<br>
               <textarea id="neu-result-2" style="width:80%;" readonly></textarea>
-              <br><button id="neu-copy-result-2" class="copy" disabled>Copy</button>
+              <br><button id="neu-copy-result-2" disabled>Copy</button>
           </td>
         </tr>
       </table>
@@ -170,7 +168,7 @@
       <p class="tooltext">
         Output:<br>
         <textarea id="rm-result" readonly></textarea>
-        <br><button id="rm-copy-result" class="copy" disabled>Copy</button>
+        <br><button id="rm-copy-result" disabled>Copy</button>
       </p>
       <script src="../scripts/regex.js"></script>
       <br>
