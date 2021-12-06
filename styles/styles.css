@@ -511,11 +511,11 @@ button:disabled {
 
 /* End modified section */
 
-.regexoutput, .quickcopy {
+.regexoutput, .quickcopy, .unixtable {
   width: 100%;
 }
 
-.regexoutput td, .quickcopy td {
+.regexoutput td, .quickcopy td, .unixtable td {
   width: 50%;
 }
 
