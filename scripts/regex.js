@@ -1,10 +1,10 @@
 /* Portions modified from https://skyblock-wiki.github.io/tools/head-render/js/index.js, https://www.w3schools.com/howto/howto_js_snackbar.asp */
 
-function copyText(selector, button) {
-  const el = $(selector);
-  el.select();
+function copyText(toCopy, button) {
+  const element = document.getElementById(toCopy);
+  element.select();
   document.execCommand("copy");
-  el.blur();
+  element.blur();
   document.getSelection().removeAllRanges();
   document.getElementById(button).innerHTML = "Copied!";
   setTimeout(function () {
@@ -22,12 +22,12 @@ function showAlert(id) {
 }
 
 // Duplicate Line Remover
-$("#drl-clear").on("click", () => {
-  $("#drl-regexInput").val("");
-  $("#drl-result").val("");
-  $("#drl-copy-result").prop("disabled", true);
-  $("#drl-result-2").val("");
-  $("#drl-copy-result-2").prop("disabled", true);
+function drlClear() {
+  document.getElementById('drl-regexInput').value = "";
+  document.getElementById('drl-result').value = "";
+  document.getElementById('drl-copy-result').disabled = true;
+  document.getElementById('drl-result-2').value = "";
+  document.getElementById('drl-copy-result-2').disabled = true;
   showAlert("clearmsg");
   document.getElementById("drl-runSuccess").className = "";
   document.getElementById("drl-runError").className = "";
@@ -35,7 +35,7 @@ $("#drl-clear").on("click", () => {
   setTimeout(function () {
     document.getElementById("drl-clear").innerHTML = "Clear";
   }, 2000);
-});
+};
 
 function runDlrRegex() {
   let input = document.getElementById("drl-regexInput").value;
@@ -56,28 +56,22 @@ function runDlrRegex() {
     setTimeout(function () {
       runSuccess.className = runSuccess.className.replace("fas fa-check", "");
     }, 2000);
-    $("#drl-result").val(output);
-    $("#drl-copy-result").prop("disabled", false);
-    $("#drl-copy-result").on("click", () => {
-      copyText("#drl-result", "drl-copy-result");
-    });
-    $("#drl-result-2").val(output2);
-    $("#drl-copy-result-2").prop("disabled", false);
-    $("#drl-copy-result-2").on("click", () => {
-      copyText("#drl-result-2", "drl-copy-result-2");
-    });
+    document.getElementById('drl-result').value = output;
+    document.getElementById('drl-copy-result').disabled = false;
+    document.getElementById('drl-result-2').value = output2;
+    document.getElementById('drl-copy-result-2').disabled = false;
   }
 }
 
 // Whitespace Remover
-$("#wr-clear").on("click", () => {
-  $("#wr-regexInput").val("");
-  $("#wr-result").val("");
-  $("#wr-copy-result").prop("disabled", true);
-  $("#wr-result-2").val("");
-  $("#wr-copy-result-2").prop("disabled", true);
-  $("#wr-result-3").val("");
-  $("#wr-copy-result-3").prop("disabled", true);
+function wrClear() {
+  document.getElementById('wr-regexInput').value = "";
+  document.getElementById('wr-result').value = "";
+  document.getElementById('wr-copy-result').disabled = true;
+  document.getElementById('wr-result-2').value = "";
+  document.getElementById('wr-copy-result-2').disabled = true;
+  document.getElementById('wr-result-3').value = "";
+  document.getElementById('wr-copy-result-3').disabled = true;
   showAlert("clearmsg");
   document.getElementById("wr-runSuccess").className = "";
   document.getElementById("wr-runError").className = "";
@@ -85,7 +79,7 @@ $("#wr-clear").on("click", () => {
   setTimeout(function () {
     document.getElementById("wr-clear").innerHTML = "Clear";
   }, 2000);
-});
+};
 
 function runWrRegex() {
   let input = document.getElementById("wr-regexInput").value;
@@ -107,31 +101,22 @@ function runWrRegex() {
     setTimeout(function () {
       runSuccess.className = runSuccess.className.replace("fas fa-check", "");
     }, 2000);
-    $("#wr-result").val(output);
-    $("#wr-copy-result").prop("disabled", false);
-    $("#wr-copy-result").on("click", () => {
-      copyText("#wr-result", "wr-copy-result");
-    });
-    $("#wr-result-2").val(output2);
-    $("#wr-copy-result-2").prop("disabled", false);
-    $("#wr-copy-result-2").on("click", () => {
-      copyText("#wr-result-2", "wr-copy-result-2");
-    });
-    $("#wr-result-3").val(output3);
-    $("#wr-copy-result-3").prop("disabled", false);
-    $("#wr-copy-result-3").on("click", () => {
-      copyText("#wr-result-3", "wr-copy-result-3");
-    });
+    document.getElementById('wr-result').value = output;
+    document.getElementById('wr-copy-result').disabled = false;
+    document.getElementById('wr-result-2').value = output2;
+    document.getElementById('wr-copy-result-2').disabled = false;
+    document.getElementById('wr-result-3').value = output3;
+    document.getElementById('wr-copy-result-3').disabled = false;
   }
 }
 
 // NEU Format Changer
-$("#neu-clear").on("click", () => {
-  $("#neu-regexInput").val("");
-  $("#neu-result").val("");
-  $("#neu-copy-result").prop("disabled", true);
-  $("#neu-result-2").val("");
-  $("#neu-copy-result-2").prop("disabled", true);
+function neuClear() {
+  document.getElementById('neu-regexInput').value = "";
+  document.getElementById('neu-result').value = "";
+  document.getElementById('neu-copy-result').disabled = true;
+  document.getElementById('neu-result-2').value = "";
+  document.getElementById('neu-copy-result-2').disabled = true;
   showAlert("clearmsg");
   document.getElementById("neu-runSuccess").className = "";
   document.getElementById("neu-runError").className = "";
@@ -139,7 +124,7 @@ $("#neu-clear").on("click", () => {
   setTimeout(function () {
     document.getElementById("neu-clear").innerHTML = "Clear";
   }, 2000);
-});
+};
 
 function runNeuRegex() {
   let input = document.getElementById("neu-regexInput").value;
@@ -172,24 +157,18 @@ function runNeuRegex() {
     setTimeout(function () {
       runSuccess.className = runSuccess.className.replace("fas fa-check", "");
     }, 2000);
-    $("#neu-result").val(output);
-    $("#neu-copy-result").prop("disabled", false);
-    $("#neu-copy-result").on("click", () => {
-      copyText("#neu-result", "neu-copy-result");
-    });
-    $("#neu-result-2").val(output2);
-    $("#neu-copy-result-2").prop("disabled", false);
-    $("#neu-copy-result-2").on("click", () => {
-      copyText("#neu-result-2", "neu-copy-result-2");
-    });
+    document.getElementById('neu-result').value = output;
+    document.getElementById('neu-copy-result').disabled = false;
+    document.getElementById('neu-result-2').value = output2;
+    document.getElementById('neu-copy-result-2').disabled = false;
   }
 }
 
 // Regex Maker
-$("#rm-clear").on("click", () => {
-  $("#rm-regexInput").val("");
-  $("#rm-result").val("");
-  $("#rm-copy-result").prop("disabled", true);
+function rmClearInput() {
+  document.getElementById('rm-regexInput').value = "";
+  document.getElementById('rm-result').value = "";
+  document.getElementById('rm-copy-result').disabled = true;
   showAlert("clearmsg");
   document.getElementById("rm-runSuccess").className = "";
   document.getElementById("rm-runError").className = "";
@@ -197,15 +176,15 @@ $("#rm-clear").on("click", () => {
   setTimeout(function () {
     document.getElementById("rm-clear").innerHTML = "Clear Input";
   }, 2000);
-});
+};
 
-$("#rm-clear-2").on("click", () => {
-  $("#rm-regexInput").val("");
-  $("#rm-result").val("");
-  $("#rm-copy-result").prop("disabled", true);
-  $("#rm-regex").val("");
-  $("#rm-flags").val("g");
-  $("#rm-replace").val("");
+function rmClearAll() {
+  document.getElementById('rm-regexInput').value = "";
+  document.getElementById('rm-result').value = "";
+  document.getElementById('rm-copy-result').disabled = true;
+  document.getElementById('rm-regex').value = "";
+  document.getElementById('rm-flags').value = "g";
+  document.getElementById('rm-replace').value = "";
   showAlert("clearmsg");
   document.getElementById("rm-runSuccess").className = "";
   document.getElementById("rm-runError").className = "";
@@ -213,29 +192,29 @@ $("#rm-clear-2").on("click", () => {
   setTimeout(function () {
     document.getElementById("rm-clear-2").innerHTML = "Clear All";
   }, 2000);
-});
+};
 
-$("#rm-switch").on("click", () => {
+function rmSwitch() {
   let output = document.getElementById("rm-result").value;
   if (output.length == 0) {
-  document.getElementById("rm-switch").innerHTML = "Move output to input <i class='' style='color:#FF5555;' id='rm-moveError'></i>";
-  showAlert("nooutputmsg");
-  let moveError = document.getElementById("rm-moveError");
-  moveError.className = "fas fa-times";
+    document.getElementById("rm-switch").innerHTML = "Move output to input <i class='' style='color:#FF5555;' id='rm-moveError'></i>";
+    showAlert("nooutputmsg");
+    let moveError = document.getElementById("rm-moveError");
+    moveError.className = "fas fa-times";
     setTimeout(function () {
       moveError.className = moveError.className.replace("fas fa-times", "");
     }, 2000);
   } else {
-  $("#rm-regexInput").val(output);
-  $("#rm-result").val("");
-  $("#rm-copy-result").prop("disabled", true);
-  showAlert("switchmsg");
-  document.getElementById("rm-switch").innerHTML = "Moved! <i class='fas fa-arrows-alt-v' style='color:#1c62d4;' id='rm-switchOutput'></i>";
-  setTimeout(function () {
-    document.getElementById("rm-switch").innerHTML = "Move output to input <i class='' style='color:#FF5555;' id='rm-moveError'></i>";
-  }, 2000);
-}
-});
+    document.getElementById('rm-regexInput').value = output;
+    document.getElementById('rm-result').value = "";
+    document.getElementById('rm-copy-result').disabled = true;
+    showAlert("switchmsg");
+    document.getElementById("rm-switch").innerHTML = "Moved! <i class='fas fa-arrows-alt-v' style='color:#1c62d4;' id='rm-switchOutput'></i>";
+    setTimeout(function () {
+      document.getElementById("rm-switch").innerHTML = "Move output to input <i class='' style='color:#FF5555;' id='rm-moveError'></i>";
+    }, 2000);
+  }
+};
 
 function runRmRegex() {
   let input = document.getElementById("rm-regexInput").value;
@@ -265,11 +244,8 @@ function runRmRegex() {
     setTimeout(function () {
       runSuccess.className = runSuccess.className.replace("fas fa-check", "");
     }, 2000);
-    $("#rm-result").val(output);
-    $("#rm-copy-result").prop("disabled", false);
-    $("#rm-copy-result").on("click", () => {
-      copyText("#rm-result", "rm-copy-result");
-    });
+    document.getElementById('rm-result').value = output;
+    document.getElementById('rm-copy-result').disabled = false;
   } else if (isValid === false) {
     showAlert("notvalidregex");
     runSuccess.className = "";

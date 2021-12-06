@@ -77,7 +77,7 @@ function countdown(date, elementID) {
   distance <= 0 ? document.getElementById(elementID).innerHTML = '<span style="color:#FF5555;">This event has already occurred!</span>' : document.getElementById(elementID).innerHTML = daysfinal + hoursfinal + minutesfinal + secondsfinal;
 }
 
-/*var vanlentines = setInterval(countdown, 100, 'February 14, 2022', 'valentines');
+/*var valentines = setInterval(countdown, 100, 'February 14, 2022', 'valentines');
 
 var patricks = setInterval(countdown, 100, 'March 17, 2022', 'patricks');
 

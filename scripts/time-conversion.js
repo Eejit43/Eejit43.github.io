@@ -72,7 +72,6 @@ function updateUnixOutput() {
     }
 }
 
-
 updateUnixTime();
 
 function updateUnixTime() {

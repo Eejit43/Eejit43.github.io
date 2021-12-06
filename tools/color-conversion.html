@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="../styles/styles.css">
     <link rel="favicon" href="favicon.ico">
     <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="../scripts/emoji.js"></script>
   </head>
   <body>
@@ -49,8 +48,8 @@
       </p>
       <hr style="margin-top:25px;width:20rem;" align="left">
       <p class="tooltext">
-        RGB: <input id="hex-rgb" style="width:8rem;" readonly></input> <button id="hex-rgb-copy" disabled>Copy</button><br>
-        HSL: <input id="hex-hsl" style="width:8rem;" readonly></input> <button id="hex-hsl-copy" disabled>Copy</button>
+        RGB: <input id="hex-rgb" style="width:8rem;" readonly></input> <button id="hex-rgb-copy" onmouseup="copyText('hex-rgb', 'hex-rgb-copy')" disabled>Copy</button><br>
+        HSL: <input id="hex-hsl" style="width:8rem;" readonly></input> <button id="hex-hsl-copy" onmouseup="copyText('hex-hsl', 'hex-hsl-copy')" disabled>Copy</button>
       </p>
       <script src="../scripts/color-conversion.js"></script>
       <br>
@@ -66,8 +65,8 @@
       </p>
       <hr style="margin-top:25px;width:20rem;" align="left">
       <p class="tooltext">
-        Hex: <input id="rgb-hex" style="width:8rem;" readonly></input> <button id="rgb-hex-copy" disabled>Copy</button><br>
-        HSL: <input id="rgb-hsl" style="width:8rem;" readonly></input> <button id="rgb-hsl-copy" disabled>Copy</button>
+        Hex: <input id="rgb-hex" style="width:8rem;" readonly></input> <button id="rgb-hex-copy" onmouseup="copyText('rgb-hex', 'rgb-hex-copy')" disabled>Copy</button><br>
+        HSL: <input id="rgb-hsl" style="width:8rem;" readonly></input> <button id="rgb-hsl-copy" onmouseup="copyText('rgb-hsl', 'rgb-hsl-copy')" disabled>Copy</button>
       </p>
       <script src="../scripts/color-conversion.js"></script>
       <br>
@@ -83,8 +82,8 @@
       </p>
       <hr style="margin-top:25px;width:20rem;" align="left">
       <p class="tooltext">
-        Hex: <input id="hsl-hex" style="width:8rem;" readonly></input> <button id="hsl-hex-copy" disabled>Copy</button><br>
-        RGB: <input id="hsl-rgb" style="width:8rem;" readonly></input> <button id="hsl-rgb-copy" disabled>Copy</button>
+        Hex: <input id="hsl-hex" style="width:8rem;" readonly></input> <button id="hsl-hex-copy" onmouseup="copyText('hsl-hex', 'hsl-hex-copy')" disabled>Copy</button><br>
+        RGB: <input id="hsl-rgb" style="width:8rem;" readonly></input> <button id="hsl-rgb-copy" onmouseup="copyText('hsl-rgb', 'hsl-rgb-copy')" disabled >Copy</button>
       </p>
       <script src="../scripts/color-conversion.js"></script>
       <br>

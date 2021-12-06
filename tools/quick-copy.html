@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="../styles/styles.css">
     <link rel="favicon" href="favicon.ico">
     <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="../scripts/emoji.js"></script>
   </head>
   <body>
@@ -43,12 +42,12 @@
         <tr>
           <td>
             <p class="tooltext" style="font-weight:500;color:dimgray;font-size:16px;">
-              <button id="clearclipboard" style="padding:.5rem;">Clear Clipboard</button><br><br>
-              Zero Width Space: <button id="copy-zws">Copy</button><br>
-              Non-Breaking Space/Hard Space: <button id="copy-nbsp">Copy</button><br>
-              Em Space ( ): <button id="copy-ems">Copy</button><br>
-              En Space ( ): <button id="copy-ens">Copy</button><br>
-              Thin Space ( ): <button id="copy-ts">Copy</button><br>
+              <button id="clearclipboard" style="padding:.5rem;" onmouseup="clearClipboard()">Clear Clipboard</button><br><br>
+              Zero Width Space: <button id="copy-zws" onmouseup="copyText('copy-zws', '​')">Copy</button><br>
+              Non-Breaking Space/Hard Space: <button id="copy-nbsp" onmouseup="copyText('copy-nbsp', ' ')">Copy</button><br>
+              Em Space ( ): <button id="copy-ems" onmouseup="copyText('copy-ems', ' ')">Copy</button><br>
+              En Space ( ): <button id="copy-ens" onmouseup="copyText('copy-ens', ' ')">Copy</button><br>
+              Thin Space ( ): <button id="copy-ts" onmouseup="copyText('copy-ts', ' ')">Copy</button><br>
               <!-- Some other space variants: https://i.stack.imgur.com/FF9ka.png -->
             </p>
           </td>
@@ -57,7 +56,7 @@
               Current Clipboard:<br><br>
               <span style="color:#FF5555;font-size:14px;" id="clipboardwarning"></span>
               <textarea id="copiedtext" style="width:60%;" readonly></textarea><br>
-              <button id="selectclipboard" disabled>Select Clipboard</button>
+              <button id="selectclipboard" onmouseup="document.getElementById('copiedtext').select()" disabled>Select Clipboard</button>
             </p>
           </td>
         </tr>

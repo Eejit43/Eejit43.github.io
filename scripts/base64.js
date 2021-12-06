@@ -6,10 +6,10 @@ function showAlert(id) {
   }, 2000);
 }
 
-$("#clear").on("click", () => {
-  $("#stringToModify").val("");
-  $("#result").html("");
-  $("#copy-result").prop("disabled", true);
+function clearAll() {
+  document.getElementById('stringToModify').value = "";
+  document.getElementById('result').value = "";
+  document.getElementById('copy-result').disabled = true;
   showAlert("clearmsg");
   document.getElementById("clear").innerHTML = "Cleared!";
   setTimeout(function () {
@@ -19,13 +19,13 @@ $("#clear").on("click", () => {
   document.getElementById("e-runError").className = "";
   document.getElementById("d-runSuccess").className = "";
   document.getElementById("d-runError").className = "";
-});
+}
 
-function copyText(selector, button) {
-  const el = $(selector);
-  el.select();
+function copyText(toCopy, button) {
+  const element = document.getElementById(toCopy);
+  element.select();
   document.execCommand("copy");
-  el.blur();
+  element.blur();
   document.getSelection().removeAllRanges();
   document.getElementById(button).innerHTML = "Copied!";
   setTimeout(function () {
@@ -54,10 +54,7 @@ function encode() {
       setTimeout(function () {
         runSuccess.className = runSuccess.className.replace("fas fa-check", "");
       }, 2000);
-      $("#copy-result").prop("disabled", false);
-      $("#copy-result").on("click", () => {
-        copyText("#result", "copy-result");
-      });
+      document.getElementById('copy-result').disabled = false;
     } catch (err) {
       showAlert("errormsg");
       runSuccess.className = "";
@@ -89,10 +86,7 @@ function decode() {
       setTimeout(function () {
         runSuccess.className = runSuccess.className.replace("fas fa-check", "");
       }, 2000);
-      $("#copy-result").prop("disabled", false);
-      $("#copy-result").on("click", () => {
-        copyText("#result", "copy-result");
-      });
+      document.getElementById('copy-result').disabled = false;
     } catch (err) {
       showAlert("errormsg");
       runSuccess.className = "";

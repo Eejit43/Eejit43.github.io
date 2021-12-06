@@ -1,10 +1,10 @@
 // Some formulas modified from https://css-tricks.com/converting-color-spaces-in-javascript/
 
-function copyText(selector, button) {
-  const el = $(selector);
-  el.select();
+function copyText(toCopy, button) {
+  const element = document.getElementById(toCopy);
+  element.select();
   document.execCommand("copy");
-  el.blur();
+  element.blur();
   document.getSelection().removeAllRanges();
   document.getElementById(button).innerHTML = "Copied!";
   setTimeout(function () {
@@ -42,10 +42,7 @@ function hex() {
     }
     document.getElementById("hex-rgb").value = "rgb(" + +r + "," + +g + "," + +b + ")";
 
-    $("#hex-rgb-copy").prop("disabled", false);
-    $("#hex-rgb-copy").on("click", () => {
-      copyText("#hex-rgb", "hex-rgb-copy");
-    });
+    document.getElementById('hex-rgb-copy').disabled = false;
     // To HSL
     r = 0
     g = 0
@@ -90,10 +87,7 @@ function hex() {
 
     document.getElementById("hex-hsl").value = "hsl(" + h + "," + s + "%," + l + "%)";
 
-    $("#hex-hsl-copy").prop("disabled", false);
-    $("#hex-hsl-copy").on("click", () => {
-      copyText("#hex-hsl", "hex-hsl-copy");
-    });
+    document.getElementById('hex-hsl-copy').disabled = false;
   } else if (hex.match(/^([\da-f]{3}){1,2}$/i)) {
     document.getElementById("hex-display").style.backgroundColor = "#" + hex;
     document.getElementById("hex-display").innerHTML = "";
@@ -112,10 +106,7 @@ function hex() {
     }
     document.getElementById("hex-rgb").value = "rgb(" + +r + "," + +g + "," + +b + ")";
 
-    $("#hex-rgb-copy").prop("disabled", false);
-    $("#hex-rgb-copy").on("click", () => {
-      copyText("#hex-rgb", "hex-rgb-copy");
-    });
+    document.getElementById('hex-rgb-copy').disabled = false;
     // To HSL
     r = 0
     g = 0
@@ -160,17 +151,14 @@ function hex() {
 
     document.getElementById("hex-hsl").value = "hsl(" + h + "," + s + "%," + l + "%)";
 
-    $("#hex-hsl-copy").prop("disabled", false);
-    $("#hex-hsl-copy").on("click", () => {
-      copyText("#hex-hsl", "hex-hsl-copy");
-    });
+    document.getElementById('hex-hsl-copy').disabled = false;
   } else {
     document.getElementById("hex-display").innerHTML = "<i class='fas fa-times' style='color:#bf4042;padding-bottom:5px;vertical-align:middle;display:inline-flex;padding-bottom:20px;font-size:25px;'></i>";
     document.getElementById("hex-display").style.backgroundColor = "";
     document.getElementById("hex-rgb").value = "";
-    $("#hex-rgb-copy").prop("disabled", true);
+    document.getElementById('hex-rgb-copy').disabled = true;
     document.getElementById("hex-hsl").value = "";
-    $("#hex-hsl-copy").prop("disabled", true);
+    document.getElementById('hex-hsl-copy').disabled = true;
   }
 }
 
@@ -196,10 +184,7 @@ function rgb() {
 
     document.getElementById("rgb-hex").value = "#" + r + g + b;
 
-    $("#rgb-hex-copy").prop("disabled", false);
-    $("#rgb-hex-copy").on("click", () => {
-      copyText("#rgb-hex", "rgb-hex-copy");
-    });
+    document.getElementById('rgb-hex-copy').disabled = false;
     // To HSL
     rgb = document.getElementById("rgbInput").value;
     sep = rgb.indexOf(",") > -1 ? "," : " ";
@@ -243,17 +228,14 @@ function rgb() {
 
     document.getElementById("rgb-hsl").value = "hsl(" + h + "," + s + "%," + l + "%)";
 
-    $("#rgb-hsl-copy").prop("disabled", false);
-    $("#rgb-hsl-copy").on("click", () => {
-      copyText("#rgb-hsl", "rgb-hsl-copy");
-    });
+    document.getElementById('rgb-hsl-copy').disabled = false;
   } else {
     document.getElementById("rgb-display").innerHTML = "<i class='fas fa-times' style='color:#bf4042;padding-bottom:5px;vertical-align:middle;display:inline-flex;padding-bottom:20px;font-size:25px;'></i>";
     document.getElementById("rgb-display").style.backgroundColor = "";
     document.getElementById("rgb-hex").value = "";
-    $("#rgb-hex-copy").prop("disabled", true);
+    document.getElementById('rgb-hex-copy').disabled = true;
     document.getElementById("rgb-hsl").value = "";
-    $("#rgb-hsl-copy").prop("disabled", true);
+    document.getElementById('rgb-hsl-copy').disabled = true;
   }
 }
 
@@ -327,10 +309,7 @@ function hsl() {
 
     document.getElementById("hsl-hex").value = "#" + r + g + b;
 
-    $("#hsl-hex-copy").prop("disabled", false);
-    $("#hsl-hex-copy").on("click", () => {
-      copyText("#hsl-hex", "hsl-hex-copy");
-    });
+    document.getElementById('hsl-hex-copy').disabled = false;
     // To RGB
     hsl = document.getElementById("hslInput").value;
     sep = hsl.indexOf(",") > -1 ? "," : " ";
@@ -378,16 +357,13 @@ function hsl() {
 
     document.getElementById("hsl-rgb").value = "rgb(" + r + "," + g + "," + b + ")";
 
-    $("#hsl-rgb-copy").prop("disabled", false);
-    $("#hsl-rgb-copy").on("click", () => {
-      copyText("#hsl-rgb", "hsl-rgb-copy");
-    });
+    document.getElementById('hsl-rgb-copy').disabled = false;
   } else {
     document.getElementById("hsl-display").innerHTML = "<i class='fas fa-times' style='color:#bf4042;padding-bottom:5px;vertical-align:middle;display:inline-flex;padding-bottom:20px;font-size:25px;'></i>";
     document.getElementById("hsl-display").style.backgroundColor = "";
     document.getElementById("hsl-hex").value = "";
-    $("#hsl-hex-copy").prop("disabled", true);
+    document.getElementById('hsl-hex-copy').disabled = true;
     document.getElementById("hsl-rgb").value = "";
-    $("#hsl-rgb-copy").prop("disabled", true);
+    document.getElementById('hsl-rgb-copy').disabled = true;
   }
 }

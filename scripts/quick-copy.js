@@ -15,33 +15,14 @@ function copyText(button, text) {
   showAlert("copymsg");
 }
 
-$("#clearclipboard").on("click", () => {
+function clearClipboard() {
   document.getElementById("clearclipboard").innerHTML = "Cleared!";
   setTimeout(function () {
     document.getElementById("clearclipboard").innerHTML = "Clear Clipboard";
   }, 2000);
   navigator.clipboard.writeText("");
   showAlert("clearmsg");
-});
-
-$("#copy-zws").on("click", () => {
-  copyText("copy-zws", "​");
-});
-$("#copy-nbsp").on("click", () => {
-  copyText("copy-nbsp", " ");
-});
-$("#copy-ems").on("click", () => {
-  copyText("copy-ems", " ");
-});
-$("#copy-ens").on("click", () => {
-  copyText("copy-ens", " ");
-});
-$("#copy-ts").on("click", () => {
-  copyText("copy-ts", " ");
-});
-$("#copy-hs").on("click", () => {
-  copyText("copy-hs", " ");
-});
+}
 
 clipboardDisplay();
 
@@ -49,17 +30,13 @@ async function clipboardDisplay() {
   navigator.clipboard.readText()
     .then(text => {
       if (text.length === 0) {
-        $("#copiedtext").val("");
-        $("#selectclipboard").prop("disabled", true);
+        document.getElementById('copiedtext').value = "";
+        document.getElementById('selectclipboard').disabled = true;
         document.getElementById("clipboardwarning").innerHTML = "<span style='color:#009c3f;'><i class='far fa-clipboard'></i> Your clipboard is empty!<br></span>";
       } else {
-        $("#copiedtext").val(text);
+        document.getElementById('copiedtext').value = text;
         document.getElementById("clipboardwarning").innerHTML = "";
-        let btn = $("#selectclipboard");
-        btn.prop("disabled", false);
-        btn.on("click", () => {
-          $("#copiedtext").select();
-        });
+        document.getElementById('selectclipboard').disabled = false;
       }
     })
     .catch(err => {
