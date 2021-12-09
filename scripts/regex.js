@@ -247,6 +247,7 @@ function runRmRegex() {
     replace = replace.replace('\\o', '\o');
     replace = replace.replace('\\r', '\r');
     replace = replace.replace('\\t', '\t');
+    replace = replace.replace(/\$(\d)/g, '$$$1');
     let output = input.replace(finalregex, replace);
     runError.className = "";
     runSuccess.className = "fas fa-check";
