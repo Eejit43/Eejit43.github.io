@@ -145,7 +145,12 @@ function toSentence() {
       runError.className = runError.className.replace("fas fa-times", "");
     }, 2000);
   } else {
-    let result = string.toLowerCase().replace(/(^\s*\w|[\.\!\?]\s*\w)/g,function(c){return c.toUpperCase()});;
+    let result = string.toLowerCase().replace(/(^\s*\w|[\.\!\?]\s*\w)/g, function(c){return c.toUpperCase()});
+    result = result.replace(/ i(\.|\!|\?| |\n|$)/gmi, ' I$1');
+    result = result.replace(/ i'm(\.|\!|\?| |\n|$)/gmi, ' I\'m$1');
+    result = result.replace(/ i'd(\.|\!|\?| |\n|$)/gmi, ' I\'d$1');
+    result = result.replace(/ i'll(\.|\!|\?| |\n|$)/gmi, ' I\'ll$1');
+    result = result.replace(/ i've(\.|\!|\?| |\n|$)/gmi, ' I\'ve$1');
       document.getElementById("result").value = result;
       runError.className = "";
       runSuccess.className = "fas fa-check";
