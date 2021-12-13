@@ -27,7 +27,6 @@ function countdown(date, elementID) {
 
   if (days === 1) {
     daysfinal = days + " day" + daysfinalsuffix;
-
   } else if (days === 0) {
     daysfinal = "";
   } else {
@@ -42,7 +41,6 @@ function countdown(date, elementID) {
 
   if (hours === 1) {
     hoursfinal = hours + " hour" + hoursfinalsuffix;
-
   } else if (hours === 0) {
     hoursfinal = "";
   } else {
@@ -57,7 +55,6 @@ function countdown(date, elementID) {
 
   if (minutes === 1) {
     minutesfinal = minutes + " minute" + minutesfinalsuffix;
-
   } else if (minutes === 0) {
     minutesfinal = "";
   } else {
@@ -66,13 +63,12 @@ function countdown(date, elementID) {
 
   if (seconds === 1) {
     secondsfinal = seconds + " second";
-
   } else if (seconds === 0) {
     secondsfinal = "";
   } else {
     secondsfinal = seconds + " seconds";
   }
-  
+
   distance <= 0 ? document.getElementById(elementID).innerHTML = '<span style="color:#FF5555;">This event has already occurred!</span>' : document.getElementById(elementID).innerHTML = daysfinal + hoursfinal + minutesfinal + secondsfinal;
 }
 
@@ -86,8 +82,8 @@ let independence = setInterval(countdown, 100, 'July 4, 2022', 'independence');
 
 let halloween = setInterval(countdown, 100, 'October 31, 2022', 'halloween');
 
-let thanksgiving = setInterval(countdown, 100, 'November 24, 2022', 'thanksgiving');
+let thanksgiving = setInterval(countdown, 100, 'November 24, 2022', 'thanksgiving');*/
 
-*/let christmas = setInterval(countdown, 100, 'December 25, 2021', 'christmas');
+let christmas = setInterval(countdown, 100, 'December 25, 2021', 'christmas');
 
 let newyears = setInterval(countdown, 100, 'January 1, 2022', 'newyears');

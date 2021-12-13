@@ -1,22 +1,38 @@
-window.onload=function () {
-document.getElementById('run-dlr').addEventListener("click", runDlrRegex);
-document.getElementById('drl-clear').addEventListener("click", drlClear);
-document.getElementById('drl-copy-result').addEventListener("click", function () {copyText('drl-result', 'drl-copy-result')});
-document.getElementById('drl-copy-result-2').addEventListener("click", function () {copyText('drl-result-2', 'drl-copy-result-2')});
-document.getElementById('run-wr').addEventListener("click", runWrRegex);
-document.getElementById('wr-clear').addEventListener("click", wrClear);
-document.getElementById('wr-copy-result').addEventListener("click", function () {copyText('wr-result', 'wr-copy-result')});
-document.getElementById('wr-copy-result-2').addEventListener("click", function () {copyText('wr-result-2', 'wr-copy-result-2')});
-document.getElementById('wr-copy-result-3').addEventListener("click", function () {copyText('wr-result-3', 'wr-copy-result-3')});
-document.getElementById('run-neu').addEventListener("click", runNeuRegex);
-document.getElementById('neu-clear').addEventListener("click", neuClear);
-document.getElementById('neu-copy-result').addEventListener("click", function () {copyText('neu-result', 'neu-copy-result')});
-document.getElementById('neu-copy-result-2').addEventListener("click", function () {copyText('neu-result-2', 'neu-copy-result-2')});
-document.getElementById('run-rm').addEventListener("click", runRmRegex);
-document.getElementById('rm-clear').addEventListener("click", rmClearInput);
-document.getElementById('rm-clear-2').addEventListener("click", rmClearAll);
-document.getElementById('rm-switch').addEventListener("click", rmSwitch);
-document.getElementById('rm-copy-result').addEventListener("click", function () {copyText('rm-result', 'rm-copy-result')});
+window.onload = function () {
+  document.getElementById('run-dlr').addEventListener("click", runDlrRegex);
+  document.getElementById('drl-clear').addEventListener("click", drlClear);
+  document.getElementById('drl-copy-result').addEventListener("click", function () {
+    copyText('drl-result', 'drl-copy-result')
+  });
+  document.getElementById('drl-copy-result-2').addEventListener("click", function () {
+    copyText('drl-result-2', 'drl-copy-result-2')
+  });
+  document.getElementById('run-wr').addEventListener("click", runWrRegex);
+  document.getElementById('wr-clear').addEventListener("click", wrClear);
+  document.getElementById('wr-copy-result').addEventListener("click", function () {
+    copyText('wr-result', 'wr-copy-result')
+  });
+  document.getElementById('wr-copy-result-2').addEventListener("click", function () {
+    copyText('wr-result-2', 'wr-copy-result-2')
+  });
+  document.getElementById('wr-copy-result-3').addEventListener("click", function () {
+    copyText('wr-result-3', 'wr-copy-result-3')
+  });
+  document.getElementById('run-neu').addEventListener("click", runNeuRegex);
+  document.getElementById('neu-clear').addEventListener("click", neuClear);
+  document.getElementById('neu-copy-result').addEventListener("click", function () {
+    copyText('neu-result', 'neu-copy-result')
+  });
+  document.getElementById('neu-copy-result-2').addEventListener("click", function () {
+    copyText('neu-result-2', 'neu-copy-result-2')
+  });
+  document.getElementById('run-rm').addEventListener("click", runRmRegex);
+  document.getElementById('rm-clear').addEventListener("click", rmClearInput);
+  document.getElementById('rm-clear-2').addEventListener("click", rmClearAll);
+  document.getElementById('rm-switch').addEventListener("click", rmSwitch);
+  document.getElementById('rm-copy-result').addEventListener("click", function () {
+    copyText('rm-result', 'rm-copy-result')
+  });
 }
 
 function copyText(toCopy, button) {

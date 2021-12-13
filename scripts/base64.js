@@ -1,8 +1,10 @@
-window.onload=function () {
-document.getElementById('encode').addEventListener("click", encode);
-document.getElementById('decode').addEventListener("click", decode);
-document.getElementById('clear').addEventListener("click", clearAll);
-document.getElementById('copy-result').addEventListener("click", function () {copyText('result', 'copy-result')});
+window.onload = function () {
+  document.getElementById('encode').addEventListener("click", encode);
+  document.getElementById('decode').addEventListener("click", decode);
+  document.getElementById('clear').addEventListener("click", clearAll);
+  document.getElementById('copy-result').addEventListener("click", function () {
+    copyText('result', 'copy-result')
+  });
 }
 
 function showAlert(id) {

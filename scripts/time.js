@@ -39,7 +39,7 @@ function time() {
     if (sec < 10) {
         sec = "0" + sec
     }
-    
+
     // If DST code modified from https://stackoverflow.com/questions/11887934/how-to-check-if-dst-daylight-saving-time-is-in-effect-and-if-so-the-offset
     Date.prototype.stdTimezoneOffset = function () {
         let jan = new Date(this.getFullYear(), 0, 1);

@@ -1,12 +1,16 @@
-window.onload=function () {
-document.getElementById('standard-input').addEventListener("input", updateUnixOutput);
-document.getElementById('standard-input-reset').addEventListener("click", updateStandardTime);
-document.getElementById('unix-input').addEventListener("input", updateStandardOutput);
-document.getElementById('unix-input-reset').addEventListener("click", updateUnixTime);
-document.getElementById('unix-input-switch').addEventListener("click", switchUnixInput);
-document.getElementById('unix-output-copy').addEventListener("click", function () {copyText('unix-output', 'unix-output-copy')});
-document.getElementById('unix-output-switch').addEventListener("click", switchUnixOutput);
-document.getElementById('standard-output-copy').addEventListener("click", function () {copyText('standard-output', 'standard-output-copy')});
+window.onload = function () {
+    document.getElementById('standard-input').addEventListener("input", updateUnixOutput);
+    document.getElementById('standard-input-reset').addEventListener("click", updateStandardTime);
+    document.getElementById('unix-input').addEventListener("input", updateStandardOutput);
+    document.getElementById('unix-input-reset').addEventListener("click", updateUnixTime);
+    document.getElementById('unix-input-switch').addEventListener("click", switchUnixInput);
+    document.getElementById('unix-output-copy').addEventListener("click", function () {
+        copyText('unix-output', 'unix-output-copy')
+    });
+    document.getElementById('unix-output-switch').addEventListener("click", switchUnixOutput);
+    document.getElementById('standard-output-copy').addEventListener("click", function () {
+        copyText('standard-output', 'standard-output-copy')
+    });
 }
 
 let unixInputState = 1; // 1 = seconds, 2 = milliseconds
