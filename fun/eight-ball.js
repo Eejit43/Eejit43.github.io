@@ -1,5 +1,7 @@
+document.getElementById('rollBall').addEventListener("click", rollBall);
+
 function showAlert(id) {
-  var element = document.getElementById(id);
+  let element = document.getElementById(id);
   element.className = "alert show";
   setTimeout(function () {
     element.className = element.className.replace("alert show", "alert");

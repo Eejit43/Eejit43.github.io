@@ -1,5 +1,15 @@
+window.onload=function () {
+document.getElementById('clearclipboard').addEventListener("click", clearClipboard);
+document.getElementById('copy-zws').addEventListener("click", function () {copyText('copy-zws', '​')});
+document.getElementById('copy-nbsp').addEventListener("click", function () {copyText('copy-nbsp', ' ')});
+document.getElementById('copy-ems').addEventListener("click", function () {copyText('copy-ems', ' ')});
+document.getElementById('copy-ens').addEventListener("click", function () {copyText('copy-ens', ' ')});
+document.getElementById('copy-ts').addEventListener("click", function () {copyText('copy-ts', ' ')});
+document.getElementById('selectclipboard').addEventListener("click", function () {document.getElementById('copiedtext').select()});
+}
+
 function showAlert(id) {
-  var element = document.getElementById(id);
+  let element = document.getElementById(id);
   element.className = "alert show";
   setTimeout(function () {
     element.className = element.className.replace("alert show", "alert");
@@ -7,11 +17,11 @@ function showAlert(id) {
 }
 
 function copyText(button, text) {
+  navigator.clipboard.writeText(text);
   document.getElementById(button).innerHTML = "Copied!";
   setTimeout(function () {
     document.getElementById(button).innerHTML = "Copy";
   }, 2000);
-  navigator.clipboard.writeText(text);
   showAlert("copymsg");
 }
 

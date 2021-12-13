@@ -53,8 +53,8 @@
       <p class="tooltext">
         Input:<br>
         <textarea id="drl-regexInput"></textarea>
-        <br><button onmouseup="runDlrRegex()">Run regex <i class="" style="color:#009c3f;" id="drl-runSuccess"><i class="" style="color:#FF5555;" id="drl-runError"></i></i></button>
-        <button id="drl-clear" onmouseup="drlClear()">Clear</button>
+        <br><button id="run-dlr">Run regex <i class="" style="color:#009c3f;" id="drl-runSuccess"><i class="" style="color:#FF5555;" id="drl-runError"></i></i></button>
+        <button id="drl-clear">Clear</button>
       </p>
       <hr style="margin-top:30px;">
       <table class="regexoutput">
@@ -63,13 +63,13 @@
             <p class="tooltext">
               Output (removes duplicate newlines):<br>
               <textarea id="drl-result" style="width:80%;" readonly></textarea>
-              <br><button id="drl-copy-result" onmouseup="copyText('drl-result', 'drl-copy-result')" disabled>Copy</button>
+              <br><button id="drl-copy-result" disabled>Copy</button>
           </td>
           <td>
             <p class="tooltext">
               Output (ignores duplicate newlines):<br>
               <textarea id="drl-result-2" style="width:80%;" readonly></textarea>
-              <br><button id="drl-copy-result-2" onmouseup="copyText('drl-result-2', 'drl-copy-result-2')" disabled>Copy</button>
+              <br><button id="drl-copy-result-2" disabled>Copy</button>
           </td>
         </tr>
       </table>
@@ -86,8 +86,8 @@
       <p class="tooltext">
         Input:<br>
         <textarea id="wr-regexInput"></textarea>
-        <br><button onmouseup="runWrRegex()">Run regex <i class="" style="color:#009c3f;" id="wr-runSuccess"><i class="" style="color:#FF5555;" id="wr-runError"></i></i></button>
-        <button id="wr-clear" onmouseup="wrClear()">Clear</button>
+        <br><button id="run-wr">Run regex <i class="" style="color:#009c3f;" id="wr-runSuccess"><i class="" style="color:#FF5555;" id="wr-runError"></i></i></button>
+        <button id="wr-clear">Clear</button>
       </p>
       <hr style="margin-top:30px;">
       <table class="regexoutput">
@@ -96,19 +96,19 @@
             <p class="tooltext">
               Without Whitespace (keeps newlines):<br>
               <textarea id="wr-result" style="width:80%;" readonly></textarea>
-              <br><button id="wr-copy-result" onmouseup="copyText('wr-result', 'wr-copy-result')" disabled>Copy</button>
+              <br><button id="wr-copy-result" disabled>Copy</button>
           </td>
           <td style="width:33%;">
             <p class="tooltext">
               Without Whitespace & Extra Newlines:<br>
               <textarea id="wr-result-2" style="width:80%;" readonly></textarea>
-              <br><button id="wr-copy-result-2" onmouseup="copyText('wr-result-2', 'wr-copy-result-2')" disabled>Copy</button>
+              <br><button id="wr-copy-result-2" disabled>Copy</button>
           </td>
           <td style="width:33%;">
             <p class="tooltext">
               Without Whitespace & All Newlines:<br>
               <textarea id="wr-result-3" style="width:80%;" readonly></textarea>
-              <br><button id="wr-copy-result-3" onmouseup="copyText('wr-result-3', 'wr-copy-result-3')" disabled>Copy</button>
+              <br><button id="wr-copy-result-3" disabled>Copy</button>
           </td>
         </tr>
       </table>
@@ -125,8 +125,8 @@
       <p class="tooltext">
         NEU Format:<br>
         <textarea id="neu-regexInput"></textarea>
-        <br><button onmouseup="runNeuRegex()">Run regex <i class="" style="color:#009c3f;" id="neu-runSuccess"></i><i class="" style="color:#FF5555;" id="neu-runError"></i></button>
-        <button id="neu-clear" onmouseup="neuClear()">Clear</button>
+        <br><button id="run-neu">Run regex <i class="" style="color:#009c3f;" id="neu-runSuccess"></i><i class="" style="color:#FF5555;" id="neu-runError"></i></button>
+        <button id="neu-clear">Clear</button>
       </p>
       <hr style="margin-top:30px;">
       <table class="regexoutput">
@@ -135,13 +135,13 @@
             <p class="tooltext">
               Tooltips Editor Format:<br>
               <textarea id="neu-result" style="width:80%;" readonly></textarea>
-              <br><button id="neu-copy-result" onmouseup="copyText('neu-result', 'neu-copy-result')" disabled>Copy</button>
+              <br><button id="neu-copy-result" disabled>Copy</button>
           </td>
           <td>
             <p class="tooltext">
               Source Editor Format:<br>
               <textarea id="neu-result-2" style="width:80%;" readonly></textarea>
-              <br><button id="neu-copy-result-2" onmouseup="copyText('neu-result-2', 'neu-copy-result-2')" disabled>Copy</button>
+              <br><button id="neu-copy-result-2" disabled>Copy</button>
           </td>
         </tr>
       </table>
@@ -160,14 +160,14 @@
         <span style="font-weight:500;color:dimgray;font-size:16px;"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Cheatsheet" target="_blank">Regex</a>: <input id="rm-regex">　<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#advanced_searching_with_flags" target="_blank">Flags</a>: <input id="rm-flags" value="g" style="width:4rem;"><br>
         Replace string (leave empty to delete): <input id="rm-replace"></span><br>
         <textarea id="rm-regexInput" style="min-width: 40%;width: 40%;max-width: 70%;min-height: 4rem;height: 6rem;max-height: 25rem;resize: both;"></textarea>
-        <br><button onmouseup="runRmRegex()">Run regex <i class="" style="color:#009c3f;" id="rm-runSuccess"></i><i class="" style="color:#FF5555;" id="rm-runError"></i></button>
-        <button id="rm-clear" onmouseup="rmClearInput()">Clear Input</button> <button id="rm-clear-2" onmouseup="rmClearAll()">Clear All</button> <button id="rm-switch" onmouseup="rmSwitch()">Move output to input <i class="" style="color:#FF5555;" id="rm-moveError"></i></button>
+        <br><button id="run-rm">Run regex <i class="" style="color:#009c3f;" id="rm-runSuccess"></i><i class="" style="color:#FF5555;" id="rm-runError"></i></button>
+        <button id="rm-clear">Clear Input</button> <button id="rm-clear-2">Clear All</button> <button id="rm-switch">Move output to input <i class="" style="color:#FF5555;" id="rm-moveError"></i></button>
       </p>
       <hr style="margin-top:30px;">
       <p class="tooltext">
         Output:<br>
         <textarea id="rm-result" style="min-width: 40%;width: 40%;max-width: 70%;min-height: 4rem;height: 6rem;max-height: 25rem;resize: both;" readonly></textarea>
-        <br><button id="rm-copy-result" onmouseup="copyText('rm-result', 'rm-copy-result')" disabled>Copy</button>
+        <br><button id="rm-copy-result" disabled>Copy</button>
       </p>
       <script src="../scripts/regex.js"></script>
       <br>

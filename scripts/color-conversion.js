@@ -1,10 +1,19 @@
 // Some formulas modified from https://css-tricks.com/converting-color-spaces-in-javascript/
+window.onload=function () {
+document.getElementById('hexInput').addEventListener("input", hex);
+document.getElementById('hex-rgb-copy').addEventListener("click", function () {copyText('hex-rgb', 'hex-rgb-copy')});
+document.getElementById('hex-hsl-copy').addEventListener("click", function () {copyText('hex-hsl', 'hex-hsl-copy')});
+document.getElementById('rgbInput').addEventListener("input", rgb);
+document.getElementById('rgb-hex-copy').addEventListener("click", function () {copyText('rgb-hex', 'rgb-hex-copy')});
+document.getElementById('rgb-hsl-copy').addEventListener("click", function () {copyText('rgb-hsl', 'rgb-hsl-copy')});
+document.getElementById('hslInput').addEventListener("input", hsl);
+document.getElementById('hsl-hex-copy').addEventListener("click", function () {copyText('hsl-hex', 'hsl-hex-copy')});
+document.getElementById('hsl-rgb-copy').addEventListener("click", function () {copyText('hsl-rgb', 'hsl-rgb-copy')});
+}
 
 function copyText(toCopy, button) {
   const element = document.getElementById(toCopy);
-  element.select();
-  document.execCommand("copy");
-  element.blur();
+  navigator.clipboard.writeText(element.value);
   document.getSelection().removeAllRanges();
   document.getElementById(button).innerHTML = "Copied!";
   setTimeout(function () {
@@ -14,7 +23,7 @@ function copyText(toCopy, button) {
 }
 
 function showAlert(id) {
-  var element = document.getElementById(id);
+  let element = document.getElementById(id);
   element.className = "alert show";
   setTimeout(function () {
     element.className = element.className.replace("alert show", "alert");

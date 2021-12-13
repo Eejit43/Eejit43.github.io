@@ -1,5 +1,12 @@
+window.onload=function () {
+document.getElementById('encode').addEventListener("click", encode);
+document.getElementById('decode').addEventListener("click", decode);
+document.getElementById('clear').addEventListener("click", clearAll);
+document.getElementById('copy-result').addEventListener("click", function () {copyText('result', 'copy-result')});
+}
+
 function showAlert(id) {
-  var element = document.getElementById(id);
+  let element = document.getElementById(id);
   element.className = "alert show";
   setTimeout(function () {
     element.className = element.className.replace("alert show", "alert");
@@ -23,10 +30,7 @@ function clearAll() {
 
 function copyText(toCopy, button) {
   const element = document.getElementById(toCopy);
-  element.select();
-  document.execCommand("copy");
-  element.blur();
-  document.getSelection().removeAllRanges();
+  navigator.clipboard.writeText(element.value);
   document.getElementById(button).innerHTML = "Copied!";
   setTimeout(function () {
     document.getElementById(button).innerHTML = "Copy";

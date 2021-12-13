@@ -1,94 +1,93 @@
 function countdown(date, elementID) {
 
-  var countdownDate = new Date(`${date} 00:00:00`).getTime();
+  let countdownDate = new Date(`${date} 00:00:00`).getTime();
 
-  var daysfinal = null;
-  var hoursfinal = null;
-  var minutesfinal = null;
-  var secondsfinal = null;
+  let daysfinal = undefined;
+  let hoursfinal = undefined;
+  let minutesfinal = undefined;
+  let secondsfinal = undefined;
 
-  var daysfinalsuffix = null;
-  var hoursfinalsuffix = null;
-  var minutesfinalsuffix = null;
+  let daysfinalsuffix = undefined;
+  let hoursfinalsuffix = undefined;
 
-  var curtime = new Date().getTime();
+  let curtime = new Date().getTime();
 
-  var distance = countdownDate - curtime;
+  let distance = countdownDate - curtime;
 
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
   if (hours === 0 && minutes === 0 && seconds === 0) {
-    var daysfinalsuffix = "";
+    daysfinalsuffix = "";
   } else {
-    var daysfinalsuffix = ", ";
+    daysfinalsuffix = ", ";
   }
 
   if (days === 1) {
-    var daysfinal = days + " day" + daysfinalsuffix;
+    daysfinal = days + " day" + daysfinalsuffix;
 
   } else if (days === 0) {
-    var daysfinal = "";
+    daysfinal = "";
   } else {
-    var daysfinal = days + " days" + daysfinalsuffix;
+    daysfinal = days + " days" + daysfinalsuffix;
   }
 
   if (minutes === 0 && seconds === 0) {
-    var hoursfinalsuffix = "";
+    hoursfinalsuffix = "";
   } else {
-    var hoursfinalsuffix = ", ";
+    hoursfinalsuffix = ", ";
   }
 
   if (hours === 1) {
-    var hoursfinal = hours + " hour" + hoursfinalsuffix;
+    hoursfinal = hours + " hour" + hoursfinalsuffix;
 
   } else if (hours === 0) {
-    var hoursfinal = "";
+    hoursfinal = "";
   } else {
-    var hoursfinal = hours + " hours" + hoursfinalsuffix;
+    hoursfinal = hours + " hours" + hoursfinalsuffix;
   }
 
   if (seconds === 0) {
-    var minutesfinalsuffix = "";
+    minutesfinalsuffix = "";
   } else {
-    var minutesfinalsuffix = ", ";
+    minutesfinalsuffix = ", ";
   }
 
   if (minutes === 1) {
-    var minutesfinal = minutes + " minute" + minutesfinalsuffix;
+    minutesfinal = minutes + " minute" + minutesfinalsuffix;
 
   } else if (minutes === 0) {
-    var minutesfinal = "";
+    minutesfinal = "";
   } else {
-    var minutesfinal = minutes + " minutes" + minutesfinalsuffix;
+    minutesfinal = minutes + " minutes" + minutesfinalsuffix;
   }
 
   if (seconds === 1) {
-    var secondsfinal = seconds + " second";
+    secondsfinal = seconds + " second";
 
   } else if (seconds === 0) {
-    var secondsfinal = "";
+    secondsfinal = "";
   } else {
-    var secondsfinal = seconds + " seconds";
+    secondsfinal = seconds + " seconds";
   }
   
   distance <= 0 ? document.getElementById(elementID).innerHTML = '<span style="color:#FF5555;">This event has already occurred!</span>' : document.getElementById(elementID).innerHTML = daysfinal + hoursfinal + minutesfinal + secondsfinal;
 }
 
-/*var valentines = setInterval(countdown, 100, 'February 14, 2022', 'valentines');
+/*let valentines = setInterval(countdown, 100, 'February 14, 2022', 'valentines');
 
-var patricks = setInterval(countdown, 100, 'March 17, 2022', 'patricks');
+let patricks = setInterval(countdown, 100, 'March 17, 2022', 'patricks');
 
-var easter = setInterval(countdown, 100, 'April 17, 2022', 'easter');
+let easter = setInterval(countdown, 100, 'April 17, 2022', 'easter');
 
-var independence = setInterval(countdown, 100, 'July 4, 2022', 'independence');
+let independence = setInterval(countdown, 100, 'July 4, 2022', 'independence');
 
-var halloween = setInterval(countdown, 100, 'October 31, 2022', 'halloween');
+let halloween = setInterval(countdown, 100, 'October 31, 2022', 'halloween');
 
-var thanksgiving = setInterval(countdown, 100, 'November 24, 2022', 'thanksgiving');
+let thanksgiving = setInterval(countdown, 100, 'November 24, 2022', 'thanksgiving');
 
-*/var christmas = setInterval(countdown, 100, 'December 25, 2021', 'christmas');
+*/let christmas = setInterval(countdown, 100, 'December 25, 2021', 'christmas');
 
-var newyears = setInterval(countdown, 100, 'January 1, 2022', 'newyears');
+let newyears = setInterval(countdown, 100, 'January 1, 2022', 'newyears');

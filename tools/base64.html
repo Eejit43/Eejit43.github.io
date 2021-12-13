@@ -43,14 +43,14 @@
       <p class="tooltext">
         Input:<br>
         <textarea id="stringToModify" style="width:50%;"></textarea>
-        <br><button onmouseup="encode()">Encode <i class="" style="color:#009c3f;" id="e-runSuccess"><i class="" style="color:#FF5555;" id="e-runError"></i></i></button><button onmouseup="decode()">Decode <i class="" style="color:#009c3f;" id="d-runSuccess"><i class="" style="color:#FF5555;" id="d-runError"></i></i></button>
-        <button id="clear" onmouseup="clearAll()">Clear</button>
+        <br><button id="encode">Encode <i class="" style="color:#009c3f;" id="e-runSuccess"><i class="" style="color:#FF5555;" id="e-runError"></i></i></button><button id="decode">Decode <i class="" style="color:#009c3f;" id="d-runSuccess"><i class="" style="color:#FF5555;" id="d-runError"></i></i></button>
+        <button id="clear">Clear</button>
       </p>
       <hr style="margin-top:30px;">
       <p class="tooltext">
         Output:<br>
         <textarea id="result" style="width:50%;" readonly></textarea>
-        <br><button id="copy-result" onmouseup="copyText('result', 'copy-result')" disabled>Copy</button>
+        <br><button id="copy-result" disabled>Copy</button>
       </p>
       <script src="../scripts/base64.js"></script>
       <br>

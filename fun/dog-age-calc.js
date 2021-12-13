@@ -1,5 +1,8 @@
+document.getElementById('toDog').addEventListener("click", toDog);
+document.getElementById('toHuman').addEventListener("click", toHuman);
+
 function showAlert(id) {
-  var element = document.getElementById(id);
+  let element = document.getElementById(id);
   element.className = "alert show";
   setTimeout(function () {
     element.className = element.className.replace("alert show", "alert");

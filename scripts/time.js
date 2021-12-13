@@ -4,33 +4,33 @@ time();
 function time() {
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    var currentTime = new Date();
-    var day = days[currentTime.getDay()];
-    var date = currentTime.getDate();
-    var month = months[currentTime.getMonth()];
-    var monthnumber = (currentTime.getMonth() + 1);
-    var year = currentTime.getFullYear();
-    var shortyear = year.toString().substr(-2);
-    var fullhours = currentTime.getHours();
-    var hours = ((fullhours + 11) % 12 + 1);
-    var minutes = currentTime.getMinutes();
-    var sec = currentTime.getSeconds();
-    var msec = currentTime.getMilliseconds();
-    var unixtime = currentTime.getTime();
-    var timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    let currentTime = new Date();
+    let day = days[currentTime.getDay()];
+    let date = currentTime.getDate();
+    let month = months[currentTime.getMonth()];
+    let monthnumber = (currentTime.getMonth() + 1);
+    let year = currentTime.getFullYear();
+    let shortyear = year.toString().substr(-2);
+    let fullhours = currentTime.getHours();
+    let hours = ((fullhours + 11) % 12 + 1);
+    let minutes = currentTime.getMinutes();
+    let sec = currentTime.getSeconds();
+    let msec = currentTime.getMilliseconds();
+    let unixtime = currentTime.getTime();
+    let timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     let toffset = new Date().getTimezoneOffset();
     let offsetsign = toffset < 0 ? '+' : '-';
-    var timeoffset = offsetsign + (toffset / 60 | 0);
-    var jptime = currentTime.toLocaleString('en-US', {
+    let timeoffset = offsetsign + (toffset / 60 | 0);
+    let jptime = currentTime.toLocaleString('en-US', {
         timeZone: 'Japan'
     });
-    var crtime = currentTime.toLocaleString('en-US', {
+    let crtime = currentTime.toLocaleString('en-US', {
         timeZone: 'America/Costa_Rica'
     });
-    var gbtime = currentTime.toLocaleString('en-US', {
+    let gbtime = currentTime.toLocaleString('en-US', {
         timeZone: 'Europe/London'
     });
-    var utctime = currentTime.toLocaleString('en-US', {
+    let utctime = currentTime.toLocaleString('en-US', {
         timeZone: 'Etc/UTC'
     });
     if (minutes < 10) {
@@ -42,8 +42,8 @@ function time() {
     
     // If DST code modified from https://stackoverflow.com/questions/11887934/how-to-check-if-dst-daylight-saving-time-is-in-effect-and-if-so-the-offset
     Date.prototype.stdTimezoneOffset = function () {
-        var jan = new Date(this.getFullYear(), 0, 1);
-        var jul = new Date(this.getFullYear(), 6, 1);
+        let jan = new Date(this.getFullYear(), 0, 1);
+        let jul = new Date(this.getFullYear(), 6, 1);
         return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
     }
 
@@ -51,18 +51,18 @@ function time() {
         return this.getTimezoneOffset() < this.stdTimezoneOffset();
     }
 
-    var today = new Date();
+    let today = new Date();
     if (today.isDstObserved()) {
         document.getElementById('dst').innerHTML = "In";
     } else {
         document.getElementById('dst').innerHTML = "Not";
     }
 
-    var timesuffix = fullhours >= 12 ? "PM" : "AM";
+    let timesuffix = fullhours >= 12 ? "PM" : "AM";
 
-    var finaltime = hours + ":" + minutes + ":" + sec + " " + timesuffix;
-    var finaldate = day + ", " + month + " " + date + ", " + year + " (" + monthnumber + "/" + date + "/" + shortyear + ")";
-    var finaltimezone = timezone + " (UTC" + timeoffset + ")";
+    let finaltime = hours + ":" + minutes + ":" + sec + " " + timesuffix;
+    let finaldate = day + ", " + month + " " + date + ", " + year + " (" + monthnumber + "/" + date + "/" + shortyear + ")";
+    let finaltimezone = timezone + " (UTC" + timeoffset + ")";
 
     document.getElementById('time').innerHTML = finaltime;
     document.getElementById('date').innerHTML = finaldate;
