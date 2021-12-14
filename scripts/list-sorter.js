@@ -86,7 +86,7 @@ function alphabetizeReverse() {
     separator = separator.replace('\\n', '\n');
     let result = string.split(separator);
     result = result.sort((a, b) => a.localeCompare(b)).reverse().join(separator);
-    document.getElementById("result").innerHTML = result;
+    document.getElementById("result").value = result;
       runError.className = "";
       runSuccess.className = "fas fa-check";
       setTimeout(function () {
@@ -120,7 +120,7 @@ function randomize() {
     separator = separator.replace('\\n', '\n');
     let result = string.split(separator);
     result = shuffleArray(result).join(separator);
-    document.getElementById("result").innerHTML = result;
+    document.getElementById("result").value = result;
       runError.className = "";
       runSuccess.className = "fas fa-check";
       setTimeout(function () {

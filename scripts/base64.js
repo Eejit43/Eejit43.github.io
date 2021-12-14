@@ -54,7 +54,7 @@ function encode() {
   } else {
     try {
       let decodedString = btoa(stringToEncode);
-      document.getElementById("result").innerHTML = decodedString;
+      document.getElementById("result").value = decodedString;
       runError.className = "";
       runSuccess.className = "fas fa-check";
       setTimeout(function () {
@@ -86,7 +86,7 @@ function decode() {
   } else {
     try {
       let encodedString = atob(stringToDecode);
-      document.getElementById("result").innerHTML = encodedString;
+      document.getElementById("result").value = encodedString;
       runError.className = "";
       runSuccess.className = "fas fa-check";
       setTimeout(function () {
