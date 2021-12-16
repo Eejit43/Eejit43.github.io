@@ -566,5 +566,18 @@ button:disabled {
 .invisibleinput[type=number]::-webkit-inner-spin-button, 
 .invisibleinput[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
-  margin: 0; 
+  margin: 0;
+}
+
+.timer-time {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  color: #0b5394;
+  font-size: 90px;
+}
+
+@media only screen and (max-width: 700px) {
+  .timer-time {
+  font-size:30px;
+  }
 }
