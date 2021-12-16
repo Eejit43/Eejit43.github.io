@@ -543,3 +543,28 @@ button:disabled {
 .hidden {
   display: none;
 }
+
+.invisibleinput {
+  padding: none;
+  border: none;
+  border-bottom: 1px solid dimgray;
+  background-color: transparent;
+  color: dimgray;
+  margin: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 50px;
+  width: 4.2rem;
+  text-align: right;
+}
+
+.invisibleinput:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.invisibleinput[type=number]::-webkit-inner-spin-button, 
+.invisibleinput[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}

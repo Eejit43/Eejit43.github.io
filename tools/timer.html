@@ -9,12 +9,10 @@
     <meta property="og:title" content="Eejit's Tools">
     <meta property="og:description" content="Some useful tools for general purposes!">
     <meta property="og:image" content="https://eejit43.github.io/icon.png">
-    <title>Random Number Generator | Eejit's Tools</title>
+    <title>Countdown Timer | Eejit's Tools</title>
     <link rel="stylesheet" href="../styles/styles.css">
     <link rel="favicon" href="favicon.ico">
-    <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://github.hubspot.com/odometer/themes/odometer-theme-default.css" />
-    <script src="https://github.hubspot.com/odometer/odometer.js"></script>
+    <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>x
     <script src="../scripts/emoji.js"></script>
   </head>
   <body>
@@ -43,21 +41,23 @@
       </span>
     </nav>
     <span class="alert" id="emptymsg" style="color:#FF5555;">Empty input!</span>
-    <span class="alert" id="clearmsg" style="color:#009c3f;">Cleared!</span>
-    <span class="alert" id="notvalid" style="color:#FF5555;">The minimum must be less than the maximum!</span>
+    <span class="alert" id="resetmsg" style="color:#009c3f;">Reset!</span>
+    <span class="alert" id="notvalid" style="color:#FF5555;">Invalid input!</span>
     <div class="toolbox">
-      <h1>Random Number Generator:</h1>
+      <h1>Countdown Timer:</h1>
       <p class="tooltext">
-        <span style="font-weight:500;color:dimgray;font-size:16px;">Min (Inclusive): <input type="number" id="min-number" value="1" style="width:4rem;">
-        <br>Max (Inclusive) <input type="number" id="max-number" value="10" style="width:4rem;"></span>
-        <br><button id="generate-number">Generate <i class="" style="color:#009c3f;" id="runSuccess"></i><i class="" style="color:#FF5555;" id="runError"></i></button>
+        <span style="font-weight:500;color:dimgray;font-size:50px;">
+        <input type="number" id="hours" max="23" maxlength="2" max="24" value="0" class="invisibleinput" oninput="checkInput(this)" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>h  <input type="number" id="minutes" max="59" maxlength="2" value="1" class="invisibleinput" oninput="checkInput(this)" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>m  <input type="number" id="seconds" max="59" maxlength="2" value="0" class="invisibleinput" oninput="checkInput(this)" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>s
+        <br><button id="start-timer">Start <i class="" style="color:#009c3f;" id="runSuccess"></i><i class="" style="color:#FF5555;" id="runError"></i></button>
+        <button id="pause-resume-timer">Pause</button>
         <button id="reset">Reset</button>
       </p>
       <hr style="margin-top:30px;">
-      <p class="tooltext" style="text-align:center;margin:0;font-weight:800;font-size:90px;">
-        <span class="odometer" id="output-number">0</span>
+      <p class="tooltext" style="text-align:center;margin:0;font-weight:800;font-size:90px;margin-top:50px;line-height:100%;">
+        <span id="timer">0h 0m 0s</span><br>
+        <span id="timer-time" style="font-size:30px;"></span>
       </p>
-      <script src="../scripts/random-number.js"></script>
+      <script src="../scripts/timer.js"></script>
       <br>
       <noscript>
         <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>

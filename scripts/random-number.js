@@ -1,6 +1,6 @@
 window.onload = function () {
   document.getElementById('generate-number').addEventListener("click", generateNumber);
-  document.getElementById('clear').addEventListener("click", clearAll);
+  document.getElementById('reset').addEventListener("click", reset);
 }
 
 function showAlert(id) {
@@ -11,7 +11,7 @@ function showAlert(id) {
   }, 2000);
 }
 
-function clearAll() {
+function reset() {
   document.getElementById('min-number').value = "1";
   document.getElementById('max-number').value = "10";
   document.getElementById('output-number').innerHTML = "";
