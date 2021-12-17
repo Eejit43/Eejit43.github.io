@@ -270,15 +270,15 @@ function runRmRegex() {
   } else if (isValid) {
     let finalregex = new RegExp(regex, flags);
     let replace = document.getElementById("rm-replace").value;
-    replace = replace.replace('\\a', '\a');
-    replace = replace.replace('\\b', '\b');
-    replace = replace.replace('\\c', '\c');
-    replace = replace.replace('\\e', '\e');
-    replace = replace.replace('\\f', '\f');
-    replace = replace.replace('\\n', '\n');
-    replace = replace.replace('\\o', '\o');
-    replace = replace.replace('\\r', '\r');
-    replace = replace.replace('\\t', '\t');
+    replace = replace.replace(/\\a/g, '\a');
+    replace = replace.replace(/\\b/g, '\b');
+    replace = replace.replace(/\\c/g, '\c');
+    replace = replace.replace(/\\e/g, '\e');
+    replace = replace.replace(/\\f/g, '\f');
+    replace = replace.replace(/\\n/g, '\n');
+    replace = replace.replace(/\\o/g, '\o');
+    replace = replace.replace(/\\r/g, '\r');
+    replace = replace.replace(/\\t/g, '\t');
     replace = replace.replace(/\$(\d)/g, '$$$1');
     let output = input.replace(finalregex, replace);
     runError.className = "";
