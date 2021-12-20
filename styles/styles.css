@@ -581,3 +581,32 @@ button:disabled {
   font-size:30px;
   }
 }
+
+.spoiler {
+    position: relative;
+    display: inline-block;
+    cursor: text;
+    background-color: #393f42;
+    border-radius: 3px;
+    padding: 3px;
+}
+.spoiler::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 3px;
+    background: #1f2225;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+.spoiler:hover::before {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
