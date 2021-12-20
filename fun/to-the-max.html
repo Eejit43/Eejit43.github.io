@@ -1,7 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Some useful tools for general purposes!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://eejit43.github.io">
+    <meta property="og:title" content="Eejit's Tools">
+    <meta property="og:description" content="Some useful tools for general purposes!">
+    <meta property="og:image" content="https://eejit43.github.io/icon.png">
     <title>To the Max | Eejit's Tools</title>
+    <link rel="favicon" href="favicon.ico">
     <script type="text/javascript">var version = '1.9.4';</script>
     <script type="text/javascript" src="./polyfill/polyfill.js"></script>
     <script type="text/javascript" src="./polyfill/Blob.js"></script>
@@ -245,7 +254,7 @@
           }
 
           function basicLoad(location) {
-            var possible = ['flag', 'spongebob', 'galaxy', 'maisy'];
+            var possible = ['flag', 'spongebob', 'earth', 'maisy'];
             var file = 'img/' + possible[Math.floor(Math.random() * possible.length)] + '.jpg'
             return {
               file: file,
