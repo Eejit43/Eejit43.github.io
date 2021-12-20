@@ -1,3 +1,5 @@
+<!-- Modified from https://github.com/vogievetsky/KoalasToTheMax -->
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -37,66 +39,63 @@
         </div>
       </div>
     </div>
-
     <script type="text/javascript">
-
-    var _fastrack_account = 'FT-1000001';
-
-    (function(w,h) {
-      if (typeof _fastrack_account !== 'string') return;
-      var acc = _fastrack_account;
-      try {
-        var session = 'S' + Math.random().toFixed(8).substring(2);
-        var num = 0;
-        var now = new Date();
-        var initTime = +now;
-        var tzm = String(now).match(/\((\w+)\)/);
-        var sx = (window.pageXOffset !== undefined) ? window.pageXOffset : (document.documentElement || document.body.parentNode || document.body).scrollLeft;
-        var sy = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
-        w.fastrack = function(opt) {
-          var a = {
-            A: acc,
-            S: session,
-            N: num++,
-            P: document.location.href,
-            L: +new Date() - initTime,
-            F: w.document.referrer || 'Direct',
-            C: screen.width + 'x' + screen.height,
-            R: sx + 'x' + sy,
-            O: now.getTimezoneOffset(),
-            Z: (tzm && tzm.length === 2) ? tzm[1] : 'N/A'
-          }
-
-          if (opt) {
-            var s;
-            for (var j = 1; j <= 6; j++) {
-              s = 'D0' + j;
-              if (opt[s]) { a['D0' + j] = opt['D0' + j]; }
-              s = 'M0' + j;
-              if (opt[s]) { a['M0' + j] = opt['M0' + j]; }
+      var _fastrack_account = 'FT-1000001';
+      
+      (function(w,h) {
+        if (typeof _fastrack_account !== 'string') return;
+        var acc = _fastrack_account;
+        try {
+          var session = 'S' + Math.random().toFixed(8).substring(2);
+          var num = 0;
+          var now = new Date();
+          var initTime = +now;
+          var tzm = String(now).match(/\((\w+)\)/);
+          var sx = (window.pageXOffset !== undefined) ? window.pageXOffset : (document.documentElement || document.body.parentNode || document.body).scrollLeft;
+          var sy = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+          w.fastrack = function(opt) {
+            var a = {
+              A: acc,
+              S: session,
+              N: num++,
+              P: document.location.href,
+              L: +new Date() - initTime,
+              F: w.document.referrer || 'Direct',
+              C: screen.width + 'x' + screen.height,
+              R: sx + 'x' + sy,
+              O: now.getTimezoneOffset(),
+              Z: (tzm && tzm.length === 2) ? tzm[1] : 'N/A'
             }
-          }
-
-          if ('innerWidth' in window) {
-            a.W = w.innerWidth + 'x' + w.innerHeight;
-          } else {
-            var e = w.document.documentElement || w.document.body;
-            a.W = w.clientWidth + 'x' + w.clientHeight;
-          }
-          var params = [];
-          for (var k in a) params.push(encodeURIComponent(k) + "=" + encodeURIComponent(String(a[k])));
-          var i = new Image();
-          i.src = h + '?' + params.join('&');
-          return true;
-        };
-      }catch(e){}
-    })(window,"https://rt.metamarkets.com/i1/m.gif");
-
+      
+            if (opt) {
+              var s;
+              for (var j = 1; j <= 6; j++) {
+                s = 'D0' + j;
+                if (opt[s]) { a['D0' + j] = opt['D0' + j]; }
+                s = 'M0' + j;
+                if (opt[s]) { a['M0' + j] = opt['M0' + j]; }
+              }
+            }
+      
+            if ('innerWidth' in window) {
+              a.W = w.innerWidth + 'x' + w.innerHeight;
+            } else {
+              var e = w.document.documentElement || w.document.body;
+              a.W = w.clientWidth + 'x' + w.clientHeight;
+            }
+            var params = [];
+            for (var k in a) params.push(encodeURIComponent(k) + "=" + encodeURIComponent(String(a[k])));
+            var i = new Image();
+            i.src = h + '?' + params.join('&');
+            return true;
+          };
+        }catch(e){}
+      })(window,"https://rt.metamarkets.com/i1/m.gif");
+      
     </script>
-
     <script type="text/javascript">
       window.shownFile = 'none';
-
+      
       (function() {
         var now = +new Date();
         window.gaTrack = function(type, subtype) {
@@ -112,7 +111,7 @@
           }
         }
       })();
-
+      
       function track(type, subtype) {
         /*
         fastrack({
@@ -126,25 +125,20 @@
         gaTrack(type + '-' + version, subtype);
       }
     </script>
-
     <!--[if lt IE 9]>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
-
     <style>
       .chromeFrameInstallDefaultStyle {
-        width: 800px;
-        height: 600px;
-        border: 1px solid #cccccc;
+      width: 800px;
+      height: 600px;
+      border: 1px solid #cccccc;
       }
     </style>
-
     <div id="prompt">
     </div>
-
     <script>
       window.inOldIE = true;
       track('OldIE', '1');
-
       // The conditional ensures that this code will only execute in IE,
       // Therefore we can use the IE-specific attachEvent without worry
       window.attachEvent("onload", function() {
@@ -158,14 +152,13 @@
       });
     </script>
     <![endif]-->
-
     <!--[if gte IE 9]><!-->
     <script type="text/javascript">
       // Code left intentionally unminimized for your reading pleasure.
-
+      
       (function() {
         window.shownFile = 'none';
-
+      
         // If an error happens I want to know about it!
         window.onerror = function(msg, url, ln) {
           msg = msg.toString();
@@ -176,27 +169,27 @@
           // Track only one error per page load
           window.onerror = function() {};
         };
-
+      
         // First, make sure we can run.
         if (!koala.supportsCanvas()) {
           track('NoCanvas', window.navigator.userAgent);
           alert("Sorry, KoalsToTheMax needs HTML5 Canvas support which your browser does not have. Supported browsers include Chrome, Safari, Firefox, Opera, and Internet Explorer 9, 10");
           return;
         }
-
+      
         if (!koala.supportsSVG()) {
           track('NoSVG', window.navigator.userAgent);
           alert("Sorry, KoalsToTheMax needs SVG support which your browser does not have. Supported browsers include Chrome, Safari, Firefox, Opera, and Internet Explorer 9, 10");
           return;
         }
-
+      
         // This is strange, track it if it happens.
         if (!window.d3) {
           track('NoD3', window.navigator.userAgent);
           alert("Some how D3 was not loaded so the site can not start. This is bad... We are investigating. Try refreshing the page and see if that helps.");
           return;
         }
-
+      
         // Try you must. If there is an error report it to me.
         try {
           // btoa and atob do not handle utf-8 as I have discovered the hard way so they need to babied
@@ -204,11 +197,11 @@
           function utf8_to_b64(str) {
             return window.btoa(unescape(encodeURIComponent(str)));
           }
-
+      
           function b64_to_utf8(str) {
             return decodeURIComponent(escape(window.atob(str)));
           }
-
+      
           // Handle the custom images 'API'
           // Supported URLs are:
           // 1. DOMAIN
@@ -238,39 +231,39 @@
           function goToHidden(location, string) {
             location.href = '//' + location.host + location.pathname + '?' + utf8_to_b64(string);
           }
-
+      
           function basicLoad(location) {
-            var possible = ['flag.jpg', 'spongebob.jpg', 'earth.jpeg', 'maisy.jpg'];
+            var possible = ['flag.jpg', 'spongebob.jpg', 'earth.jpeg', 'maisy.jpg', 'galaxy.jpeg'];
             var file = 'img/' + possible[Math.floor(Math.random() * possible.length)]
             return {
               file: file,
               shownFile: location.protocol + '//' + location.host + location.pathname + file
             };
           }
-
+      
           function parseUrl(location) {
             var href = location.href;
             var idx, param, file;
-
+      
             idx = href.indexOf('?');
             if (idx === -1 || idx === href.length - 1) {
               return basicLoad(location); // Case 1
             }
-
+      
             param = href.substr(idx + 1);
             if (!/^[a-z0-9+\/]+=*$/i.test(param)) {
               // Does not look base64
               goToHidden(location, param);
               return null;
             }
-
+      
             // Case 2
             try {
               param = b64_to_utf8(param);
             } catch (e) {
               return basicLoad(location); // Invalid base64, do a basic load
             }
-
+      
             try {
               param = JSON.parse(param);
             } catch (e) {
@@ -280,7 +273,7 @@
                 shownFile: param
               };
             }
-
+      
             // At this point param is a JS object
             if (Array.isArray(param) && param.length) {
               // Case 2b
@@ -290,7 +283,7 @@
                 shownFile: file
               };
             }
-
+      
             if (Array.isArray(param.images) && param.images.length) {
               // Case 2c
               file = param.images[Math.floor(Math.random() * param.images.length)];
@@ -301,16 +294,16 @@
                 hideNote: param.hideNote
               };
             }
-
+      
             // Fall though
             return basicLoad(location);
           }
-
+      
           var parse = parseUrl(location);
           if (!parse) return;
           var file = parse.file;
           window.shownFile = parse.shownFile;
-
+      
           if (parse.background) {
             d3.select(document.body)
               .style('background', parse.background);
@@ -319,14 +312,14 @@
             d3.select('#footer')
               .style('display', 'none');
           }
-
+      
           if (/^https?:/.test(file)) {
             file = "image-server.php?url=" + file;
           }
-
+      
           function onEvent(what, value) {
             track(what, value);
-
+      
             if (what === 'LayerClear' && value == 0) {
               d3.select('#next')
                 .style('display', null)
@@ -335,7 +328,7 @@
                     d3.select('div.err').remove();
                     if (d3.event.keyCode !== 13) return;
                     var input = d3.select(this).property('value');
-
+      
                     if (input.match(/^http:\/\/.+\..+/i)) {
                       track('Submit', input);
                       d3.select('#next div.msg').text('Thinking...');
@@ -352,7 +345,7 @@
                   });
             }
           }
-
+      
           var img = new Image();
           img.onload = function() {
             var colorData;
@@ -375,7 +368,7 @@
         } catch (e) {
           track('Problemo', String(e.message));
         }
-
+      
         // Local download functionality
         var saveNumber = 0;
         d3.select('#love').on('click', function() {
@@ -396,7 +389,7 @@
             track('SaveSVG', 'Fail');
           }
         });
-
+      
       })();
     </script>
     <!--<![endif]-->
