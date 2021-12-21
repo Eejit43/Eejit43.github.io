@@ -569,7 +569,7 @@ button:disabled {
   display: none;
 }
 
-.invisibleinput {
+.invisibleinput[type=number] {
   padding: none;
   border: none;
   border-bottom: 1px solid dimgray;
@@ -583,7 +583,7 @@ button:disabled {
   text-align: right;
 }
 
-.invisibleinput:focus {
+.invisibleinput[type=number]:focus {
   outline: none;
   box-shadow: none;
 }
