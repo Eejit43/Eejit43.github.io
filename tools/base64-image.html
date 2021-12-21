@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Some useful tools for general purposes!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://eejit43.github.io">
+    <meta property="og:title" content="Eejit's Tools">
+    <meta property="og:description" content="Some useful tools for general purposes!">
+    <meta property="og:image" content="https://eejit43.github.io/icon.png">
+    <title>Base64 Image Encode/Decode | Eejit's Tools</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="favicon" href="favicon.ico">
+    <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+    <script src="../scripts/emoji.js"></script>
+  </head>
+  <body>
+    <nav>
+      <a href="https://eejit43.github.io">
+        <span class="logo">
+          <!--
+            --><span style="color:#FF5555">E</span><!--
+            --><span style="color:#FFAA00">e</span><!--
+            --><span style="color:#FFFF55">j</span><!--
+            --><span style="color:#55FF55">i</span><!--
+            --><span style="color:#00AA00">t</span><!--
+            --><span style="color:#00AAAA">'</span><!--
+            --><span style="color:#5555FF">s</span><!--
+            -->
+          <span style="color:#AA00AA;" class="logo-tools">
+            Tools<!--
+              -->
+          </span>
+        </span>
+      </a>
+      <span style="float:right!important;">
+        <a href="time" class="timer"><span id="navtime"></span></a>
+        <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
+        <script src="../scripts/navtime.js"></script>
+      </span>
+    </nav>
+    <span class="alert" id="emptymsg" style="color:#FF5555;">Empty input!</span>
+    <span class="alert" id="clearmsg" style="color:#009c3f;">Cleared!</span>
+    <span class="alert" id="copymsg" style="color:#009c3f;">Copied!</span>
+    <span class="alert" id="invalidtypemsg" style="color:#FF5555;">Invalid file type! (must be .png, .jpg, .jpeg, .webp, .bmp, or .gif)</span>
+    <span class="alert" id="invalidmsg" style="color:#FF5555;">Malformed input!</span>
+    <div class="toolbox">
+      <h1>Base64 Image Encode/Decode:</h1>
+      <p class="tooltext">
+        <table class="base64output">
+        <tr>
+          <td>
+            <p class="tooltext">
+            Image:<br><br>
+        <label for="file-upload" class="file-upload"><i class="fas fa-file-upload"></i> Upload</label>
+<input id="file-upload" type="file"><br><span style="font-size:14px;color:dimgray;" id="file-message"></span>
+        <br><button id="encode">Encode <i class="" style="color:#009c3f;" id="e-runSuccess"><i class="" style="color:#FF5555;" id="e-runError"></i></i></button>
+        <button id="clear">Clear</button>
+      </p>
+          </td>
+          <td>
+            <p class="tooltext">
+            Base64 Encoded Image:<br>
+        <textarea id="stringToDecode" style="width:80%;"></textarea>
+        <br><button id="decode">Decode <i class="" style="color:#009c3f;" id="d-runSuccess"><i class="" style="color:#FF5555;" id="d-runError"></i></i></button>
+        <button id="clear2">Clear</button>
+        </p>
+          </td>
+        </tr>
+      </table>
+      <hr style="margin-top:30px;">
+        <table class="base64output">
+        <tr>
+          <td>
+            <p class="tooltext">
+              Base64 Encoded Image:<br>
+              <textarea id="b64-result" style="width:80%;" readonly></textarea>
+              <br><button id="b64-copy-result" disabled>Copy</button> <button id="b64-copy-with-prefix-result" disabled>Copy with prefix</button> <button id="b64-open-result" disabled>Open in new tab</button>
+              </p>
+          </td>
+          <td>
+            <p class="tooltext">
+              Image:<br>
+              <img id="image-output" style="max-width:80%" src="./filler.png">
+              </p>
+          </td>
+        </tr>
+      </table>
+      </p>
+      <script src="../scripts/base64-image.js"></script>
+      <br>
+      <noscript>
+        <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
+        <div class="warning">Looks like this script couldn't be displayed for some reason!</div>
+      </noscript>
+    </div>
+  </body>
+</html>
