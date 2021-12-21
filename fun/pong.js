@@ -63,12 +63,12 @@ setInterval(function () {
 document.onkeydown = function (e) {
   k = (e || window.event).keyCode;
   w = w ? 0 : k == '27' ? 1 : 0;
-  p = k == '65' ? 5 : k == '81' ? -5 : p;
+  p = k == '83' ? 5 : k == '87' ? -5 : p;
   q = k == '40' ? 5 : k == '38' ? -5 : q;
 }
 document.onkeyup = function (e) {
   k = (e || window.event).keyCode;
-  p = k == '65' || k == '81' ? 0 : p;
+  p = k == '83' || k == '87' ? 0 : p;
   q = k == '38' || k == '40' ? 0 : q
 }
 
