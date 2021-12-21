@@ -9,12 +9,12 @@ window.onload = function () {
   });
   document.getElementById('b64-copy-with-prefix-result').addEventListener("click", function () {
     let button = 'b64-copy-with-prefix-result';
-  navigator.clipboard.writeText(base64);
-  document.getElementById(button).innerHTML = "Copied!";
-  setTimeout(function () {
-    document.getElementById(button).innerHTML = "Copy with prefix";
-  }, 2000);
-  showAlert("copymsg");
+    navigator.clipboard.writeText(base64);
+    document.getElementById(button).innerHTML = "Copied!";
+    setTimeout(function () {
+      document.getElementById(button).innerHTML = "Copy with prefix";
+    }, 2000);
+    showAlert("copymsg");
   });
 }
 
@@ -25,8 +25,6 @@ function showAlert(id) {
     element.className = element.className.replace("alert show", "alert");
   }, 2000);
 }
-
-let validFile = 1; // 1 = none, 2 = invalid type, 3 = valid
 
 function clear1() {
   validFile = 1;
@@ -77,16 +75,18 @@ function fileUpload() {
 }
 
 // https://newbedev.com/base64-image-open-in-new-tab-window-is-not-allowed-to-navigate-top-frame-navigations-to-data-urls
-function openBase64InNewTab (data, mimeType) {
-    var byteCharacters = atob(data);
-    var byteNumbers = new Array(byteCharacters.length);
-    for (var i = 0; i < byteCharacters.length; i++) {
-        byteNumbers[i] = byteCharacters.charCodeAt(i);
-    }
-    var byteArray = new Uint8Array(byteNumbers);
-    var file = new Blob([byteArray], { type: mimeType + ';base64' });
-    var fileURL = URL.createObjectURL(file);
-    window.open(fileURL);
+function openBase64InNewTab(data, mimeType) {
+  var byteCharacters = atob(data);
+  var byteNumbers = new Array(byteCharacters.length);
+  for (var i = 0; i < byteCharacters.length; i++) {
+    byteNumbers[i] = byteCharacters.charCodeAt(i);
+  }
+  var byteArray = new Uint8Array(byteNumbers);
+  var file = new Blob([byteArray], {
+    type: mimeType + ';base64'
+  });
+  var fileURL = URL.createObjectURL(file);
+  window.open(fileURL);
 }
 
 function encode() {
@@ -99,48 +99,48 @@ function encode() {
   let runError = document.getElementById("e-runError");
   let runSuccess = document.getElementById("e-runSuccess");
   if (image.value) {
-  let reader = new FileReader();
-  reader.onloadend = function() {
-    let imageType = reader.result.replace(/^data:image\/(.*?);base64,.*$/g, '$1');
+    let reader = new FileReader();
+    reader.onloadend = function () {
+      let imageType = reader.result.replace(/^data:image\/(.*?);base64,.*$/g, '$1');
 
-    if (imageType === 'png' || imageType === 'jpg' || imageType === 'jpeg' || imageType === 'webp' || imageType === 'bmp' || imageType === 'gif') {
-      base64 = reader.result;
-    output.value = reader.result.replace(/data:image\/.*?;base64,/g, '');
-    document.getElementById('b64-open-result').addEventListener("click", function () {
-    openBase64InNewTab(reader.result.replace(/data:image\/.*?;base64,/g, ''), 'image/' + imageType);
-  });
-  document.getElementById('b64-copy-result').disabled = false;
-  document.getElementById('b64-copy-with-prefix-result').disabled = false;
-  document.getElementById('b64-open-result').disabled = false;
-  runError.className = "";
-    runSuccess.className = "fas fa-check";
-    setTimeout(function () {
-      runSuccess.className = runSuccess.className.replace("fas fa-check", "");
-    }, 2000);
-    } else {
-      showAlert("invalidtypemsg")
-  runSuccess.className = "";
-  runError.className = "fas fa-times";
-  setTimeout(function () {
-      runError.className = runError.className.replace("fas fa-times", "");
-    }, 2000);
+      if (imageType === 'png' || imageType === 'jpg' || imageType === 'jpeg' || imageType === 'webp' || imageType === 'bmp' || imageType === 'gif') {
+        base64 = reader.result;
+        output.value = reader.result.replace(/data:image\/.*?;base64,/g, '');
+        document.getElementById('b64-open-result').addEventListener("click", function () {
+          openBase64InNewTab(reader.result.replace(/data:image\/.*?;base64,/g, ''), 'image/' + imageType);
+        });
+        document.getElementById('b64-copy-result').disabled = false;
+        document.getElementById('b64-copy-with-prefix-result').disabled = false;
+        document.getElementById('b64-open-result').disabled = false;
+        runError.className = "";
+        runSuccess.className = "fas fa-check";
+        setTimeout(function () {
+          runSuccess.className = runSuccess.className.replace("fas fa-check", "");
+        }, 2000);
+      } else {
+        showAlert("invalidtypemsg")
+        runSuccess.className = "";
+        runError.className = "fas fa-times";
+        setTimeout(function () {
+          runError.className = runError.className.replace("fas fa-times", "");
+        }, 2000);
+      }
     }
-  }
-  reader.readAsDataURL(image.files[0]);
-} else {
-  showAlert("emptymsg")
-  runSuccess.className = "";
-  runError.className = "fas fa-times";
-  setTimeout(function () {
+    reader.readAsDataURL(image.files[0]);
+  } else {
+    showAlert("emptymsg")
+    runSuccess.className = "";
+    runError.className = "fas fa-times";
+    setTimeout(function () {
       runError.className = runError.className.replace("fas fa-times", "");
     }, 2000);
-}
+  }
 }
 
 async function isBase64UrlImage(string) {
   let image = new Image()
   image.src = string
-  return await (new Promise((resolve)=>{
+  return await (new Promise((resolve) => {
     image.onload = function () {
       if (image.height === 0 || image.width === 0) {
         resolve(false);
@@ -148,28 +148,28 @@ async function isBase64UrlImage(string) {
       }
       resolve(true)
     }
-    image.onerror = () =>{
+    image.onerror = () => {
       resolve(false)
     }
   }))
 }
 
-const valid = async (string) => {
+const valid = async(string) => {
   let image = document.getElementById("image-output");
   let runError = document.getElementById("d-runError");
   let runSuccess = document.getElementById("d-runSuccess");
   const valid = await isBase64UrlImage(string);
   if (valid === true) {
-  image.src = string;
-} else if (valid === false) {
-  document.getElementById('image-output').src = "./filler.png";
-  showAlert("invalidmsg")
-  runSuccess.className = "";
-  runError.className = "fas fa-times";
-  setTimeout(function () {
+    image.src = string;
+  } else if (valid === false) {
+    document.getElementById('image-output').src = "./filler.png";
+    showAlert("invalidmsg")
+    runSuccess.className = "";
+    runError.className = "fas fa-times";
+    setTimeout(function () {
       runError.className = runError.className.replace("fas fa-times", "");
     }, 2000);
-}
+  }
 };
 
 function decode() {
@@ -185,12 +185,12 @@ function decode() {
   }
   if (string.length === 0) {
     showAlert("emptymsg")
-  runSuccess.className = "";
-  runError.className = "fas fa-times";
-  setTimeout(function () {
+    runSuccess.className = "";
+    runError.className = "fas fa-times";
+    setTimeout(function () {
       runError.className = runError.className.replace("fas fa-times", "");
     }, 2000);
   } else {
     valid(string)
-}
+  }
 }
