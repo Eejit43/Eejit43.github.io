@@ -3,6 +3,7 @@
 /* For Font Awesome icons, see: https://fontawesome.com/v5.15/icons?d=gallery&p=2&m=free */
 
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
+
 @import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
@@ -344,7 +345,6 @@ img.emoji {
   pointer-events: none;
 }
 
-
 /* Modified from https://skyblock-wiki.github.io/css/styles.css */
 
 .checkbox-custom {
@@ -466,9 +466,7 @@ button:disabled {
   cursor: not-allowed;
 }
 
-
 /* End modified section */
-
 
 /* Modified from https://www.w3schools.com/howto/howto_js_snackbar.asp */
 
@@ -539,7 +537,6 @@ button:disabled {
     opacity: 0;
   }
 }
-
 
 /* End modified section */
 
@@ -650,3 +647,61 @@ button:disabled {
     transition: opacity 0.5s ease;
   }
 }
+
+/* Modified from https://codepen.io/alexakasanjeev/pen/RPxGXY */
+
+.box {
+  display: flex;
+  width: 100%;
+  height: 8px;
+  margin: 15px 0px;
+}
+
+.box-sm {
+  height: 8px;
+  margin: 0;
+  flex-grow: 1;
+  transition: all 0.8s ease-in-out;
+  cursor: pointer;
+}
+
+.box-sm:hover {
+  flex-grow: 12;
+}
+
+.red {
+  background-color: #ff5852;
+}
+
+.orange {
+  background-color: #ff9000;
+}
+
+.yellow {
+  background-color: #ffd300;
+}
+
+.green {
+  background-color: #3dcd49;
+}
+
+.blue {
+  background-color: #0089d7;
+}
+
+.purple {
+  background-color: #9e44c4;
+}
+
+/* Usage: 
+<div class="box">
+  <div class="box-sm red"></div>
+  <div class="box-sm orange"></div>
+  <div class="box-sm yellow"></div>
+  <div class="box-sm green"></div>
+  <div class="box-sm blue"></div>
+  <div class="box-sm purple"></div>
+</div>
+*/
+
+/* End modified section */
