@@ -7,16 +7,32 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://eejit43.github.io">
     <meta property="og:site_name" content="Eejit's Tools">
-    <meta property="og:title" content="Random Number Generator">
+    <meta property="og:title" content="Counter">
     <meta property="og:description" content="Some useful tools for general purposes!">
     <meta property="og:image" content="https://eejit43.github.io/icon.png">
-    <title>Random Number Generator | Eejit's Tools</title>
+    <title>Counter | Eejit's Tools</title>
     <link rel="stylesheet" href="../styles/styles.css">
     <link rel="favicon" href="favicon.ico">
     <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://github.hubspot.com/odometer/themes/odometer-theme-default.css">
+    <link rel="stylesheet" href="https://github.hubspot.com/odometer/themes/odometer-theme-default.css" />
     <script src="https://github.hubspot.com/odometer/odometer.js"></script>
     <script src="../scripts/emoji.js"></script>
+    <style>
+      .odometer.odometer-auto-theme.odometer-animating-up .odometer-ribbon-inner, .odometer.odometer-theme-default.odometer-animating-up .odometer-ribbon-inner {
+      -webkit-transition: -webkit-transform 0.3s;
+      -moz-transition: -moz-transform 0.3s;
+      -ms-transition: -ms-transform 0.3s;
+      -o-transition: -o-transform 0.3s;
+      transition: transform 0.3s;
+      }
+      .odometer.odometer-auto-theme.odometer-animating-down.odometer-animating .odometer-ribbon-inner, .odometer.odometer-theme-default.odometer-animating-down.odometer-animating .odometer-ribbon-inner {
+      -webkit-transition: -webkit-transform 0.3s;
+      -moz-transition: -moz-transform 0.3s;
+      -ms-transition: -ms-transform 0.3s;
+      -o-transition: -o-transform 0.3s;
+      transition: transform 0.3s;
+      }
+    </style>
   </head>
   <body>
     <nav>
@@ -43,22 +59,23 @@
         <script src="../scripts/navtime.js"></script>
       </span>
     </nav>
-    <span class="alert" id="emptymsg" style="color:#FF5555;">Empty input!</span>
-    <span class="alert" id="clearmsg" style="color:#009c3f;">Cleared!</span>
-    <span class="alert" id="notvalid" style="color:#FF5555;">The minimum must be less than the maximum!</span>
+    <span class="alert" id="resetmsg" style="color:#009c3f;">Reset!</span>
     <div class="toolbox">
-      <h1>Random Number Generator:</h1>
-      <p class="tooltext">
-        <span style="font-weight:500;color:dimgray;font-size:16px;">Min (Inclusive): <input type="number" id="min-number" value="1" style="width:4rem;">
-        <br>Max (Inclusive) <input type="number" id="max-number" value="10" style="width:4rem;"></span>
-        <br><button id="generate-number">Generate <i class="" style="color:#009c3f;" id="runSuccess"></i><i class="" style="color:#FF5555;" id="runError"></i></button>
-        <button id="reset">Reset</button>
+      <h1>Counter:</h1>
+      <p class="tooltext" style="text-align:center;margin:0;font-weight:800;font-size:90px;line-height:100%;">
+        <span class="odometer" id="number">0</span><br>
       </p>
-      <hr style="margin-top:30px;">
-      <p class="tooltext" style="text-align:center;margin:0;font-weight:800;font-size:90px;">
-        <span class="odometer" id="output-number">0</span>
+      <p class="tooltext" style="text-align:center;margin:0;font-weight:800;line-height:100%;">
+        Activation Button: 
+        <select style="margin-top:20px;" id="activationButton">
+          <option value="1">Spacebar</option>
+          <option value="2">Return</option>
+          <option value="3">C</option>
+        </select>
+        <br>
+        <button id="reset" style="padding:10px;font-size:20px;margin-top:30px;">Reset</button>
       </p>
-      <script src="../scripts/random-number.js"></script>
+      <script src="../scripts/counter.js"></script>
       <br>
       <noscript>
         <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
