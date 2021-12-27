@@ -4,7 +4,7 @@ let key = 'Space';
 window.onload = function () {
   document.getElementById('activationButton').addEventListener("change", updateKey);
   document.getElementById('reset').addEventListener("click", function () {
-    showAlert('resetmsg');
+    showAlert('Reset!', '#009c3f')
     number = 0;
     document.getElementById('number').innerHTML = 0;
     document.getElementById('activationButton').value = '1';
@@ -19,12 +19,23 @@ window.onload = function () {
   }, false);
 }
 
-function showAlert(id) {
-  let element = document.getElementById(id);
-  element.className = "alert show";
-  setTimeout(function () {
-    element.className = element.className.replace("alert show", "alert");
-  }, 2000);
+function showAlert(text, color) {
+  Toastify({
+    text: text,
+    duration: 2000,
+    position: "center",
+    style: {
+      background: "#333",
+      boxShadow: "none",
+      minWidth: "150px",
+      textAlign: "center",
+      fontFamily: "'Montserrat', sans-serif",
+      fontWeight: "bold",
+      fontSize: "17px",
+      color: color,
+      padding: "16px 30px",
+    },
+  }).showToast();
 }
 
 function updateKey() {

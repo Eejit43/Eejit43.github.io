@@ -12,6 +12,7 @@
     <meta property="og:image" content="https://eejit43.github.io/icon.png">
     <title>Base64 Image Encode/Decode | Eejit's Tools</title>
     <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="favicon" href="favicon.ico">
     <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
     <script src="../scripts/emoji.js"></script>
@@ -41,11 +42,6 @@
         <script src="../scripts/navtime.js"></script>
       </span>
     </nav>
-    <span class="alert" id="emptymsg" style="color:#FF5555;">Empty input!</span>
-    <span class="alert" id="clearmsg" style="color:#009c3f;">Cleared!</span>
-    <span class="alert" id="copymsg" style="color:#009c3f;">Copied!</span>
-    <span class="alert" id="invalidtypemsg" style="color:#FF5555;">Invalid file type! (must be .png, .jpg, .jpeg, .webp, .bmp, or .gif)</span>
-    <span class="alert" id="invalidmsg" style="color:#FF5555;">Malformed input!</span>
     <div class="toolbox">
       <h1>Base64 Image Encode/Decode:</h1>
       <p class="tooltext">
@@ -73,17 +69,17 @@
       <hr style="margin-top:30px;">
       <table class="base64output">
         <tr>
-          <td>
+          <td valign="top">
             <p class="tooltext">
               Base64 Encoded Image:<br>
               <textarea id="b64-result" style="width:80%;" readonly></textarea>
               <br><button id="b64-copy-result" disabled>Copy</button> <button id="b64-copy-with-prefix-result" disabled>Copy with prefix</button> <button id="b64-open-result" disabled>Open in new tab</button>
             </p>
           </td>
-          <td>
+          <td valign="top">
             <p class="tooltext">
               Image:<br>
-              <img id="image-output" style="max-width:80%" src="./filler.png">
+              <img id="image-output" style="max-width:80%" src="">
             </p>
           </td>
         </tr>
@@ -96,5 +92,6 @@
         <div class="warning">Looks like this script couldn't be displayed for some reason!</div>
       </noscript>
     </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   </body>
 </html>

@@ -14,16 +14,27 @@ window.onload = function () {
     setTimeout(function () {
       document.getElementById(button).innerHTML = "Copy with prefix";
     }, 2000);
-    showAlert("copymsg");
+    showAlert('Copied!', '#009c3f')
   });
 }
 
-function showAlert(id) {
-  let element = document.getElementById(id);
-  element.className = "alert show";
-  setTimeout(function () {
-    element.className = element.className.replace("alert show", "alert");
-  }, 2000);
+function showAlert(text, color) {
+  Toastify({
+    text: text,
+    duration: 2000,
+    position: "center",
+    style: {
+      background: "#333",
+      boxShadow: "none",
+      minWidth: "150px",
+      textAlign: "center",
+      fontFamily: "'Montserrat', sans-serif",
+      fontWeight: "bold",
+      fontSize: "17px",
+      color: color,
+      padding: "16px 30px",
+    },
+  }).showToast();
 }
 
 function clear1() {
@@ -34,7 +45,7 @@ function clear1() {
   document.getElementById('b64-copy-result').disabled = true;
   document.getElementById('b64-copy-with-prefix-result').disabled = true;
   document.getElementById('b64-open-result').disabled = true;
-  showAlert("clearmsg");
+  showAlert('Cleared!', '#009c3f')
   document.getElementById("clear").innerHTML = "Cleared!";
   setTimeout(function () {
     document.getElementById("clear").innerHTML = "Clear";
@@ -45,8 +56,8 @@ function clear1() {
 
 function clear2() {
   document.getElementById('stringToDecode').value = "";
-  document.getElementById('image-output').src = "./filler.png";
-  showAlert("clearmsg");
+  document.getElementById('image-output').src = "";
+  showAlert('Cleared!', '#009c3f')
   document.getElementById("clear2").innerHTML = "Cleared!";
   setTimeout(function () {
     document.getElementById("clear2").innerHTML = "Clear";
@@ -62,7 +73,7 @@ function copyText(toCopy, button) {
   setTimeout(function () {
     document.getElementById(button).innerHTML = "Copy";
   }, 2000);
-  showAlert("copymsg");
+  showAlert('Copied!', '#009c3f')
 }
 
 function fileUpload() {
@@ -118,7 +129,7 @@ function encode() {
           runSuccess.className = runSuccess.className.replace("fas fa-check", "");
         }, 2000);
       } else {
-        showAlert("invalidtypemsg")
+        showAlert('Invalid file type! (must be .png, .jpg, .jpeg, .webp, .bmp, or .gif)', '#FF5555')
         runSuccess.className = "";
         runError.className = "fas fa-times";
         setTimeout(function () {
@@ -128,7 +139,7 @@ function encode() {
     }
     reader.readAsDataURL(image.files[0]);
   } else {
-    showAlert("emptymsg")
+    showAlert('Empty input!', '#FF5555')
     runSuccess.className = "";
     runError.className = "fas fa-times";
     setTimeout(function () {
@@ -162,8 +173,8 @@ const valid = async(string) => {
   if (valid === true) {
     image.src = string;
   } else if (valid === false) {
-    document.getElementById('image-output').src = "./filler.png";
-    showAlert("invalidmsg")
+    document.getElementById('image-output').src = "";
+    showAlert('Malformed input!', '#FF5555')
     runSuccess.className = "";
     runError.className = "fas fa-times";
     setTimeout(function () {
@@ -184,7 +195,7 @@ function decode() {
     string = "data:image/png;base64," + string;
   }
   if (string.length === 0) {
-    showAlert("emptymsg")
+    showAlert('Empty input!', '#FF5555')
     runSuccess.className = "";
     runError.className = "fas fa-times";
     setTimeout(function () {

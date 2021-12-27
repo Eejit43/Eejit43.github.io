@@ -2,7 +2,7 @@
 
 /* For Font Awesome icons, see: https://fontawesome.com/v5.15/icons?d=gallery&p=2&m=free */
 
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css");
 
 @import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
@@ -345,7 +345,7 @@ img.emoji {
   pointer-events: none;
 }
 
-/* Modified from https://skyblock-wiki.github.io/css/styles.css */
+/* Some parts modified from https://skyblock-wiki.github.io/css/styles.css */
 
 .checkbox-custom {
   position: absolute;
@@ -479,78 +479,6 @@ button:disabled {
   opacity: 50%;
   color: #AAA;
   cursor: not-allowed;
-}
-
-/* End modified section */
-
-/* Modified from https://www.w3schools.com/howto/howto_js_snackbar.asp */
-
-.alert {
-  visibility: hidden;
-  min-width: 250px;
-  margin-left: -125px;
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  border-radius: 2px;
-  padding: 16px;
-  position: fixed;
-  z-index: 1;
-  left: 50%;
-  top: 25px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: bold;
-  font-size: 17px;
-}
-
-.alert.show {
-  visibility: visible;
-  -webkit-animation: fadein 0.5s, fadeout 0.5s 1.5s;
-  animation: fadein 0.5s, fadeout 0.5s 1.5s;
-}
-
-@-webkit-keyframes fadein {
-  from {
-    top: 0;
-    opacity: 0;
-  }
-  to {
-    top: 25px;
-    opacity: 1;
-  }
-}
-
-@keyframes fadein {
-  from {
-    top: 0;
-    opacity: 0;
-  }
-  to {
-    top: 25px;
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes fadeout {
-  from {
-    top: 25px;
-    opacity: 1;
-  }
-  to {
-    top: 0;
-    opacity: 0;
-  }
-}
-
-@keyframes fadeout {
-  from {
-    top: 25px;
-    opacity: 1;
-  }
-  to {
-    top: 0;
-    opacity: 0;
-  }
 }
 
 /* End modified section */

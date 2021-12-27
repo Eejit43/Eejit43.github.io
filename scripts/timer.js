@@ -6,12 +6,23 @@ window.onload = function () {
   document.getElementById('reset').addEventListener("click", reset);
 }
 
-function showAlert(id) {
-  let element = document.getElementById(id);
-  element.className = "alert show";
-  setTimeout(function () {
-    element.className = element.className.replace("alert show", "alert");
-  }, 2000);
+function showAlert(text, color) {
+  Toastify({
+    text: text,
+    duration: 2000,
+    position: "center",
+    style: {
+      background: "#333",
+      boxShadow: "none",
+      minWidth: "150px",
+      textAlign: "center",
+      fontFamily: "'Montserrat', sans-serif",
+      fontWeight: "bold",
+      fontSize: "17px",
+      color: color,
+      padding: "16px 30px",
+    },
+  }).showToast();
 }
 
 let audio = new Audio('./timer-alarm.mp3');
@@ -33,7 +44,7 @@ function reset() {
   setTimeout(function () {
     document.getElementById("reset").innerHTML = "Reset";
   }, 2000);
-  showAlert("resetmsg");
+  showAlert('Reset!', '#009c3f');
   document.getElementById("runError").className = "";
   document.getElementById("runSuccess").className = "";
 }
@@ -50,13 +61,13 @@ function startTimer() {
   let runError = document.getElementById("runError");
   let runSuccess = document.getElementById("runSuccess");
   if (isNaN(hours) || isNaN(minutes) || isNaN(seconds)) {
-    showAlert("emptymsg");
+    showAlert('Empty input!', '#FF5555');
     runError.className = "fas fa-times";
     setTimeout(function () {
       runError.className = runError.className.replace("fas fa-times", "");
     }, 2000);
   } else if (hours <= 0 && minutes <= 0 && seconds <= 0) {
-    showAlert("notvalid");
+    showAlert('Invalid input!', '#FF5555');
     runError.className = "fas fa-times";
     setTimeout(function () {
       runError.className = runError.className.replace("fas fa-times", "");

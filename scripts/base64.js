@@ -7,19 +7,30 @@ window.onload = function () {
   });
 }
 
-function showAlert(id) {
-  let element = document.getElementById(id);
-  element.className = "alert show";
-  setTimeout(function () {
-    element.className = element.className.replace("alert show", "alert");
-  }, 2000);
+function showAlert(text, color) {
+  Toastify({
+    text: text,
+    duration: 2000,
+    position: "center",
+    style: {
+      background: "#333",
+      boxShadow: "none",
+      minWidth: "150px",
+      textAlign: "center",
+      fontFamily: "'Montserrat', sans-serif",
+      fontWeight: "bold",
+      fontSize: "17px",
+      color: color,
+      padding: "16px 30px",
+    },
+  }).showToast();
 }
 
 function clearAll() {
   document.getElementById('stringToModify').value = "";
   document.getElementById('result').value = "";
   document.getElementById('copy-result').disabled = true;
-  showAlert("clearmsg");
+  showAlert('Cleared!', '#009c3f')
   document.getElementById("clear").innerHTML = "Cleared!";
   setTimeout(function () {
     document.getElementById("clear").innerHTML = "Clear";
@@ -37,7 +48,7 @@ function copyText(toCopy, button) {
   setTimeout(function () {
     document.getElementById(button).innerHTML = "Copy";
   }, 2000);
-  showAlert("copymsg");
+  showAlert('Copied!', '#009c3f')
 }
 
 function encode() {
@@ -45,7 +56,7 @@ function encode() {
   let runError = document.getElementById("e-runError");
   let runSuccess = document.getElementById("e-runSuccess");
   if (stringToEncode.length === 0) {
-    showAlert("emptymsg");
+    showAlert('Empty input!', '#FF5555');
     runSuccess.className = "";
     runError.className = "fas fa-times";
     setTimeout(function () {
@@ -62,7 +73,7 @@ function encode() {
       }, 2000);
       document.getElementById('copy-result').disabled = false;
     } catch (err) {
-      showAlert("errormsg");
+      showAlert('Malformed input!', '#FF5555');
       runSuccess.className = "";
       runError.className = "fas fa-times";
       setTimeout(function () {
@@ -77,7 +88,7 @@ function decode() {
   let runError = document.getElementById("d-runError");
   let runSuccess = document.getElementById("d-runSuccess");
   if (stringToDecode.length === 0) {
-    showAlert("emptymsg");
+    showAlert('Empty input!', '#FF5555');
     runSuccess.className = "";
     runError.className = "fas fa-times";
     setTimeout(function () {

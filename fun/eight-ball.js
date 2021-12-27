@@ -1,17 +1,28 @@
 document.getElementById('rollBall').addEventListener("click", rollBall);
 
-function showAlert(id) {
-  let element = document.getElementById(id);
-  element.className = "alert show";
-  setTimeout(function () {
-    element.className = element.className.replace("alert show", "alert");
-  }, 2000);
+function showAlert(text, color) {
+  Toastify({
+    text: text,
+    duration: 2000,
+    position: "center",
+    style: {
+      background: "#333",
+      boxShadow: "none",
+      minWidth: "150px",
+      textAlign: "center",
+      fontFamily: "'Montserrat', sans-serif",
+      fontWeight: "bold",
+      fontSize: "17px",
+      color: color,
+      padding: "16px 30px",
+    },
+  }).showToast();
 }
 
 function rollBall() {
 let userQuestion = document.getElementById('userQuestion').value;
 if (userQuestion.length === 0) {
-showAlert("emptymsg");
+showAlert('You didn\'t ask a question!', '#FF5555');
 } else {
 let result = document.getElementById('result');
 let randomNumber = Math.floor(Math.random() * 11);

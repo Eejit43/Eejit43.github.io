@@ -9,19 +9,30 @@ window.onload = function () {
   });
 }
 
-function showAlert(id) {
-  let element = document.getElementById(id);
-  element.className = "alert show";
-  setTimeout(function () {
-    element.className = element.className.replace("alert show", "alert");
-  }, 2000);
+function showAlert(text, color) {
+  Toastify({
+    text: text,
+    duration: 2000,
+    position: "center",
+    style: {
+      background: "#333",
+      boxShadow: "none",
+      minWidth: "150px",
+      textAlign: "center",
+      fontFamily: "'Montserrat', sans-serif",
+      fontWeight: "bold",
+      fontSize: "17px",
+      color: color,
+      padding: "16px 30px",
+    },
+  }).showToast();
 }
 
 function clearAll() {
   document.getElementById('stringToModify').value = "";
   document.getElementById('result').value = "";
   document.getElementById('copy-result').disabled = true;
-  showAlert("clearmsg");
+  showAlert('Cleared!', '#009c3f')
   document.getElementById("clear").innerHTML = "Cleared!";
   setTimeout(function () {
     document.getElementById("clear").innerHTML = "Clear";
@@ -43,7 +54,7 @@ function copyText(toCopy, button) {
   setTimeout(function () {
     document.getElementById(button).innerHTML = "Copy";
   }, 2000);
-  showAlert("copymsg");
+  showAlert('Copied!', '#009c3f')
 }
 
 function toUpper() {
@@ -51,7 +62,7 @@ function toUpper() {
   let runError = document.getElementById("u-runError");
   let runSuccess = document.getElementById("u-runSuccess");
   if (string.length === 0) {
-    showAlert("emptymsg");
+    showAlert('Empty input!', '#FF5555');
     runSuccess.className = "";
     runError.className = "fas fa-times";
     setTimeout(function () {
@@ -74,7 +85,7 @@ function toLower() {
   let runError = document.getElementById("l-runError");
   let runSuccess = document.getElementById("l-runSuccess");
   if (string.length === 0) {
-    showAlert("emptymsg");
+    showAlert('Empty input!', '#FF5555');
     runSuccess.className = "";
     runError.className = "fas fa-times";
     setTimeout(function () {
@@ -113,7 +124,7 @@ function toTitle() {
   let runError = document.getElementById("t-runError");
   let runSuccess = document.getElementById("t-runSuccess");
   if (string.length === 0) {
-    showAlert("emptymsg");
+    showAlert('Empty input!', '#FF5555');
     runSuccess.className = "";
     runError.className = "fas fa-times";
     setTimeout(function () {
@@ -136,7 +147,7 @@ function toSentence() {
   let runError = document.getElementById("s-runError");
   let runSuccess = document.getElementById("s-runSuccess");
   if (string.length === 0) {
-    showAlert("emptymsg");
+    showAlert('Empty input!', '#FF5555');
     runSuccess.className = "";
     runError.className = "fas fa-times";
     setTimeout(function () {

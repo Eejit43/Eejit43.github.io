@@ -23,7 +23,7 @@ function copyText(toCopy, button) {
     setTimeout(function () {
         document.getElementById(button).innerHTML = "Copy";
     }, 2000);
-    showAlert("copymsg");
+    showAlert('Copied!', '#009c3f')
 }
 
 function showAlert(id) {

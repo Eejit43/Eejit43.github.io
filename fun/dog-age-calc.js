@@ -1,12 +1,23 @@
 document.getElementById('toDog').addEventListener("click", toDog);
 document.getElementById('toHuman').addEventListener("click", toHuman);
 
-function showAlert(id) {
-  let element = document.getElementById(id);
-  element.className = "alert show";
-  setTimeout(function () {
-    element.className = element.className.replace("alert show", "alert");
-  }, 2000);
+function showAlert(text, color) {
+  Toastify({
+    text: text,
+    duration: 2000,
+    position: "center",
+    style: {
+      background: "#333",
+      boxShadow: "none",
+      minWidth: "150px",
+      textAlign: "center",
+      fontFamily: "'Montserrat', sans-serif",
+      fontWeight: "bold",
+      fontSize: "17px",
+      color: color,
+      padding: "16px 30px",
+    },
+  }).showToast();
 }
 
 function toDog() {
@@ -16,7 +27,7 @@ function toDog() {
   let thrunError = document.getElementById("th-runError");
   let thrunSuccess = document.getElementById("th-runSuccess");
   if (humanAge.length === 0) {
-    showAlert("noinput");
+    showAlert('No input given!', '#FF5555');
     runSuccess.className = "";
     thrunSuccess.className = "";
     thrunError.className = "";
@@ -36,7 +47,7 @@ function toDog() {
       runSuccess.className = runSuccess.className.replace("fas fa-check", "");
     }, 2000);
   } else {
-    showAlert("invalidinput");
+    showAlert('Input must be 1 or greater!', '#FF5555');
     runSuccess.className = "";
     thrunSuccess.className = "";
     thrunError.className = "";

@@ -20,12 +20,23 @@ window.onload = function () {
   });
 }
 
-function showAlert(id) {
-  let element = document.getElementById(id);
-  element.className = "alert show";
-  setTimeout(function () {
-    element.className = element.className.replace("alert show", "alert");
-  }, 2000);
+function showAlert(text, color) {
+  Toastify({
+    text: text,
+    duration: 2000,
+    position: "center",
+    style: {
+      background: "#333",
+      boxShadow: "none",
+      minWidth: "150px",
+      textAlign: "center",
+      fontFamily: "'Montserrat', sans-serif",
+      fontWeight: "bold",
+      fontSize: "17px",
+      color: color,
+      padding: "16px 30px",
+    },
+  }).showToast();
 }
 
 function copyText(button, text) {
@@ -34,7 +45,7 @@ function copyText(button, text) {
   setTimeout(function () {
     document.getElementById(button).innerHTML = "Copy";
   }, 2000);
-  showAlert("copymsg");
+  showAlert('Copied!', '#009c3f')
 }
 
 function clearClipboard() {
@@ -43,7 +54,7 @@ function clearClipboard() {
     document.getElementById("clearclipboard").innerHTML = "Clear Clipboard";
   }, 2000);
   navigator.clipboard.writeText("");
-  showAlert("clearmsg");
+  showAlert('Cleared!', '#009c3f')
 }
 
 clipboardDisplay();

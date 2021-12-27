@@ -42,15 +42,26 @@ function copyText(toCopy, button) {
   setTimeout(function () {
     document.getElementById(button).innerHTML = "Copy";
   }, 2000);
-  showAlert("copymsg");
+  showAlert('Copied!', '#009c3f')
 }
 
-function showAlert(id) {
-  let element = document.getElementById(id);
-  element.className = "alert show";
-  setTimeout(function () {
-    element.className = element.className.replace("alert show", "alert");
-  }, 2000);
+function showAlert(text, color) {
+  Toastify({
+    text: text,
+    duration: 2000,
+    position: "center",
+    style: {
+      background: "#333",
+      boxShadow: "none",
+      minWidth: "150px",
+      textAlign: "center",
+      fontFamily: "'Montserrat', sans-serif",
+      fontWeight: "bold",
+      fontSize: "17px",
+      color: color,
+      padding: "16px 30px",
+    },
+  }).showToast();
 }
 
 // Duplicate Line Remover
@@ -60,7 +71,7 @@ function drlClear() {
   document.getElementById('drl-copy-result').disabled = true;
   document.getElementById('drl-result-2').value = "";
   document.getElementById('drl-copy-result-2').disabled = true;
-  showAlert("clearmsg");
+  showAlert('Cleared!', '#009c3f')
   document.getElementById("drl-runSuccess").className = "";
   document.getElementById("drl-runError").className = "";
   document.getElementById("drl-clear").innerHTML = "Cleared!";
@@ -74,7 +85,7 @@ function runDlrRegex() {
   let runError = document.getElementById("drl-runError");
   let runSuccess = document.getElementById("drl-runSuccess");
   if (input.length == 0) {
-    showAlert("emptymsg");
+    showAlert('Empty input!', '#FF5555');
     runSuccess.className = "";
     runError.className = "fas fa-times";
     setTimeout(function () {
@@ -104,7 +115,7 @@ function wrClear() {
   document.getElementById('wr-copy-result-2').disabled = true;
   document.getElementById('wr-result-3').value = "";
   document.getElementById('wr-copy-result-3').disabled = true;
-  showAlert("clearmsg");
+  showAlert('Cleared!', '#009c3f')
   document.getElementById("wr-runSuccess").className = "";
   document.getElementById("wr-runError").className = "";
   document.getElementById("wr-clear").innerHTML = "Cleared!";
@@ -118,7 +129,7 @@ function runWrRegex() {
   let runError = document.getElementById("wr-runError");
   let runSuccess = document.getElementById("wr-runSuccess");
   if (input.length == 0) {
-    showAlert("emptymsg");
+    showAlert('Empty input!', '#FF5555');
     runSuccess.className = "";
     runError.className = "fas fa-times";
     setTimeout(function () {
@@ -149,7 +160,7 @@ function neuClear() {
   document.getElementById('neu-copy-result').disabled = true;
   document.getElementById('neu-result-2').value = "";
   document.getElementById('neu-copy-result-2').disabled = true;
-  showAlert("clearmsg");
+  showAlert('Cleared!', '#009c3f')
   document.getElementById("neu-runSuccess").className = "";
   document.getElementById("neu-runError").className = "";
   document.getElementById("neu-clear").innerHTML = "Cleared!";
@@ -163,7 +174,7 @@ function runNeuRegex() {
   let runError = document.getElementById("neu-runError");
   let runSuccess = document.getElementById("neu-runSuccess");
   if (input.length == 0) {
-    showAlert("emptymsg");
+    showAlert('Empty input!', '#FF5555');
     runSuccess.className = "";
     runError.className = "fas fa-times";
     setTimeout(function () {
@@ -201,7 +212,7 @@ function rmClearInput() {
   document.getElementById('rm-regexInput').value = "";
   document.getElementById('rm-result').value = "";
   document.getElementById('rm-copy-result').disabled = true;
-  showAlert("clearmsg");
+  showAlert('Cleared!', '#009c3f')
   document.getElementById("rm-runSuccess").className = "";
   document.getElementById("rm-runError").className = "";
   document.getElementById("rm-clear").innerHTML = "Cleared!";
@@ -217,7 +228,7 @@ function rmClearAll() {
   document.getElementById('rm-regex').value = "";
   document.getElementById('rm-flags').value = "g";
   document.getElementById('rm-replace').value = "";
-  showAlert("clearmsg");
+  showAlert('Cleared!', '#009c3f')
   document.getElementById("rm-runSuccess").className = "";
   document.getElementById("rm-runError").className = "";
   document.getElementById("rm-clear-2").innerHTML = "Cleared!";
@@ -230,7 +241,7 @@ function rmSwitch() {
   let output = document.getElementById("rm-result").value;
   if (output.length == 0) {
     document.getElementById("rm-switch").innerHTML = "Move output to input <i class='' style='color:#FF5555;' id='rm-moveError'></i>";
-    showAlert("nooutputmsg");
+    showAlert('Nothing to move!', '#FF5555');
     let moveError = document.getElementById("rm-moveError");
     moveError.className = "fas fa-times";
     setTimeout(function () {
@@ -240,7 +251,7 @@ function rmSwitch() {
     document.getElementById('rm-regexInput').value = output;
     document.getElementById('rm-result').value = "";
     document.getElementById('rm-copy-result').disabled = true;
-    showAlert("switchmsg");
+    showAlert('Moved to input!', '#1c62d4');
     document.getElementById("rm-switch").innerHTML = "Moved! <i class='fas fa-arrows-alt-v' style='color:#1c62d4;' id='rm-switchOutput'></i>";
     setTimeout(function () {
       document.getElementById("rm-switch").innerHTML = "Move output to input <i class='' style='color:#FF5555;' id='rm-moveError'></i>";
@@ -261,7 +272,7 @@ function runRmRegex() {
     isValid = false;
   }
   if (input.length == 0 || regex.length == 0) {
-    showAlert("emptymsg-2");
+    showAlert('Empty values(s)!', '#FF5555');
     runSuccess.className = "";
     runError.className = "fas fa-times";
     setTimeout(function () {
@@ -289,7 +300,7 @@ function runRmRegex() {
     document.getElementById('rm-result').value = output;
     document.getElementById('rm-copy-result').disabled = false;
   } else if (isValid === false) {
-    showAlert("notvalidregex");
+    showAlert('Invalid regex!', '#FF5555');
     runSuccess.className = "";
     runError.className = "fas fa-times";
     setTimeout(function () {
