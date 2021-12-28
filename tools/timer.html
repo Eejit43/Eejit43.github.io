@@ -48,7 +48,7 @@
         <span style="font-weight:500;color:dimgray;font-size:50px;">
         <input type="number" id="hours" max="23" maxlength="2" max="24" value="0" class="invisibleinput" oninput="checkInput(this)" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>h  <input type="number" id="minutes" max="59" maxlength="2" value="1" class="invisibleinput" oninput="checkInput(this)" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>m  <input type="number" id="seconds" max="59" maxlength="2" value="0" class="invisibleinput" oninput="checkInput(this)" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>s
         <br><button id="start-timer">Start <i class="" style="color:#009c3f;" id="runSuccess"></i><i class="" style="color:#FF5555;" id="runError"></i></button>
-        <button id="pause-resume-timer">Pause</button>
+        <button id="pause-resume-timer" disabled>Pause</button>
         <button id="reset">Reset</button>
       </p>
       <hr style="margin-top:30px;">

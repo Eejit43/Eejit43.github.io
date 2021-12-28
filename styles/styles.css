@@ -251,7 +251,8 @@ body {
 }
 
 .mc-codes,
-.tone-indicators {
+.tone-indicators,
+.roman-numerals {
   border-collapse: collapse;
   border: 4px solid #1b1e24;
   color: #a8a8a8;
@@ -270,10 +271,17 @@ body {
     display: inline-block;
     min-width: 97%;
   }
+
+  .roman-numerals {
+    width: 50%;
+    min-width: 50%;
+    margin: 50px 0 0;
+  }
 }
 
 .mc-codes th,
-.tone-indicators th {
+.tone-indicators th,
+.roman-numerals th {
   background: #31363d;
   border-bottom: 1px solid #1b1e24;
   text-align: center;
@@ -283,14 +291,16 @@ body {
 
 @media only screen and (max-width: 700px) {
   .mc-codes th,
-  .tone-indicators th {
+  .tone-indicators th,
+  .roman-numerals th {
     padding: 20px;
     font-size: 16px;
   }
 }
 
 .mc-codes td,
-.tone-indicators td {
+.tone-indicators td,
+.roman-numerals td {
   border: 3px solid #1b1e24;
   font-family: 'Urbanist', sans-serif;
   font-weight: 700;
@@ -301,7 +311,8 @@ body {
 
 @media only screen and (max-width: 700px) {
   .mc-codes td,
-  .tone-indicators td {
+  .tone-indicators td,
+  .roman-numerals td {
     font-size: 16px;
     padding: 14px;
   }
@@ -390,7 +401,8 @@ textarea {
   resize: vertical;
 }
 
-input:not(input[type=file]) {
+input:not(input[type=file]),
+.fakeinput {
   padding: 0.2rem 0.3rem;
   border-radius: 4px;
   border: 1px solid #444;
@@ -404,13 +416,20 @@ input:not(input[type=file]) {
 }
 
 input:focus:not(input[type=file]),
-textarea:focus:not(input[type=file]) {
+textarea:focus:not(input[type=file]),
+.fakeinput:focus {
   outline: none;
   box-shadow: 0 0 3px 2px #cc9933;
 }
 
 input[type=file] {
   display: none;
+}
+
+.fakeinput {
+  overflow: scroll;
+  text-align: left;
+  user-select: text;
 }
 
 select {
@@ -449,7 +468,7 @@ select {
   transition: all 0.2s ease;
 }
 
-button {
+button:not(.fakeinput) {
   width: max-content;
   height: max-content;
   padding: 0.2rem 0.3rem;
@@ -462,20 +481,11 @@ button {
   transition: all 0.2s ease;
 }
 
-button:hover {
-  width: max-content;
-  height: max-content;
-  padding: 0.2rem 0.3rem;
-  border-radius: 4px;
-  margin: 3px;
-  border: 1px solid #444;
+button:hover:not(.fakeinput) {
   background-color: #2b2b2b;
-  color: white;
-  cursor: pointer;
-  transition: all 0.2s ease;
 }
 
-button:disabled {
+button:disabled:not(.fakeinput) {
   opacity: 50%;
   color: #AAA;
   cursor: not-allowed;
