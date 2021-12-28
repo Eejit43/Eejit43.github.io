@@ -8,7 +8,8 @@ window.onload = function () {
         }
     });
     document.getElementById('integer-input').addEventListener("input", function () {
-        return event.charCode >= 48 && event.charCode <= 57;
+        let input = document.getElementById('integer-input')
+        input.value = input.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');
     });
     document.getElementById('integer-input').addEventListener("input", function () {
         let input = document.getElementById('integer-input').value;
