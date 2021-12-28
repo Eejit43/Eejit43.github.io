@@ -8,6 +8,9 @@ window.onload = function () {
         }
     });
     document.getElementById('integer-input').addEventListener("input", function () {
+        return event.charCode >= 48 && event.charCode <= 57
+    });
+    document.getElementById('integer-input').addEventListener("input", function () {
         let input = document.getElementById('integer-input').value;
         let output = document.getElementById('roman-output').textContent;
         let arrow = document.getElementById('integer-arrow');

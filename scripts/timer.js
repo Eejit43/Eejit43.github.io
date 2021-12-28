@@ -4,6 +4,29 @@ window.onload = function () {
   document.getElementById('start-timer').addEventListener("click", startTimer);
   document.getElementById('pause-resume-timer').addEventListener("click", pauseResume);
   document.getElementById('reset').addEventListener("click", reset);
+  document.getElementById('hours').addEventListener("input", function () {
+        return event.charCode >= 48 && event.charCode <= 57;
+    });
+  document.getElementById('hours').addEventListener("input", function () {
+        checkInput(this);
+    });
+  document.getElementById('minutes').addEventListener("input", function () {
+        return event.charCode >= 48 && event.charCode <= 57;
+    });
+  document.getElementById('minutes').addEventListener("input", function () {
+        checkInput(this);
+    });
+  document.getElementById('seconds').addEventListener("input", function () {
+        return event.charCode >= 48 && event.charCode <= 57;
+    });
+  document.getElementById('seconds').addEventListener("input", function () {
+        checkInput(this);
+    });
+}
+
+function checkInput(element) {
+  if (element.value.length > element.maxLength) element.value = element.value.slice(0, element.maxLength);
+  if (element.value > element.max || element.value < 1) element.value = element.value.slice(0, 1);
 }
 
 function showAlert(text, color) {
@@ -127,11 +150,6 @@ function timer() {
   let timesuffix = fullhours >= 12 ? "PM" : "AM";
 
   document.getElementById('timer-time').innerHTML = month + " " + date + ", " + year + " " + hours + ":" + minutes + ":" + sec + " " + timesuffix;
-}
-
-function checkInput(element) {
-  if (element.value.length > element.maxLength) element.value = element.value.slice(0, element.maxLength);
-  if (element.value > element.max || element.value < 1) element.value = element.value.slice(0, 1);
 }
 
 let timerState = 1; // 1 = running, 2 = paused
