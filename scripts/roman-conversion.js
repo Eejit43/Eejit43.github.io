@@ -8,7 +8,7 @@ window.onload = function () {
         }
     });
     document.getElementById('integer-input').addEventListener("input", function () {
-        return event.charCode >= 48 && event.charCode <= 57
+        return event.charCode >= 48 && event.charCode <= 57;
     });
     document.getElementById('integer-input').addEventListener("input", function () {
         let input = document.getElementById('integer-input').value;
@@ -49,20 +49,20 @@ window.onload = function () {
     document.getElementById('roman-input').addEventListener("input", function () {
         //return event.charCode === 67 || event.charCode === 68 || event.charCode === 73 || event.charCode === 76 || event.charCode === 77 || event.charCode === 86 || event.charCode === 88 || event.charCode === 95 || event.charCode === 99 || event.charCode === 100 || event.charCode === 105 || event.charCode === 108 || event.charCode === 109 || event.charCode === 118 || event.charCode === 120
         let input = document.getElementById('roman-input');
-        input.value = input.value.replace(/((?![IVXLCDM_]).)/gi, '')
+        input.value = input.value.replace(/((?![IVXLCDM_]).)/gi, '');
     });
     document.getElementById('roman-convert').addEventListener("click", convertRoman);
     document.getElementById('roman-reset').addEventListener("click", resetRoman);
     document.getElementById('roman-output-copy').addEventListener("click", function () {
-        copyText(romanOutputCopy, 'roman-output-copy', 'Copy w/ macrons')
+        copyText(romanOutputCopy, 'roman-output-copy', 'Copy w/ macrons');
     });
     document.getElementById('roman-output-copy-2').addEventListener("click", function () {
-        copyText(romanOutputCopy2, 'roman-output-copy-2', 'Copy w/ underscores')
+        copyText(romanOutputCopy2, 'roman-output-copy-2', 'Copy w/ underscores');
     });
     document.getElementById('integer-output-copy').addEventListener("click", function () {
-        copyText(integerOutput, 'integer-output', 'integer-output-copy')
+        copyText(integerOutput, 'integer-output', 'integer-output-copy');
     });
-}
+};
 
 function copyText(letiable, button, message) {
     navigator.clipboard.writeText(letiable);
@@ -70,7 +70,7 @@ function copyText(letiable, button, message) {
     setTimeout(function () {
         document.getElementById(button).textContent = message;
     }, 2000);
-    showAlert('Copied!', '#009c3f')
+    showAlert('Copied!', '#009c3f');
 }
 
 function showAlert(text, color) {
@@ -105,7 +105,7 @@ function convertInteger() {
         document.getElementById('integer-arrow').style.color = "#009c3f";
         document.getElementById('integer-arrow').className = "fas fa-arrow-right";
     } else {
-        showAlert('Value must be greater than 0!', '#FF5555')
+        showAlert('Value must be greater than 0!', '#FF5555');
         output.textContent = '​';
         copy.disabled = true;
         copy2.disabled = true;
@@ -131,7 +131,7 @@ function convertRoman() {
     let input = document.getElementById('roman-input').value;
     input = input.toUpperCase();
     input = input.replace(/_(\w)/g, function (match) {
-        return match.toLowerCase()
+        return match.toLowerCase();
     });
     input = input.replace(/_([a-z])/g, '$1');
     let output = document.getElementById('integer-output');
@@ -144,7 +144,7 @@ function convertRoman() {
         document.getElementById('roman-arrow').style.color = "#009c3f";
         document.getElementById('roman-arrow').className = "fas fa-arrow-right";
     } else {
-        showAlert('Invalid roman numeral!', '#FF5555')
+        showAlert('Invalid roman numeral!', '#FF5555');
         output.value = '';
         copy.disabled = false;
         document.getElementById('roman-arrow').style.color = "#bf4042";
@@ -172,7 +172,7 @@ function romanize(value) {
     let num = value;
 
     let barredNumerals = '';
-    while (num > 3000) {
+    while (num > 3999) {
         for (let i = 0; i < decimal.length - 1; i++) {
             const currentNumber = decimal[i] * 1000;
             if (num < currentNumber) continue;
