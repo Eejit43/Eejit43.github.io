@@ -120,7 +120,7 @@ function decode() {
       showResult('d', 'success');
       document.getElementById('copy-result').disabled = false;
     } catch (err) {
-      showAlert("errormsg");
+      showAlert('Malformed input!', 'error');
       showResult('d', 'error');
     }
   }

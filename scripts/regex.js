@@ -243,22 +243,14 @@ function rmClearAll() {
 function rmSwitch() {
   let output = document.getElementById("rm-result").value;
   if (output.length == 0) {
-    document.getElementById("rm-switch").innerHTML = "Move output to input <i class='' style='color:#FF5555;' id='rm-moveError'></i>";
     showAlert('Nothing to move!', 'error');
-    let moveError = document.getElementById("rm-moveError");
-    moveError.className = "fas fa-times";
-    setTimeout(function () {
-      moveError.className = moveError.className.replace("fas fa-times", "");
-    }, 2000);
+    showResult('switch', 'error');
   } else {
     document.getElementById('rm-regexInput').value = output;
     document.getElementById('rm-result').value = "";
     document.getElementById('rm-copy-result').disabled = true;
     showAlert('Moved to input!', '#1c62d4');
-    document.getElementById("rm-switch").innerHTML = "Moved! <i class='fas fa-arrows-alt-v' style='color:#1c62d4;' id='rm-switchOutput'></i>";
-    setTimeout(function () {
-      document.getElementById("rm-switch").innerHTML = "Move output to input <i class='' style='color:#FF5555;' id='rm-moveError'></i>";
-    }, 2000);
+    showResult('switch', 'custom', '#1c62d4', 'arrows-alt-v');
   }
 };
 
