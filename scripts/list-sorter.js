@@ -1,7 +1,9 @@
 window.onload = function () {
   document.getElementById('alphabetize-normal').addEventListener("click", alphabetizeNormal);
   document.getElementById('alphabetize-reverse').addEventListener("click", alphabetizeReverse);
+  document.getElementById('numerize').addEventListener("click", numerize);
   document.getElementById('randomize').addEventListener("click", randomize);
+  document.getElementById('reverse').addEventListener("click", reverse);
   document.getElementById('clear').addEventListener("click", clearAll);
   document.getElementById('copy-result').addEventListener("click", function () {
     copyText('result', 'copy-result')
@@ -67,7 +69,7 @@ function alphabetizeNormal() {
       runError.className = runError.className.replace("fas fa-times", "");
     }, 2000);
   } else {
-    let separator = document.getElementById("separator").value;
+    let separator = (document.getElementById("separator").value) ? document.getElementById("separator").value : '\n';
     separator = separator.replace('\\n', '\n');
     let result = string.split(separator);
     result = result.sort((a, b) => a.localeCompare(b)).join(separator);
@@ -93,10 +95,36 @@ function alphabetizeReverse() {
       runError.className = runError.className.replace("fas fa-times", "");
     }, 2000);
   } else {
-    let separator = document.getElementById("separator").value;
+    let separator = (document.getElementById("separator").value) ? document.getElementById("separator").value : '\n';
     separator = separator.replace('\\n', '\n');
     let result = string.split(separator);
     result = result.sort((a, b) => a.localeCompare(b)).reverse().join(separator);
+    document.getElementById("result").value = result;
+      runError.className = "";
+      runSuccess.className = "fas fa-check";
+      setTimeout(function () {
+        runSuccess.className = runSuccess.className.replace("fas fa-check", "");
+      }, 2000);
+      document.getElementById('copy-result').disabled = false;
+  }
+}
+
+function numerize() {
+  let string = document.getElementById("stringToModify").value;
+  let runError = document.getElementById("nm-runError");
+  let runSuccess = document.getElementById("nm-runSuccess");
+  if (string.length === 0) {
+    showAlert('Empty input!', '#FF5555');
+    runSuccess.className = "";
+    runError.className = "fas fa-times";
+    setTimeout(function () {
+      runError.className = runError.className.replace("fas fa-times", "");
+    }, 2000);
+  } else {
+    let separator = (document.getElementById("separator").value) ? document.getElementById("separator").value : '\n';
+    separator = separator.replace('\\n', '\n');
+    let result = string.split(separator);
+    result = result.map((x) =>parseInt(x)).filter(Boolean).sort((a, b) => a - b).join(separator);
     document.getElementById("result").value = result;
       runError.className = "";
       runSuccess.className = "fas fa-check";
@@ -127,10 +155,36 @@ function randomize() {
       runError.className = runError.className.replace("fas fa-times", "");
     }, 2000);
   } else {
-    let separator = document.getElementById("separator").value;
+    let separator = (document.getElementById("separator").value) ? document.getElementById("separator").value : '\n';
     separator = separator.replace('\\n', '\n');
     let result = string.split(separator);
     result = shuffleArray(result).join(separator);
+    document.getElementById("result").value = result;
+      runError.className = "";
+      runSuccess.className = "fas fa-check";
+      setTimeout(function () {
+        runSuccess.className = runSuccess.className.replace("fas fa-check", "");
+      }, 2000);
+      document.getElementById('copy-result').disabled = false;
+  }
+}
+
+function reverse() {
+  let string = document.getElementById("stringToModify").value;
+  let runError = document.getElementById("rv-runError");
+  let runSuccess = document.getElementById("rv-runSuccess");
+  if (string.length === 0) {
+    showAlert('Empty input!', '#FF5555');
+    runSuccess.className = "";
+    runError.className = "fas fa-times";
+    setTimeout(function () {
+      runError.className = runError.className.replace("fas fa-times", "");
+    }, 2000);
+  } else {
+    let separator = (document.getElementById("separator").value) ? document.getElementById("separator").value : '\n';
+    separator = separator.replace('\\n', '\n');
+    let result = string.split(separator);
+    result = result.reverse().join(separator);
     document.getElementById("result").value = result;
       runError.className = "";
       runSuccess.className = "fas fa-check";
