@@ -16,33 +16,41 @@ window.onload = function () {
 let unixInputState = 1; // 1 = seconds, 2 = milliseconds
 let unixOutputState = 1; // 1 = seconds, 2 = milliseconds
 
+let copyMessageTimeout;
+
 function copyText(toCopy, button) {
     const element = document.getElementById(toCopy);
     navigator.clipboard.writeText(element.value);
     document.getElementById(button).innerHTML = "Copied!";
-    setTimeout(function () {
+    clearTimeout(copyMessageTimeout);
+    copyMessageTimeout = setTimeout(function () {
         document.getElementById(button).innerHTML = "Copy";
     }, 2000);
-    showAlert('Copied!', '#009c3f')
+    showAlert('Copied!', 'success')
 }
 
 function showAlert(text, color) {
-  Toastify({
-    text: text,
-    duration: 2000,
-    position: "center",
-    style: {
-      background: "#333",
-      boxShadow: "none",
-      minWidth: "150px",
-      textAlign: "center",
-      fontFamily: "'Montserrat', sans-serif",
-      fontWeight: "bold",
-      fontSize: "17px",
-      color: color,
-      padding: "16px 30px",
-    },
-  }).showToast();
+    if (color === 'success') {
+        color = '#009c3f'
+    } else if (color === 'error') {
+        color = '#FF5555'
+    }
+    Toastify({
+        text: text,
+        duration: 2000,
+        position: "center",
+        style: {
+            background: "#333",
+            boxShadow: "none",
+            minWidth: "150px",
+            textAlign: "center",
+            fontFamily: "'Montserrat', sans-serif",
+            fontWeight: "bold",
+            fontSize: "17px",
+            color: color,
+            padding: "16px 30px",
+        },
+    }).showToast();
 }
 
 updateStandardTime();

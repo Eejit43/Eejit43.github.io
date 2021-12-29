@@ -8,6 +8,11 @@ window.onload = function () {
 }
 
 function showAlert(text, color) {
+  if (color === 'success') {
+    color = '#009c3f'
+  } else if (color === 'error') {
+    color = '#FF5555'
+  }
   Toastify({
     text: text,
     duration: 2000,
@@ -26,91 +31,93 @@ function showAlert(text, color) {
   }).showToast();
 }
 
+function showResult(id, type, color = undefined, icon = undefined) {
+  let oldElement = document.getElementById(id + '-runResult');
+  // Reset any timeout
+  let element = oldElement.cloneNode(true);
+  oldElement.parentNode.replaceChild(element, oldElement);
+  if (type === 'success') {
+    color = '#009c3f'
+    icon = 'check'
+  } else if (type === 'error') {
+    color = '#FF5555'
+    icon = 'times'
+  }
+  element.style.color = color;
+  element.className = 'fas fa-' + icon;
+  setTimeout(function () {
+    element.style.color = '';
+    element.className = '';
+  }, 2000);
+}
+
+function resetResult(id) {
+  let element = document.getElementById(id + '-runResult');
+  element.style.color = '';
+  element.className = '';
+}
+
+let clearMessageTimeout;
+
 function clearAll() {
   document.getElementById('stringToModify').value = "";
   document.getElementById('result').value = "";
   document.getElementById('copy-result').disabled = true;
-  showAlert('Cleared!', '#009c3f')
-  document.getElementById("clear").innerHTML = "Cleared!";
-  setTimeout(function () {
-    document.getElementById("clear").innerHTML = "Clear";
+  showAlert('Cleared!', 'success')
+  document.getElementById('clear').innerHTML = 'Cleared!';
+  clearTimeout(clearMessageTimeout);
+  clearMessageTimeout = setTimeout(function () {
+    document.getElementById('clear').innerHTML = 'Clear';
   }, 2000);
-  document.getElementById("e-runSuccess").className = "";
-  document.getElementById("e-runError").className = "";
-  document.getElementById("d-runSuccess").className = "";
-  document.getElementById("d-runError").className = "";
+  resetResult('e');
+  resetResult('d');
 }
+
+let copyMessageTimeout;
 
 function copyText(toCopy, button) {
   const element = document.getElementById(toCopy);
   navigator.clipboard.writeText(element.value);
   document.getElementById(button).innerHTML = "Copied!";
-  setTimeout(function () {
+  clearTimeout(copyMessageTimeout);
+  copyMessageTimeout = setTimeout(function () {
     document.getElementById(button).innerHTML = "Copy";
   }, 2000);
-  showAlert('Copied!', '#009c3f')
+  showAlert('Copied!', 'success')
 }
 
 function encode() {
   let stringToEncode = document.getElementById("stringToModify").value;
-  let runError = document.getElementById("e-runError");
-  let runSuccess = document.getElementById("e-runSuccess");
   if (stringToEncode.length === 0) {
-    showAlert('Empty input!', '#FF5555');
-    runSuccess.className = "";
-    runError.className = "fas fa-times";
-    setTimeout(function () {
-      runError.className = runError.className.replace("fas fa-times", "");
-    }, 2000);
+    showAlert('Empty input!', 'error');
+    showResult('e', 'error');
   } else {
     try {
       let decodedString = btoa(stringToEncode);
       document.getElementById("result").value = decodedString;
-      runError.className = "";
-      runSuccess.className = "fas fa-check";
-      setTimeout(function () {
-        runSuccess.className = runSuccess.className.replace("fas fa-check", "");
-      }, 2000);
+      showResult('e', 'success');
       document.getElementById('copy-result').disabled = false;
     } catch (err) {
-      showAlert('Malformed input!', '#FF5555');
-      runSuccess.className = "";
-      runError.className = "fas fa-times";
-      setTimeout(function () {
-        runError.className = runError.className.replace("fas fa-times", "");
-      }, 2000);
+      showAlert('Malformed input!', 'error');
+      showResult('e', 'error');
     }
   }
 }
 
 function decode() {
   let stringToDecode = document.getElementById("stringToModify").value;
-  let runError = document.getElementById("d-runError");
-  let runSuccess = document.getElementById("d-runSuccess");
   if (stringToDecode.length === 0) {
-    showAlert('Empty input!', '#FF5555');
-    runSuccess.className = "";
-    runError.className = "fas fa-times";
-    setTimeout(function () {
-      runError.className = runError.className.replace("fas fa-times", "");
-    }, 2000);
+    showAlert('Empty input!', 'error');
+    showResult('d', 'error');
   } else {
     try {
       let encodedString = atob(stringToDecode);
       document.getElementById("result").value = encodedString;
-      runError.className = "";
-      runSuccess.className = "fas fa-check";
-      setTimeout(function () {
-        runSuccess.className = runSuccess.className.replace("fas fa-check", "");
-      }, 2000);
+      showResult('d', 'success');
       document.getElementById('copy-result').disabled = false;
     } catch (err) {
       showAlert("errormsg");
-      runSuccess.className = "";
-      runError.className = "fas fa-times";
-      setTimeout(function () {
-        runError.className = runError.className.replace("fas fa-times", "");
-      }, 2000);
+      showResult('d', 'error');
     }
   }
 }

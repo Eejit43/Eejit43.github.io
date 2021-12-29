@@ -1,3 +1,5 @@
+let copyMessageTimeout, copyMessageTimeout2;
+
 window.onload = function () {
   document.getElementById('file-upload').addEventListener("change", fileUpload);
   document.getElementById('encode').addEventListener("click", encode);
@@ -11,14 +13,20 @@ window.onload = function () {
     let button = 'b64-copy-with-prefix-result';
     navigator.clipboard.writeText(base64);
     document.getElementById(button).innerHTML = "Copied!";
-    setTimeout(function () {
+    clearTimeout(copyMessageTimeout2);
+    copyMessageTimeout2 = setTimeout(function () {
       document.getElementById(button).innerHTML = "Copy with prefix";
     }, 2000);
-    showAlert('Copied!', '#009c3f')
+    showAlert('Copied!', 'success')
   });
 }
 
 function showAlert(text, color) {
+  if (color === 'success') {
+    color = '#009c3f'
+  } else if (color === 'error') {
+    color = '#FF5555'
+  }
   Toastify({
     text: text,
     duration: 2000,
@@ -37,6 +45,34 @@ function showAlert(text, color) {
   }).showToast();
 }
 
+function showResult(id, type, color = undefined, icon = undefined) {
+  let oldElement = document.getElementById(id + '-runResult');
+  // Reset any timeout
+  let element = oldElement.cloneNode(true);
+  oldElement.parentNode.replaceChild(element, oldElement);
+  if (type === 'success') {
+    color = '#009c3f'
+    icon = 'check'
+  } else if (type === 'error') {
+    color = '#FF5555'
+    icon = 'times'
+  }
+  element.style.color = color;
+  element.className = 'fas fa-' + icon;
+  setTimeout(function () {
+    element.style.color = '';
+    element.className = '';
+  }, 2000);
+}
+
+function resetResult(id) {
+  let element = document.getElementById(id + '-runResult');
+  element.style.color = '';
+  element.className = '';
+}
+
+let clearMessageTimeout, clearMessageTimeout2;
+
 function clear1() {
   validFile = 1;
   document.getElementById("file-upload").value = "";
@@ -45,35 +81,36 @@ function clear1() {
   document.getElementById('b64-copy-result').disabled = true;
   document.getElementById('b64-copy-with-prefix-result').disabled = true;
   document.getElementById('b64-open-result').disabled = true;
-  showAlert('Cleared!', '#009c3f')
-  document.getElementById("clear").innerHTML = "Cleared!";
-  setTimeout(function () {
-    document.getElementById("clear").innerHTML = "Clear";
+  showAlert('Cleared!', 'success')
+  document.getElementById('clear').innerHTML = "Cleared!";
+  clearTimeout(clearMessageTimeout);
+  clearMessageTimeout = setTimeout(function () {
+    document.getElementById('clear').innerHTML = 'Clear';
   }, 2000);
-  document.getElementById("e-runSuccess").className = "";
-  document.getElementById("e-runError").className = "";
+  resetResult('e');
 }
 
 function clear2() {
   document.getElementById('stringToDecode').value = "";
   document.getElementById('image-output').src = "";
-  showAlert('Cleared!', '#009c3f')
-  document.getElementById("clear2").innerHTML = "Cleared!";
-  setTimeout(function () {
-    document.getElementById("clear2").innerHTML = "Clear";
+  showAlert('Cleared!', 'success')
+  document.getElementById('clear2').innerHTML = "Cleared!";
+  clearTimeout(clearMessageTimeout2);
+  clearMessageTimeout = setTimeout(function () {
+    document.getElementById('clear2').innerHTML = 'Clear';
   }, 2000);
-  document.getElementById("d-runSuccess").className = "";
-  document.getElementById("d-runError").className = "";
+  resetResult('d');
 }
 
 function copyText(toCopy, button) {
   const element = document.getElementById(toCopy);
   navigator.clipboard.writeText(element.value);
   document.getElementById(button).innerHTML = "Copied!";
-  setTimeout(function () {
+  clearTimeout(copyMessageTimeout);
+  copyMessageTimeout = setTimeout(function () {
     document.getElementById(button).innerHTML = "Copy";
   }, 2000);
-  showAlert('Copied!', '#009c3f')
+  showAlert('Copied!', 'success')
 }
 
 function fileUpload() {
@@ -81,8 +118,6 @@ function fileUpload() {
   let fileMsg = document.getElementById("file-message");
   let fileName = file.value.split("\\").pop()
   fileMsg.innerHTML = "Uploaded: " + fileName;
-  let runError = document.getElementById("e-runError");
-  let runSuccess = document.getElementById("e-runSuccess");
 }
 
 // https://newbedev.com/base64-image-open-in-new-tab-window-is-not-allowed-to-navigate-top-frame-navigations-to-data-urls
@@ -107,8 +142,6 @@ function encode() {
 
   let image = document.getElementById("file-upload");
   let output = document.getElementById("b64-result");
-  let runError = document.getElementById("e-runError");
-  let runSuccess = document.getElementById("e-runSuccess");
   if (image.value) {
     let reader = new FileReader();
     reader.onloadend = function () {
@@ -123,28 +156,16 @@ function encode() {
         document.getElementById('b64-copy-result').disabled = false;
         document.getElementById('b64-copy-with-prefix-result').disabled = false;
         document.getElementById('b64-open-result').disabled = false;
-        runError.className = "";
-        runSuccess.className = "fas fa-check";
-        setTimeout(function () {
-          runSuccess.className = runSuccess.className.replace("fas fa-check", "");
-        }, 2000);
+        showResult('e', 'success');
       } else {
-        showAlert('Invalid file type! (must be .png, .jpg, .jpeg, .webp, .bmp, or .gif)', '#FF5555')
-        runSuccess.className = "";
-        runError.className = "fas fa-times";
-        setTimeout(function () {
-          runError.className = runError.className.replace("fas fa-times", "");
-        }, 2000);
+        showAlert('Invalid file type! (must be .png, .jpg, .jpeg, .webp, .bmp, or .gif)', 'error')
+        showResult('e', 'error');
       }
     }
     reader.readAsDataURL(image.files[0]);
   } else {
-    showAlert('Empty input!', '#FF5555')
-    runSuccess.className = "";
-    runError.className = "fas fa-times";
-    setTimeout(function () {
-      runError.className = runError.className.replace("fas fa-times", "");
-    }, 2000);
+    showAlert('Empty input!', 'error')
+    showResult('e', 'error');
   }
 }
 
@@ -167,27 +188,19 @@ async function isBase64UrlImage(string) {
 
 const valid = async(string) => {
   let image = document.getElementById("image-output");
-  let runError = document.getElementById("d-runError");
-  let runSuccess = document.getElementById("d-runSuccess");
   const valid = await isBase64UrlImage(string);
   if (valid === true) {
     image.src = string;
   } else if (valid === false) {
     document.getElementById('image-output').src = "";
-    showAlert('Malformed input!', '#FF5555')
-    runSuccess.className = "";
-    runError.className = "fas fa-times";
-    setTimeout(function () {
-      runError.className = runError.className.replace("fas fa-times", "");
-    }, 2000);
+    showAlert('Malformed input!', 'error')
+    showResult('d', 'error');
   }
 };
 
 function decode() {
   let string = document.getElementById("stringToDecode").value;
   let image = document.getElementById("image-output");
-  let runError = document.getElementById("d-runError");
-  let runSuccess = document.getElementById("d-runSuccess");
 
   let testRegex = new RegExp('data:image\/.*?;base64,');
   let stringHasType = testRegex.test(string);
@@ -195,12 +208,8 @@ function decode() {
     string = "data:image/png;base64," + string;
   }
   if (string.length === 0) {
-    showAlert('Empty input!', '#FF5555')
-    runSuccess.className = "";
-    runError.className = "fas fa-times";
-    setTimeout(function () {
-      runError.className = runError.className.replace("fas fa-times", "");
-    }, 2000);
+    showAlert('Empty input!', 'error')
+    showResult('d', 'error');
   } else {
     valid(string)
   }

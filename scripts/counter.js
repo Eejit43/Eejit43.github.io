@@ -4,7 +4,7 @@ let key = 'Space';
 window.onload = function () {
   document.getElementById('activationButton').addEventListener("change", updateKey);
   document.getElementById('reset').addEventListener("click", function () {
-    showAlert('Reset!', '#009c3f')
+    showAlert('Reset!', 'success')
     number = 0;
     document.getElementById('number').innerHTML = 0;
     document.getElementById('activationButton').value = '1';
@@ -20,6 +20,11 @@ window.onload = function () {
 }
 
 function showAlert(text, color) {
+  if (color === 'success') {
+    color = '#009c3f'
+  } else if (color === 'error') {
+    color = '#FF5555'
+  }
   Toastify({
     text: text,
     duration: 2000,

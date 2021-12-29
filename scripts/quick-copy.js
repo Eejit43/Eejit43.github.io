@@ -21,6 +21,11 @@ window.onload = function () {
 }
 
 function showAlert(text, color) {
+  if (color === 'success') {
+    color = '#009c3f'
+  } else if (color === 'error') {
+    color = '#FF5555'
+  }
   Toastify({
     text: text,
     duration: 2000,
@@ -39,13 +44,16 @@ function showAlert(text, color) {
   }).showToast();
 }
 
+let copyMessageTimeout;
+
 function copyText(button, text) {
   navigator.clipboard.writeText(text);
   document.getElementById(button).innerHTML = "Copied!";
-  setTimeout(function () {
+  clearTimeout(copyMessageTimeout);
+  copyMessageTimeout = setTimeout(function () {
     document.getElementById(button).innerHTML = "Copy";
   }, 2000);
-  showAlert('Copied!', '#009c3f')
+  showAlert('Copied!', 'success')
 }
 
 function clearClipboard() {
@@ -54,7 +62,7 @@ function clearClipboard() {
     document.getElementById("clearclipboard").innerHTML = "Clear Clipboard";
   }, 2000);
   navigator.clipboard.writeText("");
-  showAlert('Cleared!', '#009c3f')
+  showAlert('Cleared!', 'success')
 }
 
 clipboardDisplay();

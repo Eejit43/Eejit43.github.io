@@ -4,6 +4,11 @@ window.onload = function () {
 }
 
 function showAlert(text, color) {
+  if (color === 'success') {
+    color = '#009c3f'
+  } else if (color === 'error') {
+    color = '#FF5555'
+  }
   Toastify({
     text: text,
     duration: 2000,
@@ -22,42 +27,58 @@ function showAlert(text, color) {
   }).showToast();
 }
 
+function showResult(id, type, color = undefined, icon = undefined) {
+  let oldElement = document.getElementById(id + '-runResult');
+  // Reset any timeout
+  let element = oldElement.cloneNode(true);
+  oldElement.parentNode.replaceChild(element, oldElement);
+  if (type === 'success') {
+    color = '#009c3f'
+    icon = 'check'
+  } else if (type === 'error') {
+    color = '#FF5555'
+    icon = 'times'
+  }
+  element.style.color = color;
+  element.className = 'fas fa-' + icon;
+  setTimeout(function () {
+    element.style.color = '';
+    element.className = '';
+  }, 2000);
+}
+
+function resetResult(id) {
+  let element = document.getElementById(id + '-runResult');
+  element.style.color = '';
+  element.className = '';
+}
+
+let clearMessageTimeout;
+
 function reset() {
   document.getElementById('min-number').value = "1";
   document.getElementById('max-number').value = "10";
   document.getElementById('output-number').innerHTML = "";
-  document.getElementById("clear").innerHTML = "Cleared!";
-  setTimeout(function () {
-    document.getElementById("clear").innerHTML = "Clear";
+  clearTimeout(clearMessageTimeout);
+  clearMessageTimeout = setTimeout(function () {
+    document.getElementById('clear').innerHTML = 'Clear';
   }, 2000);
-  showAlert('Cleared!', '#009c3f')
-  document.getElementById("runError").className = "";
-  document.getElementById("runSuccess").className = "";
+  showAlert('Cleared!', 'success')
+  resetResult('generate');
 }
 
 function generateNumber() {
   let min = parseInt(document.getElementById("min-number").value);
   let max = parseInt(document.getElementById("max-number").value);
-  let runError = document.getElementById("runError");
-  let runSuccess = document.getElementById("runSuccess");
   if (min.length === 0 || max.length === 0) {
-    showAlert('Empty input!', '#FF5555');
-    runError.className = "fas fa-times";
-    setTimeout(function () {
-      runError.className = runError.className.replace("fas fa-times", "");
-    }, 2000);
+    showAlert('Empty input!', 'error');
+    showResult('generate', 'error');
   } else if (min > max || min === max) {
-    showAlert('The minimum must be less than the maximum!', '#FF5555');
-    runError.className = "fas fa-times";
-    setTimeout(function () {
-      runError.className = runError.className.replace("fas fa-times", "");
-    }, 2000);
+    showAlert('The minimum must be less than the maximum!', 'error');
+    showResult('generate', 'error');
   } else {
     let output = (Math.floor(Math.random() * (max - min + 1) + min)).toLocaleString();
     document.getElementById("output-number").innerHTML = output;
-    runSuccess.className = "fas fa-check";
-    setTimeout(function () {
-      runSuccess.className = runError.className.replace("fas fa-check", "");
-    }, 2000);
+    showResult('generate', 'success');
   }
 }

@@ -23,18 +23,26 @@ window.onload = function () {
   });
 }
 
+let copyMessageTimeout;
+
 function copyText(toCopy, button) {
   const element = document.getElementById(toCopy);
   navigator.clipboard.writeText(element.value);
   document.getSelection().removeAllRanges();
   document.getElementById(button).innerHTML = "Copied!";
-  setTimeout(function () {
+  clearTimeout(copyMessageTimeout);
+  copyMessageTimeout = setTimeout(function () {
     document.getElementById(button).innerHTML = "Copy";
   }, 2000);
-  showAlert('Copied!', '#009c3f')
+  showAlert('Copied!', 'success')
 }
 
 function showAlert(text, color) {
+  if (color === 'success') {
+    color = '#009c3f'
+  } else if (color === 'error') {
+    color = '#FF5555'
+  }
   Toastify({
     text: text,
     duration: 2000,

@@ -35,17 +35,25 @@ window.onload = function () {
   });
 }
 
+let copyMessageTimeout;
+
 function copyText(toCopy, button) {
   const element = document.getElementById(toCopy);
   navigator.clipboard.writeText(element.value);
   document.getElementById(button).innerHTML = "Copied!";
-  setTimeout(function () {
+  clearTimeout(copyMessageTimeout);
+  copyMessageTimeout = setTimeout(function () {
     document.getElementById(button).innerHTML = "Copy";
   }, 2000);
-  showAlert('Copied!', '#009c3f')
+  showAlert('Copied!', 'success')
 }
 
 function showAlert(text, color) {
+  if (color === 'success') {
+    color = '#009c3f'
+  } else if (color === 'error') {
+    color = '#FF5555'
+  }
   Toastify({
     text: text,
     duration: 2000,
@@ -64,6 +72,32 @@ function showAlert(text, color) {
   }).showToast();
 }
 
+function showResult(id, type, color = undefined, icon = undefined) {
+  let oldElement = document.getElementById(id + '-runResult');
+  // Reset any timeout
+  let element = oldElement.cloneNode(true);
+  oldElement.parentNode.replaceChild(element, oldElement);
+  if (type === 'success') {
+    color = '#009c3f'
+    icon = 'check'
+  } else if (type === 'error') {
+    color = '#FF5555'
+    icon = 'times'
+  }
+  element.style.color = color;
+  element.className = 'fas fa-' + icon;
+  setTimeout(function () {
+    element.style.color = '';
+    element.className = '';
+  }, 2000);
+}
+
+function resetResult(id) {
+  let element = document.getElementById(id + '-runResult');
+  element.style.color = '';
+  element.className = '';
+}
+
 // Duplicate Line Remover
 function drlClear() {
   document.getElementById('drl-regexInput').value = "";
@@ -71,9 +105,8 @@ function drlClear() {
   document.getElementById('drl-copy-result').disabled = true;
   document.getElementById('drl-result-2').value = "";
   document.getElementById('drl-copy-result-2').disabled = true;
-  showAlert('Cleared!', '#009c3f')
-  document.getElementById("drl-runSuccess").className = "";
-  document.getElementById("drl-runError").className = "";
+  showAlert('Cleared!', 'success')
+  resetResult('drl');
   document.getElementById("drl-clear").innerHTML = "Cleared!";
   setTimeout(function () {
     document.getElementById("drl-clear").innerHTML = "Clear";
@@ -82,23 +115,13 @@ function drlClear() {
 
 function runDlrRegex() {
   let input = document.getElementById("drl-regexInput").value;
-  let runError = document.getElementById("drl-runError");
-  let runSuccess = document.getElementById("drl-runSuccess");
   if (input.length == 0) {
-    showAlert('Empty input!', '#FF5555');
-    runSuccess.className = "";
-    runError.className = "fas fa-times";
-    setTimeout(function () {
-      runError.className = runError.className.replace("fas fa-times", "");
-    }, 2000);
+    showAlert('Empty input!', 'error');
+    showResult('drl', 'error');
   } else {
     let output = input.replace(/^(.*?)$\s+?^(?=.*^\1$)/gms, '');
     let output2 = input.replace(/^(?!\n)(.*?)$\s+?^(?=.*^\1$)/gms, '');
-    runError.className = "";
-    runSuccess.className = "fas fa-check";
-    setTimeout(function () {
-      runSuccess.className = runSuccess.className.replace("fas fa-check", "");
-    }, 2000);
+    showResult('drl', 'success');
     document.getElementById('drl-result').value = output;
     document.getElementById('drl-copy-result').disabled = false;
     document.getElementById('drl-result-2').value = output2;
@@ -115,9 +138,8 @@ function wrClear() {
   document.getElementById('wr-copy-result-2').disabled = true;
   document.getElementById('wr-result-3').value = "";
   document.getElementById('wr-copy-result-3').disabled = true;
-  showAlert('Cleared!', '#009c3f')
-  document.getElementById("wr-runSuccess").className = "";
-  document.getElementById("wr-runError").className = "";
+  showAlert('Cleared!', 'success')
+  resetResult('wr');
   document.getElementById("wr-clear").innerHTML = "Cleared!";
   setTimeout(function () {
     document.getElementById("wr-clear").innerHTML = "Clear";
@@ -126,24 +148,14 @@ function wrClear() {
 
 function runWrRegex() {
   let input = document.getElementById("wr-regexInput").value;
-  let runError = document.getElementById("wr-runError");
-  let runSuccess = document.getElementById("wr-runSuccess");
   if (input.length == 0) {
-    showAlert('Empty input!', '#FF5555');
-    runSuccess.className = "";
-    runError.className = "fas fa-times";
-    setTimeout(function () {
-      runError.className = runError.className.replace("fas fa-times", "");
-    }, 2000);
+    showAlert('Empty input!', 'error');
+    showResult('wr', 'error');
   } else {
     let output = input.replace(/^[ \t]+|[ \t]+$/gms, '');
     let output2 = input.replace(/^[ \t\r\n]+|[ \t]+$/gms, '');
     let output3 = input.replace(/^[ \t\r\n]+|[ \t\r\n]+$/gms, '');
-    runError.className = "";
-    runSuccess.className = "fas fa-check";
-    setTimeout(function () {
-      runSuccess.className = runSuccess.className.replace("fas fa-check", "");
-    }, 2000);
+    showResult('wr', 'success');
     document.getElementById('wr-result').value = output;
     document.getElementById('wr-copy-result').disabled = false;
     document.getElementById('wr-result-2').value = output2;
@@ -160,9 +172,8 @@ function neuClear() {
   document.getElementById('neu-copy-result').disabled = true;
   document.getElementById('neu-result-2').value = "";
   document.getElementById('neu-copy-result-2').disabled = true;
-  showAlert('Cleared!', '#009c3f')
-  document.getElementById("neu-runSuccess").className = "";
-  document.getElementById("neu-runError").className = "";
+  showAlert('Cleared!', 'success')
+  resetResult('neu');
   document.getElementById("neu-clear").innerHTML = "Cleared!";
   setTimeout(function () {
     document.getElementById("neu-clear").innerHTML = "Clear";
@@ -171,15 +182,9 @@ function neuClear() {
 
 function runNeuRegex() {
   let input = document.getElementById("neu-regexInput").value;
-  let runError = document.getElementById("neu-runError");
-  let runSuccess = document.getElementById("neu-runSuccess");
   if (input.length == 0) {
-    showAlert('Empty input!', '#FF5555');
-    runSuccess.className = "";
-    runError.className = "fas fa-times";
-    setTimeout(function () {
-      runError.className = runError.className.replace("fas fa-times", "");
-    }, 2000);
+    showAlert('Empty input!', 'error');
+    showResult('neu', 'error');
   } else {
     let output = input.replace(/\\"/gmi, 'Ɣ'); //filler character
     output = output.replace(/\\u0027/gmi, '\'');
@@ -195,11 +200,7 @@ function runNeuRegex() {
     output2 = output2.replace(/\n/gmi, '/');
     output2 = output2.replace(/"/gmi, '\\"');
     output2 = output2.replace(/\'/gmi, '\\\'');
-    runError.className = "";
-    runSuccess.className = "fas fa-check";
-    setTimeout(function () {
-      runSuccess.className = runSuccess.className.replace("fas fa-check", "");
-    }, 2000);
+    showResult('neu', 'success');
     document.getElementById('neu-result').value = output;
     document.getElementById('neu-copy-result').disabled = false;
     document.getElementById('neu-result-2').value = output2;
@@ -212,9 +213,8 @@ function rmClearInput() {
   document.getElementById('rm-regexInput').value = "";
   document.getElementById('rm-result').value = "";
   document.getElementById('rm-copy-result').disabled = true;
-  showAlert('Cleared!', '#009c3f')
-  document.getElementById("rm-runSuccess").className = "";
-  document.getElementById("rm-runError").className = "";
+  showAlert('Cleared!', 'success')
+  resetResult('rm');
   document.getElementById("rm-clear").innerHTML = "Cleared!";
   setTimeout(function () {
     document.getElementById("rm-clear").innerHTML = "Clear Input";
@@ -228,9 +228,8 @@ function rmClearAll() {
   document.getElementById('rm-regex').value = "";
   document.getElementById('rm-flags').value = "g";
   document.getElementById('rm-replace').value = "";
-  showAlert('Cleared!', '#009c3f')
-  document.getElementById("rm-runSuccess").className = "";
-  document.getElementById("rm-runError").className = "";
+  showAlert('Cleared!', 'success')
+  resetResult('rm');
   document.getElementById("rm-clear-2").innerHTML = "Cleared!";
   setTimeout(function () {
     document.getElementById("rm-clear-2").innerHTML = "Clear All";
@@ -241,7 +240,7 @@ function rmSwitch() {
   let output = document.getElementById("rm-result").value;
   if (output.length == 0) {
     document.getElementById("rm-switch").innerHTML = "Move output to input <i class='' style='color:#FF5555;' id='rm-moveError'></i>";
-    showAlert('Nothing to move!', '#FF5555');
+    showAlert('Nothing to move!', 'error');
     let moveError = document.getElementById("rm-moveError");
     moveError.className = "fas fa-times";
     setTimeout(function () {
@@ -261,8 +260,6 @@ function rmSwitch() {
 
 function runRmRegex() {
   let input = document.getElementById("rm-regexInput").value;
-  let runError = document.getElementById("rm-runError");
-  let runSuccess = document.getElementById("rm-runSuccess");
   let regex = document.getElementById("rm-regex").value;
   let flags = document.getElementById("rm-flags").value;
   let isValid = true;
@@ -272,12 +269,8 @@ function runRmRegex() {
     isValid = false;
   }
   if (input.length == 0 || regex.length == 0) {
-    showAlert('Empty values(s)!', '#FF5555');
-    runSuccess.className = "";
-    runError.className = "fas fa-times";
-    setTimeout(function () {
-      runError.className = runError.className.replace("fas fa-times", "");
-    }, 2000);
+    showAlert('Empty values(s)!', 'error');
+    showResult('rm', 'error');
   } else if (isValid) {
     let finalregex = new RegExp(regex, flags);
     let replace = document.getElementById("rm-replace").value;
@@ -292,19 +285,11 @@ function runRmRegex() {
     replace = replace.replace(/\\t/g, '\t');
     replace = replace.replace(/\$(\d)/g, '$$$1');
     let output = input.replace(finalregex, replace);
-    runError.className = "";
-    runSuccess.className = "fas fa-check";
-    setTimeout(function () {
-      runSuccess.className = runSuccess.className.replace("fas fa-check", "");
-    }, 2000);
+    showResult('rm', 'success');
     document.getElementById('rm-result').value = output;
     document.getElementById('rm-copy-result').disabled = false;
   } else if (isValid === false) {
-    showAlert('Invalid regex!', '#FF5555');
-    runSuccess.className = "";
-    runError.className = "fas fa-times";
-    setTimeout(function () {
-      runError.className = runError.className.replace("fas fa-times", "");
-    }, 2000);
+    showAlert('Invalid regex!', 'error');
+    showResult('rm', 'error');
   }
 }

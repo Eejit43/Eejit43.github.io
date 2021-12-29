@@ -71,7 +71,7 @@ function copyText(letiable, button, message) {
     setTimeout(function () {
         document.getElementById(button).textContent = message;
     }, 2000);
-    showAlert('Copied!', '#009c3f');
+    showAlert('Copied!', 'success');
 }
 
 function showAlert(text, color) {
@@ -106,7 +106,7 @@ function convertInteger() {
         document.getElementById('integer-arrow').style.color = "#009c3f";
         document.getElementById('integer-arrow').className = "fas fa-arrow-right";
     } else {
-        showAlert('Value must be greater than 0!', '#FF5555');
+        showAlert('Value must be greater than 0!', 'error');
         output.textContent = '​';
         copy.disabled = true;
         copy2.disabled = true;
@@ -145,7 +145,7 @@ function convertRoman() {
         document.getElementById('roman-arrow').style.color = "#009c3f";
         document.getElementById('roman-arrow').className = "fas fa-arrow-right";
     } else {
-        showAlert('Invalid roman numeral!', '#FF5555');
+        showAlert('Invalid roman numeral!', 'error');
         output.value = '';
         copy.disabled = false;
         document.getElementById('roman-arrow').style.color = "#bf4042";

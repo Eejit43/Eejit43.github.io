@@ -5,23 +5,23 @@ window.onload = function () {
   document.getElementById('pause-resume-timer').addEventListener("click", pauseResume);
   document.getElementById('reset').addEventListener("click", reset);
   document.getElementById('hours').addEventListener("input", function () {
-        return event.charCode >= 48 && event.charCode <= 57;
-    });
+    return event.charCode >= 48 && event.charCode <= 57;
+  });
   document.getElementById('hours').addEventListener("input", function () {
-        checkInput(this);
-    });
+    checkInput(this);
+  });
   document.getElementById('minutes').addEventListener("input", function () {
-        return event.charCode >= 48 && event.charCode <= 57;
-    });
+    return event.charCode >= 48 && event.charCode <= 57;
+  });
   document.getElementById('minutes').addEventListener("input", function () {
-        checkInput(this);
-    });
+    checkInput(this);
+  });
   document.getElementById('seconds').addEventListener("input", function () {
-        return event.charCode >= 48 && event.charCode <= 57;
-    });
+    return event.charCode >= 48 && event.charCode <= 57;
+  });
   document.getElementById('seconds').addEventListener("input", function () {
-        checkInput(this);
-    });
+    checkInput(this);
+  });
 }
 
 function checkInput(element) {
@@ -30,6 +30,11 @@ function checkInput(element) {
 }
 
 function showAlert(text, color) {
+  if (color === 'success') {
+    color = '#009c3f'
+  } else if (color === 'error') {
+    color = '#FF5555'
+  }
   Toastify({
     text: text,
     duration: 2000,
@@ -46,6 +51,32 @@ function showAlert(text, color) {
       padding: "16px 30px",
     },
   }).showToast();
+}
+
+function showResult(id, type, color = undefined, icon = undefined) {
+  let oldElement = document.getElementById(id + '-runResult');
+  // Reset any timeout
+  let element = oldElement.cloneNode(true);
+  oldElement.parentNode.replaceChild(element, oldElement);
+  if (type === 'success') {
+    color = '#009c3f'
+    icon = 'check'
+  } else if (type === 'error') {
+    color = '#FF5555'
+    icon = 'times'
+  }
+  element.style.color = color;
+  element.className = 'fas fa-' + icon;
+  setTimeout(function () {
+    element.style.color = '';
+    element.className = '';
+  }, 2000);
+}
+
+function resetResult(id) {
+  let element = document.getElementById(id + '-runResult');
+  element.style.color = '';
+  element.className = '';
 }
 
 let audio = new Audio('./timer-alarm.mp3');
@@ -67,9 +98,8 @@ function reset() {
   setTimeout(function () {
     document.getElementById("reset").innerHTML = "Reset";
   }, 2000);
-  showAlert('Reset!', '#009c3f');
-  document.getElementById("runError").className = "";
-  document.getElementById("runSuccess").className = "";
+  showAlert('Reset!', 'success');
+  resetResult('timer');
 }
 
 let targettime, runTimer;
@@ -81,20 +111,12 @@ function startTimer() {
   let hours = parseInt(document.getElementById("hours").value);
   let minutes = parseInt(document.getElementById("minutes").value);
   let seconds = parseInt(document.getElementById("seconds").value);
-  let runError = document.getElementById("runError");
-  let runSuccess = document.getElementById("runSuccess");
   if (isNaN(hours) || isNaN(minutes) || isNaN(seconds)) {
-    showAlert('Empty input!', '#FF5555');
-    runError.className = "fas fa-times";
-    setTimeout(function () {
-      runError.className = runError.className.replace("fas fa-times", "");
-    }, 2000);
+    showAlert('Empty input!', 'error');
+    showResult('timer', 'error');
   } else if (hours <= 0 && minutes <= 0 && seconds <= 0) {
-    showAlert('Invalid input!', '#FF5555');
-    runError.className = "fas fa-times";
-    setTimeout(function () {
-      runError.className = runError.className.replace("fas fa-times", "");
-    }, 2000);
+    showAlert('Invalid input!', 'error');
+    showResult('timer', 'error');
   } else {
     document.getElementById('start-timer').disabled = true;
     document.getElementById('pause-resume-timer').disabled = false;

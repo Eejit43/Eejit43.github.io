@@ -10,6 +10,11 @@ window.onload = function () {
 }
 
 function showAlert(text, color) {
+  if (color === 'success') {
+    color = '#009c3f'
+  } else if (color === 'error') {
+    color = '#FF5555'
+  }
   Toastify({
     text: text,
     duration: 2000,
@@ -28,77 +33,85 @@ function showAlert(text, color) {
   }).showToast();
 }
 
+function showResult(id, type, color = undefined, icon = undefined) {
+  let oldElement = document.getElementById(id + '-runResult');
+  // Reset any timeout
+  let element = oldElement.cloneNode(true);
+  oldElement.parentNode.replaceChild(element, oldElement);
+  if (type === 'success') {
+    color = '#009c3f'
+    icon = 'check'
+  } else if (type === 'error') {
+    color = '#FF5555'
+    icon = 'times'
+  }
+  element.style.color = color;
+  element.className = 'fas fa-' + icon;
+  setTimeout(function () {
+    element.style.color = '';
+    element.className = '';
+  }, 2000);
+}
+
+function resetResult(id) {
+  let element = document.getElementById(id + '-runResult');
+  element.style.color = '';
+  element.className = '';
+}
+
+let clearMessageTimeout;
+
 function clearAll() {
   document.getElementById('stringToModify').value = "";
   document.getElementById('result').value = "";
   document.getElementById('copy-result').disabled = true;
-  showAlert('Cleared!', '#009c3f')
-  document.getElementById("clear").innerHTML = "Cleared!";
-  setTimeout(function () {
-    document.getElementById("clear").innerHTML = "Clear";
+  showAlert('Cleared!', 'success')
+  document.getElementById('clear').innerHTML = 'Cleared!';
+  clearTimeout(clearMessageTimeout);
+  clearMessageTimeout = setTimeout(function () {
+    document.getElementById('clear').innerHTML = 'Clear';
   }, 2000);
-  document.getElementById("u-runSuccess").className = "";
-  document.getElementById("u-runError").className = "";
-  document.getElementById("l-runSuccess").className = "";
-  document.getElementById("l-runError").className = "";
-  document.getElementById("t-runSuccess").className = "";
-  document.getElementById("t-runError").className = "";
-  document.getElementById("s-runSuccess").className = "";
-  document.getElementById("s-runError").className = "";
+  resetResult('u');
+  resetResult('l');
+  resetResult('t');
+  resetResult('s');
 }
+
+let copyMessageTimeout;
 
 function copyText(toCopy, button) {
   const element = document.getElementById(toCopy);
   navigator.clipboard.writeText(element.value);
   document.getElementById(button).innerHTML = "Copied!";
-  setTimeout(function () {
+  clearTimeout(copyMessageTimeout);
+  copyMessageTimeout = setTimeout(function () {
     document.getElementById(button).innerHTML = "Copy";
   }, 2000);
-  showAlert('Copied!', '#009c3f')
+  showAlert('Copied!', 'success')
 }
 
 function toUpper() {
   let string = document.getElementById("stringToModify").value;
-  let runError = document.getElementById("u-runError");
-  let runSuccess = document.getElementById("u-runSuccess");
   if (string.length === 0) {
-    showAlert('Empty input!', '#FF5555');
-    runSuccess.className = "";
-    runError.className = "fas fa-times";
-    setTimeout(function () {
-      runError.className = runError.className.replace("fas fa-times", "");
-    }, 2000);
+    showAlert('Empty input!', 'error');
+    showResult('u', 'error');
   } else {
     let result = string.toUpperCase();
     document.getElementById("result").value = result;
-    runError.className = "";
-    runSuccess.className = "fas fa-check";
-    setTimeout(function () {
-      runSuccess.className = runSuccess.className.replace("fas fa-check", "");
-    }, 2000);
+    showResult('u', 'success');
     document.getElementById('copy-result').disabled = false;
   }
 }
 
 function toLower() {
   let string = document.getElementById("stringToModify").value;
-  let runError = document.getElementById("l-runError");
-  let runSuccess = document.getElementById("l-runSuccess");
   if (string.length === 0) {
-    showAlert('Empty input!', '#FF5555');
-    runSuccess.className = "";
-    runError.className = "fas fa-times";
-    setTimeout(function () {
-      runError.className = runError.className.replace("fas fa-times", "");
-    }, 2000);
+    showAlert('Empty input!', 'error');
+    showResult('l', 'error');
   } else {
     let result = string.toLowerCase();
     document.getElementById("result").value = result;
-    runError.className = "";
-    runSuccess.className = "fas fa-check";
-    setTimeout(function () {
-      runSuccess.className = runSuccess.className.replace("fas fa-check", "");
-    }, 2000);
+    showResult('l', 'success');
     document.getElementById('copy-result').disabled = false;
   }
 }
@@ -121,38 +134,22 @@ function titleCase(str) {
 
 function toTitle() {
   let string = document.getElementById("stringToModify").value;
-  let runError = document.getElementById("t-runError");
-  let runSuccess = document.getElementById("t-runSuccess");
   if (string.length === 0) {
-    showAlert('Empty input!', '#FF5555');
-    runSuccess.className = "";
-    runError.className = "fas fa-times";
-    setTimeout(function () {
-      runError.className = runError.className.replace("fas fa-times", "");
-    }, 2000);
+    showAlert('Empty input!', 'error');
+    showResult('t', 'error');
   } else {
     let result = titleCase(string);
     document.getElementById("result").value = result;
-    runError.className = "";
-    runSuccess.className = "fas fa-check";
-    setTimeout(function () {
-      runSuccess.className = runSuccess.className.replace("fas fa-check", "");
-    }, 2000);
+    showResult('t', 'success');
     document.getElementById('copy-result').disabled = false;
   }
 }
 
 function toSentence() {
   let string = document.getElementById("stringToModify").value;
-  let runError = document.getElementById("s-runError");
-  let runSuccess = document.getElementById("s-runSuccess");
   if (string.length === 0) {
-    showAlert('Empty input!', '#FF5555');
-    runSuccess.className = "";
-    runError.className = "fas fa-times";
-    setTimeout(function () {
-      runError.className = runError.className.replace("fas fa-times", "");
-    }, 2000);
+    showAlert('Empty input!', 'error');
+    showResult('s', 'error');
   } else {
     let result = string.toLowerCase().replace(/(^\s*\w|[\.\!\?]\s*\w)/gm, function (c) {
       return c.toUpperCase()
@@ -163,11 +160,7 @@ function toSentence() {
     result = result.replace(/(\s)i'll(\.|\!|\?|\s|\n|$)/gmi, '$1I\'ll$2');
     result = result.replace(/(\s)i've(\.|\!|\?|\s|\n|$)/gmi, '$1I\'ve$2');
     document.getElementById("result").value = result;
-    runError.className = "";
-    runSuccess.className = "fas fa-check";
-    setTimeout(function () {
-      runSuccess.className = runSuccess.className.replace("fas fa-check", "");
-    }, 2000);
+    showResult('s', 'success');
     document.getElementById('copy-result').disabled = false;
   }
 }

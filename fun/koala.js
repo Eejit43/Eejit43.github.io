@@ -1,34 +1,34 @@
 "use strict"
 
 /*
-* Made with love by Vadim Ogievetsky for Annie Albagli (Valentine's Day 2011)
-* Powered by Mike Bostock's D3
-*
-* For me on GitHub:  https://github.com/vogievetsky/KoalasToTheMax
-* License: MIT  [ http://koalastothemax.com/LICENSE ]
-*
-* If you are reading this then I have an easter egg for you:
-* You can use your own custom image as the source, simply type in:
-* http://koalastothemax.com?<your image url>
-* e.g.
-* http://koalastothemax.com?http://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/200px-Flag_of_the_United_Kingdom.svg.png
-*
-* also if you want to use a custom image and want people to guess what it is
-* (without seeing the url) then you can type the url in base64 encoding like so:
-* http://koalastothemax.com?<your image url in base64>
-* e.g.
-* http://koalastothemax.com?YXN0bGV5LmpwZw==
-* (try to guess the image above)
-*/
+ * Made with love by Vadim Ogievetsky for Annie Albagli (Valentine's Day 2011)
+ * Powered by Mike Bostock's D3
+ *
+ * For me on GitHub:  https://github.com/vogievetsky/KoalasToTheMax
+ * License: MIT  [ http://koalastothemax.com/LICENSE ]
+ *
+ * If you are reading this then I have an easter egg for you:
+ * You can use your own custom image as the source, simply type in:
+ * http://koalastothemax.com?<your image url>
+ * e.g.
+ * http://koalastothemax.com?http://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/200px-Flag_of_the_United_Kingdom.svg.png
+ *
+ * also if you want to use a custom image and want people to guess what it is
+ * (without seeing the url) then you can type the url in base64 encoding like so:
+ * http://koalastothemax.com?<your image url in base64>
+ * e.g.
+ * http://koalastothemax.com?YXN0bGV5LmpwZw==
+ * (try to guess the image above)
+ */
 
 var koala = {
   version: '1.8.2'
 };
 
-(function() {
+(function () {
   function array2d(w, h) {
     var a = [];
-    return function(x, y, v) {
+    return function (x, y, v) {
       if (x < 0 || y < 0) return void 0;
       if (arguments.length === 3) {
         // set
@@ -51,12 +51,12 @@ var koala = {
     ];
   }
 
-  koala.supportsCanvas = function() {
+  koala.supportsCanvas = function () {
     var elem = document.createElement('canvas');
     return !!(elem.getContext && elem.getContext('2d'));
   };
 
-  koala.supportsSVG = function() {
+  koala.supportsSVG = function () {
     return !!document.createElementNS && !!document.createElementNS('http://www.w3.org/2000/svg', "svg").createSVGRect;
   };
 
@@ -72,11 +72,11 @@ var koala = {
     this.onSplit = onSplit;
   }
 
-  Circle.prototype.isSplitable = function() {
+  Circle.prototype.isSplitable = function () {
     return this.node && this.children
   }
 
-  Circle.prototype.split = function() {
+  Circle.prototype.split = function () {
     if (!this.isSplitable()) return;
     d3.select(this.node).remove();
     delete this.node;
@@ -84,12 +84,12 @@ var koala = {
     this.onSplit(this);
   }
 
-  Circle.prototype.checkIntersection = function(startPoint, endPoint) {
+  Circle.prototype.checkIntersection = function (startPoint, endPoint) {
     var edx = this.x - endPoint[0],
-        edy = this.y - endPoint[1],
-        sdx = this.x - startPoint[0],
-        sdy = this.y - startPoint[1],
-        r2  = this.size / 2;
+      edy = this.y - endPoint[1],
+      sdx = this.x - startPoint[0],
+      sdy = this.y - startPoint[1],
+      r2 = this.size / 2;
 
     r2 = r2 * r2; // Radius squared
 
@@ -97,48 +97,70 @@ var koala = {
     return edx * edx + edy * edy <= r2 && sdx * sdx + sdy * sdy > r2;
   }
 
-  Circle.addToVis = function(vis, circles, init) {
+  Circle.addToVis = function (vis, circles, init) {
     var circle = vis.selectAll('.nope').data(circles)
       .enter().append('circle');
 
     if (init) {
       // Setup the initial state of the initial circle
       circle = circle
-        .attr('cx',   function(d) { return d.x; })
-        .attr('cy',   function(d) { return d.y; })
+        .attr('cx', function (d) {
+          return d.x;
+        })
+        .attr('cy', function (d) {
+          return d.y;
+        })
         .attr('r', 4)
         .attr('fill', '#ffffff')
-          .transition()
-          .duration(1000);
+        .transition()
+        .duration(1000);
     } else {
       // Setup the initial state of the opened circles
       circle = circle
-        .attr('cx',   function(d) { return d.parent.x; })
-        .attr('cy',   function(d) { return d.parent.y; })
-        .attr('r',    function(d) { return d.parent.size / 2; })
-        .attr('fill', function(d) { return String(d.parent.rgb); })
+        .attr('cx', function (d) {
+          return d.parent.x;
+        })
+        .attr('cy', function (d) {
+          return d.parent.y;
+        })
+        .attr('r', function (d) {
+          return d.parent.size / 2;
+        })
+        .attr('fill', function (d) {
+          return String(d.parent.rgb);
+        })
         .attr('fill-opacity', 0.68)
-          .transition()
-          .duration(300);
+        .transition()
+        .duration(300);
     }
 
     // Transition the to the respective final state
     circle
-      .attr('cx',   function(d) { return d.x; })
-      .attr('cy',   function(d) { return d.y; })
-      .attr('r',    function(d) { return d.size / 2; })
-      .attr('fill', function(d) { return String(d.rgb); })
+      .attr('cx', function (d) {
+        return d.x;
+      })
+      .attr('cy', function (d) {
+        return d.y;
+      })
+      .attr('r', function (d) {
+        return d.size / 2;
+      })
+      .attr('fill', function (d) {
+        return String(d.rgb);
+      })
       .attr('fill-opacity', 1)
-      .each('end',  function(d) { d.node = this; });
+      .each('end', function (d) {
+        d.node = this;
+      });
   }
 
   // Main code
   var vis,
-      maxSize = 512,
-      minSize = 4,
-      dim = maxSize / minSize;
+    maxSize = 512,
+    minSize = 4,
+    dim = maxSize / minSize;
 
-  koala.loadImage = function(imageData) {
+  koala.loadImage = function (imageData) {
     // Create a canvas for image data resizing and extraction
     var canvas = document.createElement('canvas').getContext('2d');
     // Draw the image into the corner, resizing it to dim x dim
@@ -149,12 +171,12 @@ var koala = {
     return canvas.getImageData(0, 0, dim, dim).data;
   };
 
-  koala.makeCircles = function(selector, colorData, onEvent) {
-    onEvent = onEvent || function() {};
+  koala.makeCircles = function (selector, colorData, onEvent) {
+    onEvent = onEvent || function () {};
 
     var splitableByLayer = [],
-        splitableTotal = 0,
-        nextPercent = 0;
+      splitableTotal = 0,
+      nextPercent = 0;
 
     function onSplit(circle) {
       // manage events
@@ -176,8 +198,8 @@ var koala = {
       // Create the SVG ellement
       vis = d3.select(selector)
         .append("svg")
-          .attr("width", maxSize)
-          .attr("height", maxSize);
+        .attr("width", maxSize)
+        .attr("height", maxSize);
     } else {
       vis.selectAll('circle')
         .remove();
@@ -188,10 +210,11 @@ var koala = {
     var size = minSize;
 
     // Start off by populating the base (leaf) layer
-    var xi, yi, t = 0, color;
+    var xi, yi, t = 0,
+      color;
     for (yi = 0; yi < dim; yi++) {
       for (xi = 0; xi < dim; xi++) {
-        color = [colorData[t], colorData[t+1], colorData[t+2]];
+        color = [colorData[t], colorData[t + 1], colorData[t + 2]];
         finestLayer(xi, yi, new Circle(vis, xi, yi, size, color));
         t += 4;
       }
@@ -206,9 +229,9 @@ var koala = {
       layer = array2d(dim, dim);
       for (yi = 0; yi < dim; yi++) {
         for (xi = 0; xi < dim; xi++) {
-          c1 = prevLayer(2 * xi    , 2 * yi    );
-          c2 = prevLayer(2 * xi + 1, 2 * yi    );
-          c3 = prevLayer(2 * xi    , 2 * yi + 1);
+          c1 = prevLayer(2 * xi, 2 * yi);
+          c2 = prevLayer(2 * xi + 1, 2 * yi);
+          c3 = prevLayer(2 * xi, 2 * yi + 1);
           c4 = prevLayer(2 * xi + 1, 2 * yi + 1);
           color = avgColor(c1.color, c2.color, c3.color, c4.color);
           c1.parent = c2.parent = c3.parent = c4.parent = layer(xi, yi,
@@ -228,8 +251,8 @@ var koala = {
     // Interaction helper functions
     function splitableCircleAt(pos) {
       var xi = Math.floor(pos[0] / minSize),
-          yi = Math.floor(pos[1] / minSize),
-          circle = finestLayer(xi, yi);
+        yi = Math.floor(pos[1] / minSize),
+        circle = finestLayer(xi, yi);
       if (!circle) return null;
       while (circle && !circle.isSplitable()) circle = circle.parent;
       return circle || null;
@@ -237,19 +260,19 @@ var koala = {
 
     function intervalLength(startPoint, endPoint) {
       var dx = endPoint[0] - startPoint[0],
-          dy = endPoint[1] - startPoint[1];
+        dy = endPoint[1] - startPoint[1];
 
       return Math.sqrt(dx * dx + dy * dy);
     }
 
     function breakInterval(startPoint, endPoint, maxLength) {
       var breaks = [],
-          length = intervalLength(startPoint, endPoint),
-          numSplits = Math.max(Math.ceil(length / maxLength), 1),
-          dx = (endPoint[0] - startPoint[0]) / numSplits,
-          dy = (endPoint[1] - startPoint[1]) / numSplits,
-          startX = startPoint[0],
-          startY = startPoint[1];
+        length = intervalLength(startPoint, endPoint),
+        numSplits = Math.max(Math.ceil(length / maxLength), 1),
+        dx = (endPoint[0] - startPoint[0]) / numSplits,
+        dy = (endPoint[1] - startPoint[1]) / numSplits,
+        startX = startPoint[0],
+        startY = startPoint[1];
 
       for (var i = 0; i <= numSplits; i++) {
         breaks.push([startX + dx * i, startY + dy * i]);
@@ -263,7 +286,7 @@ var koala = {
 
       for (var i = 0; i < breaks.length - 1; i++) {
         var sp = breaks[i],
-            ep = breaks[i+1];
+          ep = breaks[i + 1];
 
         var circle = splitableCircleAt(ep);
         if (circle && circle.isSplitable() && circle.checkIntersection(sp, ep)) {
@@ -274,6 +297,7 @@ var koala = {
 
     // Handle mouse events
     var prevMousePosition = null;
+
     function onMouseMove() {
       var mousePosition = d3.mouse(vis.node());
 
@@ -292,6 +316,7 @@ var koala = {
 
     // Handle touch events
     var prevTouchPositions = {};
+
     function onTouchMove() {
       var touchPositions = d3.touches(vis.node());
       for (var touchIndex = 0; touchIndex < touchPositions.length; touchIndex++) {

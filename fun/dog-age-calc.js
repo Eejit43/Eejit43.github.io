@@ -2,6 +2,11 @@ document.getElementById('toDog').addEventListener("click", toDog);
 document.getElementById('toHuman').addEventListener("click", toHuman);
 
 function showAlert(text, color) {
+  if (color === 'success') {
+    color = '#009c3f'
+  } else if (color === 'error') {
+    color = '#FF5555'
+  }
   Toastify({
     text: text,
     duration: 2000,
@@ -20,78 +25,62 @@ function showAlert(text, color) {
   }).showToast();
 }
 
+function showResult(id, type, color = undefined, icon = undefined) {
+  let oldElement = document.getElementById(id + '-runResult');
+  // Reset any timeout
+  let element = oldElement.cloneNode(true);
+  oldElement.parentNode.replaceChild(element, oldElement);
+  if (type === 'success') {
+    color = '#009c3f'
+    icon = 'check'
+  } else if (type === 'error') {
+    color = '#FF5555'
+    icon = 'times'
+  }
+  element.style.color = color;
+  element.className = 'fas fa-' + icon;
+  setTimeout(function () {
+    element.style.color = '';
+    element.className = '';
+  }, 2000);
+}
+
+function resetResult(id) {
+  let element = document.getElementById(id + '-runResult');
+  element.style.color = '';
+  element.className = '';
+}
+
 function toDog() {
   let humanAge = document.getElementById('humanAge').value;
-  let runError = document.getElementById("td-runError");
-  let runSuccess = document.getElementById("td-runSuccess");
-  let thrunError = document.getElementById("th-runError");
-  let thrunSuccess = document.getElementById("th-runSuccess");
   if (humanAge.length === 0) {
     showAlert('No input given!', '#FF5555');
-    runSuccess.className = "";
-    thrunSuccess.className = "";
-    thrunError.className = "";
-    runError.className = "fas fa-times";
-    setTimeout(function () {
-      runError.className = runError.className.replace("fas fa-times", "");
-    }, 2000);
+    showResult('td', 'error');
   } else if (humanAge >= 1) {
     let dogAge = Math.round(Math.exp((humanAge - 31) / 16));
     let output = `<hr>${humanAge} human years is about ${dogAge} years in dog years.`;
-
     document.getElementById('result').innerHTML = output;
     document.getElementById('dogAge').value = '';
-    runError.className = "";
-    runSuccess.className = "fas fa-check";
-    setTimeout(function () {
-      runSuccess.className = runSuccess.className.replace("fas fa-check", "");
-    }, 2000);
+    showResult('td', 'success');
   } else {
     showAlert('Input must be 1 or greater!', '#FF5555');
-    runSuccess.className = "";
-    thrunSuccess.className = "";
-    thrunError.className = "";
-    runError.className = "fas fa-times";
-    setTimeout(function () {
-      runError.className = runError.className.replace("fas fa-times", "");
-    }, 2000);
+    showResult('td', 'error');
   }
 }
 
 function toHuman() {
   let dogAge = document.getElementById('dogAge').value;
-  let runError = document.getElementById("th-runError");
-  let runSuccess = document.getElementById("th-runSuccess");
-  let tdrunError = document.getElementById("td-runError");
-  let tdrunSuccess = document.getElementById("td-runSuccess");
   if (dogAge.length === 0) {
-    showAlert("noinput");
-    runSuccess.className = "";
-    tdrunSuccess.className = "";
-    tdrunError.className = "";
-    runError.className = "fas fa-times";
-    setTimeout(function () {
-      runError.className = runError.className.replace("fas fa-times", "");
-    }, 2000);
+    showAlert('No input given!', '#FF5555');
+    showResult('th', 'error');
   } else if (dogAge >= 1) {
     let humanAge = Math.round(16 * Math.log(dogAge) + 31);
     let output = `<hr>${dogAge} dog years is about ${humanAge} years in human years.`;
-
     document.getElementById('result').innerHTML = output;
     document.getElementById('humanAge').value = '';
-    runError.className = "";
-    runSuccess.className = "fas fa-check";
-    setTimeout(function () {
-      runSuccess.className = runSuccess.className.replace("fas fa-check", "");
-    }, 2000);
+    showResult('th', 'success');
   } else {
-    showAlert("invalidinput");
-    runSuccess.className = "";
-    tdrunSuccess.className = "";
-    tdrunError.className = "";
-    runError.className = "fas fa-times";
-    setTimeout(function () {
-      runError.className = runError.className.replace("fas fa-times", "");
-    }, 2000);
+    showAlert('Input must be 1 or greater!', '#FF5555');
+    showResult('th', 'error');
   }
 }
