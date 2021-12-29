@@ -94,10 +94,6 @@ function reset() {
   document.getElementById('minutes').value = "1";
   document.getElementById('seconds').value = "0";
   document.getElementById("timer").innerHTML = "0h 0m 0s";
-  document.getElementById("reset").innerHTML = "Reset!";
-  setTimeout(function () {
-    document.getElementById("reset").innerHTML = "Reset";
-  }, 2000);
   showAlert('Reset!', 'success');
   resetResult('timer');
 }

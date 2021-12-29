@@ -55,42 +55,55 @@ window.onload = function () {
     document.getElementById('roman-convert').addEventListener("click", convertRoman);
     document.getElementById('roman-reset').addEventListener("click", resetRoman);
     document.getElementById('roman-output-copy').addEventListener("click", function () {
-        copyText(romanOutputCopy, 'roman-output-copy', 'Copy w/ macrons');
+        copyText('romanOutputCopy', 'roman-output-copy', 'Copy w/ macrons');
     });
     document.getElementById('roman-output-copy-2').addEventListener("click", function () {
-        copyText(romanOutputCopy2, 'roman-output-copy-2', 'Copy w/ underscores');
+        copyText('romanOutputCopy2', 'roman-output-copy-2', 'Copy w/ underscores');
     });
     document.getElementById('integer-output-copy').addEventListener("click", function () {
-        copyText(integerOutput, 'integer-output', 'integer-output-copy');
+        copyText('integerOutput', 'integer-output-copy', 'Copy');
     });
 };
 
-function copyText(letiable, button, message) {
-    navigator.clipboard.writeText(letiable);
-    document.getElementById(button).textContent = "Copied!";
+function copyText(variable, button, message) {
+    let oldElement = document.getElementById(button);
+    let newElement = oldElement.cloneNode(true);
+    oldElement.parentNode.replaceChild(newElement, oldElement);
+    console.log(eval(variable));
+    navigator.clipboard.writeText(eval(variable));
+    newElement.innerHTML = "Copied!";
     setTimeout(function () {
-        document.getElementById(button).textContent = message;
+        newElement.innerHTML = message;
     }, 2000);
     showAlert('Copied!', 'success');
+
+    newElement.addEventListener("click", function () {
+        copyText(variable, button, message)
+    });
 }
 
 function showAlert(text, color) {
-    Toastify({
-        text: text,
-        duration: 2000,
-        position: "center",
-        style: {
-            background: "#333",
-            boxShadow: "none",
-            minWidth: "150px",
-            textAlign: "center",
-            fontFamily: "'Montserrat', sans-serif",
-            fontWeight: "bold",
-            fontSize: "17px",
-            color: color,
-            padding: "16px 30px",
-        },
-    }).showToast();
+  if (color === 'success') {
+    color = '#009c3f'
+  } else if (color === 'error') {
+    color = '#FF5555'
+  }
+  Toastify({
+    text: text,
+    duration: 2000,
+    position: "center",
+    style: {
+      background: "#333",
+      boxShadow: "none",
+      minWidth: "150px",
+      textAlign: "center",
+      fontFamily: "'Montserrat', sans-serif",
+      fontWeight: "bold",
+      fontSize: "17px",
+      color: color,
+      padding: "16px 30px",
+    },
+  }).showToast();
 }
 
 function convertInteger() {

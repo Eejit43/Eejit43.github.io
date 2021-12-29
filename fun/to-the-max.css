@@ -68,17 +68,6 @@ circle {
   color: red;
 }
 
-#footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding-top: 18px;
-  padding-bottom: 2px;
-  background: -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 1)), to(rgba(255, 255, 255, 0)));
-  background: -moz-linear-gradient(bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
-}
-
 div.not-found {
   text-align: center;
   margin-top: 200px;

@@ -16,17 +16,21 @@ window.onload = function () {
 let unixInputState = 1; // 1 = seconds, 2 = milliseconds
 let unixOutputState = 1; // 1 = seconds, 2 = milliseconds
 
-let copyMessageTimeout;
-
 function copyText(toCopy, button) {
+    let oldElement = document.getElementById(button);
+    let newElement = oldElement.cloneNode(true);
+    oldElement.parentNode.replaceChild(newElement, oldElement);
     const element = document.getElementById(toCopy);
     navigator.clipboard.writeText(element.value);
-    document.getElementById(button).innerHTML = "Copied!";
-    clearTimeout(copyMessageTimeout);
-    copyMessageTimeout = setTimeout(function () {
-        document.getElementById(button).innerHTML = "Copy";
+    newElement.innerHTML = "Copied!";
+    setTimeout(function () {
+        newElement.innerHTML = "Copy";
     }, 2000);
-    showAlert('Copied!', 'success')
+    showAlert('Copied!', 'success');
+
+    newElement.addEventListener("click", function () {
+        copyText(toCopy, button)
+    });
 }
 
 function showAlert(text, color) {

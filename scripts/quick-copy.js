@@ -44,21 +44,28 @@ function showAlert(text, color) {
   }).showToast();
 }
 
-let copyMessageTimeout;
-
 function copyText(button, text) {
-  navigator.clipboard.writeText(text);
-  document.getElementById(button).innerHTML = "Copied!";
-  clearTimeout(copyMessageTimeout);
-  copyMessageTimeout = setTimeout(function () {
-    document.getElementById(button).innerHTML = "Copy";
-  }, 2000);
-  showAlert('Copied!', 'success')
+    let oldElement = document.getElementById(button);
+    let newElement = oldElement.cloneNode(true);
+    oldElement.parentNode.replaceChild(newElement, oldElement);
+    navigator.clipboard.writeText(text);
+    newElement.innerHTML = "Copied!";
+    setTimeout(function () {
+        newElement.innerHTML = "Copy";
+    }, 2000);
+    showAlert('Copied!', 'success');
+
+    newElement.addEventListener("click", function () {
+        copyText(button, text)
+    });
 }
 
+let clipboardTimeout;
+
 function clearClipboard() {
+  clearTimeout(clipboardTimeout);
   document.getElementById("clearclipboard").innerHTML = "Cleared!";
-  setTimeout(function () {
+  clipboardTimeout = setTimeout(function () {
     document.getElementById("clearclipboard").innerHTML = "Clear Clipboard";
   }, 2000);
   navigator.clipboard.writeText("");

@@ -103,14 +103,20 @@ function clear2() {
 }
 
 function copyText(toCopy, button) {
-  const element = document.getElementById(toCopy);
-  navigator.clipboard.writeText(element.value);
-  document.getElementById(button).innerHTML = "Copied!";
-  clearTimeout(copyMessageTimeout);
-  copyMessageTimeout = setTimeout(function () {
-    document.getElementById(button).innerHTML = "Copy";
-  }, 2000);
-  showAlert('Copied!', 'success')
+    let oldElement = document.getElementById(button);
+    let newElement = oldElement.cloneNode(true);
+    oldElement.parentNode.replaceChild(newElement, oldElement);
+    const element = document.getElementById(toCopy);
+    navigator.clipboard.writeText(element.value);
+    newElement.innerHTML = "Copied!";
+    setTimeout(function () {
+        newElement.innerHTML = "Copy";
+    }, 2000);
+    showAlert('Copied!', 'success');
+
+    newElement.addEventListener("click", function () {
+        copyText(toCopy, button)
+    });
 }
 
 function fileUpload() {
