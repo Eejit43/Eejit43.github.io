@@ -531,6 +531,7 @@ button:disabled:not(.fakeinput) {
   display: none;
 }
 
+.invisibleinput[type=text],
 .invisibleinput[type=number] {
   padding: none;
   border: none;
@@ -545,6 +546,7 @@ button:disabled:not(.fakeinput) {
   text-align: right;
 }
 
+.invisibleinput[type=text]:focus,
 .invisibleinput[type=number]:focus {
   outline: none;
   box-shadow: none;

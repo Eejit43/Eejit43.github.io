@@ -5,19 +5,22 @@ window.onload = function () {
   document.getElementById('pause-resume-timer').addEventListener("click", pauseResume);
   document.getElementById('reset').addEventListener("click", reset);
   document.getElementById('hours').addEventListener("input", function () {
-    return event.charCode >= 48 && event.charCode <= 57;
+    let input = document.getElementById('hours');
+    input.value = input.value.replace(/((?![0-9]).)/g, '');
   });
   document.getElementById('hours').addEventListener("input", function () {
     checkInput(this);
   });
   document.getElementById('minutes').addEventListener("input", function () {
-    return event.charCode >= 48 && event.charCode <= 57;
+    let input = document.getElementById('minutes');
+    input.value = input.value.replace(/((?![0-9]).)/g, '');
   });
   document.getElementById('minutes').addEventListener("input", function () {
     checkInput(this);
   });
   document.getElementById('seconds').addEventListener("input", function () {
-    return event.charCode >= 48 && event.charCode <= 57;
+    let input = document.getElementById('seconds');
+    input.value = input.value.replace(/((?![0-9]).)/g, '');
   });
   document.getElementById('seconds').addEventListener("input", function () {
     checkInput(this);
