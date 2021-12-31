@@ -17,6 +17,10 @@ window.onload = function () {
       document.getElementById('number').innerHTML = number;
     }
   }, false);
+  document.getElementById('manual-activation').addEventListener("click", function () {
+    number++;
+    document.getElementById('number').innerHTML = number;
+  });
 }
 
 function showAlert(text, color) {
