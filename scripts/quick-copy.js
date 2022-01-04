@@ -61,6 +61,7 @@ function copyText(button, text) {
 }
 
 let clipboardTimeout;
+let url = undefined;
 
 function clearClipboard() {
   clearTimeout(clipboardTimeout);
@@ -69,6 +70,7 @@ function clearClipboard() {
     document.getElementById("clearclipboard").innerHTML = "Clear Clipboard";
   }, 2000);
   navigator.clipboard.writeText("");
+  url = undefined;
   showAlert('Cleared!', 'success')
 }
 
@@ -81,8 +83,6 @@ navigator.permissions.query({
     document.getElementById("clipboardwarning").innerHTML = "<i class='fas fa-exclamation-triangle'></i> Permission to read clipboard denied!<br>";
   }
 })
-
-let url = undefined;
 
 async function clipboardDisplay() {
   navigator.clipboard.readText()
