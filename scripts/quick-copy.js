@@ -1,62 +1,22 @@
 window.onload = function () {
   document.getElementById('clearclipboard').addEventListener("click", clearClipboard);
   document.getElementById('copy-zws').addEventListener("click", function () {
-    copyText('copy-zws', '​')
+    copyVar('copy-zws', '​')
   });
   document.getElementById('copy-nbsp').addEventListener("click", function () {
-    copyText('copy-nbsp', ' ')
+    copyVar('copy-nbsp', ' ')
   });
   document.getElementById('copy-ems').addEventListener("click", function () {
-    copyText('copy-ems', ' ')
+    copyVar('copy-ems', ' ')
   });
   document.getElementById('copy-ens').addEventListener("click", function () {
-    copyText('copy-ens', ' ')
+    copyVar('copy-ens', ' ')
   });
   document.getElementById('copy-ts').addEventListener("click", function () {
-    copyText('copy-ts', ' ')
+    copyVar('copy-ts', ' ')
   });
   document.getElementById('selectclipboard').addEventListener("click", function () {
     document.getElementById('copiedtext').select()
-  });
-}
-
-function showAlert(text, color) {
-  if (color === 'success') {
-    color = '#009c3f'
-  } else if (color === 'error') {
-    color = '#FF5555'
-  }
-  Toastify({
-    text: text,
-    duration: 2000,
-    position: "center",
-    style: {
-      background: "#333",
-      boxShadow: "none",
-      minWidth: "150px",
-      textAlign: "center",
-      fontFamily: "'Montserrat', sans-serif",
-      fontWeight: "bold",
-      fontSize: "17px",
-      color: color,
-      padding: "16px 30px",
-    },
-  }).showToast();
-}
-
-function copyText(button, text) {
-  let oldElement = document.getElementById(button);
-  let newElement = oldElement.cloneNode(true);
-  oldElement.parentNode.replaceChild(newElement, oldElement);
-  navigator.clipboard.writeText(text);
-  newElement.innerHTML = "Copied!";
-  setTimeout(function () {
-    newElement.innerHTML = "Copy";
-  }, 2000);
-  showAlert('Copied!', 'success');
-
-  newElement.addEventListener("click", function () {
-    copyText(button, text)
   });
 }
 

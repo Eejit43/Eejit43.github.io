@@ -23,30 +23,6 @@ window.onload = function () {
   });
 }
 
-function showAlert(text, color) {
-  if (color === 'success') {
-    color = '#009c3f'
-  } else if (color === 'error') {
-    color = '#FF5555'
-  }
-  Toastify({
-    text: text,
-    duration: 2000,
-    position: "center",
-    style: {
-      background: "#333",
-      boxShadow: "none",
-      minWidth: "150px",
-      textAlign: "center",
-      fontFamily: "'Montserrat', sans-serif",
-      fontWeight: "bold",
-      fontSize: "17px",
-      color: color,
-      padding: "16px 30px",
-    },
-  }).showToast();
-}
-
 function updateKey() {
   let selection = document.getElementById('activationButton').value;
   if (selection === '1') {
