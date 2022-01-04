@@ -1,23 +1,23 @@
 // Emoji parser
 window.onload = function () {
+  twemoji.parse(document.body, {
+    folder: 'svg',
+    ext: '.svg'
+  });
+
+  setTimeout(function () {
     twemoji.parse(document.body, {
-        folder: 'svg',
-        ext: '.svg'
+      folder: 'svg',
+      ext: '.svg'
     });
+  }, 200);
 
-    setTimeout(function () {
-        twemoji.parse(document.body, {
-            folder: 'svg',
-            ext: '.svg'
-        });
-    }, 200);
-
-    setTimeout(function () {
-        twemoji.parse(document.body, {
-            folder: 'svg',
-            ext: '.svg'
-        });
-    }, 1000);
+  setTimeout(function () {
+    twemoji.parse(document.body, {
+      folder: 'svg',
+      ext: '.svg'
+    });
+  }, 1000);
 }
 
 // Popup alert
@@ -74,20 +74,20 @@ function resetResult(id) {
 
 // Copy text
 function copyText(toCopy, button) {
-    let oldElement = document.getElementById(button);
-    let newElement = oldElement.cloneNode(true);
-    oldElement.parentNode.replaceChild(newElement, oldElement);
-    const element = document.getElementById(toCopy);
-    navigator.clipboard.writeText(element.value);
-    newElement.innerHTML = "Copied!";
-    setTimeout(function () {
-        newElement.innerHTML = "Copy";
-    }, 2000);
-    showAlert('Copied!', 'success');
+  let oldElement = document.getElementById(button);
+  let newElement = oldElement.cloneNode(true);
+  oldElement.parentNode.replaceChild(newElement, oldElement);
+  const element = document.getElementById(toCopy);
+  navigator.clipboard.writeText(element.value);
+  newElement.innerHTML = "Copied!";
+  setTimeout(function () {
+    newElement.innerHTML = "Copy";
+  }, 2000);
+  showAlert('Copied!', 'success');
 
-    newElement.addEventListener("click", function () {
-        copyText(toCopy, button)
-    });
+  newElement.addEventListener("click", function () {
+    copyText(toCopy, button)
+  });
 }
 
 function copyVar(button, text) {

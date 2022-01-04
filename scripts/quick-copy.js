@@ -4,7 +4,7 @@ window.onload = function () {
     copyVar('copy-zws', '​')
   });
   document.getElementById('copy-nbsp').addEventListener("click", function () {
-    copyVar('copy-nbsp', ' ')
+    copyVar('copy-nbsp', '\u00a0')
   });
   document.getElementById('copy-ems').addEventListener("click", function () {
     copyVar('copy-ems', ' ')
@@ -51,9 +51,9 @@ async function clipboardDisplay() {
         document.getElementById('copiedtext').value = "";
         document.getElementById('selectclipboard').disabled = true;
         if (url === undefined) {
-        document.getElementById("clipboardwarning").innerHTML = "<span style='color:#009c3f;'><i class='far fa-clipboard'></i> Your clipboard is empty!<br></span>";
-        //console.log(url)
-      }
+          document.getElementById("clipboardwarning").innerHTML = "<span style='color:#009c3f;'><i class='far fa-clipboard'></i> Your clipboard is empty!<br></span>";
+          //console.log(url)
+        }
         getImg()
       } else {
         document.getElementById('copiedtext').value = text;
