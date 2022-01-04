@@ -82,13 +82,18 @@ navigator.permissions.query({
   }
 })
 
+let url = undefined;
+
 async function clipboardDisplay() {
   navigator.clipboard.readText()
     .then(text => {
       if (text.length === 0) {
         document.getElementById('copiedtext').value = "";
         document.getElementById('selectclipboard').disabled = true;
+        if (url === undefined) {
         document.getElementById("clipboardwarning").innerHTML = "<span style='color:#009c3f;'><i class='far fa-clipboard'></i> Your clipboard is empty!<br></span>";
+        //console.log(url)
+      }
         getImg()
       } else {
         document.getElementById('copiedtext').value = text;
@@ -108,7 +113,6 @@ async function clipboardDisplay() {
   setTimeout(clipboardDisplay, 1000);
 }
 
-
 function getImg() {
   try {
     navigator.permissions.query({
@@ -118,14 +122,14 @@ function getImg() {
         navigator.clipboard.read().then((data) => {
           for (let i = 0; i < data.length; i++) {
             data[i].getType("image/png").then((blob) => {
-              let url = URL.createObjectURL(blob);
-              document.getElementById("clipboardwarning").innerHTML = `<span style='color:#1c62d4;'><i class='far fa-clipboard'></i> Clipboard has image! (<a href='${url}' target="_blank">view</a>)<br></span>`;
+              url = URL.createObjectURL(blob);
+              document.getElementById("clipboardwarning").innerHTML = `<span style='color:#4b5663;'><i class='far fa-image'></i> Clipboard has image! (<a href='${url}' target="_blank">view</a>)<br></span>`;
             });
           }
         });
       }
     });
   } catch (err) {
-
+    url = undefined;
   }
 }
