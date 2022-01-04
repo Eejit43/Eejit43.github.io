@@ -8,6 +8,8 @@
   position: relative;
   cursor: pointer;
   text-decoration: underline dotted;
+  -webkit-text-decoration-line:  underline;
+  -webkit-text-decoration-style: dotted;
   text-align: center;
 }
 

@@ -175,7 +175,7 @@ function encode() {
   }
 }
 
-async function isBase64UrlImage(string) {
+async function isBase64Image(string) {
   let image = new Image()
   image.src = string
   return await (new Promise((resolve) => {
@@ -194,7 +194,7 @@ async function isBase64UrlImage(string) {
 
 const valid = async(string) => {
   let image = document.getElementById("image-output");
-  const valid = await isBase64UrlImage(string);
+  const valid = await isBase64Image(string);
   if (valid === true) {
     image.src = string;
   } else if (valid === false) {
