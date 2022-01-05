@@ -9,18 +9,26 @@ window.onload = function () {
     document.getElementById('number').innerHTML = 0;
     document.getElementById('activationButton').value = '1';
     key = 'Space';
-    document.getElementById('reset').blur();
+    blurAll();
   });
   document.addEventListener('keyup', (event) => {
+    blurAll();
     if (event.code === key) {
       number++;
       document.getElementById('number').innerHTML = number;
     }
   }, false);
   document.getElementById('manual-activation').addEventListener("click", function () {
+    blurAll();
     number++;
     document.getElementById('number').innerHTML = number;
   });
+}
+
+function blurAll() {
+  document.getElementById('activationButton').blur();
+  document.getElementById('manual-activation').blur();
+  document.getElementById('reset').blur();
 }
 
 function updateKey() {
@@ -33,4 +41,5 @@ function updateKey() {
     selection = 'KeyC';
   }
   key = selection;
+  blurAll();
 }

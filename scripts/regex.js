@@ -202,17 +202,7 @@ function runRmRegex() {
     showResult('rm', 'error');
   } else if (isValid) {
     let finalregex = new RegExp(regex, flags);
-    let replace = document.getElementById("rm-replace").value;
-    replace = replace.replace(/\\a/g, '\a');
-    replace = replace.replace(/\\b/g, '\b');
-    replace = replace.replace(/\\c/g, '\c');
-    replace = replace.replace(/\\e/g, '\e');
-    replace = replace.replace(/\\f/g, '\f');
-    replace = replace.replace(/\\n/g, '\n');
-    replace = replace.replace(/\\o/g, '\o');
-    replace = replace.replace(/\\r/g, '\r');
-    replace = replace.replace(/\\t/g, '\t');
-    replace = replace.replace(/\$(\d)/g, '$$$1');
+    let replace = document.getElementById("rm-replace").value.replace(/\\a/g, '\a').replace(/\\b/g, '\b').replace(/\\c/g, '\c').replace(/\\e/g, '\e').replace(/\\f/g, '\f').replace(/\\n/g, '\n').replace(/\\o/g, '\o').replace(/\\r/g, '\r').replace(/\\t/g, '\t').replace(/\$(\d)/g, '$$$1');
     let output = input.replace(finalregex, replace);
     showResult('rm', 'success');
     document.getElementById('rm-result').value = output;
