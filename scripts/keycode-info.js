@@ -29,7 +29,7 @@ window.onload = function () {
   });
 }
 
-if (/*@cc_on!@*/false) { // check for Internet Explorer
+if ( /*@cc_on!@*/ false) { // check for Internet Explorer
   document.onfocusin = onFocus;
   document.onfocusout = onBlur;
 } else {
@@ -39,15 +39,16 @@ if (/*@cc_on!@*/false) { // check for Internet Explorer
 
 function copyKeycodeInfo(variable) {
   if (valExist === 1) {
-  navigator.clipboard.writeText(variable);
-  showAlert('Copied!', 'success');
-}
+    navigator.clipboard.writeText(variable);
+    showAlert('Copied!', 'success');
+  }
 }
 
 function onBlur() {
   ready.innerHTML = "<span style='color:#FF5555'><i class='fas fa-exclamation-triangle'></i> Focus the tab in order for keys to be identified!</span>"
 };
-function onFocus(){
+
+function onFocus() {
   ready.innerHTML = "<span style='color:#009c3f'><i class='fas fa-check'></i> Ready to get key information!</span>"
 };
 
@@ -56,14 +57,26 @@ function keyInfo(event) {
   document.getElementById('key-results').className = 'keycodes-td-ready';
   key.innerHTML = event.key;
   keyVal = event.key;
-  if (String(event.key) === ' ') { key.innerHTML = 'Space ( )' };
-  if (String(event.key) === '\u00a0') { key.innerHTML = '<span class="tooltip-text tooltip-bottom" data-tooltip="Non breaking space">NBSP</span> (\u00a0)' };
+  if (String(event.key) === ' ') {
+    key.innerHTML = 'Space ( )'
+  };
+  if (String(event.key) === '\u00a0') {
+    key.innerHTML = '<span class="tooltip-text tooltip-bottom" data-tooltip="Non breaking space">NBSP</span> (\u00a0)'
+  };
   keyLocation.innerHTML = event.location;
   keyLocationVal = event.location;
-  if (String(event.location) === '0') { keyLocation.innerHTML = '0<br>(general)' };
-  if (String(event.location) === '1') { keyLocation.innerHTML = '1<br>(left modifier)' };
-  if (String(event.location) === '2') { keyLocation.innerHTML = '2<br>(right modifier)' };
-  if (String(event.location) === '3') { keyLocation.innerHTML = '3<br>(numpad)' };
+  if (String(event.location) === '0') {
+    keyLocation.innerHTML = '0<br>(general)'
+  };
+  if (String(event.location) === '1') {
+    keyLocation.innerHTML = '1<br>(left modifier)'
+  };
+  if (String(event.location) === '2') {
+    keyLocation.innerHTML = '2<br>(right modifier)'
+  };
+  if (String(event.location) === '3') {
+    keyLocation.innerHTML = '3<br>(numpad)'
+  };
   keyCode.innerHTML = event.code;
   keyCodeVal = event.code;
   keyAscii.innerHTML = event.which;
