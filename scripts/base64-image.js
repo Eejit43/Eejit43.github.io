@@ -1,21 +1,21 @@
 let copyMessageTimeout, copyMessageTimeout2;
 
 window.onload = function () {
-  document.getElementById('file-upload').addEventListener("change", fileUpload);
-  document.getElementById('encode').addEventListener("click", encode);
-  document.getElementById('decode').addEventListener("click", decode);
-  document.getElementById('clear').addEventListener("click", clear1);
-  document.getElementById('clear2').addEventListener("click", clear2);
-  document.getElementById('b64-copy-result').addEventListener("click", function () {
+  document.getElementById('file-upload').addEventListener('change', fileUpload);
+  document.getElementById('encode').addEventListener('click', encode);
+  document.getElementById('decode').addEventListener('click', decode);
+  document.getElementById('clear').addEventListener('click', clear1);
+  document.getElementById('clear2').addEventListener('click', clear2);
+  document.getElementById('b64-copy-result').addEventListener('click', function () {
     copyText('b64-result', 'b64-copy-result')
   });
-  document.getElementById('b64-copy-with-prefix-result').addEventListener("click", function () {
+  document.getElementById('b64-copy-with-prefix-result').addEventListener('click', function () {
     let button = 'b64-copy-with-prefix-result';
     navigator.clipboard.writeText(base64);
-    document.getElementById(button).innerHTML = "Copied!";
+    document.getElementById(button).innerHTML = 'Copied!';
     clearTimeout(copyMessageTimeout2);
     copyMessageTimeout2 = setTimeout(function () {
-      document.getElementById(button).innerHTML = "Copy with prefix";
+      document.getElementById(button).innerHTML = 'Copy with prefix';
     }, 2000);
     showAlert('Copied!', 'success')
   });
@@ -25,14 +25,14 @@ let clearMessageTimeout, clearMessageTimeout2;
 
 function clear1() {
   validFile = 1;
-  document.getElementById("file-upload").value = "";
-  document.getElementById("file-message").innerHTML = "";
-  document.getElementById('b64-result').value = "";
+  document.getElementById('file-upload').value = '';
+  document.getElementById('file-message').innerHTML = '';
+  document.getElementById('b64-result').value = '';
   document.getElementById('b64-copy-result').disabled = true;
   document.getElementById('b64-copy-with-prefix-result').disabled = true;
   document.getElementById('b64-open-result').disabled = true;
   showAlert('Cleared!', 'success')
-  document.getElementById('clear').innerHTML = "Cleared!";
+  document.getElementById('clear').innerHTML = 'Cleared!';
   clearTimeout(clearMessageTimeout);
   clearMessageTimeout = setTimeout(function () {
     document.getElementById('clear').innerHTML = 'Clear';
@@ -41,10 +41,10 @@ function clear1() {
 }
 
 function clear2() {
-  document.getElementById('stringToDecode').value = "";
-  document.getElementById('image-output').src = "";
+  document.getElementById('stringToDecode').value = '';
+  document.getElementById('image-output').src = '';
   showAlert('Cleared!', 'success')
-  document.getElementById('clear2').innerHTML = "Cleared!";
+  document.getElementById('clear2').innerHTML = 'Cleared!';
   clearTimeout(clearMessageTimeout2);
   clearMessageTimeout = setTimeout(function () {
     document.getElementById('clear2').innerHTML = 'Clear';
@@ -53,10 +53,10 @@ function clear2() {
 }
 
 function fileUpload() {
-  let file = document.getElementById("file-upload");
-  let fileMsg = document.getElementById("file-message");
-  let fileName = file.value.split("\\").pop()
-  fileMsg.innerHTML = "Uploaded: " + fileName;
+  let file = document.getElementById('file-upload');
+  let fileMsg = document.getElementById('file-message');
+  let fileName = file.value.split('\\').pop()
+  fileMsg.innerHTML = 'Uploaded: ' + fileName;
 }
 
 // https://newbedev.com/base64-image-open-in-new-tab-window-is-not-allowed-to-navigate-top-frame-navigations-to-data-urls
@@ -75,12 +75,12 @@ function openBase64InNewTab(data, mimeType) {
 }
 
 function encode() {
-  let old_element = document.getElementById("b64-open-result");
+  let old_element = document.getElementById('b64-open-result');
   let new_element = old_element.cloneNode(true);
   old_element.parentNode.replaceChild(new_element, old_element);
 
-  let image = document.getElementById("file-upload");
-  let output = document.getElementById("b64-result");
+  let image = document.getElementById('file-upload');
+  let output = document.getElementById('b64-result');
   if (image.value) {
     let reader = new FileReader();
     reader.onloadend = function () {
@@ -89,7 +89,7 @@ function encode() {
       if (imageType === 'png' || imageType === 'jpg' || imageType === 'jpeg' || imageType === 'webp' || imageType === 'bmp' || imageType === 'gif') {
         base64 = reader.result;
         output.value = reader.result.replace(/data:image\/.*?;base64,/g, '');
-        document.getElementById('b64-open-result').addEventListener("click", function () {
+        document.getElementById('b64-open-result').addEventListener('click', function () {
           openBase64InNewTab(reader.result.replace(/data:image\/.*?;base64,/g, ''), 'image/' + imageType);
         });
         document.getElementById('b64-copy-result').disabled = false;
@@ -126,25 +126,25 @@ async function isBase64Image(string) {
 }
 
 const valid = async(string) => {
-  let image = document.getElementById("image-output");
+  let image = document.getElementById('image-output');
   const valid = await isBase64Image(string);
   if (valid === true) {
     image.src = string;
   } else if (valid === false) {
-    document.getElementById('image-output').src = "";
+    document.getElementById('image-output').src = '';
     showAlert('Malformed input!', 'error')
     showResult('d', 'error');
   }
 };
 
 function decode() {
-  let string = document.getElementById("stringToDecode").value;
-  let image = document.getElementById("image-output");
+  let string = document.getElementById('stringToDecode').value;
+  let image = document.getElementById('image-output');
 
   let testRegex = new RegExp('data:image\/.*?;base64,');
   let stringHasType = testRegex.test(string);
   if (stringHasType === false) {
-    string = "data:image/png;base64," + string;
+    string = 'data:image/png;base64,' + string;
   }
   if (string.length === 0) {
     showAlert('Empty input!', 'error')

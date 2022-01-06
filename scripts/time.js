@@ -2,8 +2,8 @@
 time();
 
 function time() {
-  const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   let currentTime = new Date();
   let day = days[currentTime.getDay()];
   let date = currentTime.getDate();
@@ -34,10 +34,10 @@ function time() {
     timeZone: 'Etc/UTC'
   });
   if (minutes < 10) {
-    minutes = "0" + minutes
+    minutes = '0' + minutes
   }
   if (sec < 10) {
-    sec = "0" + sec
+    sec = '0' + sec
   }
 
   // If DST code modified from https://stackoverflow.com/questions/11887934/how-to-check-if-dst-daylight-saving-time-is-in-effect-and-if-so-the-offset
@@ -53,16 +53,16 @@ function time() {
 
   let today = new Date();
   if (today.isDstObserved()) {
-    document.getElementById('dst').innerHTML = "In";
+    document.getElementById('dst').innerHTML = 'In';
   } else {
-    document.getElementById('dst').innerHTML = "Not";
+    document.getElementById('dst').innerHTML = 'Not';
   }
 
-  let timesuffix = fullhours >= 12 ? "PM" : "AM";
+  let timesuffix = fullhours >= 12 ? 'PM' : 'AM';
 
-  let finaltime = hours + ":" + minutes + ":" + sec + " " + timesuffix;
-  let finaldate = day + ", " + month + " " + date + ", " + year + " (" + monthnumber + "/" + date + "/" + shortyear + ")";
-  let finaltimezone = timezone + " (UTC" + timeoffset + ")";
+  let finaltime = hours + ':' + minutes + ':' + sec + ' ' + timesuffix;
+  let finaldate = day + ', ' + month + ' ' + date + ', ' + year + ' (' + monthnumber + '/' + date + '/' + shortyear + ')';
+  let finaltimezone = timezone + ' (UTC' + timeoffset + ')';
 
   document.getElementById('time').innerHTML = finaltime;
   document.getElementById('date').innerHTML = finaldate;

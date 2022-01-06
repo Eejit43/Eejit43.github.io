@@ -1,17 +1,17 @@
 let romanOutputCopy, romanOutputCopy2, integerOutput;
 
 window.onload = function () {
-  document.getElementById('integer-input').addEventListener("input", function () {
+  document.getElementById('integer-input').addEventListener('input', function () {
     let input = document.getElementById('integer-input');
     if (parseInt(input.value) === 0) {
       input.value = '';
     }
   });
-  document.getElementById('integer-input').addEventListener("input", function () {
+  document.getElementById('integer-input').addEventListener('input', function () {
     let input = document.getElementById('integer-input')
     input.value = input.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');
   });
-  document.getElementById('integer-input').addEventListener("input", function () {
+  document.getElementById('integer-input').addEventListener('input', function () {
     let input = document.getElementById('integer-input').value;
     let output = document.getElementById('roman-output').textContent;
     let arrow = document.getElementById('integer-arrow');
@@ -26,9 +26,9 @@ window.onload = function () {
       document.getElementById('integer-reset').disabled = true;
     }
   });
-  document.getElementById('integer-convert').addEventListener("click", convertInteger);
-  document.getElementById('integer-reset').addEventListener("click", resetInteger);
-  document.getElementById('roman-input').addEventListener("input", function () {
+  document.getElementById('integer-convert').addEventListener('click', convertInteger);
+  document.getElementById('integer-reset').addEventListener('click', resetInteger);
+  document.getElementById('roman-input').addEventListener('input', function () {
     let input = document.getElementById('roman-input').value;
     let output = document.getElementById('integer-output').value;
     let arrow = document.getElementById('roman-arrow');
@@ -43,24 +43,24 @@ window.onload = function () {
       document.getElementById('roman-reset').disabled = true;
     }
   });
-  document.getElementById('roman-input').addEventListener("input", function () {
+  document.getElementById('roman-input').addEventListener('input', function () {
     let input = document.getElementById('roman-input');
     input.value = input.value.toUpperCase();
   });
-  document.getElementById('roman-input').addEventListener("input", function () {
+  document.getElementById('roman-input').addEventListener('input', function () {
     //return event.charCode === 67 || event.charCode === 68 || event.charCode === 73 || event.charCode === 76 || event.charCode === 77 || event.charCode === 86 || event.charCode === 88 || event.charCode === 95 || event.charCode === 99 || event.charCode === 100 || event.charCode === 105 || event.charCode === 108 || event.charCode === 109 || event.charCode === 118 || event.charCode === 120
     let input = document.getElementById('roman-input');
     input.value = input.value.replace(/((?![IVXLCDM_]).)/gi, '');
   });
-  document.getElementById('roman-convert').addEventListener("click", convertRoman);
-  document.getElementById('roman-reset').addEventListener("click", resetRoman);
-  document.getElementById('roman-output-copy').addEventListener("click", function () {
+  document.getElementById('roman-convert').addEventListener('click', convertRoman);
+  document.getElementById('roman-reset').addEventListener('click', resetRoman);
+  document.getElementById('roman-output-copy').addEventListener('click', function () {
     copyText('romanOutputCopy', 'roman-output-copy', 'Copy w/ macrons');
   });
-  document.getElementById('roman-output-copy-2').addEventListener("click", function () {
+  document.getElementById('roman-output-copy-2').addEventListener('click', function () {
     copyText('romanOutputCopy2', 'roman-output-copy-2', 'Copy w/ underscores');
   });
-  document.getElementById('integer-output-copy').addEventListener("click", function () {
+  document.getElementById('integer-output-copy').addEventListener('click', function () {
     copyText('integerOutput', 'integer-output-copy', 'Copy');
   });
 };
@@ -71,13 +71,13 @@ function copyText(variable, button, message) {
   oldElement.parentNode.replaceChild(newElement, oldElement);
   console.log(eval(variable));
   navigator.clipboard.writeText(eval(variable));
-  newElement.innerHTML = "Copied!";
+  newElement.innerHTML = 'Copied!';
   setTimeout(function () {
     newElement.innerHTML = message;
   }, 2000);
   showAlert('Copied!', 'success');
 
-  newElement.addEventListener("click", function () {
+  newElement.addEventListener('click', function () {
     copyText(variable, button, message)
   });
 }
@@ -92,15 +92,15 @@ function convertInteger() {
     output.innerHTML = romanize(input);
     copy.disabled = false;
     copy2.disabled = false;
-    document.getElementById('integer-arrow').style.color = "#009c3f";
-    document.getElementById('integer-arrow').className = "fas fa-arrow-right";
+    document.getElementById('integer-arrow').style.color = '#009c3f';
+    document.getElementById('integer-arrow').className = 'fas fa-arrow-right';
   } else {
     showAlert('Value must be greater than 0!', 'error');
     output.textContent = '​';
     copy.disabled = true;
     copy2.disabled = true;
-    document.getElementById('integer-arrow').style.color = "#bf4042";
-    document.getElementById('integer-arrow').className = "fas fa-times";
+    document.getElementById('integer-arrow').style.color = '#bf4042';
+    document.getElementById('integer-arrow').className = 'fas fa-times';
   }
 }
 
@@ -108,8 +108,8 @@ function resetInteger() {
   document.getElementById('integer-input').value = '';
   document.getElementById('integer-convert').disabled = true;
   document.getElementById('integer-reset').disabled = true;
-  document.getElementById('integer-arrow').style.color = "dimgray";
-  document.getElementById('integer-arrow').className = "fas fa-arrow-right";
+  document.getElementById('integer-arrow').style.color = 'dimgray';
+  document.getElementById('integer-arrow').className = 'fas fa-arrow-right';
   document.getElementById('roman-output').textContent = '​';
   document.getElementById('roman-output-copy').disabled = true;
   document.getElementById('roman-output-copy-2').disabled = true;
@@ -131,14 +131,14 @@ function convertRoman() {
     integerOutput = deromanize(input);
     output.value = integerOutput;
     copy.disabled = false;
-    document.getElementById('roman-arrow').style.color = "#009c3f";
-    document.getElementById('roman-arrow').className = "fas fa-arrow-right";
+    document.getElementById('roman-arrow').style.color = '#009c3f';
+    document.getElementById('roman-arrow').className = 'fas fa-arrow-right';
   } else {
     showAlert('Invalid roman numeral!', 'error');
     output.value = '';
     copy.disabled = false;
-    document.getElementById('roman-arrow').style.color = "#bf4042";
-    document.getElementById('roman-arrow').className = "fas fa-times";
+    document.getElementById('roman-arrow').style.color = '#bf4042';
+    document.getElementById('roman-arrow').className = 'fas fa-times';
   }
 }
 
@@ -146,8 +146,8 @@ function resetRoman() {
   document.getElementById('roman-input').value = '';
   document.getElementById('roman-convert').disabled = true;
   document.getElementById('roman-reset').disabled = true;
-  document.getElementById('roman-arrow').style.color = "dimgray";
-  document.getElementById('roman-arrow').className = "fas fa-arrow-right";
+  document.getElementById('roman-arrow').style.color = 'dimgray';
+  document.getElementById('roman-arrow').className = 'fas fa-arrow-right';
   document.getElementById('integer-output').value = '';
   document.getElementById('integer-output-copy').disabled = true;
 }
@@ -155,7 +155,7 @@ function resetRoman() {
 //Some portions modified from https://blog.stevenlevithan.com/archives/javascript-roman-numeral-converter and https://iandevlin.com/files/blog/romanNumerals.html
 //HHHUUUUGEEE thanks to EmNudge#5549 from The Coding Den for their help in remaking this function!!!
 
-const roman = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
+const roman = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I'];
 const decimal = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
 
 function romanize(value) {
@@ -189,11 +189,11 @@ function romanize(value) {
   return `<span style="border-top:1px solid">${barredNumerals}</span>` + regularNumerals;
 }
 
-/*const roman = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
+/*const roman = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I'];
 const decimal = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
 
 function getRoman(value) {
-    let romanNumeral = "";
+    let romanNumeral = '';
     let numThousands = 0;
     for (let i = 0; i < roman.length; i++) {
         if (value == 0) break;
@@ -214,15 +214,15 @@ function romanize(value) {
     if (value <= 0 */
 /* || value > 3999999*/
 /* ) return value;
-    let romanNumeral1 = "";
+    let romanNumeral1 = '';
     let romanO = getRoman(value);
     if (romanO.numThousands >= 4) {
-        let thousandString = "";
-        for (let j = 0; j < romanO.numThousands; j++) thousandString += "M";
+        let thousandString = '';
+        for (let j = 0; j < romanO.numThousands; j++) thousandString += 'M';
         let thousandsO = getRoman(romanO.numThousands);
-        let thBase = "<span style='border-top:1px solid'>" + thousandsO.romanNumeral + "</span>";
-        romanOutputCopy = thousandsO.romanNumeral.replace(/I/g, 'Ī').replace(/V/g, 'V̄').replace(/X/g, 'X̄').replace(/L/g, 'L̄').replace(/C/g, 'C̄').replace(/D/g, 'D̄').replace(/M/g, 'M̄') + romanO.romanNumeral.replace(thousandString, "");
-        romanOutputCopy2 = thousandsO.romanNumeral.replace(/(\w)/g, '_$1') + romanO.romanNumeral.replace(thousandString, "");
+        let thBase = '<span style="border-top:1px solid">' + thousandsO.romanNumeral + '</span>';
+        romanOutputCopy = thousandsO.romanNumeral.replace(/I/g, 'Ī').replace(/V/g, 'V̄').replace(/X/g, 'X̄').replace(/L/g, 'L̄').replace(/C/g, 'C̄').replace(/D/g, 'D̄').replace(/M/g, 'M̄') + romanO.romanNumeral.replace(thousandString, '');
+        romanOutputCopy2 = thousandsO.romanNumeral.replace(/(\w)/g, '_$1') + romanO.romanNumeral.replace(thousandString, '');
         romanNumeral = romanO.romanNumeral.replace(thousandString, thBase);
     } else romanNumeral = romanO.romanNumeral;
     return romanNumeral;

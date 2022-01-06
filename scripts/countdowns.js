@@ -20,53 +20,53 @@ function countdown(date, elementID) {
   let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
   if (hours === 0 && minutes === 0 && seconds === 0) {
-    daysfinalsuffix = "";
+    daysfinalsuffix = '';
   } else {
-    daysfinalsuffix = ", ";
+    daysfinalsuffix = ', ';
   }
 
   if (days === 1) {
-    daysfinal = days + " day" + daysfinalsuffix;
+    daysfinal = days + ' day' + daysfinalsuffix;
   } else if (days === 0) {
-    daysfinal = "";
+    daysfinal = '';
   } else {
-    daysfinal = days + " days" + daysfinalsuffix;
+    daysfinal = days + ' days' + daysfinalsuffix;
   }
 
   if (minutes === 0 && seconds === 0) {
-    hoursfinalsuffix = "";
+    hoursfinalsuffix = '';
   } else {
-    hoursfinalsuffix = ", ";
+    hoursfinalsuffix = ', ';
   }
 
   if (hours === 1) {
-    hoursfinal = hours + " hour" + hoursfinalsuffix;
+    hoursfinal = hours + ' hour' + hoursfinalsuffix;
   } else if (hours === 0) {
-    hoursfinal = "";
+    hoursfinal = '';
   } else {
-    hoursfinal = hours + " hours" + hoursfinalsuffix;
+    hoursfinal = hours + ' hours' + hoursfinalsuffix;
   }
 
   if (seconds === 0) {
-    minutesfinalsuffix = "";
+    minutesfinalsuffix = '';
   } else {
-    minutesfinalsuffix = ", ";
+    minutesfinalsuffix = ', ';
   }
 
   if (minutes === 1) {
-    minutesfinal = minutes + " minute" + minutesfinalsuffix;
+    minutesfinal = minutes + ' minute' + minutesfinalsuffix;
   } else if (minutes === 0) {
-    minutesfinal = "";
+    minutesfinal = '';
   } else {
-    minutesfinal = minutes + " minutes" + minutesfinalsuffix;
+    minutesfinal = minutes + ' minutes' + minutesfinalsuffix;
   }
 
   if (seconds === 1) {
-    secondsfinal = seconds + " second";
+    secondsfinal = seconds + ' second';
   } else if (seconds === 0) {
-    secondsfinal = "";
+    secondsfinal = '';
   } else {
-    secondsfinal = seconds + " seconds";
+    secondsfinal = seconds + ' seconds';
   }
 
   distance <= 0 ? document.getElementById(elementID).innerHTML = '<span style="color:#FF5555;">This event has already occurred!</span>' : document.getElementById(elementID).innerHTML = daysfinal + hoursfinal + minutesfinal + secondsfinal;

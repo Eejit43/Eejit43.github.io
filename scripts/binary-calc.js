@@ -111,7 +111,7 @@ function notValid() {
       break;
   }
 
-  message.innerHTML = `<i class='fas fa-exclamation-triangle'></i> Malformed input (should be in ${inputTypeText} format)!<br>`;
+  message.innerHTML = `<i class="fas fa-exclamation-triangle"></i> Malformed input (should be in ${inputTypeText} format)!<br>`;
   output.value = '';
   copyOutput.disabled = true;
 }

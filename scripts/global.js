@@ -30,17 +30,17 @@ function showAlert(text, color) {
   Toastify({
     text: text,
     duration: 2000,
-    position: "center",
+    position: 'center',
     style: {
-      background: "#333",
-      boxShadow: "none",
-      minWidth: "150px",
-      textAlign: "center",
-      fontFamily: "'Montserrat', sans-serif",
-      fontWeight: "bold",
-      fontSize: "17px",
+      background: '#333',
+      boxShadow: 'none',
+      minWidth: '150px',
+      textAlign: 'center',
+      fontFamily: '"Montserrat", sans-serif',
+      fontWeight: 'bold',
+      fontSize: '17px',
       color: color,
-      padding: "16px 30px",
+      padding: '16px 30px',
     },
   }).showToast();
 }
@@ -79,13 +79,13 @@ function copyText(toCopy, button) {
   oldElement.parentNode.replaceChild(newElement, oldElement);
   const element = document.getElementById(toCopy);
   navigator.clipboard.writeText(element.value);
-  newElement.innerHTML = "Copied!";
+  newElement.innerHTML = 'Copied!';
   setTimeout(function () {
-    newElement.innerHTML = "Copy";
+    newElement.innerHTML = 'Copy';
   }, 2000);
   showAlert('Copied!', 'success');
 
-  newElement.addEventListener("click", function () {
+  newElement.addEventListener('click', function () {
     copyText(toCopy, button)
   });
 }
@@ -95,13 +95,13 @@ function copyVar(button, text) {
   let newElement = oldElement.cloneNode(true);
   oldElement.parentNode.replaceChild(newElement, oldElement);
   navigator.clipboard.writeText(text);
-  newElement.innerHTML = "Copied!";
+  newElement.innerHTML = 'Copied!';
   setTimeout(function () {
-    newElement.innerHTML = "Copy";
+    newElement.innerHTML = 'Copy';
   }, 2000);
   showAlert('Copied!', 'success');
 
-  newElement.addEventListener("click", function () {
+  newElement.addEventListener('click', function () {
     copyText(button, text)
   });
 }

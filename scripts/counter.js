@@ -2,8 +2,8 @@ let number = 0;
 let key = 'Space';
 
 window.onload = function () {
-  document.getElementById('activationButton').addEventListener("change", updateKey);
-  document.getElementById('reset').addEventListener("click", function () {
+  document.getElementById('activationButton').addEventListener('change', updateKey);
+  document.getElementById('reset').addEventListener('click', function () {
     showAlert('Reset!', 'success')
     number = 0;
     document.getElementById('number').innerHTML = 0;
@@ -18,7 +18,7 @@ window.onload = function () {
       document.getElementById('number').innerHTML = number;
     }
   }, false);
-  document.getElementById('manual-activation').addEventListener("click", function () {
+  document.getElementById('manual-activation').addEventListener('click', function () {
     blurAll();
     number++;
     document.getElementById('number').innerHTML = number;

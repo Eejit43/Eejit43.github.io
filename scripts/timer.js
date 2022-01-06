@@ -1,28 +1,28 @@
 document.getElementById('pause-resume-timer').disabled = true;
 
 window.onload = function () {
-  document.getElementById('start-timer').addEventListener("click", startTimer);
-  document.getElementById('pause-resume-timer').addEventListener("click", pauseResume);
-  document.getElementById('reset').addEventListener("click", reset);
-  document.getElementById('hours').addEventListener("input", function () {
+  document.getElementById('start-timer').addEventListener('click', startTimer);
+  document.getElementById('pause-resume-timer').addEventListener('click', pauseResume);
+  document.getElementById('reset').addEventListener('click', reset);
+  document.getElementById('hours').addEventListener('input', function () {
     let input = document.getElementById('hours');
     input.value = input.value.replace(/((?![0-9]).)/g, '');
   });
-  document.getElementById('hours').addEventListener("input", function () {
+  document.getElementById('hours').addEventListener('input', function () {
     checkInput(this);
   });
-  document.getElementById('minutes').addEventListener("input", function () {
+  document.getElementById('minutes').addEventListener('input', function () {
     let input = document.getElementById('minutes');
     input.value = input.value.replace(/((?![0-9]).)/g, '');
   });
-  document.getElementById('minutes').addEventListener("input", function () {
+  document.getElementById('minutes').addEventListener('input', function () {
     checkInput(this);
   });
-  document.getElementById('seconds').addEventListener("input", function () {
+  document.getElementById('seconds').addEventListener('input', function () {
     let input = document.getElementById('seconds');
     input.value = input.value.replace(/((?![0-9]).)/g, '');
   });
-  document.getElementById('seconds').addEventListener("input", function () {
+  document.getElementById('seconds').addEventListener('input', function () {
     checkInput(this);
   });
 }
@@ -39,14 +39,14 @@ function reset() {
   audio.pause();
   audio.currentTime = 0;
   timerState = 1;
-  document.getElementById('pause-resume-timer').innerHTML = "Pause";
-  document.getElementById('timer-time').innerHTML = "";
+  document.getElementById('pause-resume-timer').innerHTML = 'Pause';
+  document.getElementById('timer-time').innerHTML = '';
   document.getElementById('start-timer').disabled = false;
   document.getElementById('pause-resume-timer').disabled = true;
-  document.getElementById('hours').value = "0";
-  document.getElementById('minutes').value = "1";
-  document.getElementById('seconds').value = "0";
-  document.getElementById("timer").innerHTML = "0h 0m 0s";
+  document.getElementById('hours').value = '0';
+  document.getElementById('minutes').value = '1';
+  document.getElementById('seconds').value = '0';
+  document.getElementById('timer').innerHTML = '0h 0m 0s';
   showAlert('Reset!', 'success');
   resetResult('timer');
 }
@@ -57,9 +57,9 @@ function startTimer() {
   audio.pause();
   audio.currentTime = 0;
   timerState = 1;
-  let hours = parseInt(document.getElementById("hours").value);
-  let minutes = parseInt(document.getElementById("minutes").value);
-  let seconds = parseInt(document.getElementById("seconds").value);
+  let hours = parseInt(document.getElementById('hours').value);
+  let minutes = parseInt(document.getElementById('minutes').value);
+  let seconds = parseInt(document.getElementById('seconds').value);
   if (isNaN(hours) || isNaN(minutes) || isNaN(seconds)) {
     showAlert('Empty input!', 'error');
     showResult('timer', 'error');
@@ -91,10 +91,10 @@ function timer() {
   minutesuntil = Math.floor((distance - (hoursuntil * 3600)) / 60);
   secondsuntil = Math.floor(distance - (hoursuntil * 3600) - (minutesuntil * 60));
 
-  document.getElementById("timer").innerHTML = `${hoursuntil}h ${minutesuntil}m ${secondsuntil}s`;
+  document.getElementById('timer').innerHTML = `${hoursuntil}h ${minutesuntil}m ${secondsuntil}s`;
 
   if (distance <= 0) {
-    document.getElementById("timer").innerHTML = "Ended!";
+    document.getElementById('timer').innerHTML = 'Ended!';
     audio.play();
     audio.loop = true;
     clearInterval(runTimer);
@@ -102,7 +102,7 @@ function timer() {
 
   let targettime2 = new Date(targettime * 1000);
 
-  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   let date = targettime2.getDate();
   let month = months[targettime2.getMonth()];
   let year = targettime2.getFullYear();
@@ -112,15 +112,15 @@ function timer() {
   let sec = targettime2.getSeconds();
 
   if (minutes < 10) {
-    minutes = "0" + minutes
+    minutes = '0' + minutes
   };
   if (sec < 10) {
-    sec = "0" + sec
+    sec = '0' + sec
   };
 
-  let timesuffix = fullhours >= 12 ? "PM" : "AM";
+  let timesuffix = fullhours >= 12 ? 'PM' : 'AM';
 
-  document.getElementById('timer-time').innerHTML = month + " " + date + ", " + year + " " + hours + ":" + minutes + ":" + sec + " " + timesuffix;
+  document.getElementById('timer-time').innerHTML = month + ' ' + date + ', ' + year + ' ' + hours + ':' + minutes + ':' + sec + ' ' + timesuffix;
 }
 
 let timerState = 1; // 1 = running, 2 = paused
@@ -128,11 +128,11 @@ let timerState = 1; // 1 = running, 2 = paused
 function pauseResume() {
   if (timerState === 1) {
     timerState = 2;
-    document.getElementById('pause-resume-timer').innerHTML = "Resume";
+    document.getElementById('pause-resume-timer').innerHTML = 'Resume';
     clearInterval(runTimer);
   } else {
     timerState = 1;
-    document.getElementById('pause-resume-timer').innerHTML = "Pause";
+    document.getElementById('pause-resume-timer').innerHTML = 'Pause';
 
     let hours2 = parseInt(hoursuntil);
     let minutes2 = parseInt(minutesuntil);

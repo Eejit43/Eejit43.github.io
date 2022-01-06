@@ -1,10 +1,10 @@
 window.onload = function () {
-  document.getElementById('toupper').addEventListener("click", toUpper);
-  document.getElementById('tolower').addEventListener("click", toLower);
-  document.getElementById('totitle').addEventListener("click", toTitle);
-  document.getElementById('tosentence').addEventListener("click", toSentence);
-  document.getElementById('clear').addEventListener("click", clearAll);
-  document.getElementById('copy-result').addEventListener("click", function () {
+  document.getElementById('toupper').addEventListener('click', toUpper);
+  document.getElementById('tolower').addEventListener('click', toLower);
+  document.getElementById('totitle').addEventListener('click', toTitle);
+  document.getElementById('tosentence').addEventListener('click', toSentence);
+  document.getElementById('clear').addEventListener('click', clearAll);
+  document.getElementById('copy-result').addEventListener('click', function () {
     copyText('result', 'copy-result')
   });
 }
@@ -12,8 +12,8 @@ window.onload = function () {
 let clearMessageTimeout;
 
 function clearAll() {
-  document.getElementById('stringToModify').value = "";
-  document.getElementById('result').value = "";
+  document.getElementById('stringToModify').value = '';
+  document.getElementById('result').value = '';
   document.getElementById('copy-result').disabled = true;
   showAlert('Cleared!', 'success')
   document.getElementById('clear').innerHTML = 'Cleared!';
@@ -28,26 +28,26 @@ function clearAll() {
 }
 
 function toUpper() {
-  let string = document.getElementById("stringToModify").value;
+  let string = document.getElementById('stringToModify').value;
   if (string.length === 0) {
     showAlert('Empty input!', 'error');
     showResult('u', 'error');
   } else {
     let result = string.toUpperCase();
-    document.getElementById("result").value = result;
+    document.getElementById('result').value = result;
     showResult('u', 'success');
     document.getElementById('copy-result').disabled = false;
   }
 }
 
 function toLower() {
-  let string = document.getElementById("stringToModify").value;
+  let string = document.getElementById('stringToModify').value;
   if (string.length === 0) {
     showAlert('Empty input!', 'error');
     showResult('l', 'error');
   } else {
     let result = string.toLowerCase();
-    document.getElementById("result").value = result;
+    document.getElementById('result').value = result;
     showResult('l', 'success');
     document.getElementById('copy-result').disabled = false;
   }
@@ -70,20 +70,20 @@ function titleCase(str) {
 }
 
 function toTitle() {
-  let string = document.getElementById("stringToModify").value;
+  let string = document.getElementById('stringToModify').value;
   if (string.length === 0) {
     showAlert('Empty input!', 'error');
     showResult('t', 'error');
   } else {
     let result = titleCase(string);
-    document.getElementById("result").value = result;
+    document.getElementById('result').value = result;
     showResult('t', 'success');
     document.getElementById('copy-result').disabled = false;
   }
 }
 
 function toSentence() {
-  let string = document.getElementById("stringToModify").value;
+  let string = document.getElementById('stringToModify').value;
   if (string.length === 0) {
     showAlert('Empty input!', 'error');
     showResult('s', 'error');
@@ -96,7 +96,7 @@ function toSentence() {
     result = result.replace(/(\s)i'd(\.|\!|\?|\s|\n|$)/gmi, '$1I\'d$2');
     result = result.replace(/(\s)i'll(\.|\!|\?|\s|\n|$)/gmi, '$1I\'ll$2');
     result = result.replace(/(\s)i've(\.|\!|\?|\s|\n|$)/gmi, '$1I\'ve$2');
-    document.getElementById("result").value = result;
+    document.getElementById('result').value = result;
     showResult('s', 'success');
     document.getElementById('copy-result').disabled = false;
   }

@@ -14,11 +14,11 @@ fetch('https://exchange-rates.abstractapi.com/v1/live/?api_key=1b28c23d9af34b2ea
     usdbtc = rp.BTC;
     usddoge = rp.DOGE.toLocaleString();
 
-    let dateupdated = new Date(lastupdated).toLocaleDateString("en-US")
+    let dateupdated = new Date(lastupdated).toLocaleDateString('en-US')
 
-    let timeupdated = new Date(lastupdated).toLocaleTimeString("en-US")
+    let timeupdated = new Date(lastupdated).toLocaleTimeString('en-US')
 
-    let lastupdatedtime = dateupdated + " " + timeupdated;
+    let lastupdatedtime = dateupdated + ' ' + timeupdated;
 
     document.getElementById('lastupdated').innerHTML = lastupdatedtime;
     document.getElementById('usdcad').innerHTML = usdcad;
@@ -26,7 +26,7 @@ fetch('https://exchange-rates.abstractapi.com/v1/live/?api_key=1b28c23d9af34b2ea
     document.getElementById('usdgbp').innerHTML = usdgbp;
     document.getElementById('usdbtc').innerHTML = usdbtc;
     document.getElementById('usddoge').innerHTML = usddoge;
-    document.getElementById('reloadprompt').innerHTML = "";
+    document.getElementById('reloadprompt').innerHTML = '';
   })
   .catch((err) => {})
 
