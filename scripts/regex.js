@@ -33,6 +33,28 @@ window.onload = function () {
   document.getElementById('rm-copy-result').addEventListener("click", function () {
     copyText('rm-result', 'rm-copy-result')
   });
+  document.getElementById('rm-regex').addEventListener("keyup", function (event) {
+    if (event.key === 'Enter' || event.keyCode === 13) {
+      document.getElementById('rm-regex').value += '\\n';
+    }
+  });
+  document.getElementById('rm-regex').addEventListener("paste", function (event) {
+    event.preventDefault();
+    let content = event.clipboardData.getData('text');
+    content = content.replace(/\n/g, '\\n');
+    document.getElementById('rm-regex').value += content;
+  });
+  document.getElementById('rm-replace').addEventListener("keyup", function (event) {
+    if (event.key === 'Enter' || event.keyCode === 13) {
+      document.getElementById('rm-replace').value += '\\n';
+    }
+  });
+  document.getElementById('rm-replace').addEventListener("paste", function (event) {
+    event.preventDefault();
+    let content = event.clipboardData.getData('text');
+    content = content.replace(/\n/g, '\\n');
+    document.getElementById('rm-replace').value += content;
+  });
 }
 
 // Duplicate Line Remover
