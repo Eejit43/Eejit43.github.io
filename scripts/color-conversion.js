@@ -155,7 +155,7 @@ function hex() {
 
     document.getElementById('hex-hsl-copy').disabled = false;
   } else {
-    document.getElementById('hex-display').innerHTML = '<i class="fas fa-times" style="color:#bf4042;padding-bottom:5px;vertical-align:middle;display:inline-flex;padding-bottom:20px;font-size:25px;"></i>';
+    document.getElementById('hex-display').innerHTML = hex === '' ? '' : '<i class="fas fa-times" style="color:#bf4042;padding-bottom:5px;vertical-align:middle;display:inline-flex;padding-bottom:20px;font-size:25px;"></i>';
     document.getElementById('hex-display').style.backgroundColor = '';
     document.getElementById('hex-rgb').value = '';
     document.getElementById('hex-rgb-copy').disabled = true;
@@ -232,7 +232,7 @@ function rgb() {
 
     document.getElementById('rgb-hsl-copy').disabled = false;
   } else {
-    document.getElementById('rgb-display').innerHTML = '<i class="fas fa-times" style="color:#bf4042;padding-bottom:5px;vertical-align:middle;display:inline-flex;padding-bottom:20px;font-size:25px;"></i>';
+    document.getElementById('rgb-display').innerHTML = rgb === '' ? '' : '<i class="fas fa-times" style="color:#bf4042;padding-bottom:5px;vertical-align:middle;display:inline-flex;padding-bottom:20px;font-size:25px;"></i>';
     document.getElementById('rgb-display').style.backgroundColor = '';
     document.getElementById('rgb-hex').value = '';
     document.getElementById('rgb-hex-copy').disabled = true;
@@ -361,7 +361,7 @@ function hsl() {
 
     document.getElementById('hsl-rgb-copy').disabled = false;
   } else {
-    document.getElementById('hsl-display').innerHTML = '<i class="fas fa-times" style="color:#bf4042;padding-bottom:5px;vertical-align:middle;display:inline-flex;padding-bottom:20px;font-size:25px;"></i>';
+    document.getElementById('hsl-display').innerHTML = hsl === '' ? '' : '<i class="fas fa-times" style="color:#bf4042;padding-bottom:5px;vertical-align:middle;display:inline-flex;padding-bottom:20px;font-size:25px;"></i>';
     document.getElementById('hsl-display').style.backgroundColor = '';
     document.getElementById('hsl-hex').value = '';
     document.getElementById('hsl-hex-copy').disabled = true;
