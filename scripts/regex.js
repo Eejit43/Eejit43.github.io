@@ -41,7 +41,7 @@ window.onload = function () {
   document.getElementById('rm-regex').addEventListener("paste", function (event) {
     event.preventDefault();
     let content = event.clipboardData.getData('text');
-    content = content.replace(/\n/g, '\\n');
+    content = content.replace(/\n/g, '\\n').replace(/\r/g, '\\r');
     document.getElementById('rm-regex').value += content;
   });
   document.getElementById('rm-replace').addEventListener("keyup", function (event) {
@@ -52,7 +52,7 @@ window.onload = function () {
   document.getElementById('rm-replace').addEventListener("paste", function (event) {
     event.preventDefault();
     let content = event.clipboardData.getData('text');
-    content = content.replace(/\n/g, '\\n');
+    content = content.replace(/\n/g, '\\n').replace(/\r/g, '\\r');
     document.getElementById('rm-replace').value += content;
   });
 }
