@@ -5,22 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Some useful tools for general purposes!">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://eejit43.github.io/time-conversion">
+    <meta property="og:url" content="https://eejit43.github.io/currency-converter">
     <meta property="og:site_name" content="Eejit's Tools">
-    <meta property="og:title" content="UNIX Converter">
+    <meta property="og:title" content="Currency Exchange Rates">
     <meta property="og:description" content="Some useful tools for general purposes!">
     <meta name="keywords" content="">
     <meta property="og:image" content="https://eejit43.github.io/icon.png">
     <meta property="og:image:alt" content="Eejit's Tools">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="UNIX Converter | Eejit's Tools">
+    <meta name="twitter:title" content="Currency Exchange Rates | Eejit's Tools">
     <meta name="twitter:description" content="Some useful tools for general purposes!">
-    <meta name="twitter:url" content="https://eejit43.github.io/time-conversion">
+    <meta name="twitter:url" content="https://eejit43.github.io/currency-converter">
     <meta name="twitter:image" content="https://eejit43.github.io/icon.png">
     <meta name="twitter:image:alt" content="Eejit's Tools">
-    <title>UNIX Converter | Eejit's Tools</title>
+    <title>Currency Exchange Rates | Eejit's Tools</title>
     <link rel="stylesheet" href="../styles/styles.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="favicon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -58,53 +57,22 @@
       </span>
     </nav>
     <div class="toolbox">
-      <h1>UNIX Time Converter:</h1>
-      <table class="unixtable">
-        <tbody>
-          <tr>
-            <td>
-              <p class="tooltext">
-                Standard Time:<br>
-                <input id="standard-input" style="width:40%;">
-                <br><button id="standard-input-reset">Set to current time</button>
-              </p>
-            </td>
-            <td>
-              <p class="tooltext">
-                <span id="unix-input-title">UNIX Time (seconds):</span><br>
-                <input id="unix-input" style="width:40%;">
-                <br><button id="unix-input-reset">Set to current time</button> <button id="unix-input-switch">Switch to milliseconds</button>
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <i class="fas fa-arrow-down" style="color:#009c3f;font-size:30px;margin-left:19%;" id="standard-runstatus"></i>
-              <p class="tooltext">
-                <span id="unix-output-title">UNIX Time (seconds):</span><br>
-                <input id="unix-output" style="width:40%;" readonly>
-                <br><button id="unix-output-copy" disabled>Copy</button> <button id="unix-output-switch" disabled>Switch to milliseconds</button>
-              </p>
-            </td>
-            <td>
-              <i class="fas fa-arrow-down" style="color:#009c3f;font-size:30px;margin-left:19%;" id="unix-runstatus"></i>
-              <p class="tooltext">
-                Standard Time:<br>
-                <input id="standard-output" style="width:40%;" readonly>
-                <br><button id="standard-output-copy" disabled>Copy</button>
-              </p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <h1>Currency Exchange Rates:</h1>
+      <p class="tooltext">
+        <span id="reloadprompt" style="color:#FF5555">If you see this message, please reload the page.<br></span>
+        <span style="color:dimgray;font-size:15px;">Last Updated: <span id="lastupdated"><span style="color:#FF5555">Error</span></span><br></span>
+        <span style="color:#24823e;">$1 <span class="tooltip-text tooltip-bottom" data-tooltip="United States Dollar">USD</span></span> = <span id="usdcad"><span style="color:#FF5555">Error</span></span> <span class="tooltip-text tooltip-bottom" data-tooltip="Canadian Dollar">CAD</span><span class="tab"></span>1 CAD = <span id='CAD' style="color:#24823e;"><span style="color:#FF5555">Loading...</span></span><br>
+        <span style="color:#24823e;visibility:hidden;">$1 USD</span> = <span id="usdeur"><span style="color:#FF5555">Error</span></span> <span class="tooltip-text tooltip-bottom" data-tooltip="Euro">EUR</span><span class="tab"></span>1 EUR = <span id='EUR' style="color:#24823e;"><span style="color:#FF5555">Loading...</span></span><br>
+        <span style="color:#24823e;visibility:hidden;">$1 USD</span> = <span id="usdgbp"><span style="color:#FF5555">Error</span></span> <span class="tooltip-text tooltip-bottom" data-tooltip="Great British Pound Sterling">GBP</span><span class="tab"></span>1 GBP = <span id='GBP' style="color:#24823e;"><span style="color:#FF5555">Loading...</span></span><br>
+        <span style="color:#24823e;visibility:hidden;">$1 USD</span> = <span id="usdbtc"><span style="color:#FF5555">Error</span></span> <span class="tooltip-text tooltip-bottom" data-tooltip="Bitcoin">BTC</span><span class="tab"></span>1 BTC = <span id='BTC' style="color:#24823e;"><span style="color:#FF5555">Loading...</span></span><br>
+        <span style="color:#24823e;visibility:hidden;">$1 USD</span> = <span id="usddoge"><span style="color:#FF5555">Error</span></span> <span class="tooltip-text tooltip-bottom" data-tooltip="Dogecoin">DOGE</span><span class="tab"></span>1 DOGE = <span id='DOGE' style="color:#24823e;"><span style="color:#FF5555">Loading...</span></span>
       </p>
-      <script src="../scripts/time-conversion.js"></script>
+      <script src="../scripts/currency-converter.js"></script>
       <br>
       <noscript>
         <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
         <div class="warning">Looks like this script couldn't be displayed for some reason!</div>
       </noscript>
     </div>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   </body>
 </html>
