@@ -47,20 +47,20 @@ function gettousd(code) {
 
 setTimeout(function () {
   gettousd('CAD');
-}, 1250);
+}, 1500);
 
 setTimeout(function () {
   gettousd('EUR');
-}, 2500);
+}, 3000);
 
 setTimeout(function () {
   gettousd('GBP');
-}, 3750);
+}, 4500);
 
 setTimeout(function () {
   gettousd('BTC');
-}, 5000);
+}, 6000);
 
 setTimeout(function () {
   gettousd('DOGE');
-}, 6250);
+}, 7500);
