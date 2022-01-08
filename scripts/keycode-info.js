@@ -1,12 +1,13 @@
 let ready = document.getElementById('ready');
 
 let key = document.getElementById('key');
+let keyRepeating = document.getElementById('key-repeating');
 let keyLocation = document.getElementById('key-location');
 let keyCode = document.getElementById('key-code');
 let keyAscii = document.getElementById('key-ascii');
 let keyUnicode = document.getElementById('key-unicode');
 
-let keyVal, keyLocationVal, KeyCodeVal, KeyAsciiVal, KeyUnicodeVal;
+let keyVal, keyRepeatingVal, keyLocationVal, KeyCodeVal, KeyAsciiVal, KeyUnicodeVal;
 
 let valExist = 0; // 0 = no, 1 = yes
 
@@ -14,6 +15,9 @@ window.onload = function () {
   document.addEventListener('keydown', keyInfo);
   document.getElementById('key-cell').addEventListener('click', function () {
     copyKeycodeInfo(keyVal)
+  });
+  document.getElementById('key-repeating-cell').addEventListener('click', function () {
+    copyKeycodeInfo(keyRepeatingVal)
   });
   document.getElementById('key-location-cell').addEventListener('click', function () {
     copyKeycodeInfo(keyLocationVal)
@@ -63,16 +67,18 @@ function keyInfo(event) {
   if (String(event.key) === '\u00a0') {
     key.innerHTML = '<span class="tooltip-text tooltip-bottom" data-tooltip="Non breaking space">NBSP</span> (\u00a0)'
   };
+  keyRepeating.innerHTML = event.repeat;
+  keyRepeatingVal = event.repeat;
   keyLocation.innerHTML = event.location;
   keyLocationVal = event.location;
   if (String(event.location) === '0') {
     keyLocation.innerHTML = '0<br>(general)'
   };
   if (String(event.location) === '1') {
-    keyLocation.innerHTML = '1<br>(left modifier)'
+    keyLocation.innerHTML = '1<br>(left)'
   };
   if (String(event.location) === '2') {
-    keyLocation.innerHTML = '2<br>(right modifier)'
+    keyLocation.innerHTML = '2<br>(right)'
   };
   if (String(event.location) === '3') {
     keyLocation.innerHTML = '3<br>(numpad)'
