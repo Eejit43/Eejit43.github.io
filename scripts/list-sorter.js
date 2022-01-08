@@ -91,7 +91,7 @@ function reverse() {
     showResult('reverse', 'error');
   } else {
     let separator = (document.getElementById('separator').value) ? document.getElementById('separator').value : '\n';
-    separator = separatowr.replace('\\n', '\n');
+    separator = separator.replace('\\n', '\n');
     let result = string.split(separator);
     result = result.reverse().join(separator);
     document.getElementById('result').value = result;
