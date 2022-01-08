@@ -36,7 +36,7 @@ function showAlert(text, color) {
       boxShadow: 'none',
       minWidth: '150px',
       textAlign: 'center',
-      fontFamily: '"Montserrat", sans-serif',
+      fontFamily: '"Manrope", sans-serif',
       fontWeight: 'bold',
       fontSize: '17px',
       color: color,
