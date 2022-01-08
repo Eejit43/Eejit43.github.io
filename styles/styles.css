@@ -564,7 +564,7 @@ button:disabled:not(.fakeinput) {
 .toc {
   font-family: 'Rubik', sans-serif;
   text-align: left;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 18px;
   line-height: 150%;
   color: gray;
