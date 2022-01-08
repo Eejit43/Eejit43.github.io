@@ -1,66 +1,42 @@
-//More info about api data on https://app.abstractapi.com/api/exchange-rates/documentation
-
-fetch('https://exchange-rates.abstractapi.com/v1/live/?api_key=1b28c23d9af34b2ea1cf20cd0ec547b1&base=USD')
+fetch('https://v6.exchangerate-api.com/v6/822304e8ee8183e9de49f5df/latest/USD')
   .then((response) => {
     return response.json()
   })
   .then((data) => {
-    rates = JSON.stringify(data.exchange_rates);
+    rates = JSON.stringify(data.conversion_rates);
     rp = JSON.parse(rates);
-    lastupdated = data.last_updated * 1000;
+    lastupdated = data.time_last_update_unix * 1000;
+    nextupdate = data.time_next_update_unix * 1000;
     usdcad = rp.CAD.toLocaleString();
     usdeur = rp.EUR.toLocaleString();
     usdgbp = rp.GBP.toLocaleString();
-    usdbtc = rp.BTC;
-    usddoge = rp.DOGE.toLocaleString();
+    usdaud = rp.AUD.toLocaleString();
+    usdcrc = rp.CRC.toLocaleString();
+    usdjpy = rp.JPY.toLocaleString();
+    cadusd = (1 / usdcad).toLocaleString();
+    eurusd = (1 / usdeur).toLocaleString();
+    gbpusd = (1 / usdgbp).toLocaleString();
+    audusd = (1 / usdaud).toLocaleString();
+    crcusd = (1 / usdcrc).toLocaleString();
+    jpyusd = (1 / usdjpy).toLocaleString();
 
-    let dateupdated = new Date(lastupdated).toLocaleDateString('en-US')
-
-    let timeupdated = new Date(lastupdated).toLocaleTimeString('en-US')
-
-    let lastupdatedtime = dateupdated + ' ' + timeupdated;
+    let lastupdatedtime = new Date(lastupdated).toLocaleDateString('en-US') + ', ' + new Date(lastupdated).toLocaleTimeString('en-US');
+    let nextupdatetime = new Date(nextupdate).toLocaleDateString('en-US') + ', ' + new Date(nextupdate).toLocaleTimeString('en-US');
 
     document.getElementById('lastupdated').innerHTML = lastupdatedtime;
-    document.getElementById('usdcad').innerHTML = usdcad;
-    document.getElementById('usdeur').innerHTML = usdeur;
-    document.getElementById('usdgbp').innerHTML = usdgbp;
-    document.getElementById('usdbtc').innerHTML = usdbtc;
-    document.getElementById('usddoge').innerHTML = usddoge;
+    document.getElementById('nextupdate').innerHTML = nextupdatetime;
+    document.getElementById('usdcad').innerHTML = "$" + usdcad;
+    document.getElementById('usdeur').innerHTML = "$" + usdeur;
+    document.getElementById('usdgbp').innerHTML = "$" + usdgbp;
+    document.getElementById('usdaud').innerHTML = "$" + usdaud;
+    document.getElementById('usdcrc').innerHTML = "$" + usdcrc;
+    document.getElementById('usdjpy').innerHTML = "$" + usdjpy;
+    document.getElementById('cadusd').innerHTML = "$" + cadusd;
+    document.getElementById('eurusd').innerHTML = "$" + eurusd;
+    document.getElementById('gbpusd').innerHTML = "$" + gbpusd;
+    document.getElementById('audusd').innerHTML = "$" + audusd;
+    document.getElementById('crcusd').innerHTML = "$" + crcusd;
+    document.getElementById('jpyusd').innerHTML = "$" + jpyusd;
     document.getElementById('reloadprompt').innerHTML = '';
   })
   .catch((err) => {})
-
-function gettousd(code) {
-  fetch(`https://exchange-rates.abstractapi.com/v1/live/?api_key=1b28c23d9af34b2ea1cf20cd0ec547b1&base=${code}`)
-    .then((response) => {
-      return response.json()
-    })
-    .then((data) => {
-      rates = JSON.stringify(data.exchange_rates);
-      rp = JSON.parse(rates);
-      tousd = rp.USD;
-      result = tousd.toLocaleString();
-      document.getElementById(code).innerHTML = `\$${result} USD`;
-    })
-    .catch((err) => {})
-}
-
-setTimeout(function () {
-  gettousd('CAD');
-}, 1500);
-
-setTimeout(function () {
-  gettousd('EUR');
-}, 3000);
-
-setTimeout(function () {
-  gettousd('GBP');
-}, 4500);
-
-setTimeout(function () {
-  gettousd('BTC');
-}, 6000);
-
-setTimeout(function () {
-  gettousd('DOGE');
-}, 7500);
