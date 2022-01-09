@@ -1,4 +1,6 @@
 # Eejit's Tools
-[![License: GPL v3](https://upload.wikimedia.org/wikipedia/commons/8/86/GPL_v3_Blue_Badge.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+![60-percent-of-the-time-works-every-time](https://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg)
+![0-percent-optimized](https://forthebadge.com/images/badges/0-percent-optimized.svg)
+![contains-tasty-spaghetti-code](https://forthebadge.com/images/badges/contains-tasty-spaghetti-code.svg)
 
-Some handy tools I made whilst learning HTML, CSS, and JavaScript!
+Some (kinda) handy tools I made whilst learning HTML, CSS, and JavaScript!
