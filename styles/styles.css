@@ -108,10 +108,10 @@ nav {
 
 @media only screen and (max-width: 700px) {
   .mainlogo {
-    font-size: 70px;
+    font-size: 60px;
   }
   .mainlogo-tools {
-    font-size: 52px;
+    font-size: 45px;
   }
 }
 
