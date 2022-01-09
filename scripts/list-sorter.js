@@ -34,7 +34,7 @@ function alphabetizeNormal() {
     showAlert('Empty input!', 'error');
     showResult('alphabetize', 'error');
   } else {
-    let separator = (document.getElementById('separator').value) ? document.getElementById('separator').value : '\n';
+    let separator = document.getElementById('separator').value;
     separator = separator.replace('\\n', '\n');
     let result = string.split(separator);
     result = result.sort((a, b) => a.localeCompare(b)).join(separator);
@@ -50,7 +50,7 @@ function numerize() {
     showAlert('Empty input!', 'error');
     showResult('numerize', 'error');
   } else {
-    let separator = (document.getElementById('separator').value) ? document.getElementById('separator').value : '\n';
+    let separator = document.getElementById('separator').value;
     separator = separator.replace('\\n', '\n');
     let result = string.split(separator);
     result = result.map((x) => parseInt(x)).filter(x => x === 0 || Boolean(x)).sort((a, b) => a - b).join(separator);
@@ -74,7 +74,7 @@ function randomize() {
     showAlert('Empty input!', 'error');
     showResult('randomize', 'error');
   } else {
-    let separator = (document.getElementById('separator').value) ? document.getElementById('separator').value : '\n';
+    let separator = document.getElementById('separator').value;
     separator = separator.replace('\\n', '\n');
     let result = string.split(separator);
     result = shuffleArray(result).join(separator);
@@ -90,7 +90,7 @@ function reverse() {
     showAlert('Empty input!', 'error');
     showResult('reverse', 'error');
   } else {
-    let separator = (document.getElementById('separator').value) ? document.getElementById('separator').value : '\n';
+    let separator = document.getElementById('separator').value;
     separator = separator.replace('\\n', '\n');
     let result = string.split(separator);
     result = result.reverse().join(separator);
