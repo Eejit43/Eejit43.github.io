@@ -105,3 +105,8 @@ function copyVar(button, text) {
     copyText(button, text)
   });
 }
+
+// Escape html
+function escapeHtml(input) {
+  return input.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+}

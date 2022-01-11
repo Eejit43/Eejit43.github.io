@@ -47,9 +47,9 @@ function rollBall() {
     setTimeout(function () {
       document.getElementById("rollBall").innerHTML = "Roll ball!";
     }, 2000);
-    result.innerHTML = `<hr>You asked: <span style="font-weight:500;color:dimgray;font-size:16px;">${userQuestion}</span><br>Response: <span style="font-weight:500;color:#ffba24;font-size:16px;">Predicting... <i class="fas fa-spinner fa-pulse"></i></span>`
+    result.innerHTML = `<hr>You asked: <span style="font-weight:500;color:dimgray;font-size:16px;">${escapeHtml(userQuestion)}</span><br>Response: <span style="font-weight:500;color:#ffba24;font-size:16px;">Predicting... <i class="fas fa-spinner fa-pulse"></i></span>`
     setTimeout(function () {
-      result.innerHTML = `<hr>You asked: <span style="font-weight:500;color:dimgray;font-size:16px;">${userQuestion}</span><br>Response: <span style="font-weight:500;color:dimgray;font-size:16px;">${eightBall}</span>`
+      result.innerHTML = `<hr>You asked: <span style="font-weight:500;color:dimgray;font-size:16px;">${escapeHtml(userQuestion)}</span><br>Response: <span style="font-weight:500;color:dimgray;font-size:16px;">${eightBall}</span>`
     }, 2000);
   }
 }

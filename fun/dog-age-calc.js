@@ -8,7 +8,7 @@ function toDog() {
     showResult('td', 'error');
   } else if (humanAge >= 1) {
     let dogAge = Math.round(Math.exp((humanAge - 31) / 16));
-    let output = `<hr>${humanAge} human years is about ${dogAge} years in dog years.`;
+    let output = `<hr>${escapeHtml(humanAge)} human years is about ${dogAge} years in dog years.`;
     document.getElementById('result').innerHTML = output;
     document.getElementById('dogAge').value = '';
     showResult('td', 'success');
@@ -25,7 +25,7 @@ function toHuman() {
     showResult('th', 'error');
   } else if (dogAge >= 1) {
     let humanAge = Math.round(16 * Math.log(dogAge) + 31);
-    let output = `<hr>${dogAge} dog years is about ${humanAge} years in human years.`;
+    let output = `<hr>${escapeHtml(dogAge)} dog years is about ${humanAge} years in human years.`;
     document.getElementById('result').innerHTML = output;
     document.getElementById('humanAge').value = '';
     showResult('th', 'success');

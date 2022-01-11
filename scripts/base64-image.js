@@ -56,7 +56,7 @@ function fileUpload() {
   let file = document.getElementById('file-upload');
   let fileMsg = document.getElementById('file-message');
   let fileName = file.value.split('\\').pop()
-  fileMsg.innerHTML = 'Uploaded: ' + fileName;
+  fileMsg.innerHTML = 'Uploaded: ' + escapeHtml(fileName);
 }
 
 // https://newbedev.com/base64-image-open-in-new-tab-window-is-not-allowed-to-navigate-top-frame-navigations-to-data-urls
