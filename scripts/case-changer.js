@@ -54,19 +54,24 @@ function toLower() {
 }
 
 function titleCase(str) {
-  return str.toLowerCase().split(' ').map(function (word) {
-    if (word != 'a' && word != 'an' && word != 'the' && word != 'and' && word != 'as' && word != 'at' && word != 'but' && word != 'by' && word != 'for' && word != 'from' && word != 'if' && word != 'in' && word != 'into' && word != 'like' && word != 'near' && word != 'nor' && word != 'of' && word != 'off' && word != 'on' && word != 'once' && word != 'onto' && word != 'or' && word != 'over' && word != 'past' && word != 'so' && word != 'than' && word != 'that' && word != 'till' && word != 'to' && word != 'up' && word != 'upon' && word != 'with' && word != 'when' && word != 'yet') {
-      return word.replace(word[0], word[0].toUpperCase());
-    } else {
-      return word
-    }
-  }).join(' ').split('\n').map(function (word) {
-    if (word != 'a' && word != 'an' && word != 'the' && word != 'and' && word != 'as' && word != 'at' && word != 'but' && word != 'by' && word != 'for' && word != 'from' && word != 'if' && word != 'in' && word != 'into' && word != 'like' && word != 'near' && word != 'nor' && word != 'of' && word != 'off' && word != 'on' && word != 'once' && word != 'onto' && word != 'or' && word != 'over' && word != 'past' && word != 'so' && word != 'than' && word != 'that' && word != 'till' && word != 'to' && word != 'up' && word != 'upon' && word != 'with' && word != 'when' && word != 'yet') {
-      return word.replace(word[0], word[0].toUpperCase());
-    } else {
-      return word
-    }
-  }).join('\n')
+  var i, j, lowers, uppers;
+  str = str.replace(/([^\W_]+[^\s-]*) */g, function (txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
+
+  lowers = ['A', 'An', 'The', 'And', 'As', 'At', 'But', 'By', 'For', 'From', 'If', 'In', 'Into', 'Like', 'Near', 'Nor', 'Of', 'Off', 'On', 'Once', 'Onto', 'Or', 'Over', 'Past', 'So', 'Than', 'That', 'Till', 'To', 'Up', 'Upon', 'With', 'When', 'Yet'];
+  for (i = 0, j = lowers.length; i < j; i++)
+    str = str.replace(new RegExp('\\s' + lowers[i] + '\\s', 'g'),
+      function (txt) {
+        return txt.toLowerCase();
+      });
+
+  uppers = ['Id', 'Tv'];
+  for (i = 0, j = uppers.length; i < j; i++)
+    str = str.replace(new RegExp('\\b' + uppers[i] + '\\b', 'g'),
+      uppers[i].toUpperCase());
+
+  return str;
 }
 
 function toTitle() {

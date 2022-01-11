@@ -148,7 +148,7 @@ function runNeuRegex() {
     let output = input.replace(/\\'/gmi, 'Ɣ'); //filler character
     output = output.replace(/\\u0027/gmi, '\'');
     output = output.replace(/    '|',?/gmi, '');
-    output = output.replace(/Ɣ/gmi, ''');
+    output = output.replace(/Ɣ/gmi, '\'');
     output = output.replace(/§/gmi, '&');
     output = output.replace(/(&[ol].*?)(&[a-f1-9]|\n)/gmis, '$1&r$2');
     output = output.replace(/\n&r/gmi, '&r\n');
@@ -157,7 +157,7 @@ function runNeuRegex() {
     let output2 = output.replace(/\//gmi, '\\\\/');
     output2 = output2.replace(/\\(?!\/|\\\/)/gmi, '\\\\\\\\');
     output2 = output2.replace(/\n/gmi, '/');
-    output2 = output2.replace(/'/gmi, '\\'');
+    output2 = output2.replace(/'/gmi, '\\\'');
     output2 = output2.replace(/\'/gmi, '\\\'');
     showResult('neu', 'success');
     document.getElementById('neu-result').value = output;
