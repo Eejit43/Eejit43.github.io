@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Some useful tools for general purposes!">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://eejit43.github.io/temperature-converter">
+    <meta property="og:url" content="https://eejit43.github.io/length-converter">
     <meta property="og:site_name" content="Eejit's Tools">
-    <meta property="og:title" content="Temperature Converter">
+    <meta property="og:title" content="Length Converter">
     <meta property="og:description" content="Some useful tools for general purposes!">
     <meta name="keywords" content="">
     <meta property="og:image" content="https://eejit43.github.io/icon.png">
     <meta property="og:image:alt" content="Eejit's Tools">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Temperature Converter | Eejit's Tools">
+    <meta name="twitter:title" content="Length Converter | Eejit's Tools">
     <meta name="twitter:description" content="Some useful tools for general purposes!">
-    <meta name="twitter:url" content="https://eejit43.github.io/temperature-converter">
+    <meta name="twitter:url" content="https://eejit43.github.io/length-converter">
     <meta name="twitter:image" content="https://eejit43.github.io/icon.png">
     <meta name="twitter:image:alt" content="Eejit's Tools">
-    <title>Temperature Converter | Eejit's Tools</title>
+    <title>Length Converter | Eejit's Tools</title>
     <link rel="stylesheet" href="../styles/styles.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="favicon" href="/favicon.ico">
@@ -58,13 +58,21 @@
       </span>
     </nav>
     <div class="toolbox">
-      <h1>Temperature Converter:</h1>
+      <h1>Length Converter:</h1>
       <p class="tooltext">
         Input:<br>
         <select style="margin-top:20px;" id="input-type">
-          <option value="1" selected>Fahrenheit</option>
-          <option value="2">Celsius</option>
-          <option value="3">Kelvin</option>
+          <option value="1">Kilometer</option>
+          <option value="2">Meter</option>
+          <option value="3">Centimeter</option>
+          <option value="4">Millimeter</option>
+          <option value="5">Micrometer</option>
+          <option value="6">Nanometer</option>
+          <option value="7">Mile</option>
+          <option value="8">Yard</option>
+          <option value="9" selected>Foot</option>
+          <option value="10">Inch</option>
+          <option value="11">Nautical mile</option>
         </select>
         <br><input id="input" pattern="[0-9]*"></textarea>
         <br><button id="reset">Reset</button>
@@ -74,14 +82,22 @@
         <span class="tooltip-text tooltip-bottom" data-tooltip="Rounded to the nearest thousandth">Output</span>:<br>
         <span id="message" style="color:#FF5555;font-size:15px;"></span>
         <select style="margin-top:20px;" id="output-type">
-          <option value="1">Fahrenheit</option>
-          <option value="2" selected>Celsius</option>
-          <option value="3">Kelvin</option>
+          <option value="1">Kilometer</option>
+          <option value="2">Meter</option>
+          <option value="3">Centimeter</option>
+          <option value="4">Millimeter</option>
+          <option value="5">Micrometer</option>
+          <option value="6">Nanometer</option>
+          <option value="7" selected>Mile</option>
+          <option value="8">Yard</option>
+          <option value="9">Foot</option>
+          <option value="10">Inch</option>
+          <option value="11">Nautical mile</option>
         </select>
         <br><input id="output" readonly></textarea>
         <br><button id="copy-output" disabled>Copy</button>
       </p>
-      <script src="../scripts/temperature-converter.js"></script>
+      <script src="../scripts/length-converter.js"></script>
       <br>
       <noscript>
         <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
