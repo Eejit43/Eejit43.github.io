@@ -1,16 +1,23 @@
-document.getElementById('toDog').addEventListener("click", toDog);
-document.getElementById('toHuman').addEventListener("click", toHuman);
+let humanAge = document.getElementById('humanAge');
+let toDogBtn = document.getElementById('toDog');
+let dogAge = document.getElementById('dogAge');
+let toHumanBtn = document.getElementById('toHuman');
+let result = document.getElementById('result');
+
+window.onload = function () {
+  toDogBtn.addEventListener("click", toDog);
+  toHumanBtn.addEventListener("click", toHuman);
+}
 
 function toDog() {
-  let humanAge = document.getElementById('humanAge').value;
-  if (humanAge.length === 0) {
+  if (humanAge.value.length === 0) {
     showAlert('No input given!', '#FF5555');
     showResult('td', 'error');
-  } else if (humanAge >= 1) {
-    let dogAge = Math.round(Math.exp((humanAge - 31) / 16));
-    let output = `<hr>${escapeHtml(humanAge)} human years is about ${dogAge} years in dog years.`;
-    document.getElementById('result').innerHTML = output;
-    document.getElementById('dogAge').value = '';
+  } else if (humanAge.value >= 1) {
+    let dogAgeVal = Math.round(humanAge.value / 7);
+    let output = `<hr>${escapeHtml(humanAge.value)} human years is about ${dogAgeVal} years in dog years.`;
+    result.innerHTML = output;
+    dogAge.value = '';
     showResult('td', 'success');
   } else {
     showAlert('Input must be 1 or greater!', '#FF5555');
@@ -19,15 +26,14 @@ function toDog() {
 }
 
 function toHuman() {
-  let dogAge = document.getElementById('dogAge').value;
-  if (dogAge.length === 0) {
+  if (dogAge.value.length === 0) {
     showAlert('No input given!', '#FF5555');
     showResult('th', 'error');
-  } else if (dogAge >= 1) {
-    let humanAge = Math.round(16 * Math.log(dogAge) + 31);
-    let output = `<hr>${escapeHtml(dogAge)} dog years is about ${humanAge} years in human years.`;
-    document.getElementById('result').innerHTML = output;
-    document.getElementById('humanAge').value = '';
+  } else if (dogAge.value >= 1) {
+    let humanAgeVal = Math.round(dogAge.value * 7);
+    let output = `<hr>${escapeHtml(dogAge.value)} dog years is about ${humanAgeVal} years in human years.`;
+    result.innerHTML = output;
+    humanAge.value = '';
     showResult('th', 'success');
   } else {
     showAlert('Input must be 1 or greater!', '#FF5555');

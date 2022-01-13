@@ -1,13 +1,18 @@
-document.getElementById('rollBall').addEventListener("click", rollBall);
+let userQuestion = document.getElementById('userQuestion');
+let rollBallBtn = document.getElementById('rollBall');
+let result = document.getElementById('result');
+
+let eightBall, randomNumber;
+
+window.onload = function () {
+  rollBallBtn.addEventListener("click", rollBall);
+}
 
 function rollBall() {
-  let userQuestion = document.getElementById('userQuestion').value;
-  if (userQuestion.length === 0) {
+  if (userQuestion.value.length === 0) {
     showAlert('You didn\'t ask a question!', 'error');
   } else {
-    let result = document.getElementById('result');
-    let randomNumber = Math.floor(Math.random() * 11);
-    let eightBall = '';
+    randomNumber = Math.floor(Math.random() * 11);
     switch (randomNumber) {
       case 0:
         eightBall = 'It is certain' // Yes
@@ -43,13 +48,13 @@ function rollBall() {
         eightBall = 'Radio interference, try again' // Neutral
         break;
     }
-    document.getElementById("rollBall").innerHTML = "Rolling!";
+    rollBallBtn.innerHTML = "Rolling!";
     setTimeout(function () {
-      document.getElementById("rollBall").innerHTML = "Roll ball!";
+      rollBallBtn.innerHTML = "Roll ball!";
     }, 2000);
-    result.innerHTML = `<hr>You asked: <span style="font-weight:500;color:dimgray;font-size:16px;">${escapeHtml(userQuestion)}</span><br>Response: <span style="font-weight:500;color:#ffba24;font-size:16px;">Predicting... <i class="fas fa-spinner fa-pulse"></i></span>`
+    result.innerHTML = `<hr>You asked: <span style="font-weight:500;color:dimgray;font-size:16px;">${escapeHtml(userQuestion.value)}</span><br>Response: <span style="font-weight:500;color:#ffba24;font-size:16px;">Predicting... <i class="fas fa-spinner fa-pulse"></i></span>`
     setTimeout(function () {
-      result.innerHTML = `<hr>You asked: <span style="font-weight:500;color:dimgray;font-size:16px;">${escapeHtml(userQuestion)}</span><br>Response: <span style="font-weight:500;color:dimgray;font-size:16px;">${eightBall}</span>`
+      result.innerHTML = `<hr>You asked: <span style="font-weight:500;color:dimgray;font-size:16px;">${escapeHtml(userQuestion.value)}</span><br>Response: <span style="font-weight:500;color:dimgray;font-size:16px;">${eightBall}</span>`
     }, 2000);
   }
 }
