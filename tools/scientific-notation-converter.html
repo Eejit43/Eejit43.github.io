@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Some useful tools for general purposes!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://eejit43.github.io/scientific-notation-converter">
+    <meta property="og:site_name" content="Eejit's Tools">
+    <meta property="og:title" content="Scientific Notation Converter">
+    <meta property="og:description" content="Some useful tools for general purposes!">
+    <meta name="keywords" content="">
+    <meta property="og:image" content="https://eejit43.github.io/icon.png">
+    <meta property="og:image:alt" content="Eejit's Tools">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Scientific Notation Converter | Eejit's Tools">
+    <meta name="twitter:description" content="Some useful tools for general purposes!">
+    <meta name="twitter:url" content="https://eejit43.github.io/scientific-notation-converter">
+    <meta name="twitter:image" content="https://eejit43.github.io/icon.png">
+    <meta name="twitter:image:alt" content="Eejit's Tools">
+    <title>Scientific Notation Converter | Eejit's Tools</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="favicon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#3e498a">
+    <meta name="msapplication-TileColor" content="#3e498a">
+    <meta name="theme-color" content="#3e498a">
+    <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+    <script src="../scripts/global.js"></script>
+  </head>
+  <body>
+    <nav>
+      <a href="https://eejit43.github.io">
+        <span class="logo">
+          <!--
+            --><span style="color:#FF5555">E</span><!--
+            --><span style="color:#FFAA00">e</span><!--
+            --><span style="color:#FFFF55">j</span><!--
+            --><span style="color:#55FF55">i</span><!--
+            --><span style="color:#00AA00">t</span><!--
+            --><span style="color:#00AAAA">'</span><!--
+            --><span style="color:#5555FF">s</span><!--
+            -->
+          <span style="color:#AA00AA;" class="logo-tools">
+            Tools<!--
+              -->
+          </span>
+        </span>
+      </a>
+      <span style="float:right!important;">
+        <a href="time" class="timer"><span id="navtime"></span></a>
+        <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
+        <script src="../scripts/navtime.js"></script>
+      </span>
+    </nav>
+    <div class="toolbox">
+      <h1>Scientific Notation Converter:</h1>
+      <p class="tooltext">
+        <span style="font-weight:500;color:dimgray;font-size:16px;">Scientific notation can be represented using e notation, such as 5e+2 (plus sign optional), or using standard scientific notation, such as 5 x 10<sup>2</sup> (written as 5 x 10^2). Both variants can be used in this converter.</span><br><br>
+        Decimal: <input type="text" pattern="[0-9]*" id="decimal-input" style="width:10rem;"> <button id="decimal-convert" disabled>Convert</button><button id="decimal-reset" style="margin-right:40px;" disabled>Reset</button> <i id="decimal-arrow" class="fas fa-arrow-right" style="color:dimgray;"></i> <input id="scientific-output" style="width:10rem;margin-left:40px;" readonly> <button id="scientific-output-copy" disabled>Copy scientific e notation</button><button id="scientific-output-copy-2" disabled>Copy scientific notation</button>
+        <br>Scientific (e) Notation: <input id="scientific-input" style="width:10rem;"> <button id="scientific-convert" disabled>Convert</button><button id="scientific-reset" style="margin-right:40px;" disabled>Reset</button> <i id="scientific-arrow" class="fas fa-arrow-right" style="color:dimgray;"></i> <input id="decimal-output" style="width:10rem;margin-left:40px;" readonly> <button id="decimal-output-copy" disabled>Copy</button>
+      </p>
+      <script src="../scripts/scientific-notation-converter.js"></script>
+      <br>
+      <noscript>
+        <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
+        <div class="warning">Looks like this script couldn't be displayed for some reason!</div>
+      </noscript>
+    </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  </body>
+</html>

@@ -472,7 +472,6 @@ function nauticalMileConvert(value, type) {
 function showResult(result) {
   message.innerHTML = '';
   output.value = result.toLocaleString(undefined, {
-    minimumFractionDigits: 0,
     maximumFractionDigits: 15
   });
   copyOutput.disabled = false;
