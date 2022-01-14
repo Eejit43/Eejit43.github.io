@@ -27,5 +27,7 @@ fetch('https://ipgeolocation.abstractapi.com/v1/?api_key=7dcea861f91a44579cea73a
 
     document.getElementById('ip').innerHTML = output;
     document.getElementById('reloadprompt').innerHTML = '';
+
+    twemojiUpdate();
   })
   .catch((err) => {})

@@ -1,24 +1,21 @@
-// Emoji parser
-window.onload = function () {
+function twemojiUpdate() {
   twemoji.parse(document.body, {
-    folder: 'svg',
-    ext: '.svg'
-  });
-
-  setTimeout(function () {
-    twemoji.parse(document.body, {
       folder: 'svg',
       ext: '.svg'
     });
-  }, 200);
-
-  setTimeout(function () {
-    twemoji.parse(document.body, {
-      folder: 'svg',
-      ext: '.svg'
-    });
-  }, 1000);
 }
+
+window.onload = function () {
+  twemojiUpdate();
+}
+
+setTimeout(twemojiUpdate, 200)
+
+setTimeout(twemojiUpdate, 500)
+
+setTimeout(twemojiUpdate, 1000)
+
+setTimeout(twemojiUpdate, 2000)
 
 // Popup alert
 function showAlert(text, color) {
