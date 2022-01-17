@@ -705,3 +705,13 @@ button:disabled:not(.fakeinput) {
 h1 {
   font-weight: 500;
 }
+
+code {
+  background: #2f3136;
+  padding: 0.2em;
+  border-radius: 3px;
+  font-size: 85%;
+  line-height: 1.125rem;
+  font-family: monospace;
+  white-space: pre;
+}

@@ -1,8 +1,9 @@
+// Emoji parser
 function twemojiUpdate() {
   twemoji.parse(document.body, {
-      folder: 'svg',
-      ext: '.svg'
-    });
+    folder: 'svg',
+    ext: '.svg'
+  });
 }
 
 window.onload = function () {
