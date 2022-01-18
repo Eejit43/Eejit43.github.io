@@ -38,15 +38,21 @@ function copyVar(variable, button, message) {
   showAlert('Copied!', 'success');
 
   newElement.addEventListener('click', function () {
-    copyText(variable, button, message)
+    copyVar(variable, button, message)
   });
 }
 
 function clear() {
   resultCopy = document.getElementById('copy-result');
+  resultCopy2 = document.getElementById('copy-result-2');
+  resultCopy3 = document.getElementById('copy-result-3');
   input.value = '';
   result.value = '';
+  resetResult('e');
+  resetResult('d');
   resultCopy.innerHTML = 'Copy';
+  resultCopy2.innerHTML = 'Copy with vertical slash space';
+  resultCopy3.innerHTML = 'Copy with three space space';
   resultCopy.disabled = true;
   resultCopy2.disabled = true;
   resultCopy3.disabled = true;
@@ -175,7 +181,16 @@ const convertToMorse = (str) => {
 
 function toMorse() {
   resultCopy = document.getElementById('copy-result');
-  if (/^[ a-zA-Z0-9\.,\?\'!\/\(\)&:;=+\-_"\$@]*$/.test(input.value.trim())) {
+  resultCopy2 = document.getElementById('copy-result-2');
+  resultCopy3 = document.getElementById('copy-result-3');
+  if (input.value.trim().length <= 0) {
+    result.value = ''
+    resultCopy.disabled = true;
+    resultCopy2.disabled = true;
+    resultCopy3.disabled = true;
+    showResult('e', 'error');
+    showAlert('Empty input!', 'error');
+  } else if (/^[ a-zA-Z0-9\.,\?\'!\/\(\)&:;=+\-_"\$@]*$/.test(input.value.trim())) {
     result.value = convertToMorse(input.value);
     resultVar1 = convertToMorse(input.value);
     resultVar2 = convertToMorse(input.value).replace(' / ', ' | ');
@@ -209,7 +224,16 @@ function decodeMorse(morseCode) {
 function fromMorse() {
   let inputVal = input.value.trim().replace(/_/g, '-');
   resultCopy = document.getElementById('copy-result');
-  if (/^[.-]{1,7}( [.-]{1,7})*(( {2,}| *[\|\/] *)[.-]{1,7}( [.-]{1,7})*)*$/g.test(inputVal)) {
+  resultCopy2 = document.getElementById('copy-result-2');
+  resultCopy3 = document.getElementById('copy-result-3');
+  if (inputVal.length <= 0) {
+    result.value = ''
+    resultCopy.disabled = true;
+    resultCopy2.disabled = true;
+    resultCopy3.disabled = true;
+    showResult('d', 'error');
+    showAlert('Empty input!', 'error');
+  } else if (/^[.-]{1,7}( [.-]{1,7})*(( {2,}| *[\|\/] *)[.-]{1,7}( [.-]{1,7})*)*$/g.test(inputVal)) {
     result.value = decodeMorse(inputVal);
     resultVar1 = decodeMorse(inputVal);
     resultCopy.disabled = false;
