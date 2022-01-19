@@ -226,6 +226,23 @@ function runRmRegex() {
     let finalregex = new RegExp(regex, flags);
     let replace = document.getElementById('rm-replace').value.replace(/\\a/g, '\a').replace(/\\b/g, '\b').replace(/\\c/g, '\c').replace(/\\e/g, '\e').replace(/\\f/g, '\f').replace(/\\n/g, '\n').replace(/\\o/g, '\o').replace(/\\r/g, '\r').replace(/\\t/g, '\t').replace(/\$(\d)/g, '$$$1');
     let output = input.replace(finalregex, replace);
+    /*let first = [...new Set(output.match(/(\\L|\\U)/))].join();
+    if (first === '\\U') {
+      output = output.replace(/\\U(.*?)(\\E|\\L|$)/g, function (match) {
+      return match.toUpperCase().replace(/\\e|\\u/g, '').replace(/\\l/g, '\\L');
+    });
+      output = output.replace(/\\L(.*?)(\\E|\\U|$)/g, function (match) {
+      return match.toLowerCase().replace(/\\e|\\l/g, '').replace(/\\u/g, '\\U');
+    });
+    } else if (first === '\\L') {
+      output = output.replace(/\\L(.*?)(\\E|\\U|$)/g, function (match) {
+      return match.toLowerCase().replace(/\\e|\\l/g, '').replace(/\\u/g, '\\U');
+    });
+    output = output.replace(/\\U(.*?)(\\E|\\L|$)/g, function (match) {
+      return match.toUpperCase().replace(/\\e|\\u/g, '').replace(/\\l/g, '\\L');
+    });
+    }
+    output = output.replace(/\\[UL]/g, '')*/
     showResult('rm', 'success');
     document.getElementById('rm-result').value = output;
     document.getElementById('rm-copy-result').disabled = false;
