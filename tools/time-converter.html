@@ -54,13 +54,14 @@
                 </span>
             </a>
             <span style="float:right!important;">
-                <a href="time" class="timer"><span id="navtime"></span></a>
-                <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
+            <a href="time" class="timer"><span id="navtime"></span></a>
+            <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
             </span>
         </nav>
         <div class="toolbox">
             <h1>UNIX Time Converter:</h1>
-            <table class="unixtable">
+            <p class="tooltext">
+            <table class="unixtable noscript-hidden">
                 <tbody>
                     <tr>
                         <td>
@@ -99,10 +100,14 @@
                 </tbody>
             </table>
             </p>
-            <br>
             <noscript>
+                <style>
+                    .tooltext, .info-table, .noscript-hidden {
+                    display: none;
+                    }
+                </style>
                 <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
-                <div class="warning">Looks like this script couldn't be displayed for some reason!</div>
+                <div class="warning" style="padding-bottom:25px;">Looks like this page's scripts could not be displayed for some reason!</div>
             </noscript>
         </div>
     </body>

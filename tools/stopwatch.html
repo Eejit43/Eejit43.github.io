@@ -35,6 +35,7 @@
         <script src="https://cdn.jsdelivr.net/npm/toastify-js" defer></script>
         <script src="../scripts/global.js" defer></script>
         <script src="../scripts/navtime.js" defer></script>
+        <script src="../scripts/stopwatch.js" defer></script>
     </head>
     <body>
         <nav>
@@ -53,28 +54,32 @@
                 </span>
             </a>
             <span style="float:right!important;">
-                <a href="time" class="timer"><span id="navtime"></span></a>
-                <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
+            <a href="time" class="timer"><span id="navtime"></span></a>
+            <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
             </span>
         </nav>
         <div class="toolbox">
             <h1>Stopwatch:</h1>
-            <span class="timer-time">
-            <span id="hrs"></span>:<span id="min"></span>:<span id="sec"></span>.<span id="mil"></span>
-            </span>
-            <br><br>
-            <button id="start" style="padding:10px;font-size:20px;">Start</button>
-            <button id="stop" style="padding:10px;font-size:20px;">Stop</button>
-            <button id="reset" style="padding:10px;font-size:20px;">Reset</button>
-            <br><br>
-            <input type="checkbox" id="delayed" style="display:none;">
-        </div>
-        <script src="../scripts/stopwatch.js" defer></script>
-        <br>
-        <noscript>
-            <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
-            <div class="warning">Looks like this script couldn't be displayed for some reason!</div>
-        </noscript>
+            <p class="tooltext">
+                <span class="timer-time">
+                <span id="hrs"></span>:<span id="min"></span>:<span id="sec"></span>.<span id="mil"></span>
+                </span>
+                <br><br>
+                <button id="start" style="padding:10px;font-size:20px;">Start</button>
+                <button id="stop" style="padding:10px;font-size:20px;">Stop</button>
+                <button id="reset" style="padding:10px;font-size:20px;">Reset</button>
+                <br><br>
+                <input type="checkbox" id="delayed" style="display:none;">
+            </p>
+            <noscript>
+                <style>
+                    .tooltext, .info-table, .noscript-hidden {
+                    display: none;
+                    }
+                </style>
+                <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
+                <div class="warning" style="padding-bottom:25px;">Looks like this page's scripts could not be displayed for some reason!</div>
+            </noscript>
         </div>
     </body>
 </html>

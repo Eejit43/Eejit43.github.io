@@ -54,8 +54,8 @@
                 </span>
             </a>
             <span style="float:right!important;">
-                <a href="./time" class="timer"><span id="navtime"></span></a>
-                <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
+            <a href="../tools/time" class="timer"><span id="navtime"></span></a>
+            <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
             </span>
         </nav>
         <div class="toolbox">
@@ -65,7 +65,7 @@
                 <br><span id="events" style="color:mediumspringgreen"><span style="color:#FF5555">Loading data...</span></span>
                 <br><br><input id="year" style="width:3em;"> <input id="month" style="width:2em;"> <input id="date" style="width:2em;"> <button id="get-date">Get info</button><br><button id="reset-date">Set to current date</button>
                 <br><br><a target="_blank" id="year-overview">View year overview</a> • <a target="_blank" id="year-overview-list">View year overview (list)</a>
-            <div class="color-box">
+            <div class="color-box noscript-hidden">
                 <div class="color-box-sm red"></div>
                 <div class="color-box-sm orange"></div>
                 <div class="color-box-sm yellow"></div>
@@ -73,12 +73,16 @@
                 <div class="color-box-sm blue"></div>
                 <div class="color-box-sm purple"></div>
             </div>
-            <br><span style="font-size: 16px;color:dimgray;">Uses <a href="https://en.pronouns.page/calendar" target="_blank">en.pronouns.page</a> API</span>
+            <span class="noscript-hidden" style="font-size: 16px;color:dimgray;"><br>Uses <a href="https://en.pronouns.page/calendar" target="_blank">en.pronouns.page</a> API</span>
             </p>
-            <br>
             <noscript>
+                <style>
+                    .tooltext, .info-table, .noscript-hidden {
+                    display: none;
+                    }
+                </style>
                 <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
-                <div class="warning">Looks like this script couldn't be displayed for some reason!</div>
+                <div class="warning" style="padding-bottom:25px;">Looks like this page's scripts could not be displayed for some reason!</div>
             </noscript>
         </div>
     </body>

@@ -54,14 +54,14 @@
                 </span>
             </a>
             <span style="float:right!important;">
-                <a href="time" class="timer"><span id="navtime"></span></a>
-                <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
+            <a href="time" class="timer"><span id="navtime"></span></a>
+            <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
             </span>
         </nav>
         <div class="toolbox">
             <h1>Base64 Image Encode/Decode:</h1>
             <p class="tooltext">
-            <table class="base64output">
+            <table class="base64output noscript-hidden">
                 <tbody>
                     <tr>
                         <td>
@@ -84,8 +84,8 @@
                     </tr>
                 </tbody>
             </table>
-            <hr style="margin-top:30px;">
-            <table class="base64output">
+            <hr class="noscript-hidden" style="margin-top:30px;">
+            <table class="base64output noscript-hidden">
                 <tbody>
                     <tr>
                         <td valign="top">
@@ -105,10 +105,14 @@
                 </tbody>
             </table>
             </p>
-            <br>
             <noscript>
+                <style>
+                    .tooltext, .info-table, .noscript-hidden {
+                    display: none;
+                    }
+                </style>
                 <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
-                <div class="warning">Looks like this script couldn't be displayed for some reason!</div>
+                <div class="warning" style="padding-bottom:25px;">Looks like this page's scripts could not be displayed for some reason!</div>
             </noscript>
         </div>
     </body>

@@ -54,8 +54,8 @@
                 </span>
             </a>
             <span style="float:right!important;">
-                <a href="time" class="timer"><span id="navtime"></span></a>
-                <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
+            <a href="time" class="timer"><span id="navtime"></span></a>
+            <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
             </span>
         </nav>
         <div class="toc">
@@ -69,15 +69,19 @@
             <p class="tooltext">
                 Hex: <input id="hexInput" placeholder="#ffffff" style="width:8rem;"></textarea><span style="display: inline-block;width:25px;height:25px;border:3px solid #16181c;margin-left:30px;transform: translate(0, 37%);text-align:center;vertical-align:center;" id="hex-display"></span>
             </p>
-            <hr style="margin-top:25px;width:20rem;" align="left">
+            <hr class="noscript-hidden" style="margin-top:25px;width:20rem;" align="left">
             <p class="tooltext">
                 RGB: <input id="hex-rgb" style="width:8rem;" readonly></input> <button id="hex-rgb-copy" disabled>Copy</button><br>
                 HSL: <input id="hex-hsl" style="width:8rem;" readonly></input> <button id="hex-hsl-copy" disabled>Copy</button>
             </p>
-            <br>
             <noscript>
+                <style>
+                    .tooltext, .info-table, .noscript-hidden {
+                    display: none;
+                    }
+                </style>
                 <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
-                <div class="warning">Looks like this script couldn't be displayed for some reason!</div>
+                <div class="warning" style="padding-bottom:25px;">Looks like this page's scripts could not be displayed for some reason!</div>
             </noscript>
         </div>
         <div class="toolbox" style="margin: 40px auto 30px;">
@@ -85,16 +89,19 @@
             <p class="tooltext">
                 RGB: <input id="rgbInput" placeholder="rgb(255,255,255)" style="width:8rem;"></textarea><span style="display: inline-block;width:25px;height:25px;border:3px solid #16181c;margin-left:30px;transform: translate(0, 37%);text-align:center;vertical-align:center;" id="rgb-display"></span>
             </p>
-            <hr style="margin-top:25px;width:20rem;" align="left">
+            <hr class="noscript-hidden" style="margin-top:25px;width:20rem;" align="left">
             <p class="tooltext">
                 Hex: <input id="rgb-hex" style="width:8rem;" readonly></input> <button id="rgb-hex-copy" disabled>Copy</button><br>
                 HSL: <input id="rgb-hsl" style="width:8rem;" readonly></input> <button id="rgb-hsl-copy" disabled>Copy</button>
             </p>
-            <script src="../scripts/color-converter.js" defer></script>
-            <br>
             <noscript>
+                <style>
+                    .tooltext, .info-table, .noscript-hidden {
+                    display: none;
+                    }
+                </style>
                 <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
-                <div class="warning">Looks like this script couldn't be displayed for some reason!</div>
+                <div class="warning" style="padding-bottom:25px;">Looks like this page's scripts could not be displayed for some reason!</div>
             </noscript>
         </div>
         <div class="toolbox" style="margin: 40px auto 30px;">
@@ -102,16 +109,19 @@
             <p class="tooltext">
                 HSL: <input id="hslInput" placeholder="hsl(359,100%,100%)" style="width:8rem;"></textarea><span style="display: inline-block;width:25px;height:25px;border:3px solid #16181c;margin-left:30px;transform: translate(0, 37%);text-align:center;vertical-align:center;" id="hsl-display"></span>
             </p>
-            <hr style="margin-top:25px;width:20rem;" align="left">
+            <hr class="noscript-hidden" style="margin-top:25px;width:20rem;" align="left">
             <p class="tooltext">
                 Hex: <input id="hsl-hex" style="width:8rem;" readonly></input> <button id="hsl-hex-copy" disabled>Copy</button><br>
                 RGB: <input id="hsl-rgb" style="width:8rem;" readonly></input> <button id="hsl-rgb-copy" disabled >Copy</button>
             </p>
-            <script src="../scripts/color-converter.js" defer></script>
-            <br>
             <noscript>
+                <style>
+                    .tooltext, .info-table, .noscript-hidden {
+                    display: none;
+                    }
+                </style>
                 <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
-                <div class="warning">Looks like this script couldn't be displayed for some reason!</div>
+                <div class="warning" style="padding-bottom:25px;">Looks like this page's scripts could not be displayed for some reason!</div>
             </noscript>
         </div>
     </body>

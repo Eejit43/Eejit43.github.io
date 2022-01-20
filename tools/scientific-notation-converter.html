@@ -54,8 +54,8 @@
                 </span>
             </a>
             <span style="float:right!important;">
-                <a href="time" class="timer"><span id="navtime"></span></a>
-                <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
+            <a href="time" class="timer"><span id="navtime"></span></a>
+            <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
             </span>
         </nav>
         <div class="toolbox">
@@ -65,10 +65,14 @@
                 Decimal: <input type="text" pattern="[0-9]*" id="decimal-input" style="width:10rem;"> <button id="decimal-convert" disabled>Convert</button><button id="decimal-reset" style="margin-right:40px;" disabled>Reset</button> <i id="decimal-arrow" class="fas fa-arrow-right" style="color:dimgray;"></i> <input id="scientific-output" style="width:10rem;margin-left:40px;" readonly> <button id="scientific-output-copy" disabled>Copy scientific e notation</button><button id="scientific-output-copy-2" disabled>Copy scientific notation</button>
                 <br>Scientific (e) Notation: <input id="scientific-input" style="width:10rem;"> <button id="scientific-convert" disabled>Convert</button><button id="scientific-reset" style="margin-right:40px;" disabled>Reset</button> <i id="scientific-arrow" class="fas fa-arrow-right" style="color:dimgray;"></i> <input id="decimal-output" style="width:10rem;margin-left:40px;" readonly> <button id="decimal-output-copy" disabled>Copy</button>
             </p>
-            <br>
             <noscript>
+                <style>
+                    .tooltext, .info-table, .noscript-hidden {
+                    display: none;
+                    }
+                </style>
                 <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
-                <div class="warning">Looks like this script couldn't be displayed for some reason!</div>
+                <div class="warning" style="padding-bottom:25px;">Looks like this page's scripts could not be displayed for some reason!</div>
             </noscript>
         </div>
     </body>

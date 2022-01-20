@@ -72,8 +72,8 @@
                 </span>
             </a>
             <span style="float:right!important;">
-                <a href="time" class="timer"><span id="navtime"></span></a>
-                <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
+            <a href="time" class="timer"><span id="navtime"></span></a>
+            <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
             </span>
         </nav>
         <div class="toolbox">
@@ -84,14 +84,18 @@
                 <br><button id="generate-number">Generate <i id="generate-runResult"></i></button>
                 <button id="reset">Reset</button>
             </p>
-            <hr style="margin-top:30px;">
+            <hr class="noscript-hidden" style="margin-top:30px;">
             <p class="tooltext" style="text-align:center;margin:0;font-weight:800;font-size:90px;">
                 <span class="odometer" id="output-number">0</span>
             </p>
-            <br>
             <noscript>
+                <style>
+                    .tooltext, .info-table, .noscript-hidden {
+                    display: none;
+                    }
+                </style>
                 <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
-                <div class="warning">Looks like this script couldn't be displayed for some reason!</div>
+                <div class="warning" style="padding-bottom:25px;">Looks like this page's scripts could not be displayed for some reason!</div>
             </noscript>
         </div>
     </body>

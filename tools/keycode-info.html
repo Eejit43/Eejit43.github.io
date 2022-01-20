@@ -54,8 +54,8 @@
                 </span>
             </a>
             <span style="float:right!important;">
-                <a href="time" class="timer"><span id="navtime"></span></a>
-                <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
+            <a href="time" class="timer"><span id="navtime"></span></a>
+            <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
             </span>
         </nav>
         <div class="toolbox">
@@ -63,7 +63,7 @@
             <p class="tooltext">
                 <span id="ready"><span style="color:#009c3f"><i class="fas fa-check"></i> Ready to get key information!</span></span>
                 <br><br>Click any key to get information, click any cell to copy the information.
-            <table class="keycodes">
+            <table class="keycodes noscript-hidden">
                 <thead>
                     <tr style="color:#595959;">
                         <th style="width:16.6%;">
@@ -110,10 +110,14 @@
                 </tbody>
             </table>
             </p>
-            <br>
             <noscript>
+                <style>
+                    .tooltext, .info-table, .noscript-hidden {
+                    display: none;
+                    }
+                </style>
                 <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
-                <div class="warning">Looks like this script couldn't be displayed for some reason!</div>
+                <div class="warning" style="padding-bottom:25px;">Looks like this page's scripts could not be displayed for some reason!</div>
             </noscript>
         </div>
     </body>
