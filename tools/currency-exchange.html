@@ -1,98 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Some useful tools for general purposes!">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://eejit43.github.io/currency-converter">
-    <meta property="og:site_name" content="Eejit's Tools">
-    <meta property="og:title" content="Currency Exchange Rates">
-    <meta property="og:description" content="Some useful tools for general purposes!">
-    <meta name="keywords" content="">
-    <meta property="og:image" content="https://eejit43.github.io/icon.png">
-    <meta property="og:image:alt" content="Eejit's Tools">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Currency Exchange Rates | Eejit's Tools">
-    <meta name="twitter:description" content="Some useful tools for general purposes!">
-    <meta name="twitter:url" content="https://eejit43.github.io/currency-converter">
-    <meta name="twitter:image" content="https://eejit43.github.io/icon.png">
-    <meta name="twitter:image:alt" content="Eejit's Tools">
-    <title>Currency Exchange Rates | Eejit's Tools</title>
-    <link rel="stylesheet" href="../styles/styles.css">
-    <link rel="favicon" href="/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#3e498a">
-    <meta name="msapplication-TileColor" content="#3e498a">
-    <meta name="theme-color" content="#3e498a">
-    <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/toastify-js" defer></script>
-    <script src="../scripts/global.js" defer></script>
-  </head>
-  <body>
-    <nav>
-      <a href="https://eejit43.github.io">
-        <span class="logo">
-          <!--
-            --><span style="color:#FF5555">E</span><!--
-            --><span style="color:#FFAA00">e</span><!--
-            --><span style="color:#FFFF55">j</span><!--
-            --><span style="color:#55FF55">i</span><!--
-            --><span style="color:#00AA00">t</span><!--
-            --><span style="color:#00AAAA">'</span><!--
-            --><span style="color:#5555FF">s</span><!--
-            -->
-          <span style="color:#AA00AA;" class="logo-tools">Tools</span>
-        </span>
-      </a>
-      <span style="float:right!important;">
-        <a href="time" class="timer"><span id="navtime"></span></a>
-        <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
-        <script src="../scripts/navtime.js" defer></script>
-      </span>
-    </nav>
-    <div class="toolbox">
-      <h1>Currency Exchange Rates:</h1>
-      <p class="tooltext">
-        <span style="color:dimgray;font-size:15px;">Last Updated: <span id="lastupdated"><span style="color:#FF5555">Loading...</span></span>
-        <br>Next Update: <span id="nextupdate"><span style="color:#FF5555">Loading...</span></span>
-        </span>
-      <table>
-        <tbody>
-          <tr>
-            <td>
-              <p class="tooltext" style="margin-top:0;">
-                $1 <span class="tooltip-text tooltip-bottom" data-tooltip="United States Dollar">USD</span> = <span id="usdcad"><span style="color:#FF5555">...</span></span> <span class="tooltip-text tooltip-bottom" data-tooltip="Canadian Dollar">CAD</span>
-                <br>$1 USD = <span id="usdeur"><span style="color:#FF5555">...</span></span> <span class="tooltip-text tooltip-bottom" data-tooltip="Euro">EUR</span><span class="tab"></span>
-                <br>$1 USD = <span id="usdgbp"><span style="color:#FF5555">...</span></span> <span class="tooltip-text tooltip-bottom" data-tooltip="Great British Pound Sterling">GBP</span>
-                <br>$1 USD = <span id="usdaud"><span style="color:#FF5555">...</span></span> <span class="tooltip-text tooltip-bottom" data-tooltip="Australian Dollar">AUD</span>
-                <br>$1 USD = <span id="usdcrc"><span style="color:#FF5555">...</span></span> <span class="tooltip-text tooltip-bottom" data-tooltip="Costa Rican Colón">CRC</span>
-                <br>$1 USD = <span id="usdjpy"><span style="color:#FF5555">...</span></span> <span class="tooltip-text tooltip-bottom" data-tooltip="Japanese Yen">JPY</span>
-              </p>
-            </td>
-            <td style="padding-left:30px;">
-              <p class="tooltext" style="margin-top:0;">
-                1 CAD = <span id="cadusd"><span style="color:#FF5555">...</span></span> USD<br>
-                1 EUR = <span id="eurusd"><span style="color:#FF5555">...</span></span> USD<br>
-                1 GBP = <span id="gbpusd"><span style="color:#FF5555">...</span></span> USD<br>
-                1 AUD = <span id="audusd"><span style="color:#FF5555">...</span></span> USD<br>
-                1 CRC = <span id="crcusd"><span style="color:#FF5555">...</span></span> USD<br>
-                1 JPY = <span id="jpyusd"><span style="color:#FF5555">...</span></span> USD
-              </p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      </p>
-      <script src="../scripts/currency-exchange.js" defer></script>
-      <br>
-      <noscript>
-        <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
-        <div class="warning">Looks like this script couldn't be displayed for some reason!</div>
-      </noscript>
-    </div>
-  </body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Some useful tools for general purposes!">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://eejit43.github.io/currency-converter">
+        <meta property="og:site_name" content="Eejit's Tools">
+        <meta property="og:title" content="Currency Exchange Rates">
+        <meta property="og:description" content="Some useful tools for general purposes!">
+        <meta name="keywords" content="">
+        <meta property="og:image" content="https://eejit43.github.io/icon.png">
+        <meta property="og:image:alt" content="Eejit's Tools">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="Currency Exchange Rates | Eejit's Tools">
+        <meta name="twitter:description" content="Some useful tools for general purposes!">
+        <meta name="twitter:url" content="https://eejit43.github.io/currency-converter">
+        <meta name="twitter:image" content="https://eejit43.github.io/icon.png">
+        <meta name="twitter:image:alt" content="Eejit's Tools">
+        <title>Currency Exchange Rates | Eejit's Tools</title>
+        <link rel="stylesheet" href="../styles/styles.css">
+        <link rel="favicon" href="/favicon.ico">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#3e498a">
+        <meta name="msapplication-TileColor" content="#3e498a">
+        <meta name="theme-color" content="#3e498a">
+        <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/toastify-js" defer></script>
+        <script src="../scripts/global.js" defer></script>
+    </head>
+    <body>
+        <nav>
+            <a href="https://eejit43.github.io">
+                <span class="logo">
+                    <!--
+                        --><span style="color:#FF5555">E</span><!--
+                        --><span style="color:#FFAA00">e</span><!--
+                        --><span style="color:#FFFF55">j</span><!--
+                        --><span style="color:#55FF55">i</span><!--
+                        --><span style="color:#00AA00">t</span><!--
+                        --><span style="color:#00AAAA">'</span><!--
+                        --><span style="color:#5555FF">s</span><!--
+                        -->
+                    <span style="color:#AA00AA;" class="logo-tools">Tools</span>
+                </span>
+            </a>
+            <span style="float:right!important;">
+                <a href="time" class="timer"><span id="navtime"></span></a>
+                <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
+                <script src="../scripts/navtime.js" defer></script>
+            </span>
+        </nav>
+        <div class="toolbox">
+            <h1>Currency Exchange Rates:</h1>
+            <p class="tooltext">
+                <span style="color:dimgray;font-size:15px;">Last Updated: <span id="lastupdated"><span style="color:#FF5555">Loading...</span></span>
+                <br>Next Update: <span id="nextupdate"><span style="color:#FF5555">Loading...</span></span>
+                </span>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <p class="tooltext" style="margin-top:0;">
+                                $1 <span class="tooltip-text tooltip-bottom" data-tooltip="United States Dollar">USD</span> = <span id="usdcad"><span style="color:#FF5555">...</span></span> <span class="tooltip-text tooltip-bottom" data-tooltip="Canadian Dollar">CAD</span>
+                                <br>$1 USD = <span id="usdeur"><span style="color:#FF5555">...</span></span> <span class="tooltip-text tooltip-bottom" data-tooltip="Euro">EUR</span><span class="tab"></span>
+                                <br>$1 USD = <span id="usdgbp"><span style="color:#FF5555">...</span></span> <span class="tooltip-text tooltip-bottom" data-tooltip="Great British Pound Sterling">GBP</span>
+                                <br>$1 USD = <span id="usdaud"><span style="color:#FF5555">...</span></span> <span class="tooltip-text tooltip-bottom" data-tooltip="Australian Dollar">AUD</span>
+                                <br>$1 USD = <span id="usdcrc"><span style="color:#FF5555">...</span></span> <span class="tooltip-text tooltip-bottom" data-tooltip="Costa Rican Colón">CRC</span>
+                                <br>$1 USD = <span id="usdjpy"><span style="color:#FF5555">...</span></span> <span class="tooltip-text tooltip-bottom" data-tooltip="Japanese Yen">JPY</span>
+                            </p>
+                        </td>
+                        <td style="padding-left:30px;">
+                            <p class="tooltext" style="margin-top:0;">
+                                1 CAD = <span id="cadusd"><span style="color:#FF5555">...</span></span> USD<br>
+                                1 EUR = <span id="eurusd"><span style="color:#FF5555">...</span></span> USD<br>
+                                1 GBP = <span id="gbpusd"><span style="color:#FF5555">...</span></span> USD<br>
+                                1 AUD = <span id="audusd"><span style="color:#FF5555">...</span></span> USD<br>
+                                1 CRC = <span id="crcusd"><span style="color:#FF5555">...</span></span> USD<br>
+                                1 JPY = <span id="jpyusd"><span style="color:#FF5555">...</span></span> USD
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </p>
+            <script src="../scripts/currency-exchange.js" defer></script>
+            <br>
+            <noscript>
+                <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
+                <div class="warning">Looks like this script couldn't be displayed for some reason!</div>
+            </noscript>
+        </div>
+    </body>
 </html>

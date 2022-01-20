@@ -1,75 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Some useful tools for general purposes!">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://eejit43.github.io/dog-age-calc">
-    <meta property="og:site_name" content="Eejit's Tools">
-    <meta property="og:title" content="Dog Age Calculator">
-    <meta property="og:description" content="Some useful tools for general purposes!">
-    <meta name="keywords" content="">
-    <meta property="og:image" content="https://eejit43.github.io/icon.png">
-    <meta property="og:image:alt" content="Eejit's Tools">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Dog Age Calculator | Eejit's Tools">
-    <meta name="twitter:description" content="Some useful tools for general purposes!">
-    <meta name="twitter:url" content="https://eejit43.github.io/dog-age-calc">
-    <meta name="twitter:image" content="https://eejit43.github.io/icon.png">
-    <meta name="twitter:image:alt" content="Eejit's Tools">
-    <title>Dog Age Calculator | Eejit's Tools</title>
-    <link rel="stylesheet" href="../styles/styles.css">
-    <link rel="favicon" href="/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#3e498a">
-    <meta name="msapplication-TileColor" content="#3e498a">
-    <meta name="theme-color" content="#3e498a">
-    <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/toastify-js" defer></script>
-    <script src="../scripts/global.js" defer></script>
-  </head>
-  <body>
-    <nav>
-      <a href="https://eejit43.github.io">
-        <span class="logo">
-          <!--
-            --><span style="color:#FF5555">E</span><!--
-            --><span style="color:#FFAA00">e</span><!--
-            --><span style="color:#FFFF55">j</span><!--
-            --><span style="color:#55FF55">i</span><!--
-            --><span style="color:#00AA00">t</span><!--
-            --><span style="color:#00AAAA">'</span><!--
-            --><span style="color:#5555FF">s</span><!--
-            -->
-          <span style="color:#AA00AA;" class="logo-tools">Tools</span>
-        </span>
-      </a>
-      <span style="float:right!important;">
-        <a href="time" class="timer"><span id="navtime"></span></a>
-        <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
-        <script src="../scripts/navtime.js" defer></script>
-      </span>
-    </nav>
-    <div class="toolbox">
-      <h1>Dog Year Calculator:</h1>
-      <p class="tooltext">
-        <a style="font-weight:500;font-size:16px;" href="https://www.akc.org/wp-content/uploads/2015/11/Dog_Age_Chart_Proof_01Blue.jpg" target="_blank">More detailed table of ages based on weight</a><br>
-        Human to dog: <input id="humanAge">
-        <button id="toDog">Calculate age <i id="td-runResult"></i></button><br>
-        Dog to human: <input id="dogAge">
-        <button id="toHuman">Calculate age <i id="th-runResult"></i></button>
-      <div id="result" class="tooltext"></div>
-      </p>
-      <script src="./dog-age-calc.js" defer></script>
-      <br>
-      <noscript>
-        <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
-        <div class="warning">Looks like this script couldn't be displayed for some reason!</div>
-      </noscript>
-    </div>
-  </body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Some useful tools for general purposes!">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://eejit43.github.io/dog-age-calc">
+        <meta property="og:site_name" content="Eejit's Tools">
+        <meta property="og:title" content="Dog Age Calculator">
+        <meta property="og:description" content="Some useful tools for general purposes!">
+        <meta name="keywords" content="">
+        <meta property="og:image" content="https://eejit43.github.io/icon.png">
+        <meta property="og:image:alt" content="Eejit's Tools">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="Dog Age Calculator | Eejit's Tools">
+        <meta name="twitter:description" content="Some useful tools for general purposes!">
+        <meta name="twitter:url" content="https://eejit43.github.io/dog-age-calc">
+        <meta name="twitter:image" content="https://eejit43.github.io/icon.png">
+        <meta name="twitter:image:alt" content="Eejit's Tools">
+        <title>Dog Age Calculator | Eejit's Tools</title>
+        <link rel="stylesheet" href="../styles/styles.css">
+        <link rel="favicon" href="/favicon.ico">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#3e498a">
+        <meta name="msapplication-TileColor" content="#3e498a">
+        <meta name="theme-color" content="#3e498a">
+        <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/toastify-js" defer></script>
+        <script src="../scripts/global.js" defer></script>
+    </head>
+    <body>
+        <nav>
+            <a href="https://eejit43.github.io">
+                <span class="logo">
+                    <!--
+                        --><span style="color:#FF5555">E</span><!--
+                        --><span style="color:#FFAA00">e</span><!--
+                        --><span style="color:#FFFF55">j</span><!--
+                        --><span style="color:#55FF55">i</span><!--
+                        --><span style="color:#00AA00">t</span><!--
+                        --><span style="color:#00AAAA">'</span><!--
+                        --><span style="color:#5555FF">s</span><!--
+                        -->
+                    <span style="color:#AA00AA;" class="logo-tools">Tools</span>
+                </span>
+            </a>
+            <span style="float:right!important;">
+                <a href="time" class="timer"><span id="navtime"></span></a>
+                <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
+                <script src="../scripts/navtime.js" defer></script>
+            </span>
+        </nav>
+        <div class="toolbox">
+            <h1>Dog Year Calculator:</h1>
+            <p class="tooltext">
+                <a style="font-weight:500;font-size:16px;" href="https://www.akc.org/wp-content/uploads/2015/11/Dog_Age_Chart_Proof_01Blue.jpg" target="_blank">More detailed table of ages based on weight</a><br>
+                Human to dog: <input id="humanAge">
+                <button id="toDog">Calculate age <i id="td-runResult"></i></button><br>
+                Dog to human: <input id="dogAge">
+                <button id="toHuman">Calculate age <i id="th-runResult"></i></button>
+            <div id="result" class="tooltext"></div>
+            </p>
+            <script src="./dog-age-calc.js" defer></script>
+            <br>
+            <noscript>
+                <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
+                <div class="warning">Looks like this script couldn't be displayed for some reason!</div>
+            </noscript>
+        </div>
+    </body>
 </html>

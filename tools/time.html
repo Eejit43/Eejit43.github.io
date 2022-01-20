@@ -1,77 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Some useful tools for general purposes!">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://eejit43.github.io/time">
-    <meta property="og:site_name" content="Eejit's Tools">
-    <meta property="og:title" content="Time Info">
-    <meta property="og:description" content="Some useful tools for general purposes!">
-    <meta name="keywords" content="">
-    <meta property="og:image" content="https://eejit43.github.io/icon.png">
-    <meta property="og:image:alt" content="Eejit's Tools">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Time Info | Eejit's Tools">
-    <meta name="twitter:description" content="Some useful tools for general purposes!">
-    <meta name="twitter:url" content="https://eejit43.github.io/time">
-    <meta name="twitter:image" content="https://eejit43.github.io/icon.png">
-    <meta name="twitter:image:alt" content="Eejit's Tools">
-    <title>Time Info | Eejit's Tools</title>
-    <link rel="stylesheet" href="../styles/styles.css">
-    <link rel="favicon" href="/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#3e498a">
-    <meta name="msapplication-TileColor" content="#3e498a">
-    <meta name="theme-color" content="#3e498a">
-    <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/toastify-js" defer></script>
-    <script src="../scripts/global.js" defer></script>
-  </head>
-  <body>
-    <nav>
-      <a href="https://eejit43.github.io">
-        <span class="logo">
-          <!--
-            --><span style="color:#FF5555">E</span><!--
-            --><span style="color:#FFAA00">e</span><!--
-            --><span style="color:#FFFF55">j</span><!--
-            --><span style="color:#55FF55">i</span><!--
-            --><span style="color:#00AA00">t</span><!--
-            --><span style="color:#00AAAA">'</span><!--
-            --><span style="color:#5555FF">s</span><!--
-            -->
-          <span style="color:#AA00AA;" class="logo-tools">Tools</span>
-        </span>
-      </a>
-      <span style="float:right!important;">
-        <a href="time" class="timer"><span id="navtime"></span></a>
-        <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
-        <script src="../scripts/navtime.js" defer></script>
-      </span>
-    </nav>
-    <div class="toolbox">
-      <h1>Time:</h1>
-      <p class="tooltext">
-        Time: <span id='time'></span> (<span id='dst'></span> <span class='tooltip-text tooltip-bottom' data-tooltip='Daylight Savings Time'>DST</span>)<br>
-        Date: <span id='date'></span><br>
-        <span class='tooltip-text tooltip-bottom' data-tooltip='Milliseconds since January 1st, 1970 in Coordinated Universal Time (UTC)'>UNIX Epoch</span> Time: <span id='unix'></span><br>
-        Timezone: <span id='timezone'></span><br><br>
-        Time in Japan (<span class='tooltip-text tooltip-bottom' data-tooltip='Japan Standard Time'>JST</span>): <span id='jptime'></span><br>
-        Time in Costa Rica (<span class='tooltip-text tooltip-bottom' data-tooltip='Central Standard Time'>CST</span>): <span id='crtime'></span><br>
-        Time in England/Ireland (<span class="mobilehidden"><span class='tooltip-text tooltip-bottom' data-tooltip='Greenwich Mean Time (not observed during Daylight Savings Time)'>GMT</span>/<span class='tooltip-text tooltip-bottom' data-tooltip='British Summer Time (observed during Daylight Savings Time)'>BST</span></span><span class="mobileonly"><span class='tooltip-text tooltip-left' data-tooltip='Greenwich Mean Time (not observed during Daylight Savings Time)'>GMT</span>/<span class='tooltip-text tooltip-left' data-tooltip='British Summer Time (observed during Daylight Savings Time)'>BST</span></span>): <span id='gbtime'></span><br>
-        <span class='tooltip-text tooltip-bottom' data-tooltip='Coordinated Universal Time'>UTC</span>/<span class='tooltip-text tooltip-bottom' data-tooltip='Greenwich Mean Time'>GMT</span> Time: <span id='utctime'></span><br>
-      </p>
-      <script src="../scripts/time.js" defer></script>
-      <br>
-      <noscript>
-        <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
-        <div class="warning">Looks like this script couldn't be displayed for some reason!</div>
-      </noscript>
-    </div>
-  </body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Some useful tools for general purposes!">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://eejit43.github.io/time">
+        <meta property="og:site_name" content="Eejit's Tools">
+        <meta property="og:title" content="Time Info">
+        <meta property="og:description" content="Some useful tools for general purposes!">
+        <meta name="keywords" content="">
+        <meta property="og:image" content="https://eejit43.github.io/icon.png">
+        <meta property="og:image:alt" content="Eejit's Tools">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="Time Info | Eejit's Tools">
+        <meta name="twitter:description" content="Some useful tools for general purposes!">
+        <meta name="twitter:url" content="https://eejit43.github.io/time">
+        <meta name="twitter:image" content="https://eejit43.github.io/icon.png">
+        <meta name="twitter:image:alt" content="Eejit's Tools">
+        <title>Time Info | Eejit's Tools</title>
+        <link rel="stylesheet" href="../styles/styles.css">
+        <link rel="favicon" href="/favicon.ico">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#3e498a">
+        <meta name="msapplication-TileColor" content="#3e498a">
+        <meta name="theme-color" content="#3e498a">
+        <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/toastify-js" defer></script>
+        <script src="../scripts/global.js" defer></script>
+    </head>
+    <body>
+        <nav>
+            <a href="https://eejit43.github.io">
+                <span class="logo">
+                    <!--
+                        --><span style="color:#FF5555">E</span><!--
+                        --><span style="color:#FFAA00">e</span><!--
+                        --><span style="color:#FFFF55">j</span><!--
+                        --><span style="color:#55FF55">i</span><!--
+                        --><span style="color:#00AA00">t</span><!--
+                        --><span style="color:#00AAAA">'</span><!--
+                        --><span style="color:#5555FF">s</span><!--
+                        -->
+                    <span style="color:#AA00AA;" class="logo-tools">Tools</span>
+                </span>
+            </a>
+            <span style="float:right!important;">
+                <a href="time" class="timer"><span id="navtime"></span></a>
+                <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
+                <script src="../scripts/navtime.js" defer></script>
+            </span>
+        </nav>
+        <div class="toolbox">
+            <h1>Time:</h1>
+            <p class="tooltext">
+                Time: <span id='time'></span> (<span id='dst'></span> <span class='tooltip-text tooltip-bottom' data-tooltip='Daylight Savings Time'>DST</span>)<br>
+                Date: <span id='date'></span><br>
+                <span class='tooltip-text tooltip-bottom' data-tooltip='Milliseconds since January 1st, 1970 in Coordinated Universal Time (UTC)'>UNIX Epoch</span> Time: <span id='unix'></span><br>
+                Timezone: <span id='timezone'></span><br><br>
+                Time in Japan (<span class='tooltip-text tooltip-bottom' data-tooltip='Japan Standard Time'>JST</span>): <span id='jptime'></span><br>
+                Time in Costa Rica (<span class='tooltip-text tooltip-bottom' data-tooltip='Central Standard Time'>CST</span>): <span id='crtime'></span><br>
+                Time in England/Ireland (<span class="mobilehidden"><span class='tooltip-text tooltip-bottom' data-tooltip='Greenwich Mean Time (not observed during Daylight Savings Time)'>GMT</span>/<span class='tooltip-text tooltip-bottom' data-tooltip='British Summer Time (observed during Daylight Savings Time)'>BST</span></span><span class="mobileonly"><span class='tooltip-text tooltip-left' data-tooltip='Greenwich Mean Time (not observed during Daylight Savings Time)'>GMT</span>/<span class='tooltip-text tooltip-left' data-tooltip='British Summer Time (observed during Daylight Savings Time)'>BST</span></span>): <span id='gbtime'></span><br>
+                <span class='tooltip-text tooltip-bottom' data-tooltip='Coordinated Universal Time'>UTC</span>/<span class='tooltip-text tooltip-bottom' data-tooltip='Greenwich Mean Time'>GMT</span> Time: <span id='utctime'></span><br>
+            </p>
+            <script src="../scripts/time.js" defer></script>
+            <br>
+            <noscript>
+                <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
+                <div class="warning">Looks like this script couldn't be displayed for some reason!</div>
+            </noscript>
+        </div>
+    </body>
 </html>

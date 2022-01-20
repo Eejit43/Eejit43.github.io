@@ -1,115 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Some useful tools for general purposes!">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://eejit43.github.io/color-converter">
-    <meta property="og:site_name" content="Eejit's Tools">
-    <meta property="og:title" content="Color Converter">
-    <meta property="og:description" content="Some useful tools for general purposes!">
-    <meta name="keywords" content="">
-    <meta property="og:image" content="https://eejit43.github.io/icon.png">
-    <meta property="og:image:alt" content="Eejit's Tools">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Color Converter | Eejit's Tools">
-    <meta name="twitter:description" content="Some useful tools for general purposes!">
-    <meta name="twitter:url" content="https://eejit43.github.io/color-converter">
-    <meta name="twitter:image" content="https://eejit43.github.io/icon.png">
-    <meta name="twitter:image:alt" content="Eejit's Tools">
-    <title>Color Converter | Eejit's Tools</title>
-    <link rel="stylesheet" href="../styles/styles.css">
-    <link rel="favicon" href="/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#3e498a">
-    <meta name="msapplication-TileColor" content="#3e498a">
-    <meta name="theme-color" content="#3e498a">
-    <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/toastify-js" defer></script>
-    <script src="../scripts/global.js" defer></script>
-  </head>
-  <body>
-    <nav>
-      <a href="https://eejit43.github.io">
-        <span class="logo">
-          <!--
-            --><span style="color:#FF5555">E</span><!--
-            --><span style="color:#FFAA00">e</span><!--
-            --><span style="color:#FFFF55">j</span><!--
-            --><span style="color:#55FF55">i</span><!--
-            --><span style="color:#00AA00">t</span><!--
-            --><span style="color:#00AAAA">'</span><!--
-            --><span style="color:#5555FF">s</span><!--
-            -->
-          <span style="color:#AA00AA;" class="logo-tools">Tools</span>
-        </span>
-      </a>
-      <span style="float:right!important;">
-        <a href="time" class="timer"><span id="navtime"></span></a>
-        <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
-        <script src="../scripts/navtime.js" defer></script>
-      </span>
-    </nav>
-    <div class="toc">
-      <span style="font-size:22px;line-height:180%;">Table of Contents:</span>
-      <br>– <a href="#hex">Hex Converter</a>
-      <br>– <a href="#rgb">RBG Converter</a>
-      <br>– <a href="#hsl">HSL Converter</a>
-    </div>
-    <div class="toolbox" style="margin: 40px auto 30px;">
-      <h1 id="hex">Hex Code (Hexidecimal) Converter:</h1>
-      <p class="tooltext">
-        Hex: <input id="hexInput" placeholder="#ffffff" style="width:8rem;"></textarea><span style="display: inline-block;width:25px;height:25px;border:3px solid #16181c;margin-left:30px;transform: translate(0, 37%);text-align:center;vertical-align:center;" id="hex-display"></span>
-      </p>
-      <hr style="margin-top:25px;width:20rem;" align="left">
-      <p class="tooltext">
-        RGB: <input id="hex-rgb" style="width:8rem;" readonly></input> <button id="hex-rgb-copy" disabled>Copy</button><br>
-        HSL: <input id="hex-hsl" style="width:8rem;" readonly></input> <button id="hex-hsl-copy" disabled>Copy</button>
-      </p>
-      <script src="../scripts/color-converter.js" defer></script>
-      <br>
-      <noscript>
-        <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
-        <div class="warning">Looks like this script couldn't be displayed for some reason!</div>
-      </noscript>
-    </div>
-    <div class="toolbox" style="margin: 40px auto 30px;">
-      <h1 id="rgb">RGB (Red, Green, Blue) Converter:</h1>
-      <p class="tooltext">
-        RGB: <input id="rgbInput" placeholder="rgb(255,255,255)" style="width:8rem;"></textarea><span style="display: inline-block;width:25px;height:25px;border:3px solid #16181c;margin-left:30px;transform: translate(0, 37%);text-align:center;vertical-align:center;" id="rgb-display"></span>
-      </p>
-      <hr style="margin-top:25px;width:20rem;" align="left">
-      <p class="tooltext">
-        Hex: <input id="rgb-hex" style="width:8rem;" readonly></input> <button id="rgb-hex-copy" disabled>Copy</button><br>
-        HSL: <input id="rgb-hsl" style="width:8rem;" readonly></input> <button id="rgb-hsl-copy" disabled>Copy</button>
-      </p>
-      <script src="../scripts/color-converter.js" defer></script>
-      <br>
-      <noscript>
-        <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
-        <div class="warning">Looks like this script couldn't be displayed for some reason!</div>
-      </noscript>
-    </div>
-    <div class="toolbox" style="margin: 40px auto 30px;">
-      <h1 id="hsl">HSL (Hue, Saturation, Lightness) Converter:</h1>
-      <p class="tooltext">
-        HSL: <input id="hslInput" placeholder="hsl(359,100%,100%)" style="width:8rem;"></textarea><span style="display: inline-block;width:25px;height:25px;border:3px solid #16181c;margin-left:30px;transform: translate(0, 37%);text-align:center;vertical-align:center;" id="hsl-display"></span>
-      </p>
-      <hr style="margin-top:25px;width:20rem;" align="left">
-      <p class="tooltext">
-        Hex: <input id="hsl-hex" style="width:8rem;" readonly></input> <button id="hsl-hex-copy" disabled>Copy</button><br>
-        RGB: <input id="hsl-rgb" style="width:8rem;" readonly></input> <button id="hsl-rgb-copy" disabled >Copy</button>
-      </p>
-      <script src="../scripts/color-converter.js" defer></script>
-      <br>
-      <noscript>
-        <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
-        <div class="warning">Looks like this script couldn't be displayed for some reason!</div>
-      </noscript>
-    </div>
-  </body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Some useful tools for general purposes!">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://eejit43.github.io/color-converter">
+        <meta property="og:site_name" content="Eejit's Tools">
+        <meta property="og:title" content="Color Converter">
+        <meta property="og:description" content="Some useful tools for general purposes!">
+        <meta name="keywords" content="">
+        <meta property="og:image" content="https://eejit43.github.io/icon.png">
+        <meta property="og:image:alt" content="Eejit's Tools">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="Color Converter | Eejit's Tools">
+        <meta name="twitter:description" content="Some useful tools for general purposes!">
+        <meta name="twitter:url" content="https://eejit43.github.io/color-converter">
+        <meta name="twitter:image" content="https://eejit43.github.io/icon.png">
+        <meta name="twitter:image:alt" content="Eejit's Tools">
+        <title>Color Converter | Eejit's Tools</title>
+        <link rel="stylesheet" href="../styles/styles.css">
+        <link rel="favicon" href="/favicon.ico">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#3e498a">
+        <meta name="msapplication-TileColor" content="#3e498a">
+        <meta name="theme-color" content="#3e498a">
+        <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/toastify-js" defer></script>
+        <script src="../scripts/global.js" defer></script>
+    </head>
+    <body>
+        <nav>
+            <a href="https://eejit43.github.io">
+                <span class="logo">
+                    <!--
+                        --><span style="color:#FF5555">E</span><!--
+                        --><span style="color:#FFAA00">e</span><!--
+                        --><span style="color:#FFFF55">j</span><!--
+                        --><span style="color:#55FF55">i</span><!--
+                        --><span style="color:#00AA00">t</span><!--
+                        --><span style="color:#00AAAA">'</span><!--
+                        --><span style="color:#5555FF">s</span><!--
+                        -->
+                    <span style="color:#AA00AA;" class="logo-tools">Tools</span>
+                </span>
+            </a>
+            <span style="float:right!important;">
+                <a href="time" class="timer"><span id="navtime"></span></a>
+                <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
+                <script src="../scripts/navtime.js" defer></script>
+            </span>
+        </nav>
+        <div class="toc">
+            <span style="font-size:22px;line-height:180%;">Table of Contents:</span>
+            <br>– <a href="#hex">Hex Converter</a>
+            <br>– <a href="#rgb">RBG Converter</a>
+            <br>– <a href="#hsl">HSL Converter</a>
+        </div>
+        <div class="toolbox" style="margin: 40px auto 30px;">
+            <h1 id="hex">Hex Code (Hexidecimal) Converter:</h1>
+            <p class="tooltext">
+                Hex: <input id="hexInput" placeholder="#ffffff" style="width:8rem;"></textarea><span style="display: inline-block;width:25px;height:25px;border:3px solid #16181c;margin-left:30px;transform: translate(0, 37%);text-align:center;vertical-align:center;" id="hex-display"></span>
+            </p>
+            <hr style="margin-top:25px;width:20rem;" align="left">
+            <p class="tooltext">
+                RGB: <input id="hex-rgb" style="width:8rem;" readonly></input> <button id="hex-rgb-copy" disabled>Copy</button><br>
+                HSL: <input id="hex-hsl" style="width:8rem;" readonly></input> <button id="hex-hsl-copy" disabled>Copy</button>
+            </p>
+            <script src="../scripts/color-converter.js" defer></script>
+            <br>
+            <noscript>
+                <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
+                <div class="warning">Looks like this script couldn't be displayed for some reason!</div>
+            </noscript>
+        </div>
+        <div class="toolbox" style="margin: 40px auto 30px;">
+            <h1 id="rgb">RGB (Red, Green, Blue) Converter:</h1>
+            <p class="tooltext">
+                RGB: <input id="rgbInput" placeholder="rgb(255,255,255)" style="width:8rem;"></textarea><span style="display: inline-block;width:25px;height:25px;border:3px solid #16181c;margin-left:30px;transform: translate(0, 37%);text-align:center;vertical-align:center;" id="rgb-display"></span>
+            </p>
+            <hr style="margin-top:25px;width:20rem;" align="left">
+            <p class="tooltext">
+                Hex: <input id="rgb-hex" style="width:8rem;" readonly></input> <button id="rgb-hex-copy" disabled>Copy</button><br>
+                HSL: <input id="rgb-hsl" style="width:8rem;" readonly></input> <button id="rgb-hsl-copy" disabled>Copy</button>
+            </p>
+            <script src="../scripts/color-converter.js" defer></script>
+            <br>
+            <noscript>
+                <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
+                <div class="warning">Looks like this script couldn't be displayed for some reason!</div>
+            </noscript>
+        </div>
+        <div class="toolbox" style="margin: 40px auto 30px;">
+            <h1 id="hsl">HSL (Hue, Saturation, Lightness) Converter:</h1>
+            <p class="tooltext">
+                HSL: <input id="hslInput" placeholder="hsl(359,100%,100%)" style="width:8rem;"></textarea><span style="display: inline-block;width:25px;height:25px;border:3px solid #16181c;margin-left:30px;transform: translate(0, 37%);text-align:center;vertical-align:center;" id="hsl-display"></span>
+            </p>
+            <hr style="margin-top:25px;width:20rem;" align="left">
+            <p class="tooltext">
+                Hex: <input id="hsl-hex" style="width:8rem;" readonly></input> <button id="hsl-hex-copy" disabled>Copy</button><br>
+                RGB: <input id="hsl-rgb" style="width:8rem;" readonly></input> <button id="hsl-rgb-copy" disabled >Copy</button>
+            </p>
+            <script src="../scripts/color-converter.js" defer></script>
+            <br>
+            <noscript>
+                <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
+                <div class="warning">Looks like this script couldn't be displayed for some reason!</div>
+            </noscript>
+        </div>
+    </body>
 </html>
