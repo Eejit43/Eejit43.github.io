@@ -707,3 +707,11 @@ code {
   font-family: monospace;
   white-space: pre;
 }
+
+
+/* ALWAYS LEAVE ON BOTTOM */
+
+#preload-overlay {
+  visibility: hidden;
+  transition: visibility 0.15s;
+}
