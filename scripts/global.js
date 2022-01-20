@@ -1,5 +1,3 @@
-import('https://twemoji.maxcdn.com/v/latest/twemoji.min.js');
-
 // Emoji parser
 function twemojiUpdate() {
   twemoji.parse(document.body, {
