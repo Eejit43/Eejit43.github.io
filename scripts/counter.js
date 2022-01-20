@@ -1,3 +1,5 @@
+import('./global.js')
+
 let number = 0;
 let key = 'Space';
 
