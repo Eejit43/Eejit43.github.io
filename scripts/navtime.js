@@ -1,5 +1,3 @@
-navtime();
-
 function navtime() {
   let currentTime = new Date();
   let fullhours = currentTime.getHours();
@@ -22,3 +20,5 @@ function navtime() {
   document.getElementById('navtime').innerHTML = finaltime;
   setTimeout(navtime, 100);
 }
+
+navtime();

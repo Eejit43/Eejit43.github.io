@@ -16,8 +16,6 @@ window.onload = function () {
 let unixInputState = 1; // 1 = seconds, 2 = milliseconds
 let unixOutputState = 1; // 1 = seconds, 2 = milliseconds
 
-updateStandardTime();
-
 function updateStandardTime() {
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   let currentTime = new Date();
@@ -44,8 +42,6 @@ function updateStandardTime() {
 
   updateUnixOutput();
 }
-
-updateUnixOutput();
 
 function updateUnixOutput() {
   let standardtime = document.getElementById('standard-input').value;
@@ -75,8 +71,6 @@ function updateUnixOutput() {
   }
 }
 
-updateUnixTime();
-
 function updateUnixTime() {
   let output = new Date().getTime();
   if (unixInputState === 1) {
@@ -87,8 +81,6 @@ function updateUnixTime() {
 
   updateStandardOutput();
 }
-
-updateStandardOutput();
 
 function updateStandardOutput() {
   let standardtime = parseInt(document.getElementById('unix-input').value, 10) * 1000;
@@ -141,7 +133,6 @@ function updateStandardOutput() {
   }
 }
 
-
 function switchUnixInput() {
   let title = document.getElementById('unix-input-title');
   let button = document.getElementById('unix-input-switch');
@@ -171,3 +162,8 @@ function switchUnixOutput() {
   }
   updateUnixOutput();
 }
+
+updateStandardTime();
+updateUnixOutput();
+updateUnixTime();
+updateStandardOutput();

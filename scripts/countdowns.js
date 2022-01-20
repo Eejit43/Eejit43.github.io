@@ -72,11 +72,11 @@ function countdown(date, elementID) {
   distance <= 0 ? document.getElementById(elementID).innerHTML = '<span style="color:#FF5555;">This event has already occurred!</span>' : document.getElementById(elementID).innerHTML = daysfinal + hoursfinal + minutesfinal + secondsfinal;
 }
 
-/*let valentines = setInterval(countdown, 100, 'February 14, 2022', 'valentines');
+let valentines = setInterval(countdown, 100, 'February 14, 2022', 'valentines');
 
 let patricks = setInterval(countdown, 100, 'March 17, 2022', 'patricks');
 
-let easter = setInterval(countdown, 100, 'April 17, 2022', 'easter');
+/*let easter = setInterval(countdown, 100, 'April 17, 2022', 'easter');
 
 let independence = setInterval(countdown, 100, 'July 4, 2022', 'independence');
 
@@ -84,6 +84,6 @@ let halloween = setInterval(countdown, 100, 'October 31, 2022', 'halloween');
 
 let thanksgiving = setInterval(countdown, 100, 'November 24, 2022', 'thanksgiving');
 
-let christmas = setInterval(countdown, 100, 'December 25, 2021', 'christmas');*/
+let christmas = setInterval(countdown, 100, 'December 25, 2022', 'christmas');
 
-let newyears = setInterval(countdown, 100, 'January 1, 2022', 'newyears');
+let newyears = setInterval(countdown, 100, 'January 1, 2023', 'newyears');*/
