@@ -6,17 +6,7 @@ function twemojiUpdate() {
     });
 }
 
-window.onload = function () {
-    twemojiUpdate();
-}
-
-setTimeout(twemojiUpdate, 200)
-
-setTimeout(twemojiUpdate, 500)
-
-setTimeout(twemojiUpdate, 1000)
-
-setTimeout(twemojiUpdate, 2000)
+twemojiUpdate();
 
 // Popup alert
 function showAlert(text, color) {
