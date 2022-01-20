@@ -2,7 +2,9 @@
 
 /* For Font Awesome icons, see: https://fontawesome.com/v5.15/icons?d=gallery&p=2&m=free */
 
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css");
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+@import url('https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css');
 
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&display=swap');
 

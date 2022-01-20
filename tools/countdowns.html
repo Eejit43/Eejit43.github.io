@@ -28,8 +28,9 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#3e498a">
     <meta name="msapplication-TileColor" content="#3e498a">
     <meta name="theme-color" content="#3e498a">
-    <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
-    <script src="../scripts/global.js"></script>
+    <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js" defer></script>
+    <script src="../scripts/global.js" defer></script>
   </head>
   <body>
     <nav>
@@ -50,7 +51,7 @@
       <span style="float:right!important;">
         <a href="time" class="timer"><span id="navtime"></span></a>
         <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
-        <script src="../scripts/navtime.js"></script>
+        <script src="../scripts/navtime.js" defer></script>
       </span>
     </nav>
     <div class="toolbox">
@@ -65,7 +66,7 @@
           Time until <span class='tooltip-text tooltip-bottom' data-tooltip='December 25th, 2021'>Christmas</span>: <span id='christmas'><span style='color:#FF5555;'>Loading...</span></span> 🎄<br>
           -->Time until <span class='tooltip-text tooltip-bottom' data-tooltip='January 1st, 2022'>New Year's</span>: <span id='newyears'><span style='color:#FF5555;'>Loading...</span></span> 🎉
       </p>
-      <script src="../scripts/countdowns.js"></script>
+      <script src="../scripts/countdowns.js" defer></script>
       <br>
       <noscript>
         <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
