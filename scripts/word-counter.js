@@ -9,34 +9,34 @@ let paragraphDisplay = document.getElementById('paragraph-count');
 let characterCount, wordCount, sentenceCount, lineCount, paragraphCount;
 
 window.onload = function () {
-  document.getElementById('input').addEventListener('input', updateValues);
-  document.getElementById('reset').addEventListener('click', reset);
+    document.getElementById('input').addEventListener('input', updateValues);
+    document.getElementById('reset').addEventListener('click', reset);
 }
 
 function updateValues() {
-  characterCount = input.value.length;
-  wordCount = input.value.trim() ? input.value.trim().split(/\s+/).filter(word => /\w/.test(word)).length : 0;
-  sentenceCount = input.value.trim() ? input.value.trim().split(/[.?!]/).filter(sentence => !/^\s*$/.test(sentence)).length : 0;
-  lineCount = input.value.trim() ? input.value.trim().split('\n').length : 0;
-  paragraphCount = input.value.trim() ? input.value.trim().split('\n\n').length : 0;
+    characterCount = input.value.length;
+    wordCount = input.value.trim() ? input.value.trim().split(/\s+/).filter(word => /\w/.test(word)).length : 0;
+    sentenceCount = input.value.trim() ? input.value.trim().split(/[.?!]/).filter(sentence => !/^\s*$/.test(sentence)).length : 0;
+    lineCount = input.value.trim() ? input.value.trim().split('\n').length : 0;
+    paragraphCount = input.value.trim() ? input.value.trim().split('\n\n').length : 0;
 
-  characterDisplay.innerHTML = characterCount;
-  wordDisplay.innerHTML = wordCount;
-  sentenceDisplay.innerHTML = sentenceCount;
-  lineDisplay.innerHTML = lineCount;
-  paragraphDisplay.innerHTML = paragraphCount;
+    characterDisplay.innerHTML = characterCount;
+    wordDisplay.innerHTML = wordCount;
+    sentenceDisplay.innerHTML = sentenceCount;
+    lineDisplay.innerHTML = lineCount;
+    paragraphDisplay.innerHTML = paragraphCount;
 }
 
 function reset() {
-  let characterCount, wordCount, sentenceCount, lineCount, paragraphCount = undefined;
+    let characterCount, wordCount, sentenceCount, lineCount, paragraphCount = undefined;
 
-  input.value = '';
+    input.value = '';
 
-  characterDisplay.innerHTML = '0';
-  wordDisplay.innerHTML = '0';
-  sentenceDisplay.innerHTML = '0';
-  lineDisplay.innerHTML = '0';
-  paragraphDisplay.innerHTML = '0';
+    characterDisplay.innerHTML = '0';
+    wordDisplay.innerHTML = '0';
+    sentenceDisplay.innerHTML = '0';
+    lineDisplay.innerHTML = '0';
+    paragraphDisplay.innerHTML = '0';
 
-  showAlert('Reset!', 'success');
+    showAlert('Reset!', 'success');
 }

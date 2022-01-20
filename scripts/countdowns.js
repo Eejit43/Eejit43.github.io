@@ -1,75 +1,74 @@
 function countdown(date, elementID) {
+    let countdownDate = new Date(`${date} 00:00:00`).getTime();
 
-  let countdownDate = new Date(`${date} 00:00:00`).getTime();
+    let daysfinal = undefined;
+    let hoursfinal = undefined;
+    let minutesfinal = undefined;
+    let secondsfinal = undefined;
 
-  let daysfinal = undefined;
-  let hoursfinal = undefined;
-  let minutesfinal = undefined;
-  let secondsfinal = undefined;
+    let daysfinalsuffix = undefined;
+    let hoursfinalsuffix = undefined;
 
-  let daysfinalsuffix = undefined;
-  let hoursfinalsuffix = undefined;
+    let curtime = new Date().getTime();
 
-  let curtime = new Date().getTime();
+    let distance = countdownDate - curtime;
 
-  let distance = countdownDate - curtime;
+    let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    if (hours === 0 && minutes === 0 && seconds === 0) {
+        daysfinalsuffix = '';
+    } else {
+        daysfinalsuffix = ', ';
+    }
 
-  if (hours === 0 && minutes === 0 && seconds === 0) {
-    daysfinalsuffix = '';
-  } else {
-    daysfinalsuffix = ', ';
-  }
+    if (days === 1) {
+        daysfinal = days + ' day' + daysfinalsuffix;
+    } else if (days === 0) {
+        daysfinal = '';
+    } else {
+        daysfinal = days + ' days' + daysfinalsuffix;
+    }
 
-  if (days === 1) {
-    daysfinal = days + ' day' + daysfinalsuffix;
-  } else if (days === 0) {
-    daysfinal = '';
-  } else {
-    daysfinal = days + ' days' + daysfinalsuffix;
-  }
+    if (minutes === 0 && seconds === 0) {
+        hoursfinalsuffix = '';
+    } else {
+        hoursfinalsuffix = ', ';
+    }
 
-  if (minutes === 0 && seconds === 0) {
-    hoursfinalsuffix = '';
-  } else {
-    hoursfinalsuffix = ', ';
-  }
+    if (hours === 1) {
+        hoursfinal = hours + ' hour' + hoursfinalsuffix;
+    } else if (hours === 0) {
+        hoursfinal = '';
+    } else {
+        hoursfinal = hours + ' hours' + hoursfinalsuffix;
+    }
 
-  if (hours === 1) {
-    hoursfinal = hours + ' hour' + hoursfinalsuffix;
-  } else if (hours === 0) {
-    hoursfinal = '';
-  } else {
-    hoursfinal = hours + ' hours' + hoursfinalsuffix;
-  }
+    if (seconds === 0) {
+        minutesfinalsuffix = '';
+    } else {
+        minutesfinalsuffix = ', ';
+    }
 
-  if (seconds === 0) {
-    minutesfinalsuffix = '';
-  } else {
-    minutesfinalsuffix = ', ';
-  }
+    if (minutes === 1) {
+        minutesfinal = minutes + ' minute' + minutesfinalsuffix;
+    } else if (minutes === 0) {
+        minutesfinal = '';
+    } else {
+        minutesfinal = minutes + ' minutes' + minutesfinalsuffix;
+    }
 
-  if (minutes === 1) {
-    minutesfinal = minutes + ' minute' + minutesfinalsuffix;
-  } else if (minutes === 0) {
-    minutesfinal = '';
-  } else {
-    minutesfinal = minutes + ' minutes' + minutesfinalsuffix;
-  }
+    if (seconds === 1) {
+        secondsfinal = seconds + ' second';
+    } else if (seconds === 0) {
+        secondsfinal = '';
+    } else {
+        secondsfinal = seconds + ' seconds';
+    }
 
-  if (seconds === 1) {
-    secondsfinal = seconds + ' second';
-  } else if (seconds === 0) {
-    secondsfinal = '';
-  } else {
-    secondsfinal = seconds + ' seconds';
-  }
-
-  distance <= 0 ? document.getElementById(elementID).innerHTML = '<span style="color:#FF5555;">This event has already occurred!</span>' : document.getElementById(elementID).innerHTML = daysfinal + hoursfinal + minutesfinal + secondsfinal;
+    distance <= 0 ? document.getElementById(elementID).innerHTML = '<span style="color:#FF5555;">This event has already occurred!</span>' : document.getElementById(elementID).innerHTML = daysfinal + hoursfinal + minutesfinal + secondsfinal;
 }
 
 let valentines = setInterval(countdown, 100, 'February 14, 2022', 'valentines');

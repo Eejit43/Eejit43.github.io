@@ -5,56 +5,56 @@ let result = document.getElementById('result');
 let eightBall, randomNumber;
 
 window.onload = function () {
-  rollBallBtn.addEventListener("click", rollBall);
+    rollBallBtn.addEventListener("click", rollBall);
 }
 
 function rollBall() {
-  if (userQuestion.value.length === 0) {
-    showAlert('You didn\'t ask a question!', 'error');
-  } else {
-    randomNumber = Math.floor(Math.random() * 11);
-    switch (randomNumber) {
-      case 0:
-        eightBall = 'It is certain' // Yes
-        break;
-      case 1:
-        eightBall = 'It is decidedly so' // Yes
-        break;
-      case 2:
-        eightBall = 'Signs point to yes' // Yes
-        break;
-      case 3:
-        eightBall = '100% yes!' // Yes
-        break;
-      case 4:
-        eightBall = 'Do not count on it' // No
-        break;
-      case 5:
-        eightBall = 'My sources say no' // No
-        break;
-      case 6:
-        eightBall = 'Outlook not so good' // No
-        break;
-      case 7:
-        eightBall = 'No way' // No
-        break;
-      case 8:
-        eightBall = 'Reply hazy try again' // Neutral
-        break;
-      case 9:
-        eightBall = 'Cannot predict now' // Neutral
-        break;
-      case 10:
-        eightBall = 'Radio interference, try again' // Neutral
-        break;
+    if (userQuestion.value.length === 0) {
+        showAlert('You didn\'t ask a question!', 'error');
+    } else {
+        randomNumber = Math.floor(Math.random() * 11);
+        switch (randomNumber) {
+            case 0:
+                eightBall = 'It is certain' // Yes
+                break;
+            case 1:
+                eightBall = 'It is decidedly so' // Yes
+                break;
+            case 2:
+                eightBall = 'Signs point to yes' // Yes
+                break;
+            case 3:
+                eightBall = '100% yes!' // Yes
+                break;
+            case 4:
+                eightBall = 'Do not count on it' // No
+                break;
+            case 5:
+                eightBall = 'My sources say no' // No
+                break;
+            case 6:
+                eightBall = 'Outlook not so good' // No
+                break;
+            case 7:
+                eightBall = 'No way' // No
+                break;
+            case 8:
+                eightBall = 'Reply hazy try again' // Neutral
+                break;
+            case 9:
+                eightBall = 'Cannot predict now' // Neutral
+                break;
+            case 10:
+                eightBall = 'Radio interference, try again' // Neutral
+                break;
+        }
+        rollBallBtn.innerHTML = "Rolling!";
+        setTimeout(function () {
+            rollBallBtn.innerHTML = "Roll ball!";
+        }, 2000);
+        result.innerHTML = `<hr>You asked: <span style="font-weight:500;color:dimgray;font-size:16px;">${escapeHtml(userQuestion.value)}</span><br>Response: <span style="font-weight:500;color:#ffba24;font-size:16px;">Predicting... <i class="fas fa-spinner fa-pulse"></i></span>`
+        setTimeout(function () {
+            result.innerHTML = `<hr>You asked: <span style="font-weight:500;color:dimgray;font-size:16px;">${escapeHtml(userQuestion.value)}</span><br>Response: <span style="font-weight:500;color:dimgray;font-size:16px;">${eightBall}</span>`
+        }, 2000);
     }
-    rollBallBtn.innerHTML = "Rolling!";
-    setTimeout(function () {
-      rollBallBtn.innerHTML = "Roll ball!";
-    }, 2000);
-    result.innerHTML = `<hr>You asked: <span style="font-weight:500;color:dimgray;font-size:16px;">${escapeHtml(userQuestion.value)}</span><br>Response: <span style="font-weight:500;color:#ffba24;font-size:16px;">Predicting... <i class="fas fa-spinner fa-pulse"></i></span>`
-    setTimeout(function () {
-      result.innerHTML = `<hr>You asked: <span style="font-weight:500;color:dimgray;font-size:16px;">${escapeHtml(userQuestion.value)}</span><br>Response: <span style="font-weight:500;color:dimgray;font-size:16px;">${eightBall}</span>`
-    }, 2000);
-  }
 }

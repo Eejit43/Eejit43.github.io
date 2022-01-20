@@ -14,6 +14,7 @@ var SNAKE = SNAKE || {};
  * @param {Function} funct The function to execute when the event is triggered.
  * @param {Boolean} evtCapturing True to do event capturing, false to do event bubbling.
  */
+
 SNAKE.addEventListener = (function () {
     if (window.addEventListener) {
         return function (obj, event, funct, evtCapturing) {
