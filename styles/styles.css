@@ -608,6 +608,12 @@ button:disabled:not(.fakeinput) {
     margin: 0;
 }
 
+.no-arrows[type=number]::-webkit-inner-spin-button,
+.no-arrows[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 .timer-time {
     font-family: 'Rubik', sans-serif;
     font-weight: 500;
