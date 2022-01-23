@@ -108,7 +108,7 @@ function convertDecimal() {
     if (/^[+-]?([0-9]\d*)(\.\d*|,\d*)*$/g.test(decimalInput.value.trim()) || /^-?\d*\.\d+$/g.test(decimalInput.value.trim())) {
         scientificOutput.value = Number(decimalInput.value).toExponential();
         scientificOutputVal = Number(decimalInput.value).toExponential();
-        scientificOutputVal2 = String(Number(decimalInput.value).toExponential()).replace('e+', ' x 10^');
+        scientificOutputVal2 = String(Number(decimalInput.value).toExponential()).replace('e+', ' x 10^').replace('e-', ' x 10^-');
         scientificOutputCopy.disabled = false;
         scientificOutputCopy2.disabled = false;
         decimalArrow.style.color = '#009c3f';
