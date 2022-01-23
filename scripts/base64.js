@@ -1,11 +1,10 @@
-window.onload = function () {
-    document.getElementById('encode').addEventListener('click', encode);
-    document.getElementById('decode').addEventListener('click', decode);
-    document.getElementById('clear').addEventListener('click', clearAll);
-    document.getElementById('copy-result').addEventListener('click', function () {
-        copyText('result', 'copy-result')
-    });
-}
+/* Add event listeners */
+document.getElementById('encode').addEventListener('click', encode);
+document.getElementById('decode').addEventListener('click', decode);
+document.getElementById('clear').addEventListener('click', clearAll);
+document.getElementById('copy-result').addEventListener('click', function () {
+    copyText('result', 'copy-result');
+});
 
 let clearMessageTimeout;
 

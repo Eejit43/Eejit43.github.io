@@ -1,31 +1,30 @@
 document.getElementById('pause-resume-timer').disabled = true;
 
-window.onload = function () {
-    document.getElementById('start-timer').addEventListener('click', startTimer);
-    document.getElementById('pause-resume-timer').addEventListener('click', pauseResume);
-    document.getElementById('reset').addEventListener('click', reset);
-    document.getElementById('hours').addEventListener('input', function () {
-        let input = document.getElementById('hours');
-        input.value = input.value.replace(/((?![0-9]).)/g, '');
-    });
-    document.getElementById('hours').addEventListener('input', function () {
-        checkInput(this);
-    });
-    document.getElementById('minutes').addEventListener('input', function () {
-        let input = document.getElementById('minutes');
-        input.value = input.value.replace(/((?![0-9]).)/g, '');
-    });
-    document.getElementById('minutes').addEventListener('input', function () {
-        checkInput(this);
-    });
-    document.getElementById('seconds').addEventListener('input', function () {
-        let input = document.getElementById('seconds');
-        input.value = input.value.replace(/((?![0-9]).)/g, '');
-    });
-    document.getElementById('seconds').addEventListener('input', function () {
-        checkInput(this);
-    });
-}
+/* Add event listeners */
+document.getElementById('start-timer').addEventListener('click', startTimer);
+document.getElementById('pause-resume-timer').addEventListener('click', pauseResume);
+document.getElementById('reset').addEventListener('click', reset);
+document.getElementById('hours').addEventListener('input', function () {
+    let input = document.getElementById('hours');
+    input.value = input.value.replace(/((?![0-9]).)/g, '');
+});
+document.getElementById('hours').addEventListener('input', function () {
+    checkInput(this);
+});
+document.getElementById('minutes').addEventListener('input', function () {
+    let input = document.getElementById('minutes');
+    input.value = input.value.replace(/((?![0-9]).)/g, '');
+});
+document.getElementById('minutes').addEventListener('input', function () {
+    checkInput(this);
+});
+document.getElementById('seconds').addEventListener('input', function () {
+    let input = document.getElementById('seconds');
+    input.value = input.value.replace(/((?![0-9]).)/g, '');
+});
+document.getElementById('seconds').addEventListener('input', function () {
+    checkInput(this);
+});
 
 function checkInput(element) {
     if (element.value.length > element.maxLength) element.value = element.value.slice(0, element.maxLength);

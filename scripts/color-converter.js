@@ -1,28 +1,27 @@
 // Some formulas modified from https://css-tricks.com/converting-color-spaces-in-javascript/
 
-window.onload = function () {
-    document.getElementById('hexInput').addEventListener('input', hex);
-    document.getElementById('hex-rgb-copy').addEventListener('click', function () {
-        copyText('hex-rgb', 'hex-rgb-copy')
-    });
-    document.getElementById('hex-hsl-copy').addEventListener('click', function () {
-        copyText('hex-hsl', 'hex-hsl-copy')
-    });
-    document.getElementById('rgbInput').addEventListener('input', rgb);
-    document.getElementById('rgb-hex-copy').addEventListener('click', function () {
-        copyText('rgb-hex', 'rgb-hex-copy')
-    });
-    document.getElementById('rgb-hsl-copy').addEventListener('click', function () {
-        copyText('rgb-hsl', 'rgb-hsl-copy')
-    });
-    document.getElementById('hslInput').addEventListener('input', hsl);
-    document.getElementById('hsl-hex-copy').addEventListener('click', function () {
-        copyText('hsl-hex', 'hsl-hex-copy')
-    });
-    document.getElementById('hsl-rgb-copy').addEventListener('click', function () {
-        copyText('hsl-rgb', 'hsl-rgb-copy')
-    });
-}
+/* Add event listeners */
+document.getElementById('hexInput').addEventListener('input', hex);
+document.getElementById('hex-rgb-copy').addEventListener('click', function () {
+    copyText('hex-rgb', 'hex-rgb-copy');
+});
+document.getElementById('hex-hsl-copy').addEventListener('click', function () {
+    copyText('hex-hsl', 'hex-hsl-copy');
+});
+document.getElementById('rgbInput').addEventListener('input', rgb);
+document.getElementById('rgb-hex-copy').addEventListener('click', function () {
+    copyText('rgb-hex', 'rgb-hex-copy');
+});
+document.getElementById('rgb-hsl-copy').addEventListener('click', function () {
+    copyText('rgb-hsl', 'rgb-hsl-copy');
+});
+document.getElementById('hslInput').addEventListener('input', hsl);
+document.getElementById('hsl-hex-copy').addEventListener('click', function () {
+    copyText('hsl-hex', 'hsl-hex-copy');
+});
+document.getElementById('hsl-rgb-copy').addEventListener('click', function () {
+    copyText('hsl-rgb', 'hsl-rgb-copy');
+});
 
 function hex() {
     let hex = document.getElementById('hexInput').value;

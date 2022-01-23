@@ -14,48 +14,48 @@ let decimalOutputCopy = document.getElementById('decimal-output-copy');
 
 let scientificOutputVal, scientificOutputVal2;
 
-window.onload = function () {
-    decimalInput.addEventListener('input', function () {
-        decimalInput.value = decimalInput.value.replace(/[^0-9\.\-\+]/g, '').replace(/(\..*?)\./g, '$1').replace(/(-.*?)-/g, '$1').replace(/(\+.*?)\+/g, '$1');
-    });
-    decimalInput.addEventListener('input', function () {
-        if (decimalInput.value.length > 0) {
-            decimalConvert.disabled = false;
-        } else {
-            decimalConvert.disabled = true;
-        }
-        if (decimalInput.value.length > 0 || scientificOutput.value != '' || decimalArrow.style.color != 'dimgray') {
-            decimalReset.disabled = false;
-        } else {
-            decimalReset.disabled = true;
-        }
-    });
-    decimalConvert.addEventListener('click', convertDecimal);
-    decimalReset.addEventListener('click', resetDecimal);
-    scientificOutputCopy.addEventListener('click', function () {
-        copyText('scientificOutputVal', 'scientific-output-copy', 'Copy scientific e notation')
-    });
-    scientificOutputCopy2.addEventListener('click', function () {
-        copyText('scientificOutputVal2', 'scientific-output-copy-2', 'Copy scientific notation')
-    });
-    scientificInput.addEventListener('input', function () {
-        if (scientificInput.value.length > 0) {
-            scientificConvert.disabled = false;
-        } else {
-            scientificConvert.disabled = true;
-        }
-        if (scientificInput.value.length > 0 || decimalOutput.value != '' || scientificArrow.style.color != 'dimgray') {
-            scientificReset.disabled = false;
-        } else {
-            scientificReset.disabled = true;
-        }
-    });
-    scientificConvert.addEventListener('click', convertScientific);
-    scientificReset.addEventListener('click', resetScientific);
-    decimalOutputCopy.addEventListener('click', function () {
-        copyText('decimalOutputVal', 'decimal-output-copy', 'Copy')
-    });
+/* Add event listeners */
+decimalInput.addEventListener('input', function () {
+    decimalInput.value = decimalInput.value.replace(/[^0-9\.\-\+]/g, '').replace(/(\..*?)\./g, '$1').replace(/(-.*?)-/g, '$1').replace(/(\+.*?)\+/g, '$1');
+});
+decimalInput.addEventListener('input', function () {
+    if (decimalInput.value.length > 0) {
+        decimalConvert.disabled = false;
+    } else {
+        decimalConvert.disabled = true;
+        
+    if (decimalInput.value.length > 0 || scientificOutput.value != '' || decimalArrow.style.color != 'dimgray') {
+        decimalReset.disabled = false;
+    } else {
+        decimalReset.disabled = true;
+    }
+};
+});
+decimalConvert.addEventListener('click', convertDecimal);
+decimalReset.addEventListener('click', resetDecimal);
+scientificOutputCopy.addEventListener('click', function () {
+    copyText('scientificOutputVal', 'scientific-output-copy', 'Copy scientific e notation');
+});
+scientificOutputCopy2.addEventListener('click', function () {
+    copyText('scientificOutputVal2', 'scientific-output-copy-2', 'Copy scientific notation');
+});
+scientificInput.addEventListener('input', function () {
+    if (scientificInput.value.length > 0) {
+        scientificConvert.disabled = false;
+    } else {
+        scientificConvert.disabled = true;
+    }
+    if (scientificInput.value.length > 0 || decimalOutput.value != '' || scientificArrow.style.color != 'dimgray') {
+        scientificReset.disabled = false;
+    } else {
+        scientificReset.disabled = true;
 }
+});
+scientificConvert.addEventListener('click', convertScientific);
+scientificReset.addEventListener('click', resetScientific);
+decimalOutputCopy.addEventListener('click', function () {
+    copyText('decimalOutputVal', 'decimal-output-copy', 'Copy');
+});
 
 function copyText(variable, button, message) {
     let oldElement = document.getElementById(button);
@@ -68,7 +68,7 @@ function copyText(variable, button, message) {
     }, 2000);
     showAlert('Copied!', 'success');
     newElement.addEventListener('click', function () {
-        copyText(variable, button, message)
+        copyText(variable, button, message);
     });
 }
 

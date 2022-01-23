@@ -8,10 +8,9 @@ let paragraphDisplay = document.getElementById('paragraph-count');
 
 let characterCount, wordCount, sentenceCount, lineCount, paragraphCount;
 
-window.onload = function () {
-    document.getElementById('input').addEventListener('input', updateValues);
-    document.getElementById('reset').addEventListener('click', reset);
-}
+/* Add event listeners */
+document.getElementById('input').addEventListener('input', updateValues);
+document.getElementById('reset').addEventListener('click', reset);
 
 function updateValues() {
     characterCount = input.value.length;

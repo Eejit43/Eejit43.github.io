@@ -1,13 +1,12 @@
-window.onload = function () {
-    document.getElementById('alphabetize-normal').addEventListener('click', alphabetizeNormal);
-    document.getElementById('numerize').addEventListener('click', numerize);
-    document.getElementById('randomize').addEventListener('click', randomize);
-    document.getElementById('reverse').addEventListener('click', reverse);
-    document.getElementById('clear').addEventListener('click', clearAll);
-    document.getElementById('copy-result').addEventListener('click', function () {
-        copyText('result', 'copy-result')
-    });
-}
+/* Add event listeners */
+document.getElementById('alphabetize-normal').addEventListener('click', alphabetizeNormal);
+document.getElementById('numerize').addEventListener('click', numerize);
+document.getElementById('randomize').addEventListener('click', randomize);
+document.getElementById('reverse').addEventListener('click', reverse);
+document.getElementById('clear').addEventListener('click', clearAll);
+document.getElementById('copy-result').addEventListener('click', function () {
+    copyText('result', 'copy-result');
+});
 
 let clearMessageTimeout;
 

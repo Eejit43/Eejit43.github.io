@@ -74,7 +74,7 @@ function copyText(toCopy, button) {
     showAlert('Copied!', 'success');
 
     newElement.addEventListener('click', function () {
-        copyText(toCopy, button)
+        copyText(toCopy, button);
     });
 }
 
@@ -90,7 +90,7 @@ function copyVar(button, text) {
     showAlert('Copied!', 'success');
 
     newElement.addEventListener('click', function () {
-        copyText(button, text)
+        copyText(button, text);
     });
 }
 

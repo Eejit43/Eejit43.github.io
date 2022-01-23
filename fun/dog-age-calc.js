@@ -4,10 +4,9 @@ let dogAge = document.getElementById('dogAge');
 let toHumanBtn = document.getElementById('toHuman');
 let result = document.getElementById('result');
 
-window.onload = function () {
-    toDogBtn.addEventListener("click", toDog);
-    toHumanBtn.addEventListener("click", toHuman);
-}
+/* Add event listeners */
+toDogBtn.addEventListener("click", toDog);
+toHumanBtn.addEventListener("click", toHuman);
 
 function toDog() {
     if (humanAge.value.length === 0) {

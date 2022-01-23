@@ -5,14 +5,13 @@ let clearBtn = document.getElementById('clear');
 let result = document.getElementById('result');
 let resultCopy = document.getElementById('copy-result');
 
-window.onload = function () {
-    toBinaryBtn.addEventListener('click', toBinary);
-    fromBinaryBtn.addEventListener('click', fromBinary);
-    clearBtn.addEventListener('click', clear);
-    resultCopy.addEventListener('click', function () {
-        copyText('result', 'copy-result')
-    });
-}
+/* Add event listeners */
+toBinaryBtn.addEventListener('click', toBinary);
+fromBinaryBtn.addEventListener('click', fromBinary);
+clearBtn.addEventListener('click', clear);
+resultCopy.addEventListener('click', function () {
+    copyText('result', 'copy-result');
+});
 
 function clear() {
     resultCopy = document.getElementById('copy-result');

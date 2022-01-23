@@ -6,15 +6,14 @@ let outputType = document.getElementById('output-type');
 let output = document.getElementById('output');
 let copyOutput = document.getElementById('copy-output');
 
-window.onload = function () {
-    inputType.addEventListener('change', convert);
-    input.addEventListener('input', convert);
-    resetButton.addEventListener('click', reset);
-    outputType.addEventListener('change', convert);
-    copyOutput.addEventListener('click', function () {
-        copyText('output', 'copy-output')
-    });
-}
+/* Add event listeners */
+inputType.addEventListener('change', convert);
+input.addEventListener('input', convert);
+resetButton.addEventListener('click', reset);
+outputType.addEventListener('change', convert);
+copyOutput.addEventListener('click', function () {
+    copyText('output', 'copy-output');
+});
 
 function reset() {
     input.value = '';

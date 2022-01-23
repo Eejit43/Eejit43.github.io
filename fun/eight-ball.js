@@ -4,9 +4,8 @@ let result = document.getElementById('result');
 
 let eightBall, randomNumber;
 
-window.onload = function () {
-    rollBallBtn.addEventListener("click", rollBall);
-}
+/* Add event listeners */
+rollBallBtn.addEventListener("click", rollBall);
 
 function rollBall() {
     if (userQuestion.value.length === 0) {

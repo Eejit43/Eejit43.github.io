@@ -1,25 +1,24 @@
 let copyMessageTimeout, copyMessageTimeout2;
 
-window.onload = function () {
-    document.getElementById('file-upload').addEventListener('change', fileUpload);
-    document.getElementById('encode').addEventListener('click', encode);
-    document.getElementById('decode').addEventListener('click', decode);
-    document.getElementById('clear').addEventListener('click', clear1);
-    document.getElementById('clear2').addEventListener('click', clear2);
-    document.getElementById('b64-copy-result').addEventListener('click', function () {
-        copyText('b64-result', 'b64-copy-result')
-    });
-    document.getElementById('b64-copy-with-prefix-result').addEventListener('click', function () {
-        let button = 'b64-copy-with-prefix-result';
-        navigator.clipboard.writeText(base64);
-        document.getElementById(button).innerHTML = 'Copied!';
-        clearTimeout(copyMessageTimeout2);
-        copyMessageTimeout2 = setTimeout(function () {
-            document.getElementById(button).innerHTML = 'Copy with prefix';
-        }, 2000);
-        showAlert('Copied!', 'success')
-    });
-}
+/* Add event listeners */
+document.getElementById('file-upload').addEventListener('change', fileUpload);
+document.getElementById('encode').addEventListener('click', encode);
+document.getElementById('decode').addEventListener('click', decode);
+document.getElementById('clear').addEventListener('click', clear1);
+document.getElementById('clear2').addEventListener('click', clear2);
+document.getElementById('b64-copy-result').addEventListener('click', function () {
+    copyText('b64-result', 'b64-copy-result');
+});
+document.getElementById('b64-copy-with-prefix-result').addEventListener('click', function () {
+    let button = 'b64-copy-with-prefix-result';
+    navigator.clipboard.writeText(base64);
+    document.getElementById(button).innerHTML = 'Copied!';
+    clearTimeout(copyMessageTimeout2);
+    copyMessageTimeout2 = setTimeout(function () {
+        document.getElementById(button).innerHTML = 'Copy with prefix';
+    }, 2000);
+    showAlert('Copied!', 'success')
+});
 
 let clearMessageTimeout, clearMessageTimeout2;
 

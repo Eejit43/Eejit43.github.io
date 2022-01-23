@@ -1,13 +1,12 @@
-window.onload = function () {
-    document.getElementById('toupper').addEventListener('click', toUpper);
-    document.getElementById('tolower').addEventListener('click', toLower);
-    document.getElementById('totitle').addEventListener('click', toTitle);
-    document.getElementById('tosentence').addEventListener('click', toSentence);
-    document.getElementById('clear').addEventListener('click', clearAll);
-    document.getElementById('copy-result').addEventListener('click', function () {
-        copyText('result', 'copy-result')
-    });
-}
+/* Add event listeners */
+document.getElementById('toupper').addEventListener('click', toUpper);
+document.getElementById('tolower').addEventListener('click', toLower);
+document.getElementById('totitle').addEventListener('click', toTitle);
+document.getElementById('tosentence').addEventListener('click', toSentence);
+document.getElementById('clear').addEventListener('click', clearAll);
+document.getElementById('copy-result').addEventListener('click', function () {
+    copyText('result', 'copy-result');
+});
 
 let clearMessageTimeout;
 

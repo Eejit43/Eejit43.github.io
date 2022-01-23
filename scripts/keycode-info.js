@@ -11,27 +11,26 @@ let keyVal, keyRepeatingVal, keyLocationVal, KeyCodeVal, KeyAsciiVal, KeyUnicode
 
 let valExist = 0; // 0 = no, 1 = yes
 
-window.onload = function () {
-    document.addEventListener('keydown', keyInfo);
-    document.getElementById('key-cell').addEventListener('click', function () {
-        copyKeycodeInfo(keyVal)
-    });
-    document.getElementById('key-repeating-cell').addEventListener('click', function () {
-        copyKeycodeInfo(keyRepeatingVal)
-    });
-    document.getElementById('key-location-cell').addEventListener('click', function () {
-        copyKeycodeInfo(keyLocationVal)
-    });
-    document.getElementById('key-code-cell').addEventListener('click', function () {
-        copyKeycodeInfo(keyCodeVal)
-    });
-    document.getElementById('key-ascii-cell').addEventListener('click', function () {
-        copyKeycodeInfo(keyAsciiVal)
-    });
-    document.getElementById('key-unicode-cell').addEventListener('click', function () {
-        copyKeycodeInfo(keyUnicodeVal)
-    });
-}
+/* Add event listeners */
+document.addEventListener('keydown', keyInfo);
+document.getElementById('key-cell').addEventListener('click', function () {
+    copyKeycodeInfo(keyVal);
+});
+document.getElementById('key-repeating-cell').addEventListener('click', function () {
+    copyKeycodeInfo(keyRepeatingVal);
+});
+document.getElementById('key-location-cell').addEventListener('click', function () {
+    copyKeycodeInfo(keyLocationVal);
+});
+document.getElementById('key-code-cell').addEventListener('click', function () {
+    copyKeycodeInfo(keyCodeVal);
+});
+document.getElementById('key-ascii-cell').addEventListener('click', function () {
+    copyKeycodeInfo(keyAsciiVal);
+});
+document.getElementById('key-unicode-cell').addEventListener('click', function () {
+    copyKeycodeInfo(keyUnicodeVal);
+});
 
 if ( /*@cc_on!@*/ false) { // check for Internet Explorer
     document.onfocusin = onFocus;

@@ -1,29 +1,28 @@
 let number = 0;
 let key = 'Space';
 
-window.onload = function () {
-    document.getElementById('activationButton').addEventListener('change', updateKey);
-    document.getElementById('reset').addEventListener('click', function () {
-        showAlert('Reset!', 'success')
-        number = 0;
-        document.getElementById('number').innerHTML = 0;
-        document.getElementById('activationButton').value = '1';
-        key = 'Space';
-        blurAll();
-    });
-    document.addEventListener('keyup', (event) => {
-        blurAll();
-        if (event.code === key) {
-            number++;
-            document.getElementById('number').innerHTML = number;
-        }
-    }, false);
-    document.getElementById('manual-activation').addEventListener('click', function () {
-        blurAll();
+/* Add event listeners */
+document.getElementById('activationButton').addEventListener('change', updateKey);
+document.getElementById('reset').addEventListener('click', function () {
+    showAlert('Reset!', 'success')
+    number = 0;
+    document.getElementById('number').innerHTML = 0;
+    document.getElementById('activationButton').value = '1';
+    key = 'Space';
+    blurAll();
+});
+document.addEventListener('keyup', (event) => {
+    blurAll();
+    if (event.code === key) {
         number++;
         document.getElementById('number').innerHTML = number;
-    });
-}
+    }
+}, false);
+document.getElementById('manual-activation').addEventListener('click', function () {
+    blurAll();
+    number++;
+    document.getElementById('number').innerHTML = number;
+});
 
 function blurAll() {
     document.getElementById('activationButton').blur();

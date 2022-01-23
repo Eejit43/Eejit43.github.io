@@ -1,68 +1,67 @@
 let romanOutputCopy, romanOutputCopy2, integerOutput;
 
-window.onload = function () {
-    document.getElementById('integer-input').addEventListener('input', function () {
-        let input = document.getElementById('integer-input');
-        if (parseInt(input.value) === 0) {
-            input.value = '';
-        }
-    });
-    document.getElementById('integer-input').addEventListener('input', function () {
-        let input = document.getElementById('integer-input')
-        input.value = input.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');
-    });
-    document.getElementById('integer-input').addEventListener('input', function () {
-        let input = document.getElementById('integer-input').value;
-        let output = document.getElementById('roman-output').textContent;
-        let arrow = document.getElementById('integer-arrow');
-        if (input.length > 0) {
-            document.getElementById('integer-convert').disabled = false;
-        } else {
-            document.getElementById('integer-convert').disabled = true;
-        }
-        if (input.length > 0 || output != '​' || arrow.style.color != 'dimgray') {
-            document.getElementById('integer-reset').disabled = false;
-        } else {
-            document.getElementById('integer-reset').disabled = true;
-        }
-    });
-    document.getElementById('integer-convert').addEventListener('click', convertInteger);
-    document.getElementById('integer-reset').addEventListener('click', resetInteger);
-    document.getElementById('roman-input').addEventListener('input', function () {
-        let input = document.getElementById('roman-input');
-        input.value = input.value.toUpperCase();
-    });
-    document.getElementById('roman-input').addEventListener('input', function () {
-        let input = document.getElementById('roman-input');
-        input.value = input.value.replace(/((?![IVXLCDM_]).)/gi, '');
-    });
-    document.getElementById('roman-input').addEventListener('input', function () {
-        let input = document.getElementById('roman-input').value;
-        let output = document.getElementById('integer-output').value;
-        let arrow = document.getElementById('roman-arrow');
-        if (input.length > 0) {
-            document.getElementById('roman-convert').disabled = false;
-        } else {
-            document.getElementById('roman-convert').disabled = true;
-        }
-        if (input.length > 0 || output != '' || arrow.style.color != 'dimgray') {
-            document.getElementById('roman-reset').disabled = false;
-        } else {
-            document.getElementById('roman-reset').disabled = true;
-        }
-    });
-    document.getElementById('roman-convert').addEventListener('click', convertRoman);
-    document.getElementById('roman-reset').addEventListener('click', resetRoman);
-    document.getElementById('roman-output-copy').addEventListener('click', function () {
-        copyText('romanOutputCopy', 'roman-output-copy', 'Copy w/ macrons');
-    });
-    document.getElementById('roman-output-copy-2').addEventListener('click', function () {
-        copyText('romanOutputCopy2', 'roman-output-copy-2', 'Copy w/ underscores');
-    });
-    document.getElementById('integer-output-copy').addEventListener('click', function () {
-        copyText('integerOutput', 'integer-output-copy', 'Copy');
-    });
-};
+/* Add event listeners */
+document.getElementById('integer-input').addEventListener('input', function () {
+    let input = document.getElementById('integer-input');
+    if (parseInt(input.value) === 0) {
+        input.value = '';
+    }
+});
+document.getElementById('integer-input').addEventListener('input', function () {
+    let input = document.getElementById('integer-input')
+    input.value = input.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');
+});
+document.getElementById('integer-input').addEventListener('input', function () {
+    let input = document.getElementById('integer-input').value;
+    let output = document.getElementById('roman-output').textContent;
+    let arrow = document.getElementById('integer-arrow');
+    if (input.length > 0) {
+        document.getElementById('integer-convert').disabled = false;
+    } else {
+        document.getElementById('integer-convert').disabled = true;
+    }
+    if (input.length > 0 || output != '​' || arrow.style.color != 'dimgray') {
+        document.getElementById('integer-reset').disabled = false;
+    } else {
+        document.getElementById('integer-reset').disabled = true;
+    }
+});
+document.getElementById('integer-convert').addEventListener('click', convertInteger);
+document.getElementById('integer-reset').addEventListener('click', resetInteger);
+document.getElementById('roman-input').addEventListener('input', function () {
+    let input = document.getElementById('roman-input');
+    input.value = input.value.toUpperCase();
+});
+document.getElementById('roman-input').addEventListener('input', function () {
+    let input = document.getElementById('roman-input');
+    input.value = input.value.replace(/((?![IVXLCDM_]).)/gi, '');
+});
+document.getElementById('roman-input').addEventListener('input', function () {
+    let input = document.getElementById('roman-input').value;
+    let output = document.getElementById('integer-output').value;
+    let arrow = document.getElementById('roman-arrow');
+    if (input.length > 0) {
+        document.getElementById('roman-convert').disabled = false;
+    } else {
+        document.getElementById('roman-convert').disabled = true;
+    }
+    if (input.length > 0 || output != '' || arrow.style.color != 'dimgray') {
+        document.getElementById('roman-reset').disabled = false;
+    } else {
+        document.getElementById('roman-reset').disabled = true;
+    }
+});
+document.getElementById('roman-convert').addEventListener('click', convertRoman);
+document.getElementById('roman-reset').addEventListener('click', resetRoman);
+document.getElementById('roman-output-copy').addEventListener('click', function () {
+    copyText('romanOutputCopy', 'roman-output-copy', 'Copy w/ macrons');
+});
+document.getElementById('roman-output-copy-2').addEventListener('click', function () {
+    copyText('romanOutputCopy2', 'roman-output-copy-2', 'Copy w/ underscores');
+});
+document.getElementById('integer-output-copy').addEventListener('click', function () {
+    copyText('integerOutput', 'integer-output-copy', 'Copy');
+});
 
 function copyText(variable, button, message) {
     let oldElement = document.getElementById(button);
@@ -76,7 +75,7 @@ function copyText(variable, button, message) {
     showAlert('Copied!', 'success');
 
     newElement.addEventListener('click', function () {
-        copyText(variable, button, message)
+        copyText(variable, button, message);
     });
 }
 

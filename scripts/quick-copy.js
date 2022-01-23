@@ -1,24 +1,23 @@
-window.onload = function () {
-    document.getElementById('clearclipboard').addEventListener('click', clearClipboard);
-    document.getElementById('copy-zws').addEventListener('click', function () {
-        copyVar('copy-zws', '​')
-    });
-    document.getElementById('copy-nbsp').addEventListener('click', function () {
-        copyVar('copy-nbsp', '\u00a0')
-    });
-    document.getElementById('copy-ems').addEventListener('click', function () {
-        copyVar('copy-ems', ' ')
-    });
-    document.getElementById('copy-ens').addEventListener('click', function () {
-        copyVar('copy-ens', ' ')
-    });
-    document.getElementById('copy-ts').addEventListener('click', function () {
-        copyVar('copy-ts', ' ')
-    });
-    document.getElementById('selectclipboard').addEventListener('click', function () {
-        document.getElementById('copiedtext').select()
-    });
-}
+/* Add event listeners */
+document.getElementById('clearclipboard').addEventListener('click', clearClipboard);
+document.getElementById('copy-zws').addEventListener('click', function () {
+    copyVar('copy-zws', '​');
+});
+document.getElementById('copy-nbsp').addEventListener('click', function () {
+    copyVar('copy-nbsp', '\u00a0');
+});
+document.getElementById('copy-ems').addEventListener('click', function () {
+    copyVar('copy-ems', ' ');
+});
+document.getElementById('copy-ens').addEventListener('click', function () {
+    copyVar('copy-ens', ' ');
+});
+document.getElementById('copy-ts').addEventListener('click', function () {
+    copyVar('copy-ts', ' ');
+});
+document.getElementById('selectclipboard').addEventListener('click', function () {
+    document.getElementById('copiedtext').select();
+});
 
 let clipboardTimeout;
 let url = undefined;

@@ -1,7 +1,6 @@
-window.onload = function () {
-    document.getElementById('generate-number').addEventListener('click', generateNumber);
-    document.getElementById('reset').addEventListener('click', reset);
-}
+/* Add event listeners */
+document.getElementById('generate-number').addEventListener('click', generateNumber);
+document.getElementById('reset').addEventListener('click', reset);
 
 let clearMessageTimeout;
 

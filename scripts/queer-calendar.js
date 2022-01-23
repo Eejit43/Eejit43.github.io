@@ -11,28 +11,27 @@ let resetDate = document.getElementById('reset-date');
 let yearOverview = document.getElementById('year-overview');
 let yearOverviewList = document.getElementById('year-overview-list');
 
-window.onload = function () {
-    getDate.addEventListener('click', getFromDate);
-    resetDate.addEventListener('click', getCurrent);
-    monthVal.addEventListener('input', function () {
-        monthVal.value = monthVal.value.replace(/((?![0-9]).)/g, '');
-    });
-    monthVal.addEventListener('paste', function () {
-        monthVal.value = monthVal.value.replace(/((?![0-9]).)/g, '');
-    });
-    monthVal.addEventListener('input', function () {
-        checkInput(this);
-    });
-    dateVal.addEventListener('input', function () {
-        dateVal.value = dateVal.value.replace(/((?![0-9]).)/g, '');
-    });
-    dateVal.addEventListener('paste', function () {
-        dateVal.value = dateVal.value.replace(/((?![0-9]).)/g, '');
-    });
-    dateVal.addEventListener('input', function () {
-        checkInput(this);
-    });
-}
+/* Add event listeners */
+getDate.addEventListener('click', getFromDate);
+resetDate.addEventListener('click', getCurrent);
+monthVal.addEventListener('input', function () {
+    monthVal.value = monthVal.value.replace(/((?![0-9]).)/g, '');
+});
+monthVal.addEventListener('paste', function () {
+    monthVal.value = monthVal.value.replace(/((?![0-9]).)/g, '');
+});
+monthVal.addEventListener('input', function () {
+    checkInput(this);
+});
+dateVal.addEventListener('input', function () {
+    dateVal.value = dateVal.value.replace(/((?![0-9]).)/g, '');
+});
+dateVal.addEventListener('paste', function () {
+    dateVal.value = dateVal.value.replace(/((?![0-9]).)/g, '');
+});
+dateVal.addEventListener('input', function () {
+    checkInput(this);
+});
 
 function checkInput(element) {
     if (element.value.length > element.maxLength) element.value = element.value.slice(0, element.maxLength);

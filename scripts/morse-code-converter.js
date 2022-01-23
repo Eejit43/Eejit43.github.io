@@ -11,20 +11,19 @@ let resultCopy3 = document.getElementById('copy-result-3');
 
 let resultVar1, resultVar2, resultVar3;
 
-window.onload = function () {
-    toMorseBtn.addEventListener('click', toMorse);
-    fromMorseBtn.addEventListener('click', fromMorse);
-    clearBtn.addEventListener('click', clear);
-    resultCopy.addEventListener('click', function () {
-        copyVar('resultVar1', 'copy-result', 'Copy')
-    });
-    resultCopy2.addEventListener('click', function () {
-        copyVar('resultVar2', 'copy-result-2', 'Copy with vertical slash space')
-    });
-    resultCopy3.addEventListener('click', function () {
-        copyVar('resultVar3', 'copy-result-3', 'Copy with three space space')
-    });
-}
+/* Add event listeners */
+toMorseBtn.addEventListener('click', toMorse);
+fromMorseBtn.addEventListener('click', fromMorse);
+clearBtn.addEventListener('click', clear);
+resultCopy.addEventListener('click', function () {
+    copyVar('resultVar1', 'copy-result', 'Copy');
+});
+resultCopy2.addEventListener('click', function () {
+    copyVar('resultVar2', 'copy-result-2', 'Copy with vertical slash space');
+});
+resultCopy3.addEventListener('click', function () {
+    copyVar('resultVar3', 'copy-result-3', 'Copy with three space space');
+});
 
 function copyVar(variable, button, message) {
     let oldElement = document.getElementById(button);
@@ -38,7 +37,7 @@ function copyVar(variable, button, message) {
     showAlert('Copied!', 'success');
 
     newElement.addEventListener('click', function () {
-        copyVar(variable, button, message)
+        copyVar(variable, button, message);
     });
 }
 
