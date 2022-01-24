@@ -2,4 +2,4 @@
 
 ## Reporting a Vulnerability
 
-Report any vulnerabilities to **Eejit#7578** on Discord.
+Report any vulnerabilities directly to **Eejit#7578** on Discord. Thank you!
