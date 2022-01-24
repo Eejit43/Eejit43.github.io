@@ -23,13 +23,12 @@ decimalInput.addEventListener('input', function () {
         decimalConvert.disabled = false;
     } else {
         decimalConvert.disabled = true;
-        
-    if (decimalInput.value.length > 0 || scientificOutput.value != '' || decimalArrow.style.color != 'dimgray') {
+    }
+    if (decimalInput.value.length > 0 || scientificOutput.value.length > 0 || decimalArrow.style.color != 'dimgray') {
         decimalReset.disabled = false;
     } else {
         decimalReset.disabled = true;
     }
-};
 });
 decimalConvert.addEventListener('click', convertDecimal);
 decimalReset.addEventListener('click', resetDecimal);
