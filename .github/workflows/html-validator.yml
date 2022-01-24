@@ -2,6 +2,8 @@ name: HTML Check
 
 on:
   push:
+    branches:
+    - main
 
 
 jobs:
@@ -12,4 +14,4 @@ jobs:
     - name: Checks HTML5
       uses: Cyb3r-Jak3/html5validator-action@v0.4.2
       with:
-        root: main
+        root: master
