@@ -11,7 +11,7 @@ function rollBall() {
     if (userQuestion.value.length === 0) {
         showAlert('You didn\'t ask a question!', 'error');
     } else {
-        randomNumber = Math.floor(Math.random() * 11);
+        randomNumber = Math.floor(Math.random() * 20);
         switch (randomNumber) {
             case 0:
                 eightBall = 'It is certain' // Yes
@@ -20,31 +20,58 @@ function rollBall() {
                 eightBall = 'It is decidedly so' // Yes
                 break;
             case 2:
-                eightBall = 'Signs point to yes' // Yes
+                eightBall = 'Without a doubt' // Yes
                 break;
             case 3:
-                eightBall = '100% yes!' // Yes
+                eightBall = 'Yes definitely' // Yes
                 break;
             case 4:
-                eightBall = 'Do not count on it' // No
+                eightBall = 'You may rely on it' // Yes
                 break;
             case 5:
-                eightBall = 'My sources say no' // No
+                eightBall = 'As I see it, yes' // Yes
                 break;
             case 6:
-                eightBall = 'Outlook not so good' // No
+                eightBall = 'Most likely' // Yes
                 break;
             case 7:
-                eightBall = 'No way' // No
+                eightBall = 'Outlook good' // Yes
                 break;
             case 8:
-                eightBall = 'Reply hazy try again' // Neutral
+                eightBall = 'Yes' // Yes
                 break;
             case 9:
-                eightBall = 'Cannot predict now' // Neutral
+                eightBall = 'Signs point to yes' // Yes
                 break;
             case 10:
-                eightBall = 'Radio interference, try again' // Neutral
+                eightBall = 'Don\'t count on it' // No
+                break;
+            case 11:
+                eightBall = 'My reply is no' // No
+                break
+            case 12:
+                eightBall = 'My sources say no' // No
+                break;
+            case 13:
+                eightBall = 'Outlook not so good' // No
+                break;
+            case 14:
+                eightBall = 'Very doubtful' // No
+                break;
+            case 15:
+                eightBall = 'Reply hazy, try again' // Neutral
+                break;
+            case 16:
+                eightBall = 'Ask again later' // Neutral
+                break;
+            case 17:
+                eightBall = 'Better not tell you now' // Neutral
+                break;
+            case 18:
+                eightBall = 'Cannot predict now' // Neutral
+                break;
+            case 19:
+                eightBall = 'Concentrate and ask again' // Neutral
                 break;
         }
         rollBallBtn.innerHTML = "Rolling!";
