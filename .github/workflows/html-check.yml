@@ -1,0 +1,19 @@
+name: HTML Check
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Test Files # https://github.com/marketplace/actions/html5-validator
+        uses: Cyb3r-Jak3/html5validator-action@v0.4.1
+        with:
+          root: .
+          log_level: INFO
+          css: true
+      - uses: actions/upload-artifact@v2
+        with:
+          name: log
+          path: log.log
