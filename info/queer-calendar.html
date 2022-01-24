@@ -60,21 +60,21 @@
         </nav>
         <div class="toolbox">
             <h1><span style="color:#E21D1D">Q</span><span style="color:#E2781D">u</span><span style="color:#E2D31D">e</span><span style="color:#96E21D">e</span><span style="color:#3CE21D">r</span> <span style="color:#1DE25A">C</span><span style="color:#1DE2B4">a</span><span style="color:#1DB4E2">l</span><span style="color:#1D5AE2">e</span><span style="color:#3C1DE2">n</span><span style="color:#961DE2">d</span><span style="color:#E21DD3">a</span><span style="color:#E21D78">r</span> 🏳️‍🌈:</h1>
-            <p class="tooltext">
+            <div class="tooltext">
                 <span id="events-title" style="font-size:25px">Current Events:</span>
                 <br><span id="events" style="color:mediumspringgreen"><span style="color:#FF5555">Loading data...</span></span>
                 <br><br>Month: <input id="month" type="text" pattern="[0-9]*" max="12" maxlength="2" style="width:2em;">&nbsp;&nbsp;&nbsp;&nbsp;Date: <input id="date" type="text" pattern="[0-9]*" max="31" maxlength="2" style="width:2em;">&nbsp;&nbsp;&nbsp;&nbsp;<button id="get-date">Get info</button><br><button id="reset-date">Set to current date</button>
                 <br><br><a target="_blank" id="year-overview">View year overview</a> • <a target="_blank" id="year-overview-list">View year overview (list)</a>
-            <div class="color-box noscript-hidden">
-                <div class="color-box-sm red"></div>
-                <div class="color-box-sm orange"></div>
-                <div class="color-box-sm yellow"></div>
-                <div class="color-box-sm green"></div>
-                <div class="color-box-sm blue"></div>
-                <div class="color-box-sm purple"></div>
-            </div>
+            <span class="color-box noscript-hidden">
+                <span class="color-box-sm red"></span>
+                <span class="color-box-sm orange"></span>
+                <span class="color-box-sm yellow"></span>
+                <span class="color-box-sm green"></span>
+                <span class="color-box-sm blue"></span>
+                <span class="color-box-sm purple"></span>
+            </span>
             <span class="noscript-hidden" style="font-size: 16px;color:dimgray;"><br>Uses <a href="https://en.pronouns.page/calendar" target="_blank">en.pronouns.page</a> API</span>
-            </p>
+            </div>
             <noscript>
                 <style>
                     .tooltext, .info-table, .noscript-hidden {

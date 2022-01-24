@@ -64,7 +64,7 @@
                 <tbody>
                     <tr>
                         <td>
-                            <p class="tooltext" style="font-weight:500;color:dimgray;font-size:16px;">
+                            <div class="tooltext" style="font-weight:500;color:dimgray;font-size:16px;">
                                 <button id="clearclipboard" style="padding:.5rem;">Clear Clipboard</button><br><br>
                                 Zero Width Space: <button id="copy-zws">Copy</button><br>
                                 Non-Breaking Space/Hard Space: <button id="copy-nbsp">Copy</button><br>
@@ -72,15 +72,15 @@
                                 En Space ( ): <button id="copy-ens">Copy</button><br>
                                 Thin Space ( ): <button id="copy-ts">Copy</button><br>
                                 <!-- Some other space variants: https://i.stack.imgur.com/FF9ka.png -->
-                            </p>
+                            </div>
                         </td>
                         <td>
-                            <p class="tooltext" style="line-height:100%;">
+                            <div class="tooltext" style="line-height:100%;">
                                 Current Clipboard:<br><br>
                                 <span style="color:#FF5555;font-size:14px;" id="clipboardwarning"><i class='fas fa-exclamation-triangle'></i> Permission to read clipboard denied!<br></span>
                                 <textarea id="copiedtext" style="width:60%;" readonly></textarea><br>
                                 <button id="selectclipboard" disabled>Select Clipboard</button>
-                            </p>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
