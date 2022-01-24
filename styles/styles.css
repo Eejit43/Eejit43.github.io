@@ -583,12 +583,10 @@ button:disabled:not(.fakeinput) {
 
 .invisibleinput[type=text],
 .invisibleinput[type=number] {
-    padding: none;
     border: none;
     border-bottom: 1px solid dimgray;
     background-color: transparent;
     color: dimgray;
-    margin: none;
     font-family: 'Rubik', sans-serif;
     font-weight: 500;
     font-size: 50px;
