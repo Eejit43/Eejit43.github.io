@@ -6,7 +6,7 @@
 
 @import url('https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css');
 
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@500;600;700&display=swap');
 
 html {
     background: #1F2227;
@@ -36,16 +36,14 @@ nav {
 }
 
 .logo {
-    font-family: 'Rubik', sans-serif;
-    font-weight: 500;
+    font-weight: 700;
     font-size: 25px;
     text-align: left;
     float: left;
 }
 
 .logo-tools {
-    font-family: 'Rubik', sans-serif;
-    font-weight: 500;
+    font-weight: 700;
     font-size: 20px;
 }
 
@@ -60,8 +58,7 @@ nav {
 
 .timer,
 .timer:hover {
-    font-family: 'Rubik', sans-serif;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 20px;
     margin-right: 100px;
     color: #0b5394;
@@ -76,8 +73,7 @@ nav {
 }
 
 .source {
-    font-family: 'Rubik', sans-serif;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 20px;
     color: #696969;
     /* haha–ha– */
@@ -88,23 +84,18 @@ nav {
 }
 
 @media only screen and (max-width: 600px) {
-    .source {
-        font-size: 16px;
-    }
-    .source:hover {
+    .source, .source:hover {
         font-size: 16px;
     }
 }
 
 .mainlogo {
-    font-family: 'Rubik', sans-serif;
-    font-weight: 500;
+    font-weight: 700;
     font-size: 80px;
 }
 
 .mainlogo-tools {
-    font-family: 'Rubik', sans-serif;
-    font-weight: 500;
+    font-weight: 700;
     font-size: 60px;
 }
 
@@ -118,7 +109,6 @@ nav {
 }
 
 header {
-    font-family: 'Rubik', sans-serif;
     text-align: center;
     position: relative;
     top: 110px;
@@ -126,22 +116,20 @@ header {
 
 .warning,
 .message {
-    font-family: 'Rubik', sans-serif;
     font-weight: 500;
     color: lightgray;
-    font-size: 20px;
+    font-size: 22px;
     margin-top: 20px;
 }
 
 @media only screen and (max-width: 700px) {
     .warning,
     .message {
-        font-size: 17px;
+        font-size: 18px;
     }
 }
 
 .toolbox {
-    font-family: 'Rubik', sans-serif;
     text-align: left;
     font-weight: 500;
     color: gray;
@@ -160,18 +148,16 @@ header {
 }
 
 body {
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 .body404 {
-    font-family: 'Rubik', sans-serif;
     background: #1F2227;
     text-align: center;
     padding-top: 4rem;
 }
 
 .warning404 {
-    font-family: 'Rubik', sans-serif;
     font-weight: 500;
     line-height: 150%;
     color: lightgray;
@@ -180,7 +166,6 @@ body {
 }
 
 .link404 {
-    font-family: 'Rubik', sans-serif;
     font-weight: 500;
     font-size: 20px;
     color: #28497d;
@@ -210,9 +195,9 @@ body {
 
 .toolstable td {
     border: 4px solid #1b1e24;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 19px;
     padding: 20px;
     text-align: left;
 }
@@ -225,8 +210,8 @@ body {
 }
 
 .tooltext {
-    font-family: 'Rubik', sans-serif;
-    font-weight: 500;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 700;
     font-size: 20px;
     color: #0b5394;
     line-height: 200%;
@@ -290,7 +275,7 @@ body {
 
 .info-table td {
     border: 4px solid #1b1e24;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-weight: 500;
     font-size: 18px;
     padding: 20px;
@@ -341,7 +326,7 @@ body {
 
 .keycodes td {
     border: 3px solid #1b1e24;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-weight: 500;
     font-size: 18px;
     padding: 20px;
@@ -518,6 +503,7 @@ select {
 }
 
 button:not(.fakeinput) {
+    font-family: 'Source Sans Pro', sans-serif;
     width: max-content;
     height: max-content;
     padding: 0.2rem 0.3rem;
@@ -558,7 +544,7 @@ button:disabled:not(.fakeinput) {
 }
 
 .toc {
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     text-align: left;
     font-weight: 600;
     font-size: 18px;
@@ -587,7 +573,7 @@ button:disabled:not(.fakeinput) {
     border-bottom: 1px solid dimgray;
     background-color: transparent;
     color: dimgray;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-weight: 500;
     font-size: 50px;
     width: 4.2rem;
@@ -613,7 +599,7 @@ button:disabled:not(.fakeinput) {
 }
 
 .timer-time {
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-weight: 500;
     color: #0b5394;
     font-size: 90px;
@@ -703,8 +689,10 @@ button:disabled:not(.fakeinput) {
     background-color: #9e44c4;
 }
 
+/* End modified section */
+
 h1 {
-    font-weight: 500;
+    font-weight: 600;
 }
 
 code {
@@ -715,4 +703,8 @@ code {
     line-height: 1.125rem;
     font-family: monospace;
     white-space: pre;
+}
+
+.info {
+    font-size: 18px;
 }

@@ -24,7 +24,7 @@ function showAlert(text, color) {
             boxShadow: 'none',
             minWidth: '150px',
             textAlign: 'center',
-            fontFamily: '"Rubik", sans-serif',
+            fontFamily: '"Source Sans Pro", sans-serif',
             fontWeight: '600',
             fontSize: '17px',
             color: color,
