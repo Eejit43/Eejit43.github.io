@@ -221,7 +221,7 @@ function decodeMorse(morseCode) {
 }
 
 function fromMorse() {
-    let inputVal = input.value.trim().replace(/_/g, '-');
+    let inputVal = input.value.trim().replace(/_/g, '-').replace(/•/g, '.');
     resultCopy = document.getElementById('copy-result');
     resultCopy2 = document.getElementById('copy-result-2');
     resultCopy3 = document.getElementById('copy-result-3');
