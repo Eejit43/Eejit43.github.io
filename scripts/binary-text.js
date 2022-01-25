@@ -35,8 +35,6 @@ function toBinary() {
     if (input.value.trim().length <= 0) {
         result.value = '';
         resultCopy.disabled = true;
-        resultCopy2.disabled = true;
-        resultCopy3.disabled = true;
         showResult('e', 'error');
         showAlert('Empty input!', 'error');
     } else {
@@ -56,8 +54,6 @@ function fromBinary() {
     if (input.value.trim().length <= 0) {
         result.value = '';
         resultCopy.disabled = true;
-        resultCopy2.disabled = true;
-        resultCopy3.disabled = true;
         showResult('d', 'error');
         showAlert('Empty input!', 'error');
     } else if (/^[ 01]+$/gm.test(input.value.trim())) {
@@ -68,6 +64,6 @@ function fromBinary() {
         result.value = '';
         resultCopy.disabled = true;
         showResult('d', 'error');
-        showAlert('Invalid morse code!', 'error');
+        showAlert('Invalid binary!', 'error');
     }
 }
