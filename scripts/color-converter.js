@@ -33,27 +33,27 @@ function hex() {
         let r = 0,
             g = 0,
             b = 0;
-        if (hex.length == 3) {
+        if (hex.length === 3) {
             r = '0x' + hex[0] + hex[0];
             g = '0x' + hex[1] + hex[1];
             b = '0x' + hex[2] + hex[2];
-        } else if (hex.length == 6) {
+        } else if (hex.length === 6) {
             r = '0x' + hex[0] + hex[1];
             g = '0x' + hex[2] + hex[3];
             b = '0x' + hex[4] + hex[5];
         }
-        document.getElementById('hex-rgb').value = 'rgb(' + +r + ',' + +g + ',' + +b + ')';
+        document.getElementById('hex-rgb').value = 'rgb(' + (+r) + ',' + (+g) + ',' + (+b) + ')';
 
         document.getElementById('hex-rgb-copy').disabled = false;
         // To HSL
-        r = 0
-        g = 0
+        r = 0;
+        g = 0;
         b = 0;
-        if (hex.length == 3) {
+        if (hex.length === 3) {
             r = '0x' + hex[0] + hex[0];
             g = '0x' + hex[1] + hex[1];
             b = '0x' + hex[2] + hex[2];
-        } else if (hex.length == 6) {
+        } else if (hex.length === 6) {
             r = '0x' + hex[0] + hex[1];
             g = '0x' + hex[2] + hex[3];
             b = '0x' + hex[4] + hex[5];
@@ -68,11 +68,11 @@ function hex() {
             s = 0,
             l = 0;
 
-        if (delta == 0)
+        if (delta === 0)
             h = 0;
-        else if (cmax == r)
+        else if (cmax === r)
             h = ((g - b) / delta) % 6;
-        else if (cmax == g)
+        else if (cmax === g)
             h = (b - r) / delta + 2;
         else
             h = (r - g) / delta + 4;
@@ -83,7 +83,7 @@ function hex() {
             h += 360;
 
         l = (cmax + cmin) / 2;
-        s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
+        s = delta === 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
         s = +(s * 100).toFixed(1);
         l = +(l * 100).toFixed(1);
 
@@ -97,27 +97,27 @@ function hex() {
         let r = 0,
             g = 0,
             b = 0;
-        if (hex.length == 3) {
+        if (hex.length === 3) {
             r = '0x' + hex[0] + hex[0];
             g = '0x' + hex[1] + hex[1];
             b = '0x' + hex[2] + hex[2];
-        } else if (hex.length == 6) {
+        } else if (hex.length === 6) {
             r = '0x' + hex[0] + hex[1];
             g = '0x' + hex[2] + hex[3];
             b = '0x' + hex[4] + hex[5];
         }
-        document.getElementById('hex-rgb').value = 'rgb(' + +r + ',' + +g + ',' + +b + ')';
+        document.getElementById('hex-rgb').value = 'rgb(' + (+r) + ',' + (+g) + ',' + (+b) + ')';
 
         document.getElementById('hex-rgb-copy').disabled = false;
         // To HSL
-        r = 0
-        g = 0
+        r = 0;
+        g = 0;
         b = 0;
-        if (hex.length == 3) {
+        if (hex.length === 3) {
             r = '0x' + hex[0] + hex[0];
             g = '0x' + hex[1] + hex[1];
             b = '0x' + hex[2] + hex[2];
-        } else if (hex.length == 6) {
+        } else if (hex.length === 6) {
             r = '0x' + hex[0] + hex[1];
             g = '0x' + hex[2] + hex[3];
             b = '0x' + hex[4] + hex[5];
@@ -132,11 +132,11 @@ function hex() {
             s = 0,
             l = 0;
 
-        if (delta == 0)
+        if (delta === 0)
             h = 0;
-        else if (cmax == r)
+        else if (cmax === r)
             h = ((g - b) / delta) % 6;
-        else if (cmax == g)
+        else if (cmax === g)
             h = (b - r) / delta + 2;
         else
             h = (r - g) / delta + 4;
@@ -147,7 +147,7 @@ function hex() {
             h += 360;
 
         l = (cmax + cmin) / 2;
-        s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
+        s = delta === 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
         s = +(s * 100).toFixed(1);
         l = +(l * 100).toFixed(1);
 
@@ -177,11 +177,11 @@ function rgb() {
             g = (+rgb[1]).toString(16),
             b = (+rgb[2]).toString(16);
 
-        if (r.length == 1)
+        if (r.length === 1)
             r = '0' + r;
-        if (g.length == 1)
+        if (g.length === 1)
             g = '0' + g;
-        if (b.length == 1)
+        if (b.length === 1)
             b = '0' + b;
 
         document.getElementById('rgb-hex').value = '#' + r + g + b;
@@ -208,11 +208,11 @@ function rgb() {
             h = 0,
             s = 0,
             l = 0;
-        if (delta == 0)
+        if (delta === 0)
             h = 0;
-        else if (cmax == r)
+        else if (cmax === r)
             h = ((g - b) / delta) % 6;
-        else if (cmax == g)
+        else if (cmax === g)
             h = (b - r) / delta + 2;
         else
             h = (r - g) / delta + 4;
@@ -223,7 +223,7 @@ function rgb() {
             h += 360;
         l = (cmax + cmin) / 2;
 
-        s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
+        s = delta === 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
 
         s = +(s * 100).toFixed(1);
         l = +(l * 100).toFixed(1);
@@ -302,11 +302,11 @@ function hsl() {
         b = Math.round((b + m) * 255).toString(16);
 
         // Prepend 0s, if necessary
-        if (r.length == 1)
+        if (r.length === 1)
             r = '0' + r;
-        if (g.length == 1)
+        if (g.length === 1)
             g = '0' + g;
-        if (b.length == 1)
+        if (b.length === 1)
             b = '0' + b;
 
         document.getElementById('hsl-hex').value = '#' + r + g + b;

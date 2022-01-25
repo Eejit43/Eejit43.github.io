@@ -2,7 +2,7 @@
 
 fetch('https://ipgeolocation.abstractapi.com/v1/?api_key=7dcea861f91a44579cea73ad833eff21')
     .then((response) => {
-        return response.json()
+        return response.json();
     })
     .then((data) => {
         ip = data.ip_address;
@@ -30,4 +30,4 @@ fetch('https://ipgeolocation.abstractapi.com/v1/?api_key=7dcea861f91a44579cea73a
 
         twemojiUpdate();
     })
-    .catch((err) => {})
+    .catch((err) => {});

@@ -111,11 +111,11 @@ function timer() {
     let sec = targettime2.getSeconds();
 
     if (minutes < 10) {
-        minutes = '0' + minutes
-    };
+        minutes = '0' + minutes;
+    }
     if (sec < 10) {
-        sec = '0' + sec
-    };
+        sec = '0' + sec;
+    }
 
     let timesuffix = fullhours >= 12 ? 'PM' : 'AM';
 

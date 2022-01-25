@@ -12,7 +12,7 @@ function clearAll() {
     document.getElementById('stringToModify').value = '';
     document.getElementById('result').value = '';
     document.getElementById('copy-result').disabled = true;
-    showAlert('Cleared!', 'success')
+    showAlert('Cleared!', 'success');
     document.getElementById('clear').innerHTML = 'Cleared!';
     clearTimeout(clearMessageTimeout);
     clearMessageTimeout = setTimeout(function () {

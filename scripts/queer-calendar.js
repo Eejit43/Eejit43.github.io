@@ -43,10 +43,10 @@ let year = currentTime.getFullYear();
 let month = currentTime.getMonth() + 1;
 let date = currentTime.getDate();
 if (month < 10) {
-    month = '0' + month
+    month = '0' + month;
 }
 if (date < 10) {
-    date = '0' + date
+    date = '0' + date;
 }
 
 monthVal.placeholder = month;
@@ -70,14 +70,14 @@ async function getFromDate() {
         dateInput = '0' + dateInput;
     }
 
-    if (Number(monthInput) != 0 && Number(dateInput) != 0) {
+    if (Number(monthInput) !== 0 && Number(dateInput) !== 0) {
         eventsDisplay.innerHTML = '<span style="color:#FF5555">Loading data...</span>';
 
         eventsTitle.innerHTML = `Events on ${year}/${monthInput}/${dateInput}:`;
 
         fetch(`https://en.pronouns.page/api/calendar/${year}-${monthInput}-${dateInput}`)
             .then((response) => {
-                return response.json()
+                return response.json();
             })
             .then((data) => {
                 events = data.events;
@@ -89,7 +89,7 @@ async function getFromDate() {
 
                 eventsDisplay.innerHTML = events;
             })
-            .catch((err) => {})
+            .catch((err) => {});
     } else {
         showAlert('Input cannot be zero!', 'error');
     }
@@ -104,7 +104,7 @@ async function getCurrent() {
 
     fetch('https://en.pronouns.page/api/calendar/today')
         .then((response) => {
-            return response.json()
+            return response.json();
         })
         .then((data) => {
             events = data.events;
@@ -116,7 +116,7 @@ async function getCurrent() {
 
             eventsDisplay.innerHTML = events;
         })
-        .catch((err) => {})
+        .catch((err) => {});
 }
 
 getCurrent();

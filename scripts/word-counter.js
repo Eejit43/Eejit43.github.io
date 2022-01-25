@@ -27,7 +27,7 @@ function updateValues() {
 }
 
 function reset() {
-    let characterCount, wordCount, sentenceCount, lineCount, paragraphCount = undefined;
+    let characterCount, wordCount, sentenceCount, lineCount, paragraphCount;
 
     input.value = '';
 

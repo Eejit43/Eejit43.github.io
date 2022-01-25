@@ -8,7 +8,7 @@ document.getElementById('integer-input').addEventListener('input', function () {
     }
 });
 document.getElementById('integer-input').addEventListener('input', function () {
-    let input = document.getElementById('integer-input')
+    let input = document.getElementById('integer-input');
     input.value = input.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');
 });
 document.getElementById('integer-input').addEventListener('input', function () {
@@ -20,7 +20,7 @@ document.getElementById('integer-input').addEventListener('input', function () {
     } else {
         document.getElementById('integer-convert').disabled = true;
     }
-    if (input.length > 0 || output != '​' || arrow.style.color != 'dimgray') {
+    if (input.length > 0 || output !== '​' || arrow.style.color !== 'dimgray') {
         document.getElementById('integer-reset').disabled = false;
     } else {
         document.getElementById('integer-reset').disabled = true;
@@ -45,7 +45,7 @@ document.getElementById('roman-input').addEventListener('input', function () {
     } else {
         document.getElementById('roman-convert').disabled = true;
     }
-    if (input.length > 0 || output != '' || arrow.style.color != 'dimgray') {
+    if (input.length > 0 || output !== '' || arrow.style.color !== 'dimgray') {
         document.getElementById('roman-reset').disabled = false;
     } else {
         document.getElementById('roman-reset').disabled = true;
@@ -220,7 +220,7 @@ function deromanize(str) {
         m;
     if (!(str && validator.test(str)))
         return false;
-    while (m = token.exec(str))
+    while (m === token.exec(str))
         num += key[m[0]];
     return num;
 }

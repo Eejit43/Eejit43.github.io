@@ -55,7 +55,7 @@ function clear() {
     resultCopy.disabled = true;
     resultCopy2.disabled = true;
     resultCopy3.disabled = true;
-    showAlert('Cleared!', 'success')
+    showAlert('Cleared!', 'success');
 }
 
 const toMorseRef = {
@@ -101,7 +101,7 @@ const toMorseRef = {
     '\'': '.----.',
     '!': '-.-.--',
     '/': '-..-.',
-    '(': '-.--.-',
+    '(': '-.--.',
     ')': '-.--.-',
     '&': '.-...',
     ':': '---...',
@@ -113,7 +113,7 @@ const toMorseRef = {
     '"': '.-..-.',
     '$': '...-..-',
     '@': '.--.-.',
-}
+};
 
 const fromMorseRef = {
     '.-': 'a',
@@ -158,7 +158,7 @@ const fromMorseRef = {
     '.----.': '\'',
     '-.-.--': '!',
     '-..-.': '/',
-    '-.--.-': '(',
+    '-.--.': '(',
     '-.--.-': ')',
     '.-...': '&',
     '---...': ':',
@@ -183,7 +183,7 @@ function toMorse() {
     resultCopy2 = document.getElementById('copy-result-2');
     resultCopy3 = document.getElementById('copy-result-3');
     if (input.value.trim().length <= 0) {
-        result.value = ''
+        result.value = '';
         resultCopy.disabled = true;
         resultCopy2.disabled = true;
         resultCopy3.disabled = true;
@@ -199,7 +199,7 @@ function toMorse() {
         resultCopy3.disabled = false;
         showResult('e', 'success');
     } else {
-        result.value = ''
+        result.value = '';
         resultCopy.disabled = true;
         resultCopy2.disabled = true;
         resultCopy3.disabled = true;
@@ -226,7 +226,7 @@ function fromMorse() {
     resultCopy2 = document.getElementById('copy-result-2');
     resultCopy3 = document.getElementById('copy-result-3');
     if (inputVal.length <= 0) {
-        result.value = ''
+        result.value = '';
         resultCopy.disabled = true;
         resultCopy2.disabled = true;
         resultCopy3.disabled = true;
@@ -240,7 +240,7 @@ function fromMorse() {
         resultCopy3.disabled = true;
         showResult('d', 'success');
     } else {
-        result.value = ''
+        result.value = '';
         resultCopy.disabled = true;
         resultCopy2.disabled = true;
         resultCopy3.disabled = true;

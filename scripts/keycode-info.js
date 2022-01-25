@@ -48,12 +48,12 @@ function copyKeycodeInfo(variable) {
 }
 
 function onBlur() {
-    ready.innerHTML = '<span style="color:#FF5555"><i class="fas fa-exclamation-triangle"></i> Focus the tab in order for keys to be identified!</span>'
-};
+    ready.innerHTML = '<span style="color:#FF5555"><i class="fas fa-exclamation-triangle"></i> Focus the tab in order for keys to be identified!</span>';
+}
 
 function onFocus() {
-    ready.innerHTML = '<span style="color:#009c3f"><i class="fas fa-check"></i> Ready to get key information!</span>'
-};
+    ready.innerHTML = '<span style="color:#009c3f"><i class="fas fa-check"></i> Ready to get key information!</span>';
+}
 
 function keyInfo(event) {
     valExist = 1;
@@ -61,27 +61,27 @@ function keyInfo(event) {
     key.innerHTML = event.key;
     keyVal = event.key;
     if (String(event.key) === ' ') {
-        key.innerHTML = 'Space ( )'
-    };
+        key.innerHTML = 'Space ( )';
+    }
     if (String(event.key) === '\u00a0') {
-        key.innerHTML = '<span class="tooltip-text tooltip-bottom" data-tooltip="Non breaking space">NBSP</span> (\u00a0)'
-    };
+        key.innerHTML = '<span class="tooltip-text tooltip-bottom" data-tooltip="Non breaking space">NBSP</span> (\u00a0)';
+    }
     keyRepeating.innerHTML = event.repeat;
     keyRepeatingVal = event.repeat;
     keyLocation.innerHTML = event.location;
     keyLocationVal = event.location;
     if (String(event.location) === '0') {
-        keyLocation.innerHTML = '0<br>(general)'
-    };
+        keyLocation.innerHTML = '0<br>(general)';
+    }
     if (String(event.location) === '1') {
-        keyLocation.innerHTML = '1<br>(left)'
-    };
+        keyLocation.innerHTML = '1<br>(left)';
+    }
     if (String(event.location) === '2') {
-        keyLocation.innerHTML = '2<br>(right)'
-    };
+        keyLocation.innerHTML = '2<br>(right)';
+    }
     if (String(event.location) === '3') {
-        keyLocation.innerHTML = '3<br>(numpad)'
-    };
+        keyLocation.innerHTML = '3<br>(numpad)';
+    }
     keyCode.innerHTML = event.code;
     keyCodeVal = event.code;
     keyAscii.innerHTML = event.which;

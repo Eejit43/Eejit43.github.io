@@ -63,22 +63,22 @@ function drlClear() {
     document.getElementById('drl-copy-result').disabled = true;
     document.getElementById('drl-result-2').value = '';
     document.getElementById('drl-copy-result-2').disabled = true;
-    showAlert('Cleared!', 'success')
+    showAlert('Cleared!', 'success');
     resetResult('drl');
     document.getElementById('drl-clear').innerHTML = 'Cleared!';
     setTimeout(function () {
         document.getElementById('drl-clear').innerHTML = 'Clear';
     }, 2000);
-};
+}
 
 function runDlrRegex() {
     let input = document.getElementById('drl-regexInput').value;
-    if (input.length == 0) {
+    if (input.length === 0) {
         showAlert('Empty input!', 'error');
         showResult('drl', 'error');
     } else {
-        let output = input.replace(/^(.*?)$\s+?^(?=.*^\1$)/gms, '');
-        let output2 = input.replace(/^(?!\n)(.*?)$\s+?^(?=.*^\1$)/gms, '');
+        let output = input.replace(/^(.*?)$\s+?^(?=.*^\1$)/gms, ''); //jshint ignore:line
+        let output2 = input.replace(/^(?!\n)(.*?)$\s+?^(?=.*^\1$)/gms, ''); //jshint ignore:line
         showResult('drl', 'success');
         document.getElementById('drl-result').value = output;
         document.getElementById('drl-copy-result').disabled = false;
@@ -96,23 +96,23 @@ function wrClear() {
     document.getElementById('wr-copy-result-2').disabled = true;
     document.getElementById('wr-result-3').value = '';
     document.getElementById('wr-copy-result-3').disabled = true;
-    showAlert('Cleared!', 'success')
+    showAlert('Cleared!', 'success');
     resetResult('wr');
     document.getElementById('wr-clear').innerHTML = 'Cleared!';
     setTimeout(function () {
         document.getElementById('wr-clear').innerHTML = 'Clear';
     }, 2000);
-};
+}
 
 function runWrRegex() {
     let input = document.getElementById('wr-regexInput').value;
-    if (input.length == 0) {
+    if (input.length === 0) {
         showAlert('Empty input!', 'error');
         showResult('wr', 'error');
     } else {
-        let output = input.replace(/^[ \t]+|[ \t]+$/gms, '');
-        let output2 = input.replace(/^[ \t\r\n]+|[ \t]+$/gms, '');
-        let output3 = input.replace(/^[ \t\r\n]+|[ \t\r\n]+$/gms, '');
+        let output = input.replace(/^[ \t]+|[ \t]+$/gm, '');
+        let output2 = input.replace(/^[ \t\r\n]+|[ \t]+$/gm, '');
+        let output3 = input.replace(/^[ \t\r\n]+|[ \t\r\n]+$/gm, '');
         showResult('wr', 'success');
         document.getElementById('wr-result').value = output;
         document.getElementById('wr-copy-result').disabled = false;
@@ -130,17 +130,17 @@ function neuClear() {
     document.getElementById('neu-copy-result').disabled = true;
     document.getElementById('neu-result-2').value = '';
     document.getElementById('neu-copy-result-2').disabled = true;
-    showAlert('Cleared!', 'success')
+    showAlert('Cleared!', 'success');
     resetResult('neu');
     document.getElementById('neu-clear').innerHTML = 'Cleared!';
     setTimeout(function () {
         document.getElementById('neu-clear').innerHTML = 'Clear';
     }, 2000);
-};
+}
 
 function runNeuRegex() {
     let input = document.getElementById('neu-regexInput').value;
-    if (input.length == 0) {
+    if (input.length === 0) {
         showAlert('Empty input!', 'error');
         showResult('neu', 'error');
     } else {
@@ -171,13 +171,13 @@ function rmClearInput() {
     document.getElementById('rm-regexInput').value = '';
     document.getElementById('rm-result').value = '';
     document.getElementById('rm-copy-result').disabled = true;
-    showAlert('Cleared!', 'success')
+    showAlert('Cleared!', 'success');
     resetResult('rm');
     document.getElementById('rm-clear').innerHTML = 'Cleared!';
     setTimeout(function () {
         document.getElementById('rm-clear').innerHTML = 'Clear Input';
     }, 2000);
-};
+}
 
 function rmClearAll() {
     document.getElementById('rm-regexInput').value = '';
@@ -186,17 +186,17 @@ function rmClearAll() {
     document.getElementById('rm-regex').value = '';
     document.getElementById('rm-flags').value = 'g';
     document.getElementById('rm-replace').value = '';
-    showAlert('Cleared!', 'success')
+    showAlert('Cleared!', 'success');
     resetResult('rm');
     document.getElementById('rm-clear-2').innerHTML = 'Cleared!';
     setTimeout(function () {
         document.getElementById('rm-clear-2').innerHTML = 'Clear All';
     }, 2000);
-};
+}
 
 function rmSwitch() {
     let output = document.getElementById('rm-result').value;
-    if (output.length == 0) {
+    if (output.length === 0) {
         showAlert('Nothing to move!', 'error');
         showResult('switch', 'error');
     } else {
@@ -206,7 +206,7 @@ function rmSwitch() {
         showAlert('Moved to input!', '#1c62d4');
         showResult('switch', 'custom', '#1c62d4', 'arrows-alt-v');
     }
-};
+}
 
 function runRmRegex() {
     let input = document.getElementById('rm-regexInput').value;
@@ -218,7 +218,7 @@ function runRmRegex() {
     } catch (e) {
         isValid = false;
     }
-    if (input.length == 0 || regex.length == 0) {
+    if (input.length === 0 || regex.length === 0) {
         showAlert('Empty values(s)!', 'error');
         showResult('rm', 'error');
     } else if (isValid) {

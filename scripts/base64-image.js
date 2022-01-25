@@ -17,7 +17,7 @@ document.getElementById('b64-copy-with-prefix-result').addEventListener('click',
     copyMessageTimeout2 = setTimeout(function () {
         document.getElementById(button).innerHTML = 'Copy with prefix';
     }, 2000);
-    showAlert('Copied!', 'success')
+    showAlert('Copied!', 'success');
 });
 
 let clearMessageTimeout, clearMessageTimeout2;
@@ -30,7 +30,7 @@ function clear1() {
     document.getElementById('b64-copy-result').disabled = true;
     document.getElementById('b64-copy-with-prefix-result').disabled = true;
     document.getElementById('b64-open-result').disabled = true;
-    showAlert('Cleared!', 'success')
+    showAlert('Cleared!', 'success');
     document.getElementById('clear').innerHTML = 'Cleared!';
     clearTimeout(clearMessageTimeout);
     clearMessageTimeout = setTimeout(function () {
@@ -42,7 +42,7 @@ function clear1() {
 function clear2() {
     document.getElementById('stringToDecode').value = '';
     document.getElementById('image-output').src = '';
-    showAlert('Cleared!', 'success')
+    showAlert('Cleared!', 'success');
     document.getElementById('clear2').innerHTML = 'Cleared!';
     clearTimeout(clearMessageTimeout2);
     clearMessageTimeout = setTimeout(function () {
@@ -54,7 +54,7 @@ function clear2() {
 function fileUpload() {
     let file = document.getElementById('file-upload');
     let fileMsg = document.getElementById('file-message');
-    let fileName = file.value.split('\\').pop()
+    let fileName = file.value.split('\\').pop();
     fileMsg.innerHTML = 'Uploaded: ' + escapeHtml(fileName);
 }
 
@@ -96,32 +96,32 @@ function encode() {
                 document.getElementById('b64-open-result').disabled = false;
                 showResult('e', 'success');
             } else {
-                showAlert('Invalid file type! (must be .png, .jpg, .jpeg, .webp, .bmp, or .gif)', 'error')
+                showAlert('Invalid file type! (must be .png, .jpg, .jpeg, .webp, .bmp, or .gif)', 'error');
                 showResult('e', 'error');
             }
-        }
+        };
         reader.readAsDataURL(image.files[0]);
     } else {
-        showAlert('Empty input!', 'error')
+        showAlert('Empty input!', 'error');
         showResult('e', 'error');
     }
 }
 
 async function isBase64Image(string) {
-    let image = new Image()
-    image.src = string
+    let image = new Image();
+    image.src = string;
     return await (new Promise((resolve) => {
         image.onload = function () {
             if (image.height === 0 || image.width === 0) {
                 resolve(false);
                 return;
             }
-            resolve(true)
-        }
+            resolve(true);
+        };
         image.onerror = () => {
-            resolve(false)
-        }
-    }))
+            resolve(false);
+        };
+    }));
 }
 
 const valid = async(string) => {
@@ -131,7 +131,7 @@ const valid = async(string) => {
         image.src = string;
     } else if (valid === false) {
         document.getElementById('image-output').src = '';
-        showAlert('Malformed input!', 'error')
+        showAlert('Malformed input!', 'error');
         showResult('d', 'error');
     }
 };
@@ -146,9 +146,9 @@ function decode() {
         string = 'data:image/png;base64,' + string;
     }
     if (string.length === 0) {
-        showAlert('Empty input!', 'error')
+        showAlert('Empty input!', 'error');
         showResult('d', 'error');
     } else {
-        valid(string)
+        valid(string);
     }
 }

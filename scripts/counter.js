@@ -4,7 +4,7 @@ let key = 'Space';
 /* Add event listeners */
 document.getElementById('activationButton').addEventListener('change', updateKey);
 document.getElementById('reset').addEventListener('click', function () {
-    showAlert('Reset!', 'success')
+    showAlert('Reset!', 'success');
     number = 0;
     document.getElementById('number').innerHTML = 0;
     document.getElementById('activationButton').value = '1';

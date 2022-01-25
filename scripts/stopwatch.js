@@ -11,8 +11,8 @@ const HRS = document.getElementById('hrs'),
     MIL = document.getElementById('mil'),
     DEL = document.getElementById('delayed');
 
-var hrs = min = sec = mil = dt = ps = pt = tt = t = 0,
-    running = started = false,
+let hrs, min, sec, mil, dt, ps, pt, tt, t = 0,
+    running, started = false,
     iID;
 
 function timerCycle() {
@@ -24,7 +24,7 @@ function timerCycle() {
         mil = dt - tt;
         MIL.textContent = (mil).toFixed(3).slice(-3);
         sec = tt % 60;
-        if (sec == ps) return;
+        if (sec === ps) return;
         ps = sec;
         min = Math.floor(tt / 60) % 60;
         hrs = Math.floor(tt / 3600);

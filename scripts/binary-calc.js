@@ -22,11 +22,11 @@ function reset() {
     inputType.value = 3;
     outputType.value = 1;
     copyOutput.disabled = true;
-    showAlert('Reset!', 'success')
+    showAlert('Reset!', 'success');
 }
 
 function findInput() {
-    if (input.value != '') {
+    if (input.value !== '') {
         switch (parseInt(inputType.value)) {
             /*
             1: Binary (2)
@@ -38,28 +38,28 @@ function findInput() {
                 if (/^[01]*$/.test(input.value)) {
                     convert(parseInt(input.value), 2);
                 } else {
-                    notValid()
+                    notValid();
                 }
                 break;
             case 2:
                 if (/^[0-7]*$/.test(input.value)) {
                     convert(parseInt(input.value), 8);
                 } else {
-                    notValid()
+                    notValid();
                 }
                 break;
             case 3:
                 if (/^[0-9]*$/.test(input.value)) {
                     convert(parseInt(input.value), 10);
                 } else {
-                    notValid()
+                    notValid();
                 }
                 break;
             case 4:
                 if (/^[0-9a-fA-F]*$/.test(input.value)) {
                     convert(input.value, 16);
                 } else {
-                    notValid()
+                    notValid();
                 }
         }
     } else {
@@ -74,16 +74,16 @@ function convert(value, type) {
 
     switch (parseInt(outputType.value)) {
         case 1:
-            outputTypeNumber = 2
+            outputTypeNumber = 2;
             break;
         case 2:
-            outputTypeNumber = 8
+            outputTypeNumber = 8;
             break;
         case 3:
-            outputTypeNumber = 10
+            outputTypeNumber = 10;
             break;
         case 4:
-            outputTypeNumber = 16
+            outputTypeNumber = 16;
             break;
     }
 
@@ -97,16 +97,16 @@ function notValid() {
 
     switch (parseInt(inputType.value)) {
         case 1:
-            inputTypeText = 'binary'
+            inputTypeText = 'binary';
             break;
         case 2:
-            inputTypeText = 'octal'
+            inputTypeText = 'octal';
             break;
         case 3:
-            inputTypeText = 'decimal'
+            inputTypeText = 'decimal';
             break;
         case 4:
-            inputTypeText = 'hex'
+            inputTypeText = 'hex';
             break;
     }
 

@@ -19,8 +19,7 @@ document.getElementById('selectclipboard').addEventListener('click', function ()
     document.getElementById('copiedtext').select();
 });
 
-let clipboardTimeout;
-let url = undefined;
+let clipboardTimeout, url;
 
 function clearClipboard() {
     clearTimeout(clipboardTimeout);
@@ -30,18 +29,18 @@ function clearClipboard() {
     }, 2000);
     navigator.clipboard.writeText('');
     url = undefined;
-    showAlert('Cleared!', 'success')
+    showAlert('Cleared!', 'success');
 }
 
 navigator.permissions.query({
     name: 'clipboard-read'
 }).then((result) => {
-    if (result.state == 'granted' || result.state == 'prompt') {
+    if (result.state === 'granted' || result.state === 'prompt') {
         clipboardDisplay();
     } else {
         document.getElementById('clipboardwarning').innerHTML = '<i class="fas fa-exclamation-triangle"></i> Permission to read clipboard denied!<br>';
     }
-})
+});
 
 async function clipboardDisplay() {
     navigator.clipboard.readText()
@@ -53,7 +52,7 @@ async function clipboardDisplay() {
                     document.getElementById('clipboardwarning').innerHTML = '<span style="color:#009c3f;"><i class="far fa-clipboard"></i> Your clipboard is empty!<br></span>';
                     //console.log(url)
                 }
-                getImg()
+                getImg();
             } else {
                 document.getElementById('copiedtext').value = text;
                 document.getElementById('clipboardwarning').innerHTML = '';
@@ -68,7 +67,7 @@ async function clipboardDisplay() {
             } else {
                 document.getElementById('clipboardwarning').innerHTML = '<i class="fas fa-exclamation-triangle"></i> Unable to read clipboard!<br>';
             }
-        })
+        });
     setTimeout(clipboardDisplay, 1000);
 }
 
@@ -77,10 +76,10 @@ function getImg() {
         navigator.permissions.query({
             name: 'clipboard-read'
         }).then((result) => {
-            if (result.state == 'granted' || result.state == 'prompt') {
+            if (result.state === 'granted' || result.state === 'prompt') {
                 navigator.clipboard.read().then((data) => {
                     for (let i = 0; i < data.length; i++) {
-                        data[i].getType('image/png').then((blob) => {
+                        data[i].getType('image/png').then((blob) => { // jshint ignore:line
                             url = URL.createObjectURL(blob);
                             document.getElementById('clipboardwarning').innerHTML = `<span style="color:#4b5663;"><i class="far fa-image"></i> Clipboard has image! (<a href='${url}' target="_blank">view</a>)<br></span>`;
                         });

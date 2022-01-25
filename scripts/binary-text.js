@@ -21,7 +21,7 @@ function clear() {
     resetResult('d');
     resultCopy.innerHTML = 'Copy';
     resultCopy.disabled = true;
-    showAlert('Cleared!', 'success')
+    showAlert('Cleared!', 'success');
 }
 
 function textToBinary(string) {
@@ -33,7 +33,7 @@ function textToBinary(string) {
 function toBinary() {
     resultCopy = document.getElementById('copy-result');
     if (input.value.trim().length <= 0) {
-        result.value = ''
+        result.value = '';
         resultCopy.disabled = true;
         resultCopy2.disabled = true;
         resultCopy3.disabled = true;
@@ -54,7 +54,7 @@ function binaryToText(binary) {
 function fromBinary() {
     resultCopy = document.getElementById('copy-result');
     if (input.value.trim().length <= 0) {
-        result.value = ''
+        result.value = '';
         resultCopy.disabled = true;
         resultCopy2.disabled = true;
         resultCopy3.disabled = true;
@@ -65,7 +65,7 @@ function fromBinary() {
         resultCopy.disabled = false;
         showResult('d', 'success');
     } else {
-        result.value = ''
+        result.value = '';
         resultCopy.disabled = true;
         showResult('d', 'error');
         showAlert('Invalid morse code!', 'error');

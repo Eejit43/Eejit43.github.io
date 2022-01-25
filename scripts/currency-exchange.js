@@ -1,6 +1,6 @@
 fetch('https://v6.exchangerate-api.com/v6/822304e8ee8183e9de49f5df/latest/USD')
     .then((response) => {
-        return response.json()
+        return response.json();
     })
     .then((data) => {
         rates = JSON.stringify(data.conversion_rates);
@@ -39,4 +39,4 @@ fetch('https://v6.exchangerate-api.com/v6/822304e8ee8183e9de49f5df/latest/USD')
         document.getElementById('jpyusd').innerHTML = "$" + jpyusd;
         document.getElementById('reloadprompt').innerHTML = '';
     })
-    .catch((err) => {})
+    .catch((err) => {});

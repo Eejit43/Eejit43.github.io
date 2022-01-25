@@ -12,7 +12,7 @@ function reset() {
     clearMessageTimeout = setTimeout(function () {
         document.getElementById('clear').innerHTML = 'Clear';
     }, 2000);
-    showAlert('Cleared!', 'success')
+    showAlert('Cleared!', 'success');
     resetResult('generate');
 }
 

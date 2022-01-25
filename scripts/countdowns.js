@@ -1,13 +1,7 @@
 function countdown(date, elementID) {
     let countdownDate = new Date(`${date} 00:00:00`).getTime();
 
-    let daysfinal = undefined;
-    let hoursfinal = undefined;
-    let minutesfinal = undefined;
-    let secondsfinal = undefined;
-
-    let daysfinalsuffix = undefined;
-    let hoursfinalsuffix = undefined;
+    let daysfinal, hoursfinal, minutesfinal, secondsfinal, daysfinalsuffix, hoursfinalsuffix;
 
     let curtime = new Date().getTime();
 
@@ -68,7 +62,11 @@ function countdown(date, elementID) {
         secondsfinal = seconds + ' seconds';
     }
 
-    distance <= 0 ? document.getElementById(elementID).innerHTML = '<span style="color:#FF5555;">This event has already occurred!</span>' : document.getElementById(elementID).innerHTML = daysfinal + hoursfinal + minutesfinal + secondsfinal;
+    if (distance <= 0) {
+        document.getElementById(elementID).innerHTML = '<span style="color:#FF5555;">This event has already occurred!</span>';
+    } else {
+        document.getElementById(elementID).innerHTML = daysfinal + hoursfinal + minutesfinal + secondsfinal;
+    }
 }
 
 let valentines = setInterval(countdown, 100, 'February 14, 2022', 'valentines');

@@ -1,43 +1,43 @@
 // Modified from http://codegolf.stackexchange.com/questions/10713/pong-in-the-shortest-code
 
-c = document.getElementById('c').getContext('2d')
-c.fillStyle = "#FFF"
-c.font = "60px monospace"
-w = s = 1
-p = q = a = b = 0
-m = n = 190
+c = document.getElementById('c').getContext('2d');
+c.fillStyle = "#FFF";
+c.font = "60px monospace";
+w = s = 1;
+p = q = a = b = 0;
+m = n = 190;
 x = 300;
-y = 235
+y = 235;
 u = -5;
-v = 3
+v = 3;
 setInterval(function () {
     if (w && !s) return;
-    s = 0
-    c.clearRect(0, 0, 640, 480)
-    for (i = 5; i < 480; i += 20) c.fillRect(318, i, 4, 10)
+    s = 0;
+    c.clearRect(0, 0, 640, 480);
+    for (i = 5; i < 480; i += 20) c.fillRect(318, i, 4, 10);
     m += p;
-    n += q
+    n += q;
     m = m < 0 ? 0 : m;
-    m = m > 380 ? 380 : m
+    m = m > 380 ? 380 : m;
     n = n < 0 ? 0 : n;
-    n = n > 380 ? 380 : n
+    n = n > 380 ? 380 : n;
     x += u;
-    y += v
+    y += v;
     if (y <= 0) {
         y = 0;
-        v = -v
+        v = -v;
     }
     if (y >= 470) {
         y = 470;
-        v = -v
+        v = -v;
     }
     if (x <= 40 && x >= 20 && y < m + 110 && y > m - 10) {
         u = -u + 0.2;
-        v += (y - m - 45) / 20
+        v += (y - m - 45) / 20;
     }
     if (x <= 610 && x >= 590 && y < n + 110 && y > n - 10) {
         u = -u - 0.2;
-        v += (y - n - 45) / 20
+        v += (y - n - 45) / 20;
     }
     if (x < -10) {
         b++;
@@ -53,24 +53,24 @@ setInterval(function () {
         y = 235;
         u = -5;
         v = 3;
-        w = 1
+        w = 1;
     }
-    c.fillText(a + " " + b, 266, 60)
-    c.fillRect(20, m, 20, 100)
-    c.fillRect(600, n, 20, 100)
-    c.fillRect(x, y, 10, 10)
-}, 30)
+    c.fillText(a + " " + b, 266, 60);
+    c.fillRect(20, m, 20, 100);
+    c.fillRect(600, n, 20, 100);
+    c.fillRect(x, y, 10, 10);
+}, 30);
 document.onkeydown = function (e) {
     k = (e || window.event).keyCode;
-    w = w ? 0 : k == '27' ? 1 : 0;
-    p = k == '83' ? 5 : k == '87' ? -5 : p;
-    q = k == '40' ? 5 : k == '38' ? -5 : q;
-}
+    w = w ? 0 : k === '27' ? 1 : 0;
+    p = k === '83' ? 5 : k === '87' ? -5 : p;
+    q = k === '40' ? 5 : k === '38' ? -5 : q;
+};
 document.onkeyup = function (e) {
     k = (e || window.event).keyCode;
-    p = k == '83' || k == '87' ? 0 : p;
-    q = k == '38' || k == '40' ? 0 : q
-}
+    p = k === '83' || k === '87' ? 0 : p;
+    q = k === '38' || k === '40' ? 0 : q;
+};
 
 /*
 Variable index:

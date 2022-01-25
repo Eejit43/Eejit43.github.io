@@ -22,47 +22,47 @@ function reset() {
     inputType.value = 9;
     outputType.value = 7;
     copyOutput.disabled = true;
-    showAlert('Reset!', 'success')
+    showAlert('Reset!', 'success');
 }
 
 function convert() {
     if (/^-?([0-9]\d*)(\.\d*|,\d*)*$/g.test(input.value) || /^-?\d*\.\d+$/g.test(input.value)) {
         let inputNumber = Number(input.value.replace(/,/g, '').replace(/-\./g, '-0.').replace(/\.$/g, ''));
         if (inputType.value === '1') {
-            kilometerConvert(inputNumber, outputType.value)
+            kilometerConvert(inputNumber, outputType.value);
         }
         if (inputType.value === '2') {
-            meterConvert(inputNumber, outputType.value)
+            meterConvert(inputNumber, outputType.value);
         }
         if (inputType.value === '3') {
-            centimeterConvert(inputNumber, outputType.value)
+            centimeterConvert(inputNumber, outputType.value);
         }
         if (inputType.value === '4') {
-            millimeterConvert(inputNumber, outputType.value)
+            millimeterConvert(inputNumber, outputType.value);
         }
         if (inputType.value === '5') {
-            micrometerConvert(inputNumber, outputType.value)
+            micrometerConvert(inputNumber, outputType.value);
         }
         if (inputType.value === '6') {
-            nanometerConvert(inputNumber, outputType.value)
+            nanometerConvert(inputNumber, outputType.value);
         }
         if (inputType.value === '7') {
-            mileConvert(inputNumber, outputType.value)
+            mileConvert(inputNumber, outputType.value);
         }
         if (inputType.value === '8') {
-            yardConvert(inputNumber, outputType.value)
+            yardConvert(inputNumber, outputType.value);
         }
         if (inputType.value === '9') {
-            footConvert(inputNumber, outputType.value)
+            footConvert(inputNumber, outputType.value);
         }
         if (inputType.value === '10') {
-            inchConvert(inputNumber, outputType.value)
+            inchConvert(inputNumber, outputType.value);
         }
         if (inputType.value === '11') {
-            nauticalMileConvert(inputNumber, outputType.value)
+            nauticalMileConvert(inputNumber, outputType.value);
         }
     } else {
-        if (input.value != '') {
+        if (input.value !== '') {
             message.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Input is not a number!<br>';
         } else {
             message.innerHTML = '';

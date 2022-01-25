@@ -11,9 +11,9 @@ twemojiUpdate();
 // Popup alert
 function showAlert(text, color) {
     if (color === 'success') {
-        color = '#009c3f'
+        color = '#009c3f';
     } else if (color === 'error') {
-        color = '#FF5555'
+        color = '#FF5555';
     }
     Toastify({
         text: text,
@@ -40,11 +40,11 @@ function showResult(id, type, color = undefined, icon = undefined) {
     let element = oldElement.cloneNode(true);
     oldElement.parentNode.replaceChild(element, oldElement);
     if (type === 'success') {
-        color = '#009c3f'
-        icon = 'check'
+        color = '#009c3f';
+        icon = 'check';
     } else if (type === 'error') {
-        color = '#FF5555'
-        icon = 'times'
+        color = '#FF5555';
+        icon = 'times';
     }
     element.style.color = color;
     element.className = 'fas fa-' + icon;

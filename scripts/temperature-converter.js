@@ -22,7 +22,7 @@ function reset() {
     inputType.value = 1;
     outputType.value = 2;
     copyOutput.disabled = true;
-    showAlert('Reset!', 'success')
+    showAlert('Reset!', 'success');
 }
 
 function convert() {
@@ -56,7 +56,7 @@ function convert() {
             showResult(inputNumber);
         }
     } else {
-        if (input.value != '') {
+        if (input.value !== '') {
             message.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Input is not a number!<br>';
         } else {
             message.innerHTML = '';

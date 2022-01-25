@@ -33,10 +33,10 @@ function time() {
         timeZone: 'Etc/UTC'
     });
     if (minutes < 10) {
-        minutes = '0' + minutes
+        minutes = '0' + minutes;
     }
     if (sec < 10) {
-        sec = '0' + sec
+        sec = '0' + sec;
     }
 
     // If DST code modified from https://stackoverflow.com/questions/11887934/how-to-check-if-dst-daylight-saving-time-is-in-effect-and-if-so-the-offset
@@ -44,11 +44,11 @@ function time() {
         let jan = new Date(this.getFullYear(), 0, 1);
         let jul = new Date(this.getFullYear(), 6, 1);
         return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
-    }
+    };
 
     Date.prototype.isDstObserved = function () {
         return this.getTimezoneOffset() < this.stdTimezoneOffset();
-    }
+    };
 
     let today = new Date();
     if (today.isDstObserved()) {

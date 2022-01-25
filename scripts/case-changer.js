@@ -14,7 +14,7 @@ function clearAll() {
     document.getElementById('stringToModify').value = '';
     document.getElementById('result').value = '';
     document.getElementById('copy-result').disabled = true;
-    showAlert('Cleared!', 'success')
+    showAlert('Cleared!', 'success');
     document.getElementById('clear').innerHTML = 'Cleared!';
     clearTimeout(clearMessageTimeout);
     clearMessageTimeout = setTimeout(function () {
@@ -93,7 +93,7 @@ function toSentence() {
         showResult('s', 'error');
     } else {
         let result = string.toLowerCase().replace(/(^\s*\w|[\.\!\?]\s*\w)/gm, function (c) {
-            return c.toUpperCase()
+            return c.toUpperCase();
         });
         result = result.replace(/(\s)i(\.|\!|\?|\s|\n|$)/gmi, '$1I$2');
         result = result.replace(/(\s)i'm(\.|\!|\?|\s|\n|$)/gmi, '$1I\'m$2');

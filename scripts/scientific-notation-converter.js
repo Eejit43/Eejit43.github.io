@@ -24,7 +24,7 @@ decimalInput.addEventListener('input', function () {
     } else {
         decimalConvert.disabled = true;
     }
-    if (decimalInput.value.length > 0 || scientificOutput.value.length > 0 || decimalArrow.style.color != 'dimgray') {
+    if (decimalInput.value.length > 0 || scientificOutput.value.length > 0 || decimalArrow.style.color !== 'dimgray') {
         decimalReset.disabled = false;
     } else {
         decimalReset.disabled = true;
@@ -44,7 +44,7 @@ scientificInput.addEventListener('input', function () {
     } else {
         scientificConvert.disabled = true;
     }
-    if (scientificInput.value.length > 0 || decimalOutput.value != '' || scientificArrow.style.color != 'dimgray') {
+    if (scientificInput.value.length > 0 || decimalOutput.value !== '' || scientificArrow.style.color !== 'dimgray') {
         scientificReset.disabled = false;
     } else {
         scientificReset.disabled = true;
@@ -72,7 +72,7 @@ function copyText(variable, button, message) {
 }
 
 function resetDecimal() {
-    scientificOutputVal,
+    scientificOutputVal = undefined;
     scientificOutputVal2 = undefined;
     scientificOutputCopy = document.getElementById('scientific-output-copy');
     scientificOutputCopy2 = document.getElementById('scientific-output-copy-2');
@@ -86,7 +86,7 @@ function resetDecimal() {
     scientificOutputCopy2.innerHTML = 'Copy scientific notation';
     scientificOutputCopy.disabled = true;
     scientificOutputCopy2.disabled = true;
-    showAlert('Reset!', 'success')
+    showAlert('Reset!', 'success');
 }
 
 function resetScientific() {
@@ -100,7 +100,7 @@ function resetScientific() {
     decimalOutput.value = '';
     decimalOutputCopy.innerHTML = 'Copy';
     decimalOutputCopy.disabled = true;
-    showAlert('Reset!', 'success')
+    showAlert('Reset!', 'success');
 }
 
 function convertDecimal() {
@@ -113,7 +113,7 @@ function convertDecimal() {
         decimalArrow.style.color = '#009c3f';
         decimalArrow.className = 'fas fa-arrow-right';
     } else {
-        scientificOutput.value = ''
+        scientificOutput.value = '';
         scientificOutputCopy.disabled = true;
         scientificOutputCopy2.disabled = true;
         decimalArrow.style.color = '#bf4042';
@@ -148,7 +148,7 @@ function convertScientific() {
         scientificArrow.style.color = '#009c3f';
         scientificArrow.className = 'fas fa-arrow-right';
     } else {
-        decimalOutput.value = ''
+        decimalOutput.value = '';
         decimalOutputCopy.disabled = true;
         scientificArrow.style.color = '#bf4042';
         scientificArrow.className = 'fas fa-times';

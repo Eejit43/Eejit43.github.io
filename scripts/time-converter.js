@@ -27,11 +27,11 @@ function updateStandardTime() {
     let sec = currentTime.getSeconds();
 
     if (minutes < 10) {
-        minutes = '0' + minutes
-    };
+        minutes = '0' + minutes;
+    }
     if (sec < 10) {
-        sec = '0' + sec
-    };
+        sec = '0' + sec;
+    }
 
     let timesuffix = fullhours >= 12 ? 'PM' : 'AM';
 
@@ -113,19 +113,18 @@ function updateStandardOutput() {
         let msec = time2.getMilliseconds();
 
         if (minutes < 10) {
-            minutes = '0' + minutes
-        };
+            minutes = '0' + minutes;
+        }
         if (sec < 10) {
-            sec = '0' + sec
-        };
+            sec = '0' + sec;
+        }
 
         let timesuffix = fullhours >= 12 ? 'PM' : 'AM';
 
-        let output = undefined;
         if (unixInputState === 2) {
-            output = month + ' ' + date + ', ' + year + ' ' + hours + ':' + minutes + ':' + sec + '.' + msec + ' ' + timesuffix;
+            let output = month + ' ' + date + ', ' + year + ' ' + hours + ':' + minutes + ':' + sec + '.' + msec + ' ' + timesuffix;
         } else {
-            output = month + ' ' + date + ', ' + year + ' ' + hours + ':' + minutes + ':' + sec + ' ' + timesuffix;
+            let output = month + ' ' + date + ', ' + year + ' ' + hours + ':' + minutes + ':' + sec + ' ' + timesuffix;
         }
         document.getElementById('standard-output').value = output;
         document.getElementById('standard-output-copy').disabled = false;
