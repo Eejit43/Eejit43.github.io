@@ -105,9 +105,9 @@ function resetScientific() {
 
 function convertDecimal() {
     if (/^[+-]?([0-9]\d*)(\.\d*|,\d*)*$/g.test(decimalInput.value.trim()) || /^-?\d*\.\d+$/g.test(decimalInput.value.trim())) {
-        scientificOutput.value = Number(decimalInput.value).toExponential();
-        scientificOutputVal = Number(decimalInput.value).toExponential();
-        scientificOutputVal2 = String(Number(decimalInput.value).toExponential()).replace('e+', ' x 10^').replace('e-', ' x 10^-');
+        scientificOutput.value = math.bignumber(decimalInput.value).toExponential();
+        scientificOutputVal = math.bignumber(decimalInput.value).toExponential();
+        scientificOutputVal2 = String(math.bignumber(decimalInput.value).toExponential()).replace('e+', ' x 10^').replace('e-', ' x 10^-');
         scientificOutputCopy.disabled = false;
         scientificOutputCopy2.disabled = false;
         decimalArrow.style.color = '#009c3f';
@@ -124,10 +124,7 @@ function convertDecimal() {
 
 function convertScientific() {
     if (/^[+-]?\d(\.\d+)?[Ee][+-]?\d+$/g.test(scientificInput.value.trim())) {
-        decimalOutput.value = Number(scientificInput.value).toLocaleString('fullwide', {
-            useGrouping: false,
-            maximumFractionDigits: 20
-        });
+        decimalOutput.value = math.format(math.bignumber(scientificInput.value), {notation: 'fixed'});
         decimalOutputVal = Number(scientificInput.value).toLocaleString('fullwide', {
             useGrouping: false,
             maximumFractionDigits: 20
@@ -136,14 +133,8 @@ function convertScientific() {
         scientificArrow.style.color = '#009c3f';
         scientificArrow.className = 'fas fa-arrow-right';
     } else if (/^[+-]?\d(\.\d+)? ?[xX\*] ?10\^[+-]?\d+$/g.test(scientificInput.value.trim())) {
-        decimalOutput.value = Number(scientificInput.value.replace(/ ?[xX\*] ?10\^(\d)/g, 'e+$1').replace(/ ?[xX\*] ?10\^-/g, 'e-').replace(/ ?[xX\*] ?10\^\+/g, 'e')).toLocaleString('fullwide', {
-            useGrouping: false,
-            maximumFractionDigits: 20
-        });
-        decimalOutputVal = Number(scientificInput.value.replace(/ ?[xX\*] ?10\^(\d)/g, 'e+$1').replace(/ ?[xX\*] ?10\^-/g, 'e-')).toLocaleString('fullwide', {
-            useGrouping: false,
-            maximumFractionDigits: 20
-        });
+        decimalOutput.value = math.format(math.bignumber(scientificInput.value.replace(/ ?[xX\*] ?10\^(\d)/g, 'e+$1').replace(/ ?[xX\*] ?10\^-/g, 'e-').replace(/ ?[xX\*] ?10\^\+/g, 'e')), {notation: 'fixed'});
+        decimalOutputVal = math.format(math.bignumber(scientificInput.value.replace(/ ?[xX\*] ?10\^(\d)/g, 'e+$1').replace(/ ?[xX\*] ?10\^-/g, 'e-').replace(/ ?[xX\*] ?10\^\+/g, 'e')), {notation: 'fixed'});
         decimalOutputCopy.disabled = false;
         scientificArrow.style.color = '#009c3f';
         scientificArrow.className = 'fas fa-arrow-right';
