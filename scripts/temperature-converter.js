@@ -6,6 +6,8 @@ let outputType = document.getElementById('output-type');
 let output = document.getElementById('output');
 let copyOutput = document.getElementById('copy-output');
 
+let inputTypeName, outputTypeName;
+
 /* Add event listeners */
 inputType.addEventListener('change', convert);
 input.addEventListener('input', convert);
@@ -28,33 +30,24 @@ function reset() {
 function convert() {
     if (/^-?([0-9]\d*)(\.\d*|,\d*)*$/g.test(input.value) || /^-?\d*\.\d+$/g.test(input.value)) {
         let inputNumber = Number(input.value.replace(/,/g, '').replace(/-\./g, '-0.').replace(/\.$/g, ''));
-        if (inputType.value === '1' && outputType.value === '1') {
-            showResult(inputNumber);
+        if (inputType.value === '1') {
+            inputTypeName = 'degF';
+        } else if (inputType.value === '2') {
+            inputTypeName = 'degC';
+        } else if (inputType.value === '3') {
+            inputTypeName = 'K';
         }
-        if (inputType.value === '1' && outputType.value === '2') {
-            showResult((inputNumber - 32) * (5 / 9));
+        if (outputType.value === '1') {
+            outputTypeName = 'degF';
+        } else if (outputType.value === '2') {
+            outputTypeName = 'degC';
+        } else if (outputType.value === '3') {
+            outputTypeName = 'K';
         }
-        if (inputType.value === '1' && outputType.value === '3') {
-            showResult((inputNumber - 32) * (5 / 9) + 273.15);
-        }
-        if (inputType.value === '2' && outputType.value === '1') {
-            showResult(inputNumber * (9 / 5) + 32);
-        }
-        if (inputType.value === '2' && outputType.value === '2') {
-            showResult(inputNumber);
-        }
-        if (inputType.value === '2' && outputType.value === '3') {
-            showResult(inputNumber + 273.15);
-        }
-        if (inputType.value === '3' && outputType.value === '1') {
-            showResult((inputNumber - 273.15) * (9 / 5) + 32);
-        }
-        if (inputType.value === '3' && outputType.value === '2') {
-            showResult(inputNumber - 273.15);
-        }
-        if (inputType.value === '3' && outputType.value === '3') {
-            showResult(inputNumber);
-        }
+        
+        message.innerHTML = '';
+        output.value = Number(math.format((math.evaluate(`${input.value} ${inputTypeName} to ${outputTypeName}`)), {notation: 'fixed', precision: 4}).replace(/[^0-9-.]/g, '')).toLocaleString();
+        copyOutput.disabled = false;
     } else {
         if (input.value !== '') {
             message.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Input is not a number!<br>';
@@ -64,10 +57,4 @@ function convert() {
         output.value = '';
         copyOutput.disabled = true;
     }
-}
-
-function showResult(result) {
-    message.innerHTML = '';
-    output.value = result.toLocaleString();
-    copyOutput.disabled = false;
 }
