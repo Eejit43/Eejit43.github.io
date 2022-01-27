@@ -55,6 +55,12 @@ dateVal.placeholder = date;
 yearOverview.href = `https://en.pronouns.page/calendar/${year}-overview.png`;
 yearOverviewList.href = `https://en.pronouns.page/calendar/${year}-labels.png`;
 
+function prepend(value, array) {
+    var newArray = array.slice();
+    newArray.unshift(value);
+    return newArray;
+}
+
 async function getFromDate() {
     let monthInput = escapeHtml(monthVal.value);
     let dateInput = escapeHtml(dateVal.value);
@@ -81,13 +87,17 @@ async function getFromDate() {
             })
             .then((data) => {
                 events = data.events;
+                eventsRaw = data.eventsRaw;
 
-                events = '- ' + events.join('<br> – ').replace(/\w\w=/g, '');
-                if (events === '- ') {
-                    events = 'No events found on this date!';
+                let newArray = [];
+                for (let i = 0; i < events.length; i++) {
+                    newArray.push(`– <img src="https://en.pronouns.page/flags/${eventsRaw[i].flag}.png" style="height: 1rem; border-radius: 0.18rem !important;"> ${events[i]}`);
                 }
-
-                eventsDisplay.innerHTML = events;
+                if (newArray.length === 0) {
+                    eventsDisplay.innerHTML = 'No events found on this date!';
+                } else {
+                    eventsDisplay.innerHTML = newArray.join('<br>');
+                }
             })
             .catch((err) => {});
     } else {
@@ -108,13 +118,17 @@ async function getCurrent() {
         })
         .then((data) => {
             events = data.events;
+            eventsRaw = data.eventsRaw;
 
-            events = '- ' + events.join('<br> – ').replace(/\w\w=/g, '');
-            if (events === '- ') {
-                events = 'No events found on this date!';
+            let newArray = [];
+            for (let i = 0; i < events.length; i++) {
+                newArray.push(`– <img src="https://en.pronouns.page/flags/${eventsRaw[i].flag}.png" style="height: 1rem; border-radius: 0.18rem !important;"> ${events[i]}`);
             }
-
-            eventsDisplay.innerHTML = events;
+            if (newArray.length === 0) {
+                eventsDisplay.innerHTML = 'No events found on this date!';
+            } else {
+                eventsDisplay.innerHTML = newArray.join('<br>');
+            }
         })
         .catch((err) => {});
 }
