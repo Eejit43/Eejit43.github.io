@@ -9,16 +9,6 @@ document.getElementById('clear2').addEventListener('click', clear2);
 document.getElementById('b64-copy-result').addEventListener('click', function () {
     copyText('b64-result', 'b64-copy-result');
 });
-document.getElementById('b64-copy-with-prefix-result').addEventListener('click', function () {
-    let button = 'b64-copy-with-prefix-result';
-    navigator.clipboard.writeText(base64);
-    document.getElementById(button).innerHTML = 'Copied!';
-    clearTimeout(copyMessageTimeout2);
-    copyMessageTimeout2 = setTimeout(function () {
-        document.getElementById(button).innerHTML = 'Copy with prefix';
-    }, 2000);
-    showAlert('Copied!', 'success');
-});
 
 let clearMessageTimeout, clearMessageTimeout2;
 
@@ -28,7 +18,6 @@ function clear1() {
     document.getElementById('file-message').innerHTML = '';
     document.getElementById('b64-result').value = '';
     document.getElementById('b64-copy-result').disabled = true;
-    document.getElementById('b64-copy-with-prefix-result').disabled = true;
     document.getElementById('b64-open-result').disabled = true;
     showAlert('Cleared!', 'success');
     document.getElementById('clear').innerHTML = 'Cleared!';
@@ -87,12 +76,11 @@ function encode() {
 
             if (imageType === 'png' || imageType === 'jpg' || imageType === 'jpeg' || imageType === 'webp' || imageType === 'bmp' || imageType === 'gif') {
                 base64 = reader.result;
-                output.value = reader.result.replace(/data:image\/.*?;base64,/g, '');
+                output.value = reader.result;
                 document.getElementById('b64-open-result').addEventListener('click', function () {
                     openBase64InNewTab(reader.result.replace(/data:image\/.*?;base64,/g, ''), 'image/' + imageType);
                 });
                 document.getElementById('b64-copy-result').disabled = false;
-                document.getElementById('b64-copy-with-prefix-result').disabled = false;
                 document.getElementById('b64-open-result').disabled = false;
                 showResult('e', 'success');
             } else {
