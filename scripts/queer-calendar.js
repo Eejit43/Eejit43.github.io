@@ -112,7 +112,7 @@ async function getCurrent() {
     monthVal.value = '';
     dateVal.value = '';
 
-    fetch('https://en.pronouns.page/api/calendar/today')
+    fetch(`https://en.pronouns.page/api/calendar/${year}-${month}-${date}`)
         .then((response) => {
             return response.json();
         })
