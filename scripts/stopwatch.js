@@ -8,8 +8,7 @@ document.getElementById('reset').addEventListener('click', resetTimer);
 const HRS = document.getElementById('hrs'),
     MIN = document.getElementById('min'),
     SEC = document.getElementById('sec'),
-    MIL = document.getElementById('mil'),
-    DEL = document.getElementById('delayed');
+    MIL = document.getElementById('mil');
 
 let hrs, min, sec, mil, dt, ps, pt, tt, t = 0,
     running, started = false,
@@ -53,9 +52,7 @@ function startTimer() {
     if (!started) {
         started = true;
         stop();
-        if (!DEL.checked) {
-            start();
-        }
+        start();
     }
 }
 
