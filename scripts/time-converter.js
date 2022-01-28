@@ -120,11 +120,11 @@ function updateStandardOutput() {
         }
 
         let timesuffix = fullhours >= 12 ? 'PM' : 'AM';
-
+        let output;
         if (unixInputState === 2) {
-            let output = month + ' ' + date + ', ' + year + ' ' + hours + ':' + minutes + ':' + sec + '.' + msec + ' ' + timesuffix;
+            output = month + ' ' + date + ', ' + year + ' ' + hours + ':' + minutes + ':' + sec + '.' + msec + ' ' + timesuffix;
         } else {
-            let output = month + ' ' + date + ', ' + year + ' ' + hours + ':' + minutes + ':' + sec + ' ' + timesuffix;
+            output = month + ' ' + date + ', ' + year + ' ' + hours + ':' + minutes + ':' + sec + ' ' + timesuffix;
         }
         document.getElementById('standard-output').value = output;
         document.getElementById('standard-output-copy').disabled = false;
