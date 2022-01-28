@@ -1,5 +1,13 @@
 // Refer to https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for time zone names
 
+function showResult(element, variable) {
+    if (document.getElementById(element).innerHTML !== eval(variable)) {
+        document.getElementById(element).innerHTML = eval(variable);
+    }
+}
+
+let finaltime, finaldate, unixtime, finaltimezone, jptime, crtime, gbtime, utctime;
+
 function time() {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -15,21 +23,21 @@ function time() {
     let minutes = currentTime.getMinutes();
     let sec = currentTime.getSeconds();
     let msec = currentTime.getMilliseconds();
-    let unixtime = currentTime.getTime();
+    unixtime = currentTime.getTime();
     let timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     let toffset = new Date().getTimezoneOffset();
     let offsetsign = toffset < 0 ? '+' : '-';
     let timeoffset = offsetsign + (toffset / 60 | 0);
-    let jptime = currentTime.toLocaleString('en-US', {
+    jptime = currentTime.toLocaleString('en-US', {
         timeZone: 'Japan'
     });
-    let crtime = currentTime.toLocaleString('en-US', {
+    crtime = currentTime.toLocaleString('en-US', {
         timeZone: 'America/Costa_Rica'
     });
-    let gbtime = currentTime.toLocaleString('en-US', {
+    gbtime = currentTime.toLocaleString('en-US', {
         timeZone: 'Europe/London'
     });
-    let utctime = currentTime.toLocaleString('en-US', {
+    utctime = currentTime.toLocaleString('en-US', {
         timeZone: 'Etc/UTC'
     });
     if (minutes < 10) {
@@ -51,26 +59,26 @@ function time() {
     };
 
     let today = new Date();
-    if (today.isDstObserved()) {
+    if (today.isDstObserved() && document.getElementById('dst').innerHTML !== 'In') {
         document.getElementById('dst').innerHTML = 'In';
-    } else {
+    } else if (document.getElementById('dst').innerHTML !== 'Not') {
         document.getElementById('dst').innerHTML = 'Not';
     }
 
     let timesuffix = fullhours >= 12 ? 'PM' : 'AM';
 
-    let finaltime = hours + ':' + minutes + ':' + sec + ' ' + timesuffix;
-    let finaldate = day + ', ' + month + ' ' + date + ', ' + year + ' (' + monthnumber + '/' + date + '/' + shortyear + ')';
-    let finaltimezone = timezone + ' (UTC' + timeoffset + ')';
+    finaltime = hours + ':' + minutes + ':' + sec + ' ' + timesuffix;
+    finaldate = day + ', ' + month + ' ' + date + ', ' + year + ' (' + monthnumber + '/' + date + '/' + shortyear + ')';
+    finaltimezone = timezone + ' (UTC' + timeoffset + ')';
 
-    document.getElementById('time').innerHTML = finaltime;
-    document.getElementById('date').innerHTML = finaldate;
-    document.getElementById('unix').innerHTML = unixtime;
-    document.getElementById('timezone').innerHTML = finaltimezone;
-    document.getElementById('jptime').innerHTML = jptime;
-    document.getElementById('crtime').innerHTML = crtime;
-    document.getElementById('gbtime').innerHTML = gbtime;
-    document.getElementById('utctime').innerHTML = utctime;
+    showResult('time', 'finaltime');
+    showResult('date', 'finaldate');
+    showResult('unix', 'unixtime');
+    showResult('timezone', 'finaltimezone');
+    showResult('jptime', 'jptime');
+    showResult('crtime', 'crtime');
+    showResult('gbtime', 'gbtime');
+    showResult('utctime', 'utctime');
     setTimeout(time, 100);
 }
 
