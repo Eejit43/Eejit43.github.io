@@ -23,9 +23,15 @@ fetch('https://ipgeolocation.abstractapi.com/v1/?api_key=7dcea861f91a44579cea73a
         connectionparsed = JSON.parse(connection);
         isp = connectionparsed.isp_name;
 
-        output = '<span class="tooltip-text tooltip-right" data-tooltip="Internet Protocol">IP</span> Address: ' + ip + '<br><span class="tooltip-text tooltip-right" data-tooltip="Internet Service Provider">ISP</span>: ' + isp + '<br>City: ' + city + '<br>Region: ' + region + ' (' + region_code + ')' + '<br>Country: ' + country + ' (' + country_code + ') ' + flagemoji + '<br>Continent: ' + continent + ' (' + continent_code + ')' + '<br>Latitude (north-south): ' + latitude + '<br>Longitude (east-west): ' + longitude;
+        document.getElementById('ip-address').innerHTML = ip;
+        document.getElementById('isp').innerHTML = isp;
+        document.getElementById('city').innerHTML = city;
+        document.getElementById('region').innerHTML = `${region} (${region_code})`;
+        document.getElementById('country').innerHTML = `${country} (${country_code}) ${flagemoji}`;
+        document.getElementById('continent').innerHTML = `${continent} (${continent_code})`;
+        document.getElementById('latitude').innerHTML = latitude;
+        document.getElementById('longitude').innerHTML = longitude;
 
-        document.getElementById('ip').innerHTML = output;
         document.getElementById('reloadprompt').innerHTML = '';
 
         twemojiUpdate();
