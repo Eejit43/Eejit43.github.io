@@ -3,6 +3,7 @@
 c = document.getElementById('c').getContext('2d');
 c.fillStyle = "#FFF";
 c.font = "60px monospace";
+
 w = s = 1;
 p = q = a = b = 0;
 m = n = 190;
@@ -10,6 +11,7 @@ x = 300;
 y = 235;
 u = -5;
 v = 3;
+
 setInterval(function () {
     if (w && !s) return;
     s = 0;
@@ -60,16 +62,22 @@ setInterval(function () {
     c.fillRect(600, n, 20, 100);
     c.fillRect(x, y, 10, 10);
 }, 30);
+
 document.onkeydown = function (e) {
+    // jshint ignore:start
     k = (e || window.event).keyCode;
     w = w ? 0 : k == '27' ? 1 : 0;
     p = k == '83' ? 5 : k == '87' ? -5 : p;
     q = k == '40' ? 5 : k == '38' ? -5 : q;
+    // jshint ignore:end
 };
+
 document.onkeyup = function (e) {
+    // jshint ignore:start
     k = (e || window.event).keyCode;
     p = k == '83' || k == '87' ? 0 : p;
     q = k == '38' || k == '40' ? 0 : q;
+    // jshint ignore:end
 };
 
 /*
