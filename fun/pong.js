@@ -1,101 +1,81 @@
 // Modified from http://codegolf.stackexchange.com/questions/10713/pong-in-the-shortest-code
 
-c = document.getElementById('c').getContext('2d');
-c.fillStyle = "#FFF";
-c.font = "60px monospace";
+canvas = document.getElementById('canvas').getContext('2d');
+canvas.fillStyle = "#ffffff";
+canvas.font = "60px monospace";
 
-w = s = 1;
-p = q = a = b = 0;
-m = n = 190;
-x = 300;
-y = 235;
-u = -5;
-v = 3;
+gamePaused = startGame = 1;
+leftPaddleYVelocity = rightPaddleYVelocity = leftScore = rightScore = 0;
+leftPaddleY = rightPaddleY = 190;
+ballX = 300;
+ballY = 235;
+ballXVelocity = - 5;
+ballYVelocity = 5;
 
 setInterval(function () {
-    if (w && !s) return;
-    s = 0;
-    c.clearRect(0, 0, 640, 480);
-    for (i = 5; i < 480; i += 20) c.fillRect(318, i, 4, 10);
-    m += p;
-    n += q;
-    m = m < 0 ? 0 : m;
-    m = m > 380 ? 380 : m;
-    n = n < 0 ? 0 : n;
-    n = n > 380 ? 380 : n;
-    x += u;
-    y += v;
-    if (y <= 0) {
-        y = 0;
-        v = -v;
+    if (gamePaused && !startGame) return;
+    startGame = 0;
+    canvas.clearRect(0, 0, 640, 480);
+    for (i = 5; i < 480; i += 20) canvas.fillRect(318, i, 4, 10);
+    leftPaddleY += leftPaddleYVelocity;
+    rightPaddleY += rightPaddleYVelocity;
+    leftPaddleY = leftPaddleY < 0 ? 0 : leftPaddleY;
+    leftPaddleY = leftPaddleY > 380 ? 380 : leftPaddleY;
+    rightPaddleY = rightPaddleY < 0 ? 0 : rightPaddleY;
+    rightPaddleY = rightPaddleY > 380 ? 380 : rightPaddleY;
+    ballX += ballXVelocity;
+    ballY += ballYVelocity;
+    if (ballY <= 0) {
+        ballY = 0;
+        ballYVelocity = - ballYVelocity;
     }
-    if (y >= 470) {
-        y = 470;
-        v = -v;
+    if (ballY >= 470) {
+        ballY = 470;
+        ballYVelocity = - ballYVelocity;
     }
-    if (x <= 40 && x >= 20 && y < m + 110 && y > m - 10) {
-        u = -u + 0.2;
-        v += (y - m - 45) / 20;
+    if (ballX <= 40 && ballX >= 20 && ballY < leftPaddleY + 110 && ballY > leftPaddleY - 10) {
+        ballXVelocity = - ballXVelocity + 0.2;
+        ballYVelocity += (ballY - leftPaddleY - 45) / 20;
     }
-    if (x <= 610 && x >= 590 && y < n + 110 && y > n - 10) {
-        u = -u - 0.2;
-        v += (y - n - 45) / 20;
+    if (ballX <= 610 && ballX >= 590 && ballY < rightPaddleY + 110 && ballY > rightPaddleY - 10) {
+        ballXVelocity = - ballXVelocity - 0.2;
+        ballYVelocity += (ballY - rightPaddleY - 45) / 20;
     }
-    if (x < -10) {
-        b++;
-        x = 360;
-        y = 235;
-        u = 5;
-        v = 3;
-        w = 1;
+    if (ballX < - 10) {
+        rightScore ++;
+        ballX = 360;
+        ballY = 235;
+        ballXVelocity = 5;
+        ballYVelocity = 3;
+        gamePaused = 1;
     }
-    if (x > 640) {
-        a++;
-        x = 280;
-        y = 235;
-        u = -5;
-        v = 3;
-        w = 1;
+    if (ballX > 640) {
+        leftScore ++;
+        ballX = 280;
+        ballY = 235;
+        ballXVelocity = - 5;
+        ballYVelocity = 3;
+        gamePaused = 1;
     }
-    c.fillText(a + " " + b, 266, 60);
-    c.fillRect(20, m, 20, 100);
-    c.fillRect(600, n, 20, 100);
-    c.fillRect(x, y, 10, 10);
+    canvas.fillText(leftScore + " " + rightScore, 266, 60);
+    canvas.fillRect(20, leftPaddleY, 20, 100);
+    canvas.fillRect(600, rightPaddleY, 20, 100);
+    canvas.fillRect(ballX, ballY, 10, 10);
 }, 30);
 
-document.onkeydown = function (e) {
+document.onkeydown = function (event) {
     // jshint ignore:start
-    k = (e || window.event).keyCode;
-    w = w ? 0 : k == '27' ? 1 : 0;
-    p = k == '83' ? 5 : k == '87' ? -5 : p;
-    q = k == '40' ? 5 : k == '38' ? -5 : q;
+    keycode = (event || window.event).keyCode;
+    gamePaused = gamePaused ? 0 : keycode == '27' ? 1 : 0;
+    leftPaddleYVelocity = keycode == '83' ? 6 : keycode == '87' ? - 6 : leftPaddleYVelocity;
+    rightPaddleYVelocity = keycode == '40' ? 6 : keycode == '38' ? - 6 : rightPaddleYVelocity;
     // jshint ignore:end
 };
 
-document.onkeyup = function (e) {
+document.onkeyup = function (event) {
     // jshint ignore:start
-    k = (e || window.event).keyCode;
-    p = k == '83' || k == '87' ? 0 : p;
-    q = k == '38' || k == '40' ? 0 : q;
+    keycode = (event || window.event).keyCode;
+    leftPaddleYVelocity = keycode == '83' || keycode == '87' ? 0 : leftPaddleYVelocity;
+    rightPaddleYVelocity = keycode == '38' || keycode == '40' ? 0 : rightPaddleYVelocity;
     // jshint ignore:end
 };
-
-/*
-Variable index:
-a -> left player score
-b -> right player score
-c -> context
-e -> event
-i -> counter for dashed line
-k -> keycode
-m -> left paddle y
-n -> right paddle y
-p -> left paddle y velocity
-q -> right paddle y velocity
-s -> is start of game
-u -> ball x velocity
-v -> ball y velocity
-w -> game is waiting (paused)
-x -> ball x
-y -> ball y
-*/
