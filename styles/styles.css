@@ -435,7 +435,7 @@ textarea {
     resize: vertical;
 }
 
-input:not(input[type=file]),
+input:not(input[type=file]):not(input[type=checkbox]),
 .fakeinput {
     padding: 0.2rem 0.3rem;
     border-radius: 4px;
@@ -449,7 +449,7 @@ input:not(input[type=file]),
     width: 15rem;
 }
 
-input:focus:not(input[type=file]),
+input:focus:not(input[type=file]):not(input[type=checkbox]),
 textarea:focus:not(input[type=file]),
 .fakeinput:focus {
     outline: none;
