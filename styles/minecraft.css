@@ -182,23 +182,23 @@
 }
 
 .mcui {
-    display: inline-block;
-    position: relative;
     background-color: #c6c6c6;
     border: 2px solid;
-    border-top-color: currentcolor;
-    border-right-color: currentcolor;
     border-bottom-color: currentcolor;
-    border-left-color: currentcolor;
     border-color: #dbdbdb #5b5b5b #5b5b5b #dbdbdb;
+    border-left-color: currentcolor;
+    border-right-color: currentcolor;
+    border-top-color: currentcolor;
+    display: inline-block;
     padding: 6px;
+    position: relative;
     text-align: left;
-    white-space: nowrap;
     vertical-align: bottom;
+    white-space: nowrap;
 }
 
 .mcui-text {
-    font-family: 'Minecraft';
     color: #2b2d2f;
+    font-family: 'Minecraft';
     font-size: 14px;
 }

@@ -13,29 +13,29 @@ html {
 }
 
 a {
-    text-decoration: none;
     color: #007bff;
+    text-decoration: none;
 }
 
 a:hover {
-    text-decoration: none;
     color: #0957b3;
+    text-decoration: none;
 }
 
 nav {
+    align-items: center;
     background-color: #1b1e24 !important;
+    display: flex;
+    font-size: 22px;
+    justify-content: space-between;
+    left: 0;
+    padding: 40px 25px;
     position: -webkit-sticky;
     position: sticky;
-    top: 0;
-    left: 0;
     right: 0;
-    font-size: 22px;
-    padding: 40px 25px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 5000;
+    top: 0;
     transition: 0.4s;
+    z-index: 5000;
 }
 
 .nav-shrunk {
@@ -53,10 +53,10 @@ nav {
 }
 
 .logo {
-    font-weight: 700;
-    font-size: 28px;
-    text-align: left;
     float: left;
+    font-size: 28px;
+    font-weight: 700;
+    text-align: left;
     transition: 0.4s;
 }
 
@@ -65,8 +65,8 @@ nav {
 }
 
 .logo-tools {
-    font-weight: 700;
     font-size: 22px;
+    font-weight: 700;
     transition: 0.4s;
 }
 
@@ -91,9 +91,9 @@ nav {
 
 .timer,
 .timer:hover {
+    color: #0b5394;
     font-weight: 600;
     margin-right: 100px;
-    color: #0b5394;
 }
 
 @media only screen and (max-width: 600px) {
@@ -104,8 +104,8 @@ nav {
 }
 
 .source {
-    font-weight: 600;
     color: dimgray;
+    font-weight: 600;
 }
 
 .source:hover {
@@ -113,13 +113,13 @@ nav {
 }
 
 .mainlogo {
-    font-weight: 700;
     font-size: 80px;
+    font-weight: 700;
 }
 
 .mainlogo-tools {
-    font-weight: 700;
     font-size: 60px;
+    font-weight: 700;
 }
 
 @media only screen and (max-width: 700px) {
@@ -132,16 +132,16 @@ nav {
 }
 
 header {
-    text-align: center;
     position: relative;
+    text-align: center;
     top: 40px;
 }
 
 .warning,
 .message {
-    font-weight: 500;
     color: lightgray;
     font-size: 22px;
+    font-weight: 500;
     margin: 20px 10px 0;
 }
 
@@ -153,14 +153,14 @@ header {
 }
 
 .toolbox {
-    text-align: left;
-    font-weight: 500;
-    color: gray;
     border: 2px solid gray;
+    color: gray;
+    font-weight: 500;
+    margin: 60px auto 30px;
     padding: 10px 30px 20px 30px;
     position: static;
+    text-align: left;
     width: 92%;
-    margin: 60px auto 30px;
 }
 
 @media only screen and (max-width: 700px) {
@@ -177,28 +177,28 @@ body {
 
 .body404 {
     background: #1f2227;
-    text-align: center;
     padding-top: 4rem;
+    text-align: center;
 }
 
 .warning404 {
-    font-weight: 500;
-    line-height: 150%;
     color: lightgray;
     font-size: 20px;
+    font-weight: 500;
+    line-height: 150%;
     margin-top: 30px;
 }
 
 .link404 {
-    font-weight: 500;
-    font-size: 20px;
     color: #28497d;
+    font-size: 20px;
+    font-weight: 500;
 }
 
 .toolstable {
+    background: #1b1e24;
     border-collapse: collapse;
     color: #a8a8a8;
-    background: #1b1e24;
     height: 40%;
     left: 10%;
     margin: 85px auto 30px;
@@ -214,8 +214,8 @@ body {
 .toolstable td {
     border: 4px solid #1b1e24;
     font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 500;
     font-size: 19px;
+    font-weight: 500;
     padding: 20px;
     text-align: left;
 }
@@ -228,10 +228,10 @@ body {
 }
 
 .tooltext {
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 700;
-    font-size: 20px;
     color: #0b5394;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
     line-height: 200%;
 }
 
@@ -253,9 +253,9 @@ body {
 }
 
 .info-table {
+    background-color: #31363d;
     border-collapse: collapse;
     color: #a8a8a8;
-    background-color: #31363d;
     margin: 50px auto 30px;
     overflow-y: scroll;
     position: static;
@@ -264,38 +264,38 @@ body {
 
 @media only screen and (max-width: 700px) {
     .info-table {
-        margin: 8px auto 30px;
         display: inline-block;
+        margin: 8px auto 30px;
         min-width: 97%;
     }
     .roman-numerals {
-        width: 50%;
-        min-width: 50%;
         display: table;
         margin: 50px 0 0;
+        min-width: 50%;
+        width: 50%;
     }
 }
 
 .info-table th {
     background: #292d33;
     border: 4px solid #1b1e24;
-    text-align: center;
-    padding: 10px;
     font-size: 18px;
+    padding: 10px;
+    text-align: center;
 }
 
 @media only screen and (max-width: 700px) {
     .info-table th {
-        padding: 20px;
         font-size: 14px;
+        padding: 20px;
     }
 }
 
 .info-table td {
     border: 4px solid #1b1e24;
     font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 500;
     font-size: 18px;
+    font-weight: 500;
     padding: 20px;
     text-align: left;
 }
@@ -308,11 +308,11 @@ body {
 }
 
 .keycodes {
-    border-collapse: collapse;
-    border: 4px solid #1b1e24;
-    color: #a8a8a8;
     background: #1b1e24;
     background-color: #31363d;
+    border: 4px solid #1b1e24;
+    border-collapse: collapse;
+    color: #a8a8a8;
     margin: 50px auto 30px;
     overflow-y: scroll;
     position: static;
@@ -321,8 +321,8 @@ body {
 
 @media only screen and (max-width: 700px) {
     .keycodes {
-        margin: 8px auto 30px;
         display: inline-block;
+        margin: 8px auto 30px;
         min-width: 97%;
     }
 }
@@ -330,38 +330,38 @@ body {
 .keycodes th {
     background: #31363d;
     border-bottom: 1px solid #1b1e24;
-    text-align: center;
-    padding: 10px;
     font-size: 18px;
+    padding: 10px;
+    text-align: center;
 }
 
 @media only screen and (max-width: 700px) {
     .keycodes th {
-        padding: 20px;
         font-size: 16px;
+        padding: 20px;
     }
 }
 
 .keycodes td {
     border: 3px solid #1b1e24;
     font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 500;
     font-size: 18px;
+    font-weight: 500;
     padding: 20px;
     text-align: center;
 }
 
 .keycodes td:hover {
-    cursor: not-allowed;
     /* SET TO NOT ALLOWED IF NO THING */
     background: #3a3f47;
+    cursor: not-allowed;
 }
 
 @media only screen and (max-width: 700px) {
     .keycodes td {
+        border-bottom: none;
         font-size: 16px;
         padding: 14px;
-        border-bottom: none;
     }
 }
 
@@ -398,26 +398,26 @@ body {
 }
 
 img.emoji {
+    background-size: 0.9em 0.9em;
     display: inline-block;
     height: 0.9em;
-    width: 0.9em;
     margin: 0 0.05em 0 0.1em;
-    vertical-align: -0.1em;
-    background-size: 0.9em 0.9em;
     pointer-events: none;
+    vertical-align: -0.1em;
+    width: 0.9em;
 }
 
 /* Some parts modified from https://skyblock-wiki.github.io/css/styles.css */
 
 .checkbox-custom {
-    position: absolute;
     opacity: 0;
+    position: absolute;
 }
 
 .checkbox-label {
+    align-items: center;
     display: flex;
     gap: 4px;
-    align-items: center;
 }
 
 .checkbox-label .checkbox i {
@@ -437,40 +437,40 @@ img.emoji {
 }
 
 textarea {
-    width: 40%;
-    min-height: 4rem;
-    height: 6rem;
-    max-height: 16rem;
-    margin: 0.5rem 0;
-    padding: 0.2rem;
+    background-color: #252525;
     border: 1px solid #444;
     border-radius: 4px;
-    background-color: #252525;
     color: white;
     font-family: 'Fira Mono', monospace;
-    transition: box-shadow 0.1s ease;
+    height: 6rem;
+    margin: 0.5rem 0;
+    max-height: 16rem;
+    min-height: 4rem;
+    padding: 0.2rem;
     resize: vertical;
+    transition: box-shadow 0.1s ease;
+    width: 40%;
 }
 
 input:not(input[type='file']):not(input[type='checkbox']),
 .fakeinput {
-    padding: 0.2rem 0.3rem;
-    border-radius: 4px;
-    border: 1px solid #444;
     background-color: #252525;
+    border: 1px solid #444;
+    border-radius: 4px;
     color: #aaa;
     cursor: pointer;
-    transition: all 0.2s ease;
     font-family: 'Fira Code', monospace;
     font-size: 0.75rem;
+    padding: 0.2rem 0.3rem;
+    transition: all 0.2s ease;
     width: 15rem;
 }
 
 input:focus:not(input[type='file']):not(input[type='checkbox']),
 textarea:focus:not(input[type='file']),
 .fakeinput:focus {
-    outline: none;
     box-shadow: 0 0 3px 2px #cc9933;
+    outline: none;
 }
 
 input[type='file'] {
@@ -484,34 +484,34 @@ input[type='file'] {
 }
 
 select {
-    padding: 0.2rem;
-    border-radius: 4px;
-    border: 1px solid #444;
     background-color: #252525;
+    border: 1px solid #444;
+    border-radius: 4px;
+    box-shadow: none;
     color: #aaa;
     cursor: pointer;
-    transition: all 0.2s ease;
     font-family: 'Fira Code', monospace;
     font-size: 0.75rem;
-    width: 8rem;
     outline: none;
-    box-shadow: none;
+    padding: 0.2rem;
+    transition: all 0.2s ease;
+    width: 8rem;
 }
 
 .file-upload {
-    font-family: 'Arial';
-    font-weight: normal;
-    font-size: 16px;
-    width: max-content;
-    height: max-content;
-    padding: 0.4rem;
-    border-radius: 4px;
-    margin: 3px;
-    border: 1px solid #444;
     background-color: #252525;
+    border: 1px solid #444;
+    border-radius: 4px;
     color: white;
     cursor: pointer;
+    font-family: 'Arial';
+    font-size: 16px;
+    font-weight: normal;
+    height: max-content;
+    margin: 3px;
+    padding: 0.4rem;
     transition: all 0.2s ease;
+    width: max-content;
 }
 
 .file-upload:hover {
@@ -520,17 +520,17 @@ select {
 }
 
 button:not(.fakeinput) {
-    font-family: 'Source Sans Pro', sans-serif;
-    width: max-content;
-    height: max-content;
-    padding: 0.2rem 0.3rem;
-    border-radius: 4px;
-    margin: 3px;
-    border: 1px solid #444;
     background-color: #252525;
+    border: 1px solid #444;
+    border-radius: 4px;
     color: white;
     cursor: pointer;
+    font-family: 'Source Sans Pro', sans-serif;
+    height: max-content;
+    margin: 3px;
+    padding: 0.2rem 0.3rem;
     transition: all 0.2s ease;
+    width: max-content;
 }
 
 button:hover:not(.fakeinput) {
@@ -538,9 +538,9 @@ button:hover:not(.fakeinput) {
 }
 
 button:disabled:not(.fakeinput) {
-    opacity: 50%;
     color: #aaa;
     cursor: not-allowed;
+    opacity: 50%;
 }
 
 /* End modified section */
@@ -560,16 +560,16 @@ button:disabled:not(.fakeinput) {
 }
 
 .toc {
-    font-family: 'Source Sans Pro', sans-serif;
-    text-align: left;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 150%;
-    color: gray;
     border: 2px solid gray;
+    color: gray;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 150%;
+    margin: 120px 0 0 40px;
     padding: 15px 30px 10px 30px;
     position: static;
-    margin: 120px 0 0 40px;
+    text-align: left;
     width: 15%;
 }
 
@@ -585,21 +585,21 @@ button:disabled:not(.fakeinput) {
 
 .invisibleinput[type='text'],
 .invisibleinput[type='number'] {
+    background-color: transparent;
     border: none;
     border-bottom: 1px solid dimgray;
-    background-color: transparent;
     color: dimgray;
     font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 500;
     font-size: 50px;
-    width: 4.2rem;
+    font-weight: 500;
     text-align: right;
+    width: 4.2rem;
 }
 
 .invisibleinput[type='text']:focus,
 .invisibleinput[type='number']:focus {
-    outline: none;
     box-shadow: none;
+    outline: none;
 }
 
 .invisibleinput[type='number']::-webkit-inner-spin-button,
@@ -615,10 +615,10 @@ button:disabled:not(.fakeinput) {
 }
 
 .timer-time {
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 500;
     color: #0b5394;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 90px;
+    font-weight: 500;
 }
 
 @media only screen and (max-width: 700px) {
@@ -628,29 +628,29 @@ button:disabled:not(.fakeinput) {
 }
 
 .spoiler {
-    position: relative;
-    display: inline-block;
-    cursor: text;
     background-color: #393f42;
     border-radius: 3px;
+    cursor: text;
+    display: inline-block;
     padding: 3px;
+    position: relative;
 }
 
 @media only screen and (hover) {
     .spoiler::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        border-radius: 3px;
-        background: #1f2225;
-        text-align: center;
-        display: flex;
         align-items: center;
+        background: #1f2225;
+        border-radius: 3px;
+        bottom: 0;
+        content: '';
+        display: flex;
         justify-content: center;
+        left: 0;
         opacity: 1;
+        position: absolute;
+        right: 0;
+        text-align: center;
+        top: 0;
         transition: opacity 0.3s ease;
     }
     .spoiler:hover::before {
@@ -663,17 +663,17 @@ button:disabled:not(.fakeinput) {
 
 .color-box {
     display: flex;
-    width: 100%;
     height: 10px;
     margin: 15px 0px;
+    width: 100%;
 }
 
 .color-box-sm {
+    cursor: pointer;
+    flex-grow: 1;
     height: 10px;
     margin: 0;
-    flex-grow: 1;
     transition: all 0.8s ease-in-out;
-    cursor: pointer;
 }
 
 .color-box-sm:hover {
@@ -712,11 +712,11 @@ h1 {
 
 code {
     background: #2f3136;
-    padding: 0.2em;
     border-radius: 3px;
+    font-family: monospace;
     font-size: 85%;
     line-height: 1.125rem;
-    font-family: monospace;
+    padding: 0.2em;
     white-space: pre;
 }
 

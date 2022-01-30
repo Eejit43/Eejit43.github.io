@@ -4,25 +4,25 @@ body {
 }
 
 #sidebar {
-    width: 18em;
-    height: 20em;
-    float: left;
-    font-size: 0.825em;
     background-color: #333;
     border: 1px solid white;
-    padding: 1em;
+    float: left;
+    font-size: 0.825em;
+    height: 20em;
     margin: 80px 40px 0 90px;
+    padding: 1em;
+    width: 18em;
 }
 
 #sidebar h2 {
     color: white;
-    text-align: center;
     margin: 0;
+    text-align: center;
 }
 
 #sidebar .settings {
-    line-height: 1.2em;
     height: 1.2em;
+    line-height: 1.2em;
     text-align: right;
 }
 
@@ -47,8 +47,8 @@ body {
 }
 
 #sidebar .description b {
-    font-weight: normal;
     color: #fff;
+    font-weight: normal;
 }
 
 @media screen and (min-width: 0px) {
@@ -56,18 +56,18 @@ body {
         display: none;
     }
     #game {
+        background-color: black;
         display: block;
-        width: 480px;
         height: 360px;
         margin: 80px auto 40px;
-        background-color: black;
+        width: 480px;
     }
 }
 
 @media screen and (min-width: 800px) {
     #game {
-        width: 640px;
         height: 480px;
+        width: 640px;
     }
 }
 
@@ -82,14 +82,14 @@ body {
 
 @media screen and (min-width: 1200px) {
     #game {
-        width: 800px;
         height: 600px;
+        width: 800px;
     }
 }
 
 @media screen and (min-width: 1600px) {
     #game {
-        width: 1024px;
         height: 768px;
+        width: 1024px;
     }
 }
