@@ -24,42 +24,74 @@ a:hover {
 
 nav {
     background-color: #1b1e24 !important;
-    position: absolute;
+    position: -webkit-sticky;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
-    padding: 30px 20px;
-    overflow: hidden;
+    font-size: 22px;
+    padding: 40px 25px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    z-index: 5000;
+    transition: 0.4s;
+}
+
+.nav-shrunk {
+    font-size: 18px;
+    padding: 25px;
+}
+
+@media only screen and (max-width: 600px) {
+    nav {
+        font-size: 16px;
+    }
+    .nav-shrunk {
+        font-size: 13px;
+    }
 }
 
 .logo {
     font-weight: 700;
-    font-size: 25px;
+    font-size: 28px;
     text-align: left;
     float: left;
+    transition: 0.4s;
+}
+
+.nav-shrunk .logo {
+    font-size: 23px;
 }
 
 .logo-tools {
     font-weight: 700;
-    font-size: 20px;
+    font-size: 22px;
+    transition: 0.4s;
+}
+
+.nav-shrunk .logo-tools {
+    font-size: 17px;
 }
 
 @media only screen and (max-width: 600px) {
-    .logo {
-        font-size: 20px;
+    nav .logo {
+        font-size: 18px;
+    }
+    .nav-shrunk .logo {
+        font-size: 18px;
     }
     .logo-tools {
         font-size: 16px;
+    }
+    .nav-shrunk .logo-tools {
+        font-size: 17px;
     }
 }
 
 .timer,
 .timer:hover {
     font-weight: 600;
-    font-size: 20px;
     margin-right: 100px;
     color: #0b5394;
 }
@@ -67,27 +99,17 @@ nav {
 @media only screen and (max-width: 600px) {
     .timer,
     .timer:hover {
-        font-size: 14px;
-        margin-right: 30px;
+        margin-right: 20px;
     }
 }
 
 .source {
     font-weight: 600;
-    font-size: 20px;
-    color: #696969;
-    /* haha–ha– */
+    color: dimgray;
 }
 
 .source:hover {
     color: #505050;
-}
-
-@media only screen and (max-width: 600px) {
-    .source,
-    .source:hover {
-        font-size: 16px;
-    }
 }
 
 .mainlogo {
@@ -112,7 +134,7 @@ nav {
 header {
     text-align: center;
     position: relative;
-    top: 110px;
+    top: 40px;
 }
 
 .warning,
@@ -120,7 +142,7 @@ header {
     font-weight: 500;
     color: lightgray;
     font-size: 22px;
-    margin-top: 20px;
+    margin: 20px 10px 0;
 }
 
 @media only screen and (max-width: 700px) {
@@ -138,7 +160,7 @@ header {
     padding: 10px 30px 20px 30px;
     position: static;
     width: 92%;
-    margin: 130px auto 30px;
+    margin: 60px auto 30px;
 }
 
 @media only screen and (max-width: 700px) {
@@ -150,6 +172,7 @@ header {
 
 body {
     font-family: 'Source Sans Pro', sans-serif;
+    margin: 0;
 }
 
 .body404 {
@@ -178,16 +201,10 @@ body {
     background: #1b1e24;
     height: 40%;
     left: 10%;
-    margin: 160px auto 30px;
+    margin: 85px auto 30px;
     overflow-y: scroll;
     position: static;
     width: 70%;
-}
-
-@media only screen and (max-width: 700px) {
-    .toolstable {
-        margin: 140px auto 30px;
-    }
 }
 
 .toolstable tr {

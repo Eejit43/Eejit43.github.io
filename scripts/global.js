@@ -130,3 +130,15 @@ function navtime() {
 }
 
 navtime();
+
+window.onscroll = function () {
+    scrollFunction();
+};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+        document.getElementById('navbar').className = 'nav-shrunk';
+    } else {
+        document.getElementById('navbar').className = '';
+    }
+}
