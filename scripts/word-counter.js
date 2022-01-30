@@ -14,8 +14,18 @@ document.getElementById('reset').addEventListener('click', reset);
 
 function updateValues() {
     characterCount = input.value.length;
-    wordCount = input.value.trim() ? input.value.trim().split(/\s+/).filter(word => /\w/.test(word)).length : 0;
-    sentenceCount = input.value.trim() ? input.value.trim().split(/[.?!]/).filter(sentence => !/^\s*$/.test(sentence)).length : 0;
+    wordCount = input.value.trim()
+        ? input.value
+              .trim()
+              .split(/\s+/)
+              .filter((word) => /\w/.test(word)).length
+        : 0;
+    sentenceCount = input.value.trim()
+        ? input.value
+              .trim()
+              .split(/[.?!]/)
+              .filter((sentence) => !/^\s*$/.test(sentence)).length
+        : 0;
     lineCount = input.value.trim() ? input.value.trim().split('\n').length : 0;
     paragraphCount = input.value.trim() ? input.value.trim().split('\n\n').length : 0;
 

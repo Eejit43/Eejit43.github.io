@@ -2,7 +2,7 @@
 function twemojiUpdate() {
     twemoji.parse(document.body, {
         folder: 'svg',
-        ext: '.svg'
+        ext: '.svg',
     });
 }
 
@@ -96,14 +96,14 @@ function copyVar(button, text) {
 
 // Escape html
 function escapeHtml(input) {
-    return input.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+    return input.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
 }
 
 // Navtime
 function navtime() {
     let currentTime = new Date();
     let fullhours = currentTime.getHours();
-    let hours = ((fullhours + 11) % 12 + 1);
+    let hours = ((fullhours + 11) % 12) + 1;
     let minutes = currentTime.getMinutes();
     let sec = currentTime.getSeconds();
     if (minutes < 10) {
@@ -115,14 +115,17 @@ function navtime() {
 
     let timesuffix = fullhours >= 12 ? 'PM' : 'AM';
 
-    let timeemoji = fullhours >= 7 && fullhours < 17 ? '<img draggable="false" class="emoji" alt="☀️" src="https://twemoji.maxcdn.com/v/13.1.0/svg/2600.svg">' : '<img draggable="false" class="emoji" alt="🌒" src="https://twemoji.maxcdn.com/v/13.1.0/svg/1f312.svg">';
+    let timeemoji =
+        fullhours >= 7 && fullhours < 17
+            ? '<img draggable="false" class="emoji" alt="☀️" src="https://twemoji.maxcdn.com/v/13.1.0/svg/2600.svg">'
+            : '<img draggable="false" class="emoji" alt="🌒" src="https://twemoji.maxcdn.com/v/13.1.0/svg/1f312.svg">';
 
     let finaltime = hours + ':' + minutes + ':' + sec + ' ' + timesuffix + ' ' + timeemoji;
 
     if (document.getElementById('navtime').innerHTML !== finaltime) {
         document.getElementById('navtime').innerHTML = finaltime;
     }
-    
+
     setTimeout(navtime, 100);
 }
 

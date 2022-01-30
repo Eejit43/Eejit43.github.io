@@ -11,13 +11,17 @@ document.getElementById('reset').addEventListener('click', function () {
     key = 'Space';
     blurAll();
 });
-document.addEventListener('keyup', (event) => {
-    blurAll();
-    if (event.code === key) {
-        number++;
-        document.getElementById('number').innerHTML = number;
-    }
-}, false);
+document.addEventListener(
+    'keyup',
+    (event) => {
+        blurAll();
+        if (event.code === key) {
+            number++;
+            document.getElementById('number').innerHTML = number;
+        }
+    },
+    false
+);
 document.getElementById('manual-activation').addEventListener('click', function () {
     blurAll();
     number++;

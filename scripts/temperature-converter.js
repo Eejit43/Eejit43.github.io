@@ -44,9 +44,9 @@ function convert() {
         } else if (outputType.value === '3') {
             outputTypeName = 'K';
         }
-        
+
         message.innerHTML = '';
-        output.value = Number(math.format((math.evaluate(`${input.value} ${inputTypeName} to ${outputTypeName}`)), {notation: 'fixed', precision: 4}).replace(/[^0-9-.]/g, '')).toLocaleString();
+        output.value = Number(math.format(math.evaluate(`${input.value} ${inputTypeName} to ${outputTypeName}`), { notation: 'fixed', precision: 4 }).replace(/[^0-9-.]/g, '')).toLocaleString();
         copyOutput.disabled = false;
     } else {
         if (input.value !== '') {

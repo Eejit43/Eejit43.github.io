@@ -1,5 +1,5 @@
 body {
-    color: #AAA;
+    color: #aaa;
     font-size: 12pt;
 }
 
@@ -26,8 +26,6 @@ body {
     text-align: right;
 }
 
-#sidebar .settings.size {}
-
 #sidebar .settings.speed {
     margin-bottom: 1em;
 }
@@ -50,7 +48,7 @@ body {
 
 #sidebar .description b {
     font-weight: normal;
-    color: #FFF;
+    color: #fff;
 }
 
 @media screen and (min-width: 0px) {

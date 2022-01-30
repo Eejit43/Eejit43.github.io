@@ -144,20 +144,20 @@ function runNeuRegex() {
         showAlert('Empty input!', 'error');
         showResult('neu', 'error');
     } else {
-        let output = input.replace(/\\"/gmi, 'Ɣ'); //filler character
-        output = output.replace(/\\u0027/gmi, '\'');
-        output = output.replace(/ *"|",?/gmi, '');
-        output = output.replace(/Ɣ/gmi, '"');
-        output = output.replace(/§/gmi, '&');
-        output = output.replace(/(&[ol].*?)(&[a-f1-9]|\n)/gmis, '$1&r$2');
-        output = output.replace(/\n&r/gmi, '&r\n');
-        output = output.replace(/&[a-f1-9]&([a-f1-9])/gmi, '&$1');
-        output = output.replace(/\n &8\[/gmi, '\n &8['); //em space
-        let output2 = output.replace(/\//gmi, '\\\\/');
-        output2 = output2.replace(/\\(?!\/|\\\/)/gmi, '\\\\\\\\');
-        output2 = output2.replace(/\n/gmi, '/');
-        output2 = output2.replace(/"/gmi, '\\"');
-        output2 = output2.replace(/'/gmi, '\\\'');
+        let output = input.replace(/\\"/gim, 'Ɣ'); //filler character
+        output = output.replace(/\\u0027/gim, "'");
+        output = output.replace(/ *"|",?/gim, '');
+        output = output.replace(/Ɣ/gim, '"');
+        output = output.replace(/§/gim, '&');
+        output = output.replace(/(&[ol].*?)(&[a-f1-9]|\n)/gims, '$1&r$2');
+        output = output.replace(/\n&r/gim, '&r\n');
+        output = output.replace(/&[a-f1-9]&([a-f1-9])/gim, '&$1');
+        output = output.replace(/\n &8\[/gim, '\n &8['); //em space
+        let output2 = output.replace(/\//gim, '\\\\/');
+        output2 = output2.replace(/\\(?!\/|\\\/)/gim, '\\\\\\\\');
+        output2 = output2.replace(/\n/gim, '/');
+        output2 = output2.replace(/"/gim, '\\"');
+        output2 = output2.replace(/'/gim, "\\'");
         showResult('neu', 'success');
         document.getElementById('neu-result').value = output;
         document.getElementById('neu-copy-result').disabled = false;
@@ -223,25 +223,19 @@ function runRmRegex() {
         showResult('rm', 'error');
     } else if (isValid) {
         let finalregex = new RegExp(regex, flags);
-        let replace = document.getElementById('rm-replace').value.replace(/\\a/g, '\a').replace(/\\b/g, '\b').replace(/\\c/g, '\c').replace(/\\e/g, '\e').replace(/\\f/g, '\f').replace(/\\n/g, '\n').replace(/\\o/g, '\o').replace(/\\r/g, '\r').replace(/\\t/g, '\t').replace(/\$(\d)/g, '$$$1');
+        let replace = document
+            .getElementById('rm-replace')
+            .value.replace(/\\a/g, 'a')
+            .replace(/\\b/g, '\b')
+            .replace(/\\c/g, 'c')
+            .replace(/\\e/g, 'e')
+            .replace(/\\f/g, '\f')
+            .replace(/\\n/g, '\n')
+            .replace(/\\o/g, 'o')
+            .replace(/\\r/g, '\r')
+            .replace(/\\t/g, '\t')
+            .replace(/\$(\d)/g, '$$$1');
         let output = input.replace(finalregex, replace);
-        /*let first = [...new Set(output.match(/(\\L|\\U)/))].join();
-        if (first === '\\U') {
-          output = output.replace(/\\U(.*?)(\\E|\\L|$)/g, function (match) {
-          return match.toUpperCase().replace(/\\e|\\u/g, '').replace(/\\l/g, '\\L');
-        });
-          output = output.replace(/\\L(.*?)(\\E|\\U|$)/g, function (match) {
-          return match.toLowerCase().replace(/\\e|\\l/g, '').replace(/\\u/g, '\\U');
-        });
-        } else if (first === '\\L') {
-          output = output.replace(/\\L(.*?)(\\E|\\U|$)/g, function (match) {
-          return match.toLowerCase().replace(/\\e|\\l/g, '').replace(/\\u/g, '\\U');
-        });
-        output = output.replace(/\\U(.*?)(\\E|\\L|$)/g, function (match) {
-          return match.toUpperCase().replace(/\\e|\\u/g, '').replace(/\\l/g, '\\L');
-        });
-        }
-        output = output.replace(/\\[UL]/g, '')*/
         showResult('rm', 'success');
         document.getElementById('rm-result').value = output;
         document.getElementById('rm-copy-result').disabled = false;

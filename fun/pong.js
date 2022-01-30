@@ -3,7 +3,6 @@
 //=============================================================================
 
 Pong = {
-
     Defaults: {
         width: 640, // logical canvas width (browser will scale to physical canvas size - which is controlled by @media css queries)
         height: 480, // logical canvas height (ditto)
@@ -14,7 +13,7 @@ Pong = {
         ballSpeed: 4, // should be able to cross court horizontally in 4 seconds, at starting speed ...
         ballAccel: 8, // ... but accelerate as time passes
         ballRadius: 5,
-        sound: true
+        sound: true,
     },
 
     Colors: {
@@ -23,104 +22,104 @@ Pong = {
         score: 'white',
         footprint: '#333',
         predictionGuess: 'yellow',
-        predictionExact: 'red'
+        predictionExact: 'red',
     },
 
-    Images: [
-        "./pong_files/press1.png",
-        "./pong_files/press2.png",
-        "./pong_files/winner.png"
-    ],
+    Images: ['./pong_files/press1.png', './pong_files/press2.png', './pong_files/winner.png'],
 
-    Levels: [{
+    Levels: [
+        {
             aiReaction: 0.2,
-            aiError: 40
+            aiError: 40,
         }, // 0:  ai is losing by 8
         {
             aiReaction: 0.3,
-            aiError: 50
+            aiError: 50,
         }, // 1:  ai is losing by 7
         {
             aiReaction: 0.4,
-            aiError: 60
+            aiError: 60,
         }, // 2:  ai is losing by 6
         {
             aiReaction: 0.5,
-            aiError: 70
+            aiError: 70,
         }, // 3:  ai is losing by 5
         {
             aiReaction: 0.6,
-            aiError: 80
+            aiError: 80,
         }, // 4:  ai is losing by 4
         {
             aiReaction: 0.7,
-            aiError: 90
+            aiError: 90,
         }, // 5:  ai is losing by 3
         {
             aiReaction: 0.8,
-            aiError: 100
+            aiError: 100,
         }, // 6:  ai is losing by 2
         {
             aiReaction: 0.9,
-            aiError: 110
+            aiError: 110,
         }, // 7:  ai is losing by 1
         {
             aiReaction: 1.0,
-            aiError: 120
+            aiError: 120,
         }, // 8:  tie
         {
             aiReaction: 1.1,
-            aiError: 130
+            aiError: 130,
         }, // 9:  ai is winning by 1
         {
             aiReaction: 1.2,
-            aiError: 140
+            aiError: 140,
         }, // 10: ai is winning by 2
         {
             aiReaction: 1.3,
-            aiError: 150
+            aiError: 150,
         }, // 11: ai is winning by 3
         {
             aiReaction: 1.4,
-            aiError: 160
+            aiError: 160,
         }, // 12: ai is winning by 4
         {
             aiReaction: 1.5,
-            aiError: 170
+            aiError: 170,
         }, // 13: ai is winning by 5
         {
             aiReaction: 1.6,
-            aiError: 180
+            aiError: 180,
         }, // 14: ai is winning by 6
         {
             aiReaction: 1.7,
-            aiError: 190
+            aiError: 190,
         }, // 15: ai is winning by 7
         {
             aiReaction: 1.8,
-            aiError: 200
-        } // 16: ai is winning by 8
+            aiError: 200,
+        }, // 16: ai is winning by 8
     ],
 
     //-----------------------------------------------------------------------------
 
     initialize: function (runner, cfg) {
-        Game.loadImages(Pong.Images, function (images) {
-            this.cfg = cfg;
-            this.runner = runner;
-            this.width = runner.width;
-            this.height = runner.height;
-            this.images = images;
-            this.playing = false;
-            this.scores = [0, 0];
-            this.menu = Object.construct(Pong.Menu, this);
-            this.court = Object.construct(Pong.Court, this);
-            this.leftPaddle = Object.construct(Pong.Paddle, this);
-            this.rightPaddle = Object.construct(Pong.Paddle, this, true);
-            this.ball = Object.construct(Pong.Ball, this);
-            this.sounds = Object.construct(Pong.Sounds, this);
-            this.runner.start();
-        }.bind(this));
+        Game.loadImages(
+            Pong.Images,
+            function (images) {
+                this.cfg = cfg;
+                this.runner = runner;
+                this.width = runner.width;
+                this.height = runner.height;
+                this.images = images;
+                this.playing = false;
+                this.scores = [0, 0];
+                this.menu = Object.construct(Pong.Menu, this);
+                this.court = Object.construct(Pong.Court, this);
+                this.leftPaddle = Object.construct(Pong.Paddle, this);
+                this.rightPaddle = Object.construct(Pong.Paddle, this, true);
+                this.ball = Object.construct(Pong.Ball, this);
+                this.sounds = Object.construct(Pong.Sounds, this);
+                this.runner.start();
+            }.bind(this)
+        );
     },
 
     startDemo: function () {
@@ -161,7 +160,7 @@ Pong = {
 
     goal: function (playerNo) {
         this.sounds.goal();
-        console.log('e')
+        console.log('e');
         this.scores[playerNo] += 1;
         if (this.scores[playerNo] == 9) {
             this.menu.declareWinner(playerNo);
@@ -180,17 +179,12 @@ Pong = {
             var dx = this.ball.dx;
             var dy = this.ball.dy;
             this.ball.update(dt, this.leftPaddle, this.rightPaddle);
-            if (this.ball.dx < 0 && dx > 0)
-                this.sounds.ping();
-            else if (this.ball.dx > 0 && dx < 0)
-                this.sounds.pong();
-            else if (this.ball.dy * dy < 0)
-                this.sounds.wall();
+            if (this.ball.dx < 0 && dx > 0) this.sounds.ping();
+            else if (this.ball.dx > 0 && dx < 0) this.sounds.pong();
+            else if (this.ball.dy * dy < 0) this.sounds.wall();
 
-            if (this.ball.left > this.width)
-                this.goal(0);
-            else if (this.ball.right < 0)
-                this.goal(1);
+            if (this.ball.left > this.width) this.goal(0);
+            else if (this.ball.right < 0) this.goal(1);
         }
     },
 
@@ -198,10 +192,8 @@ Pong = {
         this.court.draw(ctx, this.scores[0], this.scores[1]);
         this.leftPaddle.draw(ctx);
         this.rightPaddle.draw(ctx);
-        if (this.playing)
-            this.ball.draw(ctx);
-        else
-            this.menu.draw(ctx);
+        if (this.playing) this.ball.draw(ctx);
+        else this.menu.draw(ctx);
     },
 
     onkeydown: function (keyCode) {
@@ -269,30 +261,29 @@ Pong = {
     //=============================================================================
 
     Menu: {
-
         initialize: function (pong) {
-            var press1 = pong.images["./pong_files/press1.png"];
-            var press2 = pong.images["./pong_files/press2.png"];
-            var winner = pong.images["./pong_files/winner.png"];
+            var press1 = pong.images['./pong_files/press1.png'];
+            var press2 = pong.images['./pong_files/press2.png'];
+            var winner = pong.images['./pong_files/winner.png'];
             this.press1 = {
                 image: press1,
                 x: 10,
-                y: pong.cfg.wallWidth
+                y: pong.cfg.wallWidth,
             };
             this.press2 = {
                 image: press2,
-                x: (pong.width - press2.width - 10),
-                y: pong.cfg.wallWidth
+                x: pong.width - press2.width - 10,
+                y: pong.cfg.wallWidth,
             };
             this.winner1 = {
                 image: winner,
-                x: (pong.width / 2) - winner.width - pong.cfg.wallWidth,
-                y: 6 * pong.cfg.wallWidth
+                x: pong.width / 2 - winner.width - pong.cfg.wallWidth,
+                y: 6 * pong.cfg.wallWidth,
             };
             this.winner2 = {
                 image: winner,
-                x: (pong.width / 2) + pong.cfg.wallWidth,
-                y: 6 * pong.cfg.wallWidth
+                x: pong.width / 2 + pong.cfg.wallWidth,
+                y: 6 * pong.cfg.wallWidth,
             };
         },
 
@@ -303,12 +294,9 @@ Pong = {
         draw: function (ctx) {
             ctx.drawImage(this.press1.image, this.press1.x, this.press1.y);
             ctx.drawImage(this.press2.image, this.press2.x, this.press2.y);
-            if (this.winner == 0)
-                ctx.drawImage(this.winner1.image, this.winner1.x, this.winner1.y);
-            else if (this.winner == 1)
-                ctx.drawImage(this.winner2.image, this.winner2.x, this.winner2.y);
-        }
-
+            if (this.winner == 0) ctx.drawImage(this.winner1.image, this.winner1.x, this.winner1.y);
+            else if (this.winner == 1) ctx.drawImage(this.winner2.image, this.winner2.x, this.winner2.y);
+        },
     },
 
     //=============================================================================
@@ -316,23 +304,21 @@ Pong = {
     //=============================================================================
 
     Sounds: {
-
         initialize: function (pong) {
             this.game = pong;
             this.supported = Game.ua.hasAudio;
             if (this.supported) {
                 this.files = {
-                    ping: Game.createAudio("./pong_files/ping.wav"),
-                    pong: Game.createAudio("./pong_files/pong.wav"),
-                    wall: Game.createAudio("./pong_files/wall.wav"),
-                    goal: Game.createAudio("./pong_files/goal.wav")
+                    ping: Game.createAudio('./pong_files/ping.wav'),
+                    pong: Game.createAudio('./pong_files/pong.wav'),
+                    wall: Game.createAudio('./pong_files/wall.wav'),
+                    goal: Game.createAudio('./pong_files/goal.wav'),
                 };
             }
         },
 
         play: function (name) {
-            if (this.supported && this.game.cfg.sound && this.files[name])
-                this.files[name].play();
+            if (this.supported && this.game.cfg.sound && this.files[name]) this.files[name].play();
         },
 
         ping: function () {
@@ -346,8 +332,7 @@ Pong = {
         },
         goal: function () {
             this.play('goal');
-        }
-
+        },
     },
 
     //=============================================================================
@@ -355,7 +340,6 @@ Pong = {
     //=============================================================================
 
     Court: {
-
         initialize: function (pong) {
             var w = pong.width;
             var h = pong.height;
@@ -367,66 +351,59 @@ Pong = {
                 x: 0,
                 y: 0,
                 width: w,
-                height: ww
+                height: ww,
             });
             this.walls.push({
                 x: 0,
                 y: h - ww,
                 width: w,
-                height: ww
+                height: ww,
             });
-            var nMax = (h / (ww * 2));
-            for (var n = 0; n < nMax; n++) { // draw dashed halfway line
+            var nMax = h / (ww * 2);
+            for (var n = 0; n < nMax; n++) {
+                // draw dashed halfway line
                 this.walls.push({
-                    x: (w / 2) - (ww / 2),
-                    y: (ww / 2) + (ww * 2 * n),
+                    x: w / 2 - ww / 2,
+                    y: ww / 2 + ww * 2 * n,
                     width: ww,
-                    height: ww
+                    height: ww,
                 });
             }
 
             var sw = 3 * ww;
             var sh = 4 * ww;
             this.score1 = {
-                x: 0.5 + (w / 2) - 1.5 * ww - sw,
+                x: 0.5 + w / 2 - 1.5 * ww - sw,
                 y: 2 * ww,
                 w: sw,
-                h: sh
+                h: sh,
             };
             this.score2 = {
-                x: 0.5 + (w / 2) + 1.5 * ww,
+                x: 0.5 + w / 2 + 1.5 * ww,
                 y: 2 * ww,
                 w: sw,
-                h: sh
+                h: sh,
             };
         },
 
         draw: function (ctx, scorePlayer1, scorePlayer2) {
             ctx.fillStyle = Pong.Colors.walls;
-            for (var n = 0; n < this.walls.length; n++)
-                ctx.fillRect(this.walls[n].x, this.walls[n].y, this.walls[n].width, this.walls[n].height);
+            for (var n = 0; n < this.walls.length; n++) ctx.fillRect(this.walls[n].x, this.walls[n].y, this.walls[n].width, this.walls[n].height);
             this.drawDigit(ctx, scorePlayer1, this.score1.x, this.score1.y, this.score1.w, this.score1.h);
             this.drawDigit(ctx, scorePlayer2, this.score2.x, this.score2.y, this.score2.w, this.score2.h);
         },
 
         drawDigit: function (ctx, n, x, y, w, h) {
             ctx.fillStyle = Pong.Colors.score;
-            var dw = dh = this.ww * 4 / 5;
+            var dw = (dh = (this.ww * 4) / 5);
             var blocks = Pong.Court.DIGITS[n];
-            if (blocks[0])
-                ctx.fillRect(x, y, w, dh);
-            if (blocks[1])
-                ctx.fillRect(x, y, dw, h / 2);
-            if (blocks[2])
-                ctx.fillRect(x + w - dw, y, dw, h / 2);
-            if (blocks[3])
-                ctx.fillRect(x, y + h / 2 - dh / 2, w, dh);
-            if (blocks[4])
-                ctx.fillRect(x, y + h / 2, dw, h / 2);
-            if (blocks[5])
-                ctx.fillRect(x + w - dw, y + h / 2, dw, h / 2);
-            if (blocks[6])
-                ctx.fillRect(x, y + h - dh, w, dh);
+            if (blocks[0]) ctx.fillRect(x, y, w, dh);
+            if (blocks[1]) ctx.fillRect(x, y, dw, h / 2);
+            if (blocks[2]) ctx.fillRect(x + w - dw, y, dw, h / 2);
+            if (blocks[3]) ctx.fillRect(x, y + h / 2 - dh / 2, w, dh);
+            if (blocks[4]) ctx.fillRect(x, y + h / 2, dw, h / 2);
+            if (blocks[5]) ctx.fillRect(x + w - dw, y + h / 2, dw, h / 2);
+            if (blocks[6]) ctx.fillRect(x, y + h - dh, w, dh);
         },
 
         DIGITS: [
@@ -439,9 +416,8 @@ Pong = {
             [1, 1, 0, 1, 1, 1, 1], // 6
             [1, 0, 1, 0, 0, 1, 0], // 7
             [1, 1, 1, 1, 1, 1, 1], // 8
-            [1, 1, 1, 1, 0, 1, 0] // 9
-        ]
-
+            [1, 1, 1, 1, 0, 1, 0], // 9
+        ],
     },
 
     //=============================================================================
@@ -449,7 +425,6 @@ Pong = {
     //=============================================================================
 
     Paddle: {
-
         initialize: function (pong, rhs) {
             this.pong = pong;
             this.width = pong.cfg.paddleWidth;
@@ -471,8 +446,8 @@ Pong = {
         },
 
         setdir: function (dy) {
-            this.up = (dy < 0 ? -dy : 0);
-            this.down = (dy > 0 ? dy : 0);
+            this.up = dy < 0 ? -dy : 0;
+            this.down = dy > 0 ? dy : 0;
         },
 
         setAuto: function (on, level) {
@@ -486,28 +461,23 @@ Pong = {
         },
 
         setLevel: function (level) {
-            if (this.auto)
-                this.level = Pong.Levels[level];
+            if (this.auto) this.level = Pong.Levels[level];
         },
 
         update: function (dt, ball) {
-            if (this.auto)
-                this.ai(dt, ball);
+            if (this.auto) this.ai(dt, ball);
 
             var amount = this.down - this.up;
             if (amount != 0) {
-                var y = this.y + (amount * dt * this.speed);
-                if (y < this.minY)
-                    y = this.minY;
-                else if (y > this.maxY)
-                    y = this.maxY;
+                var y = this.y + amount * dt * this.speed;
+                if (y < this.minY) y = this.minY;
+                else if (y > this.maxY) y = this.maxY;
                 this.setpos(this.x, y);
             }
         },
 
         ai: function (dt, ball) {
-            if (((ball.x < this.left) && (ball.dx < 0)) ||
-                ((ball.x > this.right) && (ball.dx > 0))) {
+            if ((ball.x < this.left && ball.dx < 0) || (ball.x > this.right && ball.dx > 0)) {
                 this.stopMovingUp();
                 this.stopMovingDown();
                 return;
@@ -516,10 +486,10 @@ Pong = {
             this.predict(ball, dt);
 
             if (this.prediction) {
-                if (this.prediction.y < (this.top + this.height / 2 - 5)) {
+                if (this.prediction.y < this.top + this.height / 2 - 5) {
                     this.stopMovingDown();
                     this.moveUp();
-                } else if (this.prediction.y > (this.bottom - this.height / 2 + 5)) {
+                } else if (this.prediction.y > this.bottom - this.height / 2 + 5) {
                     this.stopMovingUp();
                     this.moveDown();
                 } else {
@@ -531,25 +501,27 @@ Pong = {
 
         predict: function (ball, dt) {
             // only re-predict if the ball changed direction, or its been some amount of time since last prediction
-            if (this.prediction &&
-                ((this.prediction.dx * ball.dx) > 0) &&
-                ((this.prediction.dy * ball.dy) > 0) &&
-                (this.prediction.since < this.level.aiReaction)) {
+            if (this.prediction && this.prediction.dx * ball.dx > 0 && this.prediction.dy * ball.dy > 0 && this.prediction.since < this.level.aiReaction) {
                 this.prediction.since += dt;
                 return;
             }
 
-            var pt = Pong.Helper.ballIntercept(ball, {
-                left: this.left,
-                right: this.right,
-                top: -10000,
-                bottom: 10000
-            }, ball.dx * 10, ball.dy * 10);
+            var pt = Pong.Helper.ballIntercept(
+                ball,
+                {
+                    left: this.left,
+                    right: this.right,
+                    top: -10000,
+                    bottom: 10000,
+                },
+                ball.dx * 10,
+                ball.dy * 10
+            );
             if (pt) {
                 var t = this.minY + ball.radius;
                 var b = this.maxY + this.height - ball.radius;
 
-                while ((pt.y < t) || (pt.y > b)) {
+                while (pt.y < t || pt.y > b) {
                     if (pt.y < t) {
                         pt.y = t + (t - pt.y);
                     } else if (pt.y > b) {
@@ -596,8 +568,7 @@ Pong = {
         },
         stopMovingDown: function () {
             this.down = 0;
-        }
-
+        },
     },
 
     //=============================================================================
@@ -605,7 +576,6 @@ Pong = {
     //=============================================================================
 
     Ball: {
-
         initialize: function (pong) {
             this.pong = pong;
             this.radius = pong.cfg.ballRadius;
@@ -633,8 +603,8 @@ Pong = {
         },
 
         setdir: function (dx, dy) {
-            this.dxChanged = ((this.dx < 0) != (dx < 0)); // did horizontal direction change
-            this.dyChanged = ((this.dy < 0) != (dy < 0)); // did vertical direction change
+            this.dxChanged = this.dx < 0 != dx < 0; // did horizontal direction change
+            this.dyChanged = this.dy < 0 != dy < 0; // did vertical direction change
             this.dx = dx;
             this.dy = dy;
         },
@@ -644,10 +614,9 @@ Pong = {
                 if (!this.footprintCount || this.dxChanged || this.dyChanged) {
                     this.footprints.push({
                         x: this.x,
-                        y: this.y
+                        y: this.y,
                     });
-                    if (this.footprints.length > 50)
-                        this.footprints.shift();
+                    if (this.footprints.length > 50) this.footprints.shift();
                     this.footprintCount = 5;
                 } else {
                     this.footprintCount--;
@@ -656,18 +625,17 @@ Pong = {
         },
 
         update: function (dt, leftPaddle, rightPaddle) {
-
             pos = Pong.Helper.accelerate(this.x, this.y, this.dx, this.dy, this.accel, dt);
 
-            if ((pos.dy > 0) && (pos.y > this.maxY)) {
+            if (pos.dy > 0 && pos.y > this.maxY) {
                 pos.y = this.maxY;
                 pos.dy = -pos.dy;
-            } else if ((pos.dy < 0) && (pos.y < this.minY)) {
+            } else if (pos.dy < 0 && pos.y < this.minY) {
                 pos.y = this.minY;
                 pos.dy = -pos.dy;
             }
 
-            var paddle = (pos.dx < 0) ? leftPaddle : rightPaddle;
+            var paddle = pos.dx < 0 ? leftPaddle : rightPaddle;
             var pt = Pong.Helper.ballIntercept(this, paddle, pos.nx, pos.ny);
 
             if (pt) {
@@ -685,10 +653,8 @@ Pong = {
                 }
 
                 // add/remove spin based on paddle direction
-                if (paddle.up)
-                    pos.dy = pos.dy * (pos.dy < 0 ? 0.5 : 1.5);
-                else if (paddle.down)
-                    pos.dy = pos.dy * (pos.dy > 0 ? 0.5 : 1.5);
+                if (paddle.up) pos.dy = pos.dy * (pos.dy < 0 ? 0.5 : 1.5);
+                else if (paddle.down) pos.dy = pos.dy * (pos.dy > 0 ? 0.5 : 1.5);
             }
 
             this.setpos(pos.x, pos.y);
@@ -697,17 +663,15 @@ Pong = {
         },
 
         draw: function (ctx) {
-            var w = h = this.radius * 2;
+            var w = (h = this.radius * 2);
             ctx.fillStyle = Pong.Colors.ball;
             ctx.fillRect(this.x - this.radius, this.y - this.radius, w, h);
             if (this.pong.cfg.footprints) {
                 var max = this.footprints.length;
                 ctx.strokeStyle = Pong.Colors.footprint;
-                for (var n = 0; n < max; n++)
-                    ctx.strokeRect(this.footprints[n].x - this.radius, this.footprints[n].y - this.radius, w, h);
+                for (var n = 0; n < max; n++) ctx.strokeRect(this.footprints[n].x - this.radius, this.footprints[n].y - this.radius, w, h);
             }
-        }
-
+        },
     },
 
     //=============================================================================
@@ -715,35 +679,34 @@ Pong = {
     //=============================================================================
 
     Helper: {
-
         accelerate: function (x, y, dx, dy, accel, dt) {
-            var x2 = x + (dt * dx) + (accel * dt * dt * 0.5);
-            var y2 = y + (dt * dy) + (accel * dt * dt * 0.5);
-            var dx2 = dx + (accel * dt) * (dx > 0 ? 1 : -1);
-            var dy2 = dy + (accel * dt) * (dy > 0 ? 1 : -1);
+            var x2 = x + dt * dx + accel * dt * dt * 0.5;
+            var y2 = y + dt * dy + accel * dt * dt * 0.5;
+            var dx2 = dx + accel * dt * (dx > 0 ? 1 : -1);
+            var dy2 = dy + accel * dt * (dy > 0 ? 1 : -1);
             return {
-                nx: (x2 - x),
-                ny: (y2 - y),
+                nx: x2 - x,
+                ny: y2 - y,
                 x: x2,
                 y: y2,
                 dx: dx2,
-                dy: dy2
+                dy: dy2,
             };
         },
 
         intercept: function (x1, y1, x2, y2, x3, y3, x4, y4, d) {
-            var denom = ((y4 - y3) * (x2 - x1)) - ((x4 - x3) * (y2 - y1));
+            var denom = (y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1);
             if (denom != 0) {
-                var ua = (((x4 - x3) * (y1 - y3)) - ((y4 - y3) * (x1 - x3))) / denom;
-                if ((ua >= 0) && (ua <= 1)) {
-                    var ub = (((x2 - x1) * (y1 - y3)) - ((y2 - y1) * (x1 - x3))) / denom;
-                    if ((ub >= 0) && (ub <= 1)) {
-                        var x = x1 + (ua * (x2 - x1));
-                        var y = y1 + (ua * (y2 - y1));
+                var ua = ((x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3)) / denom;
+                if (ua >= 0 && ua <= 1) {
+                    var ub = ((x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3)) / denom;
+                    if (ub >= 0 && ub <= 1) {
+                        var x = x1 + ua * (x2 - x1);
+                        var y = y1 + ua * (y2 - y1);
                         return {
                             x: x,
                             y: y,
-                            d: d
+                            d: d,
                         };
                     }
                 }
@@ -754,42 +717,30 @@ Pong = {
         ballIntercept: function (ball, rect, nx, ny) {
             var pt;
             if (nx < 0) {
-                pt = Pong.Helper.intercept(ball.x, ball.y, ball.x + nx, ball.y + ny,
-                    rect.right + ball.radius,
-                    rect.top - ball.radius,
-                    rect.right + ball.radius,
-                    rect.bottom + ball.radius,
-                    "right");
+                pt = Pong.Helper.intercept(ball.x, ball.y, ball.x + nx, ball.y + ny, rect.right + ball.radius, rect.top - ball.radius, rect.right + ball.radius, rect.bottom + ball.radius, 'right');
             } else if (nx > 0) {
-                pt = Pong.Helper.intercept(ball.x, ball.y, ball.x + nx, ball.y + ny,
-                    rect.left - ball.radius,
-                    rect.top - ball.radius,
-                    rect.left - ball.radius,
-                    rect.bottom + ball.radius,
-                    "left");
+                pt = Pong.Helper.intercept(ball.x, ball.y, ball.x + nx, ball.y + ny, rect.left - ball.radius, rect.top - ball.radius, rect.left - ball.radius, rect.bottom + ball.radius, 'left');
             }
             if (!pt) {
                 if (ny < 0) {
-                    pt = Pong.Helper.intercept(ball.x, ball.y, ball.x + nx, ball.y + ny,
+                    pt = Pong.Helper.intercept(
+                        ball.x,
+                        ball.y,
+                        ball.x + nx,
+                        ball.y + ny,
                         rect.left - ball.radius,
                         rect.bottom + ball.radius,
                         rect.right + ball.radius,
                         rect.bottom + ball.radius,
-                        "bottom");
+                        'bottom'
+                    );
                 } else if (ny > 0) {
-                    pt = Pong.Helper.intercept(ball.x, ball.y, ball.x + nx, ball.y + ny,
-                        rect.left - ball.radius,
-                        rect.top - ball.radius,
-                        rect.right + ball.radius,
-                        rect.top - ball.radius,
-                        "top");
+                    pt = Pong.Helper.intercept(ball.x, ball.y, ball.x + nx, ball.y + ny, rect.left - ball.radius, rect.top - ball.radius, rect.right + ball.radius, rect.top - ball.radius, 'top');
                 }
             }
             return pt;
-        }
-
-    }
+        },
+    },
 
     //=============================================================================
-
 }; // Pong

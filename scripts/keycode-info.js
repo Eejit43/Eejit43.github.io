@@ -32,7 +32,7 @@ document.getElementById('key-unicode-cell').addEventListener('click', function (
     copyKeycodeInfo(keyUnicodeVal);
 });
 
-if ( /*@cc_on!@*/ false) { // check for Internet Explorer
+if (/*@cc_on!@*/ false) {
     document.onfocusin = onFocus;
     document.onfocusout = onBlur;
 } else {

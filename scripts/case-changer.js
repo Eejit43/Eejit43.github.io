@@ -58,17 +58,49 @@ function titleCase(str) {
         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
     });
 
-    lowers = ['A', 'An', 'The', 'And', 'As', 'At', 'But', 'By', 'For', 'From', 'If', 'In', 'Into', 'Like', 'Near', 'Nor', 'Of', 'Off', 'On', 'Once', 'Onto', 'Or', 'Over', 'Past', 'So', 'Than', 'That', 'Till', 'To', 'Up', 'Upon', 'With', 'When', 'Yet'];
+    lowers = [
+        'A',
+        'An',
+        'The',
+        'And',
+        'As',
+        'At',
+        'But',
+        'By',
+        'For',
+        'From',
+        'If',
+        'In',
+        'Into',
+        'Like',
+        'Near',
+        'Nor',
+        'Of',
+        'Off',
+        'On',
+        'Once',
+        'Onto',
+        'Or',
+        'Over',
+        'Past',
+        'So',
+        'Than',
+        'That',
+        'Till',
+        'To',
+        'Up',
+        'Upon',
+        'With',
+        'When',
+        'Yet',
+    ];
     for (i = 0, j = lowers.length; i < j; i++)
-        str = str.replace(new RegExp('\\s' + lowers[i] + '\\s', 'g'),
-            function (txt) {
-                return txt.toLowerCase();
-            });
+        str = str.replace(new RegExp('\\s' + lowers[i] + '\\s', 'g'), function (txt) {
+            return txt.toLowerCase();
+        });
 
     uppers = ['Id', 'Tv'];
-    for (i = 0, j = uppers.length; i < j; i++)
-        str = str.replace(new RegExp('\\b' + uppers[i] + '\\b', 'g'),
-            uppers[i].toUpperCase());
+    for (i = 0, j = uppers.length; i < j; i++) str = str.replace(new RegExp('\\b' + uppers[i] + '\\b', 'g'), uppers[i].toUpperCase());
 
     return str;
 }
@@ -92,14 +124,16 @@ function toSentence() {
         showAlert('Empty input!', 'error');
         showResult('s', 'error');
     } else {
-        let result = string.toLowerCase().replace(/(^\s*\w|[\.\!\?]\s*\w)/gm, function (c) {
-            return c.toUpperCase();
-        });
-        result = result.replace(/(\s)i(\.|\!|\?|\s|\n|$)/gmi, '$1I$2');
-        result = result.replace(/(\s)i'm(\.|\!|\?|\s|\n|$)/gmi, '$1I\'m$2');
-        result = result.replace(/(\s)i'd(\.|\!|\?|\s|\n|$)/gmi, '$1I\'d$2');
-        result = result.replace(/(\s)i'll(\.|\!|\?|\s|\n|$)/gmi, '$1I\'ll$2');
-        result = result.replace(/(\s)i've(\.|\!|\?|\s|\n|$)/gmi, '$1I\'ve$2');
+        let result = string
+            .toLowerCase()
+            .replace(/(^\s*\w|[\.\!\?]\s*\w)/gm, function (c) {
+                return c.toUpperCase();
+            })
+            .replace(/(\s)i(\.|\!|\?|\s|\n|$)/gim, '$1I$2')
+            .replace(/(\s)i'm(\.|\!|\?|\s|\n|$)/gim, "$1I'm$2")
+            .replace(/(\s)i'd(\.|\!|\?|\s|\n|$)/gim, "$1I'd$2")
+            .replace(/(\s)i'll(\.|\!|\?|\s|\n|$)/gim, "$1I'll$2")
+            .replace(/(\s)i've(\.|\!|\?|\s|\n|$)/gim, "$1I've$2");
         document.getElementById('result').value = result;
         showResult('s', 'success');
         document.getElementById('copy-result').disabled = false;

@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Some useful tools for general purposes!">
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="https://eejit43.github.io/morse-code-converter">
-        <meta property="og:site_name" content="Eejit's Tools">
-        <meta property="og:title" content="Morse Code Converter">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Some useful tools for general purposes!" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://eejit43.github.io/morse-code-converter" />
+        <meta property="og:site_name" content="Eejit's Tools" />
+        <meta property="og:title" content="Morse Code Converter" />
         <title>Morse Code Converter | Eejit's Tools</title>
-        <meta property="og:description" content="Some useful tools for general purposes!">
-        <meta name="keywords" content="">
-        <meta property="og:image" content="https://eejit43.github.io/icon.png">
-        <meta property="og:image:alt" content="Eejit's Tools">
-        <meta name="twitter:card" content="summary">
-        <meta name="twitter:title" content="Morse Code Converter | Eejit's Tools">
-        <meta name="twitter:description" content="Some useful tools for general purposes!">
-        <meta name="twitter:url" content="https://eejit43.github.io/morse-code-converter">
-        <meta name="twitter:image" content="https://eejit43.github.io/icon.png">
-        <meta name="twitter:image:alt" content="Eejit's Tools">
-        <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-        <link rel="manifest" href="../site.webmanifest">
-        <link rel="mask-icon" href="../safari-pinned-tab.svg" color="#3e498a">
-        <meta name="msapplication-TileColor" content="#3e498a">
-        <meta name="theme-color" content="#3e498a">
+        <meta property="og:description" content="Some useful tools for general purposes!" />
+        <meta name="keywords" content="" />
+        <meta property="og:image" content="https://eejit43.github.io/icon.png" />
+        <meta property="og:image:alt" content="Eejit's Tools" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Morse Code Converter | Eejit's Tools" />
+        <meta name="twitter:description" content="Some useful tools for general purposes!" />
+        <meta name="twitter:url" content="https://eejit43.github.io/morse-code-converter" />
+        <meta name="twitter:image" content="https://eejit43.github.io/icon.png" />
+        <meta name="twitter:image:alt" content="Eejit's Tools" />
+        <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png" />
+        <link rel="manifest" href="../site.webmanifest" />
+        <link rel="mask-icon" href="../safari-pinned-tab.svg" color="#3e498a" />
+        <meta name="msapplication-TileColor" content="#3e498a" />
+        <meta name="theme-color" content="#3e498a" />
 
         <!-- Styles -->
-        <link rel="stylesheet" href="../styles/styles.css">
+        <link rel="stylesheet" href="../styles/styles.css" />
 
         <!-- Scripts -->
         <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous" defer></script>
@@ -40,46 +40,48 @@
         <nav>
             <a href="https://eejit43.github.io">
                 <span class="logo">
-                    <!--
-                        --><span style="color:#FF5555">E</span><!--
-                        --><span style="color:#FFAA00">e</span><!--
-                        --><span style="color:#FFFF55">j</span><!--
-                        --><span style="color:#55FF55">i</span><!--
-                        --><span style="color:#00AA00">t</span><!--
-                        --><span style="color:#00AAAA">'</span><!--
-                        --><span style="color:#5555FF">s</span><!--
-                        -->
-                    <span style="color:#AA00AA;" class="logo-tools">Tools</span>
+                    <span style="color: #ff5555">E</span><span style="color: #ffaa00">e</span><span style="color: #ffff55">j</span><span style="color: #55ff55">i</span
+                    ><span style="color: #00aa00">t</span><span style="color: #00aaaa">'</span><span style="color: #5555ff">s</span>
+                    <span style="color: #aa00aa" class="logo-tools">Tools</span>
                 </span>
             </a>
-            <span style="float:right!important;">
-            <a href="time" class="timer"><span id="navtime"></span></a>
-            <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
+            <span style="float: right !important">
+                <a href="time" class="timer"><span id="navtime"></span></a>
+                <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
             </span>
         </nav>
         <div class="toolbox">
             <h1>Morse Code Converter:</h1>
             <div class="tooltext">
-                <span style="font-weight:500;color:dimgray;font-size:16px;">Morse Code can be represented in writing using dashes and dots (hyphens/underscores and periods, <code>-</code>/<code>_</code> and <code>.</code>). Characters are separated by spaces, and actual spaces are represented by a backslash (<code>/</code>), a vertical slash (<code>|</code>), or three spaces (<code>   </code>). For example, <code>test abc</code> converts to <code>- . ... -   .- -... -.-.</code>. Morse code does <em>not</em> keep character case. This has been expanded to include conversions not officially recognized by <span class="tooltip-text tooltip-bottom" data-tooltip="International Telecommunication Union Radiocommunication Sector">ITU-R</span> M.1172 or ITU-R M.1677-1 (<code>;</code>, <code>_</code>, and <code>$</code>).</span><br><br>
-                Input:<br>
-                <textarea id="input" style="width:50%;"></textarea>
-                <br><button id="to-morse">Encode to Morse Code <i id="e-runResult"></i></button><button id="from-morse">Decode from Morse Code <i id="d-runResult"></i></button>
+                <span style="font-weight: 500; color: dimgray; font-size: 16px"
+                    >Morse Code can be represented in writing using dashes and dots (hyphens/underscores and periods, <code>-</code>/<code>_</code> and <code>.</code>). Characters are separated by
+                    spaces, and actual spaces are represented by a backslash (<code>/</code>), a vertical slash (<code>|</code>), or three spaces (<code> </code>). For example,
+                    <code>test abc</code> converts to <code>- . ... - .- -... -.-.</code>. Morse code does <em>not</em> keep character case. This has been expanded to include conversions not
+                    officially recognized by <span class="tooltip-text tooltip-bottom" data-tooltip="International Telecommunication Union Radiocommunication Sector">ITU-R</span> M.1172 or ITU-R
+                    M.1677-1 (<code>;</code>, <code>_</code>, and <code>$</code>).</span
+                ><br /><br />
+                Input:<br />
+                <textarea id="input" style="width: 50%"></textarea>
+                <br /><button id="to-morse">Encode to Morse Code <i id="e-runResult"></i></button><button id="from-morse">Decode from Morse Code <i id="d-runResult"></i></button>
                 <button id="clear">Clear</button>
             </div>
-            <hr class="noscript-hidden" style="margin-top:30px;">
+            <hr class="noscript-hidden" style="margin-top: 30px" />
             <div class="tooltext">
-                Output:<br>
-                <textarea id="result" style="width:50%;" readonly></textarea>
-                <br><button id="copy-result" disabled>Copy</button> <button id="copy-result-2" disabled>Copy with vertical slash space</button> <button id="copy-result-3" disabled>Copy with three space space</button>
+                Output:<br />
+                <textarea id="result" style="width: 50%" readonly></textarea>
+                <br /><button id="copy-result" disabled>Copy</button> <button id="copy-result-2" disabled>Copy with vertical slash space</button>
+                <button id="copy-result-3" disabled>Copy with three space space</button>
             </div>
             <noscript>
                 <style>
-                    .tooltext, .info-table, .noscript-hidden {
-                    display: none !important;
+                    .tooltext,
+                    .info-table,
+                    .noscript-hidden {
+                        display: none !important;
                     }
                 </style>
-                <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
-                <div class="warning" style="padding-bottom:25px;">Looks like this page's scripts could not be run. Try enabling JavaScript and reloading the page.</div>
+                <span style="color: #ff5555; font-weight: bold; font-size: 300%">Oh no!</span>
+                <div class="warning" style="padding-bottom: 25px">Looks like this page's scripts could not be run. Try enabling JavaScript and reloading the page.</div>
             </noscript>
         </div>
     </body>

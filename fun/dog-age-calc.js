@@ -5,8 +5,8 @@ let toHumanBtn = document.getElementById('toHuman');
 let result = document.getElementById('result');
 
 /* Add event listeners */
-toDogBtn.addEventListener("click", toDog);
-toHumanBtn.addEventListener("click", toHuman);
+toDogBtn.addEventListener('click', toDog);
+toHumanBtn.addEventListener('click', toHuman);
 
 function toDog() {
     if (humanAge.value.length === 0) {

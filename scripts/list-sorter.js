@@ -52,7 +52,11 @@ function numerize() {
         let separator = document.getElementById('separator').value;
         separator = separator.replace('\\n', '\n');
         let result = string.split(separator);
-        result = result.map((x) => parseInt(x)).filter(x => x === 0 || Boolean(x)).sort((a, b) => a - b).join(separator);
+        result = result
+            .map((x) => parseInt(x))
+            .filter((x) => x === 0 || Boolean(x))
+            .sort((a, b) => a - b)
+            .join(separator);
         document.getElementById('result').value = result;
         showResult('numerize', 'success');
         document.getElementById('copy-result').disabled = false;
@@ -64,7 +68,7 @@ function shuffleArray(arr) {
         const j = Math.floor(Math.random() * (i + 1));
         [arr[i], arr[j]] = [arr[j], arr[i]];
     }
-    return (arr);
+    return arr;
 }
 
 function randomize() {

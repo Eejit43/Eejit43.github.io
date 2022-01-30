@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Some useful tools for general purposes!">
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="https://eejit43.github.io/timer">
-        <meta property="og:site_name" content="Eejit's Tools">
-        <meta property="og:title" content="Countdown Timer">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Some useful tools for general purposes!" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://eejit43.github.io/timer" />
+        <meta property="og:site_name" content="Eejit's Tools" />
+        <meta property="og:title" content="Countdown Timer" />
         <title>Countdown Timer | Eejit's Tools</title>
-        <meta property="og:description" content="Some useful tools for general purposes!">
-        <meta name="keywords" content="">
-        <meta property="og:image" content="https://eejit43.github.io/icon.png">
-        <meta property="og:image:alt" content="Eejit's Tools">
-        <meta name="twitter:card" content="summary">
-        <meta name="twitter:title" content="Countdown Timer | Eejit's Tools">
-        <meta name="twitter:description" content="Some useful tools for general purposes!">
-        <meta name="twitter:url" content="https://eejit43.github.io/timer">
-        <meta name="twitter:image" content="https://eejit43.github.io/icon.png">
-        <meta name="twitter:image:alt" content="Eejit's Tools">
-        <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-        <link rel="manifest" href="../site.webmanifest">
-        <link rel="mask-icon" href="../safari-pinned-tab.svg" color="#3e498a">
-        <meta name="msapplication-TileColor" content="#3e498a">
-        <meta name="theme-color" content="#3e498a">
+        <meta property="og:description" content="Some useful tools for general purposes!" />
+        <meta name="keywords" content="" />
+        <meta property="og:image" content="https://eejit43.github.io/icon.png" />
+        <meta property="og:image:alt" content="Eejit's Tools" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Countdown Timer | Eejit's Tools" />
+        <meta name="twitter:description" content="Some useful tools for general purposes!" />
+        <meta name="twitter:url" content="https://eejit43.github.io/timer" />
+        <meta name="twitter:image" content="https://eejit43.github.io/icon.png" />
+        <meta name="twitter:image:alt" content="Eejit's Tools" />
+        <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png" />
+        <link rel="manifest" href="../site.webmanifest" />
+        <link rel="mask-icon" href="../safari-pinned-tab.svg" color="#3e498a" />
+        <meta name="msapplication-TileColor" content="#3e498a" />
+        <meta name="theme-color" content="#3e498a" />
 
         <!-- Styles -->
-        <link rel="stylesheet" href="../styles/styles.css">
+        <link rel="stylesheet" href="../styles/styles.css" />
 
         <!-- Scripts -->
         <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous" defer></script>
@@ -40,46 +40,43 @@
         <nav>
             <a href="https://eejit43.github.io">
                 <span class="logo">
-                    <!--
-                        --><span style="color:#FF5555">E</span><!--
-                        --><span style="color:#FFAA00">e</span><!--
-                        --><span style="color:#FFFF55">j</span><!--
-                        --><span style="color:#55FF55">i</span><!--
-                        --><span style="color:#00AA00">t</span><!--
-                        --><span style="color:#00AAAA">'</span><!--
-                        --><span style="color:#5555FF">s</span><!--
-                        -->
-                    <span style="color:#AA00AA;" class="logo-tools">Tools</span>
+                    <span style="color: #ff5555">E</span><span style="color: #ffaa00">e</span><span style="color: #ffff55">j</span><span style="color: #55ff55">i</span
+                    ><span style="color: #00aa00">t</span><span style="color: #00aaaa">'</span><span style="color: #5555ff">s</span>
+                    <span style="color: #aa00aa" class="logo-tools">Tools</span>
                 </span>
             </a>
-            <span style="float:right!important;">
-            <a href="time" class="timer"><span id="navtime"></span></a>
-            <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
+            <span style="float: right !important">
+                <a href="time" class="timer"><span id="navtime"></span></a>
+                <a href="https://github.com/Eejit43/Eejit43.github.io" target="_blank" class="source">Source</a>
             </span>
         </nav>
         <div class="toolbox">
             <h1>Countdown Timer:</h1>
             <div class="tooltext">
-                <span style="font-weight:500;color:dimgray;font-size:50px;">
-                <input type="text" pattern="[0-9]*" id="hours" max="23" maxlength="2" value="0" class="invisibleinput">h  <input type="text" pattern="[0-9]*" id="minutes" max="59" maxlength="2" value="1" class="invisibleinput">m  <input type="text" pattern="[0-9]*" id="seconds" max="59" maxlength="2" value="0" class="invisibleinput">s
+                <span style="font-weight: 500; color: dimgray; font-size: 50px">
+                    <input type="text" pattern="[0-9]*" id="hours" max="23" maxlength="2" value="0" class="invisibleinput" />h
+                    <input type="text" pattern="[0-9]*" id="minutes" max="59" maxlength="2" value="1" class="invisibleinput" />m
+                    <input type="text" pattern="[0-9]*" id="seconds" max="59" maxlength="2" value="0" class="invisibleinput" />s
                 </span>
-                <br><button id="start-timer">Start <i id="timer-runResult"></i></button>
+                <br /><button id="start-timer">Start <i id="timer-runResult"></i></button>
                 <button id="pause-resume-timer" disabled>Pause</button>
                 <button id="reset">Reset</button>
             </div>
-            <hr class="noscript-hidden" style="margin-top:30px;">
-            <div class="tooltext" style="text-align:center;margin:0;font-weight:600;font-size:90px;margin-top:50px;line-height:100%;padding-bottom:25px;">
-                <span id="timer">0h 0m 0s</span><br>
-                <span id="timer-time" style="font-size:30px;"></span>
+            <hr class="noscript-hidden" style="margin-top: 30px" />
+            <div class="tooltext" style="text-align: center; margin: 0; font-weight: 600; font-size: 90px; margin-top: 50px; line-height: 100%; padding-bottom: 25px">
+                <span id="timer">0h 0m 0s</span><br />
+                <span id="timer-time" style="font-size: 30px"></span>
             </div>
             <noscript>
                 <style>
-                    .tooltext, .info-table, .noscript-hidden {
-                    display: none !important;
+                    .tooltext,
+                    .info-table,
+                    .noscript-hidden {
+                        display: none !important;
                     }
                 </style>
-                <span style="color:#FF5555;font-weight:bold;font-size:300%">Oh no!</span>
-                <div class="warning" style="padding-bottom:25px;">Looks like this page's scripts could not be run. Try enabling JavaScript and reloading the page.</div>
+                <span style="color: #ff5555; font-weight: bold; font-size: 300%">Oh no!</span>
+                <div class="warning" style="padding-bottom: 25px">Looks like this page's scripts could not be run. Try enabling JavaScript and reloading the page.</div>
             </noscript>
         </div>
     </body>

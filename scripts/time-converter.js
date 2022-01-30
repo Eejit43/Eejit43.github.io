@@ -22,7 +22,7 @@ function updateStandardTime() {
     let month = months[currentTime.getMonth()];
     let year = currentTime.getFullYear();
     let fullhours = currentTime.getHours();
-    let hours = ((fullhours + 11) % 12 + 1);
+    let hours = ((fullhours + 11) % 12) + 1;
     let minutes = currentTime.getMinutes();
     let sec = currentTime.getSeconds();
 
@@ -44,7 +44,7 @@ function updateStandardTime() {
 
 function updateUnixOutput() {
     let standardtime = document.getElementById('standard-input').value;
-    let valid = (new Date(standardtime)).getTime() > 0;
+    let valid = new Date(standardtime).getTime() > 0;
     if (standardtime.length === 0) {
         document.getElementById('standard-runstatus').style.color = 'dimgray';
         document.getElementById('standard-runstatus').className = 'fas fa-arrow-down';
@@ -83,8 +83,8 @@ function updateUnixTime() {
 
 function updateStandardOutput() {
     let standardtime = parseInt(document.getElementById('unix-input').value, 10) * 1000;
-    let valid = (new Date(standardtime)).getTime() > 0;
-    if ((document.getElementById('unix-input').value).length === 0) {
+    let valid = new Date(standardtime).getTime() > 0;
+    if (document.getElementById('unix-input').value.length === 0) {
         document.getElementById('unix-runstatus').style.color = 'dimgray';
         document.getElementById('unix-runstatus').className = 'fas fa-arrow-down';
         document.getElementById('standard-output').value = '';
@@ -107,7 +107,7 @@ function updateStandardOutput() {
         let month = months[time.getMonth()];
         let year = time.getFullYear();
         let fullhours = time.getHours();
-        let hours = ((fullhours + 11) % 12 + 1);
+        let hours = ((fullhours + 11) % 12) + 1;
         let minutes = time.getMinutes();
         let sec = time.getSeconds();
         let msec = time2.getMilliseconds();

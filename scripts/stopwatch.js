@@ -10,8 +10,17 @@ const HRS = document.getElementById('hrs'),
     SEC = document.getElementById('sec'),
     MIL = document.getElementById('mil');
 
-let hrs, min, sec, mil, dt, ps, pt, tt, t = 0,
-    running, started = false,
+let hrs,
+    min,
+    sec,
+    mil,
+    dt,
+    ps,
+    pt,
+    tt,
+    t = 0,
+    running,
+    started = false,
     iID;
 
 function timerCycle() {
@@ -21,7 +30,7 @@ function timerCycle() {
         pt = t;
         tt = Math.floor(dt);
         mil = dt - tt;
-        MIL.textContent = (mil).toFixed(3).slice(-3);
+        MIL.textContent = mil.toFixed(3).slice(-3);
         sec = tt % 60;
         if (sec === ps) return;
         ps = sec;

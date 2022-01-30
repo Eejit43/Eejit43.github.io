@@ -26,7 +26,7 @@ function generateNumber() {
         showAlert('The minimum must be less than the maximum!', 'error');
         showResult('generate', 'error');
     } else {
-        let output = (Math.floor(Math.random() * (max - min + 1) + min)).toLocaleString();
+        let output = Math.floor(Math.random() * (max - min + 1) + min).toLocaleString();
         document.getElementById('output-number').innerHTML = output;
         showResult('generate', 'success');
     }

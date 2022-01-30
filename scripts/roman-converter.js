@@ -214,13 +214,11 @@ function deromanize(str) {
             IX: 9,
             V: 5,
             IV: 4,
-            I: 1
+            I: 1,
         },
         num = 0,
         m;
-    if (!(str && validator.test(str)))
-        return false;
-    while (m === token.exec(str))
-        num += key[m[0]];
+    if (!(str && validator.test(str))) return false;
+    while (m === token.exec(str)) num += key[m[0]];
     return num;
 }

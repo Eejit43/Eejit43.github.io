@@ -56,7 +56,7 @@ function openBase64InNewTab(data, mimeType) {
     }
     var byteArray = new Uint8Array(byteNumbers);
     var file = new Blob([byteArray], {
-        type: mimeType + ';base64'
+        type: mimeType + ';base64',
     });
     var fileURL = URL.createObjectURL(file);
     window.open(fileURL);
@@ -98,7 +98,7 @@ function encode() {
 async function isBase64Image(string) {
     let image = new Image();
     image.src = string;
-    return await (new Promise((resolve) => {
+    return await new Promise((resolve) => {
         image.onload = function () {
             if (image.height === 0 || image.width === 0) {
                 resolve(false);
@@ -109,10 +109,10 @@ async function isBase64Image(string) {
         image.onerror = () => {
             resolve(false);
         };
-    }));
+    });
 }
 
-const valid = async(string) => {
+const valid = async (string) => {
     let image = document.getElementById('image-output');
     const valid = await isBase64Image(string);
     if (valid === true) {
@@ -128,9 +128,7 @@ function decode() {
     let string = document.getElementById('stringToDecode').value;
     let image = document.getElementById('image-output');
 
-    let testRegex = new RegExp('data:image\/.*?;base64,');
-    let stringHasType = testRegex.test(string);
-    if (stringHasType === false) {
+    if (/data:image\/.*?;base64,/.test(string) === false) {
         string = 'data:image/png;base64,' + string;
     }
     if (string.length === 0) {

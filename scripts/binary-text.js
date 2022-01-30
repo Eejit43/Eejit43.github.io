@@ -25,9 +25,12 @@ function clear() {
 }
 
 function textToBinary(string) {
-    return string.split('').map(function (char) {
-        return char.charCodeAt(0).toString(2);
-    }).join(' ');
+    return string
+        .split('')
+        .map(function (char) {
+            return char.charCodeAt(0).toString(2);
+        })
+        .join(' ');
 }
 
 function toBinary() {
@@ -46,7 +49,7 @@ function toBinary() {
 
 function binaryToText(binary) {
     binary = binary.split(' ');
-    return binary.map(elem => String.fromCharCode(parseInt(elem, 2))).join("");
+    return binary.map((elem) => String.fromCharCode(parseInt(elem, 2))).join('');
 }
 
 function fromBinary() {

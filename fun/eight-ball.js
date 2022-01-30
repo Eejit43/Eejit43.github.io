@@ -5,11 +5,11 @@ let result = document.getElementById('result');
 let eightBall, randomNumber;
 
 /* Add event listeners */
-rollBallBtn.addEventListener("click", rollBall);
+rollBallBtn.addEventListener('click', rollBall);
 
 function rollBall() {
     if (userQuestion.value.length === 0) {
-        showAlert('You didn\'t ask a question!', 'error');
+        showAlert("You didn't ask a question!", 'error');
     } else {
         randomNumber = Math.floor(Math.random() * 20);
         switch (randomNumber) {
@@ -44,7 +44,7 @@ function rollBall() {
                 eightBall = 'Signs point to yes'; // Yes
                 break;
             case 10:
-                eightBall = 'Don\'t count on it'; // No
+                eightBall = "Don't count on it"; // No
                 break;
             case 11:
                 eightBall = 'My reply is no'; // No
@@ -74,13 +74,17 @@ function rollBall() {
                 eightBall = 'Concentrate and ask again'; // Neutral
                 break;
         }
-        rollBallBtn.innerHTML = "Rolling!";
+        rollBallBtn.innerHTML = 'Rolling!';
         setTimeout(function () {
-            rollBallBtn.innerHTML = "Roll ball!";
+            rollBallBtn.innerHTML = 'Roll ball!';
         }, 2000);
-        result.innerHTML = `<hr>You asked: <span style="font-weight:500;color:dimgray;font-size:16px;">${escapeHtml(userQuestion.value)}</span><br>Response: <span style="font-weight:500;color:#ffba24;font-size:16px;">Predicting... <i class="fas fa-spinner fa-pulse"></i></span>`;
+        result.innerHTML = `<hr>You asked: <span style="font-weight:500;color:dimgray;font-size:16px;">${escapeHtml(
+            userQuestion.value
+        )}</span><br>Response: <span style="font-weight:500;color:#ffba24;font-size:16px;">Predicting... <i class="fas fa-spinner fa-pulse"></i></span>`;
         setTimeout(function () {
-            result.innerHTML = `<hr>You asked: <span style="font-weight:500;color:dimgray;font-size:16px;">${escapeHtml(userQuestion.value)}</span><br>Response: <span style="font-weight:500;color:dimgray;font-size:16px;">${eightBall}</span>`;
+            result.innerHTML = `<hr>You asked: <span style="font-weight:500;color:dimgray;font-size:16px;">${escapeHtml(
+                userQuestion.value
+            )}</span><br>Response: <span style="font-weight:500;color:dimgray;font-size:16px;">${eightBall}</span>`;
         }, 2000);
     }
 }

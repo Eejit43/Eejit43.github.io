@@ -68,7 +68,7 @@ function startTimer() {
     } else {
         document.getElementById('start-timer').disabled = true;
         document.getElementById('pause-resume-timer').disabled = false;
-        let timeuntil = ((hours * 3600) + (minutes * 60) + seconds) * 1000;
+        let timeuntil = (hours * 3600 + minutes * 60 + seconds) * 1000;
 
         let curtime = new Date().getTime();
 
@@ -87,8 +87,8 @@ function timer() {
     let distance = targettime - curtime;
 
     hoursuntil = Math.floor(distance / 3600);
-    minutesuntil = Math.floor((distance - (hoursuntil * 3600)) / 60);
-    secondsuntil = Math.floor(distance - (hoursuntil * 3600) - (minutesuntil * 60));
+    minutesuntil = Math.floor((distance - hoursuntil * 3600) / 60);
+    secondsuntil = Math.floor(distance - hoursuntil * 3600 - minutesuntil * 60);
 
     document.getElementById('timer').innerHTML = `${hoursuntil}h ${minutesuntil}m ${secondsuntil}s`;
 
@@ -106,7 +106,7 @@ function timer() {
     let month = months[targettime2.getMonth()];
     let year = targettime2.getFullYear();
     let fullhours = targettime2.getHours();
-    let hours = ((fullhours + 11) % 12 + 1);
+    let hours = ((fullhours + 11) % 12) + 1;
     let minutes = targettime2.getMinutes();
     let sec = targettime2.getSeconds();
 
@@ -139,7 +139,7 @@ function pauseResume() {
 
         let curtime = new Date().getTime();
 
-        let timeuntil = ((hours2 * 3600) + (minutes2 * 60) + seconds2) * 1000;
+        let timeuntil = (hours2 * 3600 + minutes2 * 60 + seconds2) * 1000;
         targettime = parseInt(String(curtime + timeuntil).slice(0, -3));
         runTimer = setInterval(timer, 500);
     }

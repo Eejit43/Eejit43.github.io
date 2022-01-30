@@ -19,7 +19,7 @@ if (!Function.prototype.bind) {
             self = this,
             nop = function () {},
             bound = function () {
-                return self.apply(this instanceof nop ? this : (obj || {}), args.concat(slice.call(arguments)));
+                return self.apply(this instanceof nop ? this : obj || {}, args.concat(slice.call(arguments)));
             };
         nop.prototype = self.prototype;
         bound.prototype = new nop();
@@ -38,8 +38,7 @@ if (!Object.create) {
 if (!Object.construct) {
     Object.construct = function (base) {
         var instance = Object.create(base);
-        if (instance.initialize)
-            instance.initialize.apply(instance, [].slice.call(arguments, 1));
+        if (instance.initialize) instance.initialize.apply(instance, [].slice.call(arguments, 1));
         return instance;
     };
 }
@@ -47,8 +46,7 @@ if (!Object.construct) {
 if (!Object.extend) {
     Object.extend = function (destination, source) {
         for (var property in source) {
-            if (source.hasOwnProperty(property))
-                destination[property] = source[property];
+            if (source.hasOwnProperty(property)) destination[property] = source[property];
         }
         return destination;
     };
@@ -59,47 +57,48 @@ if (!Object.extend) {
 //=============================================================================
 
 Game = {
-
     compatible: function () {
-        return Object.create &&
+        return (
+            Object.create &&
             Object.extend &&
             Function.bind &&
             document.addEventListener && // HTML5 standard, all modern browsers that support canvas should also support add/removeEventListener
-            Game.ua.hasCanvas;
+            Game.ua.hasCanvas
+        );
     },
 
     start: function (id, game, cfg) {
-        if (Game.compatible())
-            return Object.construct(Game.Runner, id, game, cfg).game; // return the game instance, not the runner (caller can always get at the runner via game.runner)
+        if (Game.compatible()) return Object.construct(Game.Runner, id, game, cfg).game; // return the game instance, not the runner (caller can always get at the runner via game.runner)
     },
 
-    ua: function () { // should avoid user agent sniffing... but sometimes you just gotta do what you gotta do
+    ua: (function () {
+        // should avoid user agent sniffing... but sometimes you just gotta do what you gotta do
         var ua = navigator.userAgent.toLowerCase();
-        var key = ((ua.indexOf("opera") > -1) ? "opera" : null);
-        key = key || ((ua.indexOf("firefox") > -1) ? "firefox" : null);
-        key = key || ((ua.indexOf("chrome") > -1) ? "chrome" : null);
-        key = key || ((ua.indexOf("safari") > -1) ? "safari" : null);
-        key = key || ((ua.indexOf("msie") > -1) ? "ie" : null);
+        var key = ua.indexOf('opera') > -1 ? 'opera' : null;
+        key = key || (ua.indexOf('firefox') > -1 ? 'firefox' : null);
+        key = key || (ua.indexOf('chrome') > -1 ? 'chrome' : null);
+        key = key || (ua.indexOf('safari') > -1 ? 'safari' : null);
+        key = key || (ua.indexOf('msie') > -1 ? 'ie' : null);
 
         try {
-            var re = (key == "ie") ? "msie (\\d)" : key + "\\/(\\d\\.\\d)"
-            var matches = ua.match(new RegExp(re, "i"));
+            var re = key == 'ie' ? 'msie (\\d)' : key + '\\/(\\d\\.\\d)';
+            var matches = ua.match(new RegExp(re, 'i'));
             var version = matches ? parseFloat(matches[1]) : null;
         } catch (e) {}
 
         return {
             full: ua,
-            name: key + (version ? " " + version.toString() : ""),
+            name: key + (version ? ' ' + version.toString() : ''),
             version: version,
-            isFirefox: (key == "firefox"),
-            isChrome: (key == "chrome"),
-            isSafari: (key == "safari"),
-            isOpera: (key == "opera"),
-            isIE: (key == "ie"),
-            hasCanvas: (document.createElement('canvas').getContext),
-            hasAudio: (typeof (Audio) != 'undefined')
+            isFirefox: key == 'firefox',
+            isChrome: key == 'chrome',
+            isSafari: key == 'safari',
+            isOpera: key == 'opera',
+            isIE: key == 'ie',
+            hasCanvas: document.createElement('canvas').getContext,
+            hasAudio: typeof Audio != 'undefined',
         };
-    }(),
+    })(),
 
     addEvent: function (obj, type, fn) {
         obj.addEventListener(type, fn, false);
@@ -109,8 +108,7 @@ Game = {
     },
 
     ready: function (fn) {
-        if (Game.compatible())
-            Game.addEvent(document, 'DOMContentLoaded', fn);
+        if (Game.compatible()) Game.addEvent(document, 'DOMContentLoaded', fn);
     },
 
     createCanvas: function () {
@@ -127,7 +125,8 @@ Game = {
         }
     },
 
-    loadImages: function (sources, callback) { /* load multiple images and callback when ALL have finished loading */
+    loadImages: function (sources, callback) {
+        /* load multiple images and callback when ALL have finished loading */
         var images = {};
         var count = sources ? sources.length : 0;
         if (count == 0) {
@@ -146,7 +145,7 @@ Game = {
     },
 
     random: function (min, max) {
-        return (min + (Math.random() * (max - min)));
+        return min + Math.random() * (max - min);
     },
 
     timestamp: function () {
@@ -176,13 +175,12 @@ Game = {
         L: 76,
         P: 80,
         Q: 81,
-        TILDA: 192
+        TILDA: 192,
     },
 
     //-----------------------------------------------------------------------------
 
     Runner: {
-
         initialize: function (id, game, cfg) {
             this.cfg = Object.extend(game.Defaults || {}, cfg || {}); // use game defaults (if any) and extend with custom cfg (if any)
             this.fps = this.cfg.fps || 60;
@@ -204,7 +202,8 @@ Game = {
             this.game = Object.construct(game, this, this.cfg); // finally construct the game object itself
         },
 
-        start: function () { // game instance should call runner.start() when its finished initializing and is ready to start the game loop
+        start: function () {
+            // game instance should call runner.start() when its finished initializing and is ready to start the game loop
             this.lastFrame = Game.timestamp();
             this.timer = setInterval(this.loop.bind(this), this.interval);
         },
@@ -241,7 +240,7 @@ Game = {
                 fps: 0,
                 update: 0,
                 draw: 0,
-                frame: 0 // update + draw
+                frame: 0, // update + draw
             };
         },
 
@@ -257,10 +256,10 @@ Game = {
 
         drawStats: function (ctx) {
             if (this.cfg.stats) {
-                ctx.fillText("frame: " + this.stats.count, this.width - 100, this.height - 60);
-                ctx.fillText("fps: " + this.stats.fps, this.width - 100, this.height - 50);
-                ctx.fillText("update: " + this.stats.update + "ms", this.width - 100, this.height - 40);
-                ctx.fillText("draw: " + this.stats.draw + "ms", this.width - 100, this.height - 30);
+                ctx.fillText('frame: ' + this.stats.count, this.width - 100, this.height - 60);
+                ctx.fillText('fps: ' + this.stats.fps, this.width - 100, this.height - 50);
+                ctx.fillText('update: ' + this.stats.update + 'ms', this.width - 100, this.height - 40);
+                ctx.fillText('draw: ' + this.stats.draw + 'ms', this.width - 100, this.height - 30);
             }
         },
 
@@ -295,9 +294,8 @@ Game = {
             result = window.confirm(msg);
             this.start();
             return result;
-        }
+        },
 
         //-------------------------------------------------------------------------
-
-    } // Game.Runner
+    }, // Game.Runner
 }; // Game

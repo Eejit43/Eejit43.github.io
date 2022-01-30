@@ -25,8 +25,8 @@ function reset() {
     showAlert('Reset!', 'success');
 }
 
-math.createUnit('nauticalmile', {definition: '1852 meter', aliases: ['nmile', 'nauticalm']});
-math.createUnit('nanometer', {definition: '0.001 micrometer', override: true});
+math.createUnit('nauticalmile', { definition: '1852 meter', aliases: ['nmile', 'nauticalm'] });
+math.createUnit('nanometer', { definition: '0.001 micrometer', override: true });
 
 function convert() {
     if (/^-?([0-9]\d*)(\.\d*|,\d*)*$/g.test(input.value) || /^-?\d*\.\d+$/g.test(input.value)) {
@@ -81,7 +81,9 @@ function convert() {
         }
 
         message.innerHTML = '';
-        output.value = math.number(math.format(math.evaluate(`${input.value} ${inputTypeName} to ${outputTypeName}`), {notation: 'fixed', precision: 15}).replace(/[^0-9-.]/g, '')).toLocaleString(undefined, {maximumFractionDigits: 12});
+        output.value = math
+            .number(math.format(math.evaluate(`${input.value} ${inputTypeName} to ${outputTypeName}`), { notation: 'fixed', precision: 15 }).replace(/[^0-9-.]/g, ''))
+            .toLocaleString(undefined, { maximumFractionDigits: 12 });
         copyOutput.disabled = false;
     } else {
         if (input.value !== '') {

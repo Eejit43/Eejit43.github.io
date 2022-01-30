@@ -42,7 +42,7 @@ function hex() {
             g = '0x' + hex[2] + hex[3];
             b = '0x' + hex[4] + hex[5];
         }
-        document.getElementById('hex-rgb').value = 'rgb(' + (+r) + ',' + (+g) + ',' + (+b) + ')';
+        document.getElementById('hex-rgb').value = 'rgb(' + +r + ',' + +g + ',' + +b + ')';
 
         document.getElementById('hex-rgb-copy').disabled = false;
         // To HSL
@@ -68,19 +68,14 @@ function hex() {
             s = 0,
             l = 0;
 
-        if (delta === 0)
-            h = 0;
-        else if (cmax === r)
-            h = ((g - b) / delta) % 6;
-        else if (cmax === g)
-            h = (b - r) / delta + 2;
-        else
-            h = (r - g) / delta + 4;
+        if (delta === 0) h = 0;
+        else if (cmax === r) h = ((g - b) / delta) % 6;
+        else if (cmax === g) h = (b - r) / delta + 2;
+        else h = (r - g) / delta + 4;
 
         h = Math.round(h * 60);
 
-        if (h < 0)
-            h += 360;
+        if (h < 0) h += 360;
 
         l = (cmax + cmin) / 2;
         s = delta === 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
@@ -106,7 +101,7 @@ function hex() {
             g = '0x' + hex[2] + hex[3];
             b = '0x' + hex[4] + hex[5];
         }
-        document.getElementById('hex-rgb').value = 'rgb(' + (+r) + ',' + (+g) + ',' + (+b) + ')';
+        document.getElementById('hex-rgb').value = 'rgb(' + +r + ',' + +g + ',' + +b + ')';
 
         document.getElementById('hex-rgb-copy').disabled = false;
         // To HSL
@@ -132,19 +127,14 @@ function hex() {
             s = 0,
             l = 0;
 
-        if (delta === 0)
-            h = 0;
-        else if (cmax === r)
-            h = ((g - b) / delta) % 6;
-        else if (cmax === g)
-            h = (b - r) / delta + 2;
-        else
-            h = (r - g) / delta + 4;
+        if (delta === 0) h = 0;
+        else if (cmax === r) h = ((g - b) / delta) % 6;
+        else if (cmax === g) h = (b - r) / delta + 2;
+        else h = (r - g) / delta + 4;
 
         h = Math.round(h * 60);
 
-        if (h < 0)
-            h += 360;
+        if (h < 0) h += 360;
 
         l = (cmax + cmin) / 2;
         s = delta === 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
@@ -155,7 +145,8 @@ function hex() {
 
         document.getElementById('hex-hsl-copy').disabled = false;
     } else {
-        document.getElementById('hex-display').innerHTML = hex === '' ? '' : '<i class="fas fa-times" style="color:#bf4042;padding-bottom:5px;vertical-align:middle;display:inline-flex;padding-bottom:20px;font-size:25px;"></i>';
+        document.getElementById('hex-display').innerHTML =
+            hex === '' ? '' : '<i class="fas fa-times" style="color:#bf4042;padding-bottom:5px;vertical-align:middle;display:inline-flex;padding-bottom:20px;font-size:25px;"></i>';
         document.getElementById('hex-display').style.backgroundColor = '';
         document.getElementById('hex-rgb').value = '';
         document.getElementById('hex-rgb-copy').disabled = true;
@@ -166,7 +157,11 @@ function hex() {
 
 function rgb() {
     let rgb = document.getElementById('rgbInput').value;
-    if (rgb.match(/^rgb\((((((((1?[1-9]?\d)|10\d|(2[0-4]\d)|25[0-5]),\s?)){2}|((((1?[1-9]?\d)|10\d|(2[0-4]\d)|25[0-5])\s)){2})((1?[1-9]?\d)|10\d|(2[0-4]\d)|25[0-5]))|((((([1-9]?\d(\.\d+)?)|100|(\.\d+))%,\s?){2}|((([1-9]?\d(\.\d+)?)|100|(\.\d+))%\s){2})(([1-9]?\d(\.\d+)?)|100|(\.\d+))%))\)$/i)) {
+    if (
+        rgb.match(
+            /^rgb\((((((((1?[1-9]?\d)|10\d|(2[0-4]\d)|25[0-5]),\s?)){2}|((((1?[1-9]?\d)|10\d|(2[0-4]\d)|25[0-5])\s)){2})((1?[1-9]?\d)|10\d|(2[0-4]\d)|25[0-5]))|((((([1-9]?\d(\.\d+)?)|100|(\.\d+))%,\s?){2}|((([1-9]?\d(\.\d+)?)|100|(\.\d+))%\s){2})(([1-9]?\d(\.\d+)?)|100|(\.\d+))%))\)$/i
+        )
+    ) {
         document.getElementById('rgb-display').style.backgroundColor = rgb;
         document.getElementById('rgb-display').innerHTML = '';
         // To Hex
@@ -177,12 +172,9 @@ function rgb() {
             g = (+rgb[1]).toString(16),
             b = (+rgb[2]).toString(16);
 
-        if (r.length === 1)
-            r = '0' + r;
-        if (g.length === 1)
-            g = '0' + g;
-        if (b.length === 1)
-            b = '0' + b;
+        if (r.length === 1) r = '0' + r;
+        if (g.length === 1) g = '0' + g;
+        if (b.length === 1) b = '0' + b;
 
         document.getElementById('rgb-hex').value = '#' + r + g + b;
 
@@ -194,8 +186,7 @@ function rgb() {
 
         for (let R in rgb) {
             let r = rgb[R];
-            if (r.indexOf('%') > -1)
-                rgb[R] = Math.round(r.substr(0, r.length - 1) / 100 * 255);
+            if (r.indexOf('%') > -1) rgb[R] = Math.round((r.substr(0, r.length - 1) / 100) * 255);
         }
 
         // Make r, g, and b fractions of 1
@@ -208,19 +199,14 @@ function rgb() {
             h = 0,
             s = 0,
             l = 0;
-        if (delta === 0)
-            h = 0;
-        else if (cmax === r)
-            h = ((g - b) / delta) % 6;
-        else if (cmax === g)
-            h = (b - r) / delta + 2;
-        else
-            h = (r - g) / delta + 4;
+        if (delta === 0) h = 0;
+        else if (cmax === r) h = ((g - b) / delta) % 6;
+        else if (cmax === g) h = (b - r) / delta + 2;
+        else h = (r - g) / delta + 4;
 
         h = Math.round(h * 60);
 
-        if (h < 0)
-            h += 360;
+        if (h < 0) h += 360;
         l = (cmax + cmin) / 2;
 
         s = delta === 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
@@ -232,7 +218,8 @@ function rgb() {
 
         document.getElementById('rgb-hsl-copy').disabled = false;
     } else {
-        document.getElementById('rgb-display').innerHTML = rgb === '' ? '' : '<i class="fas fa-times" style="color:#bf4042;padding-bottom:5px;vertical-align:middle;display:inline-flex;padding-bottom:20px;font-size:25px;"></i>';
+        document.getElementById('rgb-display').innerHTML =
+            rgb === '' ? '' : '<i class="fas fa-times" style="color:#bf4042;padding-bottom:5px;vertical-align:middle;display:inline-flex;padding-bottom:20px;font-size:25px;"></i>';
         document.getElementById('rgb-display').style.backgroundColor = '';
         document.getElementById('rgb-hex').value = '';
         document.getElementById('rgb-hex-copy').disabled = true;
@@ -243,7 +230,11 @@ function rgb() {
 
 function hsl() {
     let hsl = document.getElementById('hslInput').value;
-    if (hsl.match(/^hsl\(((((([12]?[1-9]?\d)|[12]0\d|(3[0-5]\d))(\.\d+)?)|(\.\d+))(deg)?|(0|0?\.\d+)turn|(([0-6](\.\d+)?)|(\.\d+))rad)((,\s?(([1-9]?\d(\.\d+)?)|100|(\.\d+))%){2}|(\s(([1-9]?\d(\.\d+)?)|100|(\.\d+))%){2})\)$/i)) {
+    if (
+        hsl.match(
+            /^hsl\(((((([12]?[1-9]?\d)|[12]0\d|(3[0-5]\d))(\.\d+)?)|(\.\d+))(deg)?|(0|0?\.\d+)turn|(([0-6](\.\d+)?)|(\.\d+))rad)((,\s?(([1-9]?\d(\.\d+)?)|100|(\.\d+))%){2}|(\s(([1-9]?\d(\.\d+)?)|100|(\.\d+))%){2})\)$/i
+        )
+    ) {
         document.getElementById('hsl-display').style.backgroundColor = hsl;
         document.getElementById('hsl-display').innerHTML = '';
         // To Hex
@@ -255,17 +246,13 @@ function hsl() {
             l = hsl[2].substr(0, hsl[2].length - 1) / 100;
 
         // Strip label and convert to degrees (if necessary)
-        if (h.indexOf('deg') > -1)
-            h = h.substr(0, h.length - 3);
-        else if (h.indexOf('rad') > -1)
-            h = Math.round(h.substr(0, h.length - 3) * (180 / Math.PI));
-        else if (h.indexOf('turn') > -1)
-            h = Math.round(h.substr(0, h.length - 4) * 360);
-        if (h >= 360)
-            h %= 360;
+        if (h.indexOf('deg') > -1) h = h.substr(0, h.length - 3);
+        else if (h.indexOf('rad') > -1) h = Math.round(h.substr(0, h.length - 3) * (180 / Math.PI));
+        else if (h.indexOf('turn') > -1) h = Math.round(h.substr(0, h.length - 4) * 360);
+        if (h >= 360) h %= 360;
 
         let c = (1 - Math.abs(2 * l - 1)) * s,
-            x = c * (1 - Math.abs((h / 60) % 2 - 1)),
+            x = c * (1 - Math.abs(((h / 60) % 2) - 1)),
             m = l - c / 2,
             r = 0,
             g = 0,
@@ -302,12 +289,9 @@ function hsl() {
         b = Math.round((b + m) * 255).toString(16);
 
         // Prepend 0s, if necessary
-        if (r.length === 1)
-            r = '0' + r;
-        if (g.length === 1)
-            g = '0' + g;
-        if (b.length === 1)
-            b = '0' + b;
+        if (r.length === 1) r = '0' + r;
+        if (g.length === 1) g = '0' + g;
+        if (b.length === 1) b = '0' + b;
 
         document.getElementById('hsl-hex').value = '#' + r + g + b;
 
@@ -322,7 +306,7 @@ function hsl() {
         l = hsl[2].substr(0, hsl[2].length - 1) / 100;
 
         c = (1 - Math.abs(2 * l - 1)) * s;
-        x = c * (1 - Math.abs((h / 60) % 2 - 1));
+        x = c * (1 - Math.abs(((h / 60) % 2) - 1));
         m = l - c / 2;
         r = 0;
         g = 0;
@@ -361,7 +345,8 @@ function hsl() {
 
         document.getElementById('hsl-rgb-copy').disabled = false;
     } else {
-        document.getElementById('hsl-display').innerHTML = hsl === '' ? '' : '<i class="fas fa-times" style="color:#bf4042;padding-bottom:5px;vertical-align:middle;display:inline-flex;padding-bottom:20px;font-size:25px;"></i>';
+        document.getElementById('hsl-display').innerHTML =
+            hsl === '' ? '' : '<i class="fas fa-times" style="color:#bf4042;padding-bottom:5px;vertical-align:middle;display:inline-flex;padding-bottom:20px;font-size:25px;"></i>';
         document.getElementById('hsl-display').style.backgroundColor = '';
         document.getElementById('hsl-hex').value = '';
         document.getElementById('hsl-hex-copy').disabled = true;

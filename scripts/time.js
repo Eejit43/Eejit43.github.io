@@ -15,11 +15,11 @@ function time() {
     let day = days[currentTime.getDay()];
     let date = currentTime.getDate();
     let month = months[currentTime.getMonth()];
-    let monthnumber = (currentTime.getMonth() + 1);
+    let monthnumber = currentTime.getMonth() + 1;
     let year = currentTime.getFullYear();
     let shortyear = year.toString().substr(-2);
     let fullhours = currentTime.getHours();
-    let hours = ((fullhours + 11) % 12 + 1);
+    let hours = ((fullhours + 11) % 12) + 1;
     let minutes = currentTime.getMinutes();
     let sec = currentTime.getSeconds();
     let msec = currentTime.getMilliseconds();
@@ -27,18 +27,18 @@ function time() {
     let timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     let toffset = new Date().getTimezoneOffset();
     let offsetsign = toffset < 0 ? '+' : '-';
-    let timeoffset = offsetsign + (toffset / 60 | 0);
+    let timeoffset = offsetsign + ((toffset / 60) | 0);
     jptime = currentTime.toLocaleString('en-US', {
-        timeZone: 'Japan'
+        timeZone: 'Japan',
     });
     crtime = currentTime.toLocaleString('en-US', {
-        timeZone: 'America/Costa_Rica'
+        timeZone: 'America/Costa_Rica',
     });
     gbtime = currentTime.toLocaleString('en-US', {
-        timeZone: 'Europe/London'
+        timeZone: 'Europe/London',
     });
     utctime = currentTime.toLocaleString('en-US', {
-        timeZone: 'Etc/UTC'
+        timeZone: 'Etc/UTC',
     });
     if (minutes < 10) {
         minutes = '0' + minutes;
