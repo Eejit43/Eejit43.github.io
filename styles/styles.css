@@ -29,7 +29,7 @@ nav {
     font-size: 22px;
     justify-content: space-between;
     left: 0;
-    padding: 40px 25px;
+    padding: 35px 25px;
     position: -webkit-sticky;
     position: sticky;
     right: 0;
@@ -134,7 +134,7 @@ nav {
 header {
     position: relative;
     text-align: center;
-    top: 40px;
+    top: 30px;
 }
 
 .warning,
@@ -156,7 +156,7 @@ header {
     border: 2px solid gray;
     color: gray;
     font-weight: 500;
-    margin: 60px auto 30px;
+    margin: 50px auto 30px;
     padding: 10px 30px 20px 30px;
     position: static;
     text-align: left;
@@ -175,18 +175,12 @@ body {
     margin: 0;
 }
 
-.body404 {
-    background: #1f2227;
-    padding-top: 4rem;
-    text-align: center;
-}
-
 .warning404 {
     color: lightgray;
     font-size: 20px;
     font-weight: 500;
     line-height: 150%;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .link404 {
@@ -566,7 +560,7 @@ button:disabled:not(.fakeinput) {
     font-size: 18px;
     font-weight: 600;
     line-height: 150%;
-    margin: 120px 0 0 40px;
+    margin: 50px 0 0 40px;
     padding: 15px 30px 10px 30px;
     position: static;
     text-align: left;

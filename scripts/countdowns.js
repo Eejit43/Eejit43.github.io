@@ -73,9 +73,9 @@ let valentines = setInterval(countdown, 100, 'February 14, 2022', 'valentines');
 
 let patricks = setInterval(countdown, 100, 'March 17, 2022', 'patricks');
 
-/*let easter = setInterval(countdown, 100, 'April 17, 2022', 'easter');
+let easter = setInterval(countdown, 100, 'April 17, 2022', 'easter');
 
-let independence = setInterval(countdown, 100, 'July 4, 2022', 'independence');
+/*let independence = setInterval(countdown, 100, 'July 4, 2022', 'independence');
 
 let halloween = setInterval(countdown, 100, 'October 31, 2022', 'halloween');
 
