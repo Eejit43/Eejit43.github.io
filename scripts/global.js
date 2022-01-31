@@ -131,14 +131,17 @@ function navtime() {
 
 navtime();
 
-window.onscroll = function () {
-    scrollFunction();
-};
-
-function scrollFunction() {
+// Navbar resize on scroll
+function resizeNav() {
     if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
         document.getElementById('navbar').className = 'nav-shrunk';
     } else {
         document.getElementById('navbar').className = '';
     }
 }
+
+window.onscroll = function () {
+    resizeNav();
+};
+
+resizeNav();
