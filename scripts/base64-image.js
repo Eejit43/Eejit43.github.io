@@ -112,7 +112,7 @@ async function isBase64Image(string) {
     });
 }
 
-const valid = async (string) => {
+async function displayImage(string) {
     let image = document.getElementById('image-output');
     const valid = await isBase64Image(string);
     if (valid === true) {
@@ -122,7 +122,7 @@ const valid = async (string) => {
         showAlert('Malformed input!', 'error');
         showResult('d', 'error');
     }
-};
+}
 
 function decode() {
     let string = document.getElementById('stringToDecode').value;
@@ -135,6 +135,6 @@ function decode() {
         showAlert('Empty input!', 'error');
         showResult('d', 'error');
     } else {
-        valid(string);
+        displayImage(string);
     }
 }
