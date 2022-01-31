@@ -71,7 +71,7 @@ nav {
 }
 
 .nav-shrunk .logo-tools {
-    font-size: 17px;
+    font-size: 18px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -79,13 +79,13 @@ nav {
         font-size: 18px;
     }
     .nav-shrunk .logo {
-        font-size: 18px;
-    }
-    .logo-tools {
         font-size: 16px;
     }
+    .logo-tools {
+        font-size: 14px;
+    }
     .nav-shrunk .logo-tools {
-        font-size: 17px;
+        font-size: 13px;
     }
 }
 
@@ -118,7 +118,7 @@ nav {
 }
 
 .mainlogo-tools {
-    font-size: 60px;
+    font-size: 65px;
     font-weight: 700;
 }
 
