@@ -30,8 +30,8 @@ nav {
     justify-content: space-between;
     left: 0;
     padding: 35px 25px;
-    position: -webkit-sticky;
-    position: sticky;
+    position: -webkit-fixed;
+    position: fixed;
     right: 0;
     top: 0;
     transition: 0.4s;
@@ -132,9 +132,8 @@ nav {
 }
 
 header {
-    position: relative;
     text-align: center;
-    top: 30px;
+    margin-top: 140px;
 }
 
 .warning,
@@ -156,17 +155,17 @@ header {
     border: 2px solid gray;
     color: gray;
     font-weight: 500;
-    margin: 50px auto 30px;
+    margin: 140px auto 30px;
     padding: 10px 30px 20px 30px;
-    position: static;
     text-align: left;
-    width: 92%;
+    width: 91%;
+    max-width: 91%;
 }
 
 @media only screen and (max-width: 700px) {
     .toolbox {
         padding: 10px 8px 10px 15px;
-        position: static;
+        max-width: 85%;
     }
 }
 
@@ -195,9 +194,8 @@ body {
     color: #a8a8a8;
     height: 40%;
     left: 10%;
-    margin: 85px auto 30px;
+    margin: 45px auto 30px;
     overflow-y: scroll;
-    position: static;
     width: 70%;
 }
 
@@ -223,7 +221,6 @@ body {
 
 .tooltext {
     color: #0b5394;
-    font-family: 'Source Sans Pro', sans-serif;
     font-size: 20px;
     font-weight: 700;
     line-height: 200%;
@@ -522,7 +519,7 @@ button:disabled:not(.fakeinput) {
     font-size: 18px;
     font-weight: 600;
     line-height: 150%;
-    margin: 50px 0 0 40px;
+    margin: 140px 0 0 40px;
     padding: 15px 30px 10px 30px;
     position: static;
     text-align: left;

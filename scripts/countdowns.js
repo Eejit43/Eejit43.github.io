@@ -63,9 +63,13 @@ function countdown(date, elementID) {
     }
 
     if (distance <= 0) {
-        document.getElementById(elementID).innerHTML = '<span style="color:#FF5555;">This event has already occurred!</span>';
+        if (document.getElementById(elementID).innerHTML !== '<span style="color:#FF5555;">This event has already occurred!</span>') {
+            document.getElementById(elementID).innerHTML = '<span style="color:#FF5555;">This event has already occurred!</span>';
+        }
     } else {
-        document.getElementById(elementID).innerHTML = daysfinal + hoursfinal + minutesfinal + secondsfinal;
+        if (document.getElementById(elementID).innerHTML !== daysfinal + hoursfinal + minutesfinal + secondsfinal) {
+            document.getElementById(elementID).innerHTML = daysfinal + hoursfinal + minutesfinal + secondsfinal;
+        }
     }
 }
 

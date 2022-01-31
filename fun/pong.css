@@ -9,7 +9,7 @@ body {
     float: left;
     font-size: 0.825em;
     height: 20em;
-    margin: 80px 40px 0 50px;
+    margin: 0 40px 0 50px;
     padding: 1em;
     width: 18em;
 }
@@ -59,7 +59,7 @@ body {
         background-color: black;
         display: block;
         height: 360px;
-        margin: 80px auto 40px;
+        margin: 160px auto 40px;
         width: 480px;
     }
 }
@@ -91,5 +91,11 @@ body {
     #game {
         height: 768px;
         width: 1024px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    #game {
+        display: none;
     }
 }
