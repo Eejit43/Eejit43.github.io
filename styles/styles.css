@@ -132,8 +132,8 @@ nav {
 }
 
 header {
-    text-align: center;
     margin-top: 140px;
+    text-align: center;
 }
 
 .warning,
@@ -156,16 +156,16 @@ header {
     color: gray;
     font-weight: 500;
     margin: 140px auto 30px;
+    max-width: 91%;
     padding: 10px 30px 20px 30px;
     text-align: left;
     width: 91%;
-    max-width: 91%;
 }
 
 @media only screen and (max-width: 700px) {
     .toolbox {
-        padding: 10px 8px 10px 15px;
         max-width: 85%;
+        padding: 10px 8px 10px 15px;
     }
 }
 
