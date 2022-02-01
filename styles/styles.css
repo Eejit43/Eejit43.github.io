@@ -196,7 +196,7 @@ body {
 }
 
 .toolstable {
-    background: #1b1e24;
+    background-color: #1b1e24;
     border-collapse: collapse;
     color: #a8a8a8;
     height: 40%;
@@ -207,12 +207,11 @@ body {
 }
 
 .toolstable tr {
-    background: #2f343a;
+    background-color: #2f343a;
 }
 
 .toolstable td {
     border: 4px solid #1b1e24;
-    font-family: 'Source Sans Pro', sans-serif;
     font-size: 19px;
     font-weight: 500;
     padding: 20px;
@@ -275,7 +274,7 @@ body {
 }
 
 .info-table th {
-    background: #292d33;
+    background-color: #292d33;
     border: 4px solid #1b1e24;
     font-size: 18px;
     padding: 10px;
@@ -291,7 +290,6 @@ body {
 
 .info-table td {
     border: 4px solid #1b1e24;
-    font-family: 'Source Sans Pro', sans-serif;
     font-size: 18px;
     font-weight: 500;
     padding: 20px;
@@ -306,7 +304,7 @@ body {
 }
 
 .keycodes {
-    background: #1b1e24;
+    background-color: #1b1e24;
     background-color: #31363d;
     border: 4px solid #1b1e24;
     border-collapse: collapse;
@@ -326,7 +324,7 @@ body {
 }
 
 .keycodes th {
-    background: #31363d;
+    background-color: #31363d;
     border-bottom: 1px solid #1b1e24;
     font-size: 18px;
     padding: 10px;
@@ -342,7 +340,6 @@ body {
 
 .keycodes td {
     border: 3px solid #1b1e24;
-    font-family: 'Source Sans Pro', sans-serif;
     font-size: 18px;
     font-weight: 500;
     padding: 20px;
@@ -350,7 +347,7 @@ body {
 }
 
 .keycodes td:hover {
-    background: #3a3f47;
+    background-color: #3a3f47;
     cursor: not-allowed;
 }
 
@@ -521,6 +518,7 @@ button:disabled:not(.fakeinput) {
 }
 
 .toc {
+    background-color: #1f2229;
     border: 2px solid gray;
     color: gray;
     font-size: 18px;
@@ -576,7 +574,6 @@ button:disabled:not(.fakeinput) {
 
 .timer-time {
     color: #0b5394;
-    font-family: 'Source Sans Pro', sans-serif;
     font-size: 90px;
     font-weight: 500;
 }
@@ -599,7 +596,7 @@ button:disabled:not(.fakeinput) {
 @media only screen and (hover) {
     .spoiler::before {
         align-items: center;
-        background: #1f2225;
+        background-color: #1f2225;
         border-radius: 3px;
         bottom: 0;
         content: '';
@@ -671,7 +668,7 @@ h1 {
 }
 
 code {
-    background: #2f3136;
+    background-color: #2f3136;
     border-radius: 3px;
     font-family: monospace;
     font-size: 85%;
