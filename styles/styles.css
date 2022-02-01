@@ -9,7 +9,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@500;600;700&display=swap');
 
 html {
-    background: #1f2229;
+    background-color: #1f2229;
+    /* Modified from https://www.gradientmagic.com/collection/basicgrid/gradient/1589410524740 */
+    background-image: repeating-linear-gradient(90deg, hsla(280, 0%, 67%, 0.06) 0px, hsla(280, 0%, 67%, 0.06) 1px, transparent 1px, transparent 96px),
+        repeating-linear-gradient(0deg, hsla(280, 0%, 67%, 0.06) 0px, hsla(280, 0%, 67%, 0.06) 1px, transparent 1px, transparent 96px),
+        repeating-linear-gradient(0deg, hsla(280, 0%, 67%, 0.09) 0px, hsla(280, 0%, 67%, 0.09) 1px, transparent 1px, transparent 12px),
+        repeating-linear-gradient(90deg, hsla(280, 0%, 67%, 0.09) 0px, hsla(280, 0%, 67%, 0.09) 1px, transparent 1px, transparent 12px), linear-gradient(90deg, rgb(31, 34, 41), rgb(31, 34, 41));
 }
 
 a {
@@ -152,10 +157,11 @@ header {
 }
 
 .toolbox {
+    background-color: #1f2229;
     border: 2px solid gray;
     color: gray;
     font-weight: 500;
-    margin: 140px auto 30px;
+    margin: 140px auto 0;
     max-width: 91%;
     padding: 10px 30px 20px 30px;
     text-align: left;
@@ -172,6 +178,7 @@ header {
 body {
     font-family: 'Source Sans Pro', sans-serif;
     margin: 0;
+    padding-bottom: 40px;
 }
 
 .warning404 {
