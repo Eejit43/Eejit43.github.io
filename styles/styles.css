@@ -9,7 +9,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@500;600;700&display=swap');
 
 html {
-    background: #1f2227;
+    background: #1f2229;
 }
 
 a {
@@ -200,7 +200,7 @@ body {
 }
 
 .toolstable tr {
-    background: #31363d;
+    background: #2f343a;
 }
 
 .toolstable td {
