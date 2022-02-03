@@ -26,11 +26,11 @@ fetch('https://v6.exchangerate-api.com/v6/822304e8ee8183e9de49f5df/latest/USD')
         document.getElementById('lastupdated').innerHTML = lastupdatedtime;
         document.getElementById('nextupdate').innerHTML = nextupdatetime;
         document.getElementById('usdcad').innerHTML = '$' + usdcad;
-        document.getElementById('usdeur').innerHTML = '$' + usdeur;
-        document.getElementById('usdgbp').innerHTML = '$' + usdgbp;
+        document.getElementById('usdeur').innerHTML = '€' + usdeur;
+        document.getElementById('usdgbp').innerHTML = '£' + usdgbp;
         document.getElementById('usdaud').innerHTML = '$' + usdaud;
-        document.getElementById('usdcrc').innerHTML = '$' + usdcrc;
-        document.getElementById('usdjpy').innerHTML = '$' + usdjpy;
+        document.getElementById('usdcrc').innerHTML = '₡' + usdcrc;
+        document.getElementById('usdjpy').innerHTML = '¥' + usdjpy;
         document.getElementById('cadusd').innerHTML = '$' + cadusd;
         document.getElementById('eurusd').innerHTML = '$' + eurusd;
         document.getElementById('gbpusd').innerHTML = '$' + gbpusd;
