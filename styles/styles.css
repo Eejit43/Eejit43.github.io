@@ -503,6 +503,10 @@ button:disabled:not(.fakeinput) {
     opacity: 50%;
 }
 
+button:hover:not(.fakeinput) {
+    background-color: #2a2a2a;
+}
+
 .regexoutput,
 .quickcopy,
 .unixtable,
