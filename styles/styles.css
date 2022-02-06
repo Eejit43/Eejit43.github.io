@@ -684,3 +684,11 @@ code {
 .info {
     font-size: 18px;
 }
+
+.success {
+    color: #009c3f;
+}
+
+.error {
+    color: #ff5555;
+}

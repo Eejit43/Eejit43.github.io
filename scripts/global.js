@@ -43,7 +43,7 @@ function showResult(id, type, color = undefined, icon = undefined) {
         color = '#009c3f';
         icon = 'check';
     } else if (type === 'error') {
-        color = '#FF5555';
+        color = '#ff5555';
         icon = 'times';
     }
     element.style.color = color;
