@@ -105,9 +105,52 @@ function getData(position) {
                 alerts = abbrAlerts.join(', ');
             }
 
-            let output = `Information from ${city_name}, ${state_code} (${country_code}) – Latitude: ${latitude}, Longitude: ${longitude} – Station ID: ${station}<br>Updated on ${updated}<br><br>Active Alerts: ${alerts}<br><textarea style="width: 40rem; max-width: 80%; margin-bottom: 25px; display: none" id="alert-display" readonly></textarea><br>Sunrise: ${sunrise}<br>Sunset: ${sunset}<br>Weather: ${weather_description} ${weather_image}<br>Precipitation: ${precipitation} inches/hour<br>Snowfall: ${snowfall} inches/hour<br>Cloud Cover: ${clouds}%<br>Wind: ${wind_speed} miles/hour (${wind_direction})<br>Temperature: ${temp}°F (Feels like ${app_temp}°F)<br>Relative Humidity: ${humidity}%<br>Dew Point: ${dew_point}°F<br>Visibility: ${visibility} miles<br>Pressure: ${pressure} millibars<br>UV Index: ${uv_index}<br>Air Quality: ${air_quality}`;
+            // Modifed from https://gist.github.com/endel/dfe6bb2fbe679781948c
+            const Moon = {
+                phases: [
+                    'New Moon 🌑',
+                    'Waxing Crescent Moon (Illuminated area growing) 🌒',
+                    'First Quarter Moon 🌓',
+                    'Waxing Gibbous Moon (Illuminated area growing) 🌔',
+                    'Full Moon 🌕',
+                    'Waning Gibbous Moon (Illuminated area shrinking) 🌖',
+                    'Third Quarter Moon 🌗',
+                    'Waning Crescent Moon (Illuminated area shrinking) 🌘',
+                ],
+                phase: function (year, month, day) {
+                    let c = (e = jd = b = 0);
+
+                    if (month < 3) {
+                        year--;
+                        month += 12;
+                    }
+
+                    ++month;
+                    c = 365.25 * year;
+                    e = 30.6 * month;
+                    jd = c + e + day - 694039.09;
+                    jd /= 29.5305882;
+                    b = parseInt(jd);
+                    jd -= b;
+                    b = Math.round(jd * 8);
+
+                    if (b >= 8) b = 0;
+                    return Moon.phases[b];
+                },
+            };
+
+            let currentTime = new Date();
+            let day = currentTime.getDate();
+            let month = currentTime.getMonth() + 1;
+            let year = currentTime.getFullYear();
+
+            let moon_phase = Moon.phase(year, month, day);
+
+            let output = `Information from ${city_name}, ${state_code} (${country_code}) – Latitude: ${latitude}, Longitude: ${longitude} – Station ID: ${station}<br>Updated on ${updated}<br><br>Active Alerts: ${alerts}<br><textarea style="width: 40rem; max-width: 80%; margin-bottom: 25px; display: none" id="alert-display" readonly></textarea><br>Sunrise: ${sunrise}<br>Sunset: ${sunset}<br>Weather: ${weather_description} ${weather_image}<br>Precipitation: ${precipitation} inches/hour<br>Snowfall: ${snowfall} inches/hour<br>Cloud Cover: ${clouds}%<br>Wind: ${wind_speed} miles/hour (${wind_direction})<br>Temperature: ${temp}°F (Feels like ${app_temp}°F)<br>Relative Humidity: ${humidity}%<br>Dew Point: ${dew_point}°F<br>Visibility: ${visibility} miles<br>Pressure: ${pressure} millibars<br>UV Index: ${uv_index}<br>Air Quality: ${air_quality}<br>Moon Phase: ${moon_phase}`;
 
             result.innerHTML = output;
+
+            twemojiUpdate();
         })
         .catch((err) => {
             console.log(err);
@@ -115,6 +158,12 @@ function getData(position) {
 }
 
 function showAlert(alert) {
-    document.getElementById('alert-display').style.display = 'unset';
-    document.getElementById('alert-display').value = finalAlerts[alert];
+    console.log('e');
+    let alert_display = document.getElementById('alert-display');
+    if (alert_display.value !== finalAlerts[alert] || alert_display.style.display !== 'unset') {
+        alert_display.style.display = 'unset';
+        alert_display.value = finalAlerts[alert];
+    } else {
+        alert_display.style.display = 'none';
+    }
 }
