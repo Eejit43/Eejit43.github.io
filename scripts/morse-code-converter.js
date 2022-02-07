@@ -180,7 +180,7 @@ const convertToMorse = (str) => {
             return toMorseRef[el] ? toMorseRef[el] : el;
         })
         .join(' ')
-        .replace('   ', ' / ');
+        .replace(/   /g, ' / ');
 };
 
 function toMorse() {
