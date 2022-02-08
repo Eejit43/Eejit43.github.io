@@ -197,8 +197,8 @@ function toMorse() {
     } else if (/^[ a-zA-Z0-9\.,\?\'!\/\(\)&:;=+\-_"\$@]*$/.test(input.value.trim())) {
         result.value = convertToMorse(input.value);
         resultVar1 = convertToMorse(input.value);
-        resultVar2 = convertToMorse(input.value).replace(' / ', ' | ');
-        resultVar3 = convertToMorse(input.value).replace(' / ', '   ');
+        resultVar2 = convertToMorse(input.value).replace(/ \/ /g, ' | ');
+        resultVar3 = convertToMorse(input.value).replace(/ \/ /g, '   ');
         resultCopy.disabled = false;
         resultCopy2.disabled = false;
         resultCopy3.disabled = false;
