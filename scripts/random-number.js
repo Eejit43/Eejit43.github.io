@@ -2,23 +2,17 @@
 document.getElementById('generate-number').addEventListener('click', generateNumber);
 document.getElementById('reset').addEventListener('click', reset);
 
-let clearMessageTimeout;
-
 function reset() {
     document.getElementById('min-number').value = '1';
     document.getElementById('max-number').value = '10';
     document.getElementById('output-number').innerHTML = '';
-    clearTimeout(clearMessageTimeout);
-    clearMessageTimeout = setTimeout(function () {
-        document.getElementById('clear').innerHTML = 'Clear';
-    }, 2000);
     showAlert('Cleared!', 'success');
     resetResult('generate');
 }
 
 function generateNumber() {
-    let min = parseInt(document.getElementById('min-number').value);
-    let max = parseInt(document.getElementById('max-number').value);
+    let min = Number(document.getElementById('min-number').value);
+    let max = Number(document.getElementById('max-number').value);
     if (min.length === 0 || max.length === 0) {
         showAlert('Empty input!', 'error');
         showResult('generate', 'error');
