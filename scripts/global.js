@@ -90,7 +90,7 @@ function copyVar(button, text) {
     showAlert('Copied!', 'success');
 
     newElement.addEventListener('click', function () {
-        copyText(button, text);
+        copyVar(button, text);
     });
 }
 

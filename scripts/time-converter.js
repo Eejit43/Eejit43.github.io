@@ -1,14 +1,27 @@
+let standardInput = document.getElementById('standard-input');
+let standardInputReset = document.getElementById('standard-input-reset');
+let unixInput = document.getElementById('unix-input');
+let unixInputReset = document.getElementById('unix-input-reset');
+let unixInputSwitch = document.getElementById('unix-input-switch');
+let unixOutputCopy = document.getElementById('unix-output-copy');
+let unixOutputSwitch = document.getElementById('unix-output-switch');
+let standardOutputCopy = document.getElementById('standard-output-copy');
+let standardRunStatus = document.getElementById('standard-runstatus');
+let standardOutput = document.getElementById('standard-output');
+let unixRunStatus = document.getElementById('unix-runstatus');
+let unixOutput = document.getElementById('unix-output');
+
 /* Add event listeners */
-document.getElementById('standard-input').addEventListener('input', updateUnixOutput);
-document.getElementById('standard-input-reset').addEventListener('click', updateStandardTime);
-document.getElementById('unix-input').addEventListener('input', updateStandardOutput);
-document.getElementById('unix-input-reset').addEventListener('click', updateUnixTime);
-document.getElementById('unix-input-switch').addEventListener('click', switchUnixInput);
-document.getElementById('unix-output-copy').addEventListener('click', function () {
+standardInput.addEventListener('input', updateUnixOutput);
+standardInputReset.addEventListener('click', updateStandardTime);
+unixInput.addEventListener('input', updateStandardOutput);
+unixInputReset.addEventListener('click', updateUnixTime);
+unixInputSwitch.addEventListener('click', switchUnixInput);
+unixOutputCopy.addEventListener('click', function () {
     copyText('unix-output', 'unix-output-copy');
 });
-document.getElementById('unix-output-switch').addEventListener('click', switchUnixOutput);
-document.getElementById('standard-output-copy').addEventListener('click', function () {
+unixOutputSwitch.addEventListener('click', switchUnixOutput);
+standardOutputCopy.addEventListener('click', function () {
     copyText('standard-output', 'standard-output-copy');
 });
 
@@ -37,36 +50,36 @@ function updateStandardTime() {
 
     let output = month + ' ' + date + ', ' + year + ' ' + hours + ':' + minutes + ':' + sec + ' ' + timesuffix;
 
-    document.getElementById('standard-input').value = output;
+    standardInput.value = output;
 
     updateUnixOutput();
 }
 
 function updateUnixOutput() {
-    let standardtime = document.getElementById('standard-input').value;
+    let standardtime = standardInput.value;
     let valid = new Date(standardtime).getTime() > 0;
     if (standardtime.length === 0) {
-        document.getElementById('standard-runstatus').style.color = 'dimgray';
-        document.getElementById('standard-runstatus').className = 'fas fa-arrow-down';
-        document.getElementById('unix-output').value = '';
-        document.getElementById('unix-output-copy').disabled = true;
-        document.getElementById('unix-output-switch').disabled = true;
+        standardRunStatus.style.color = 'dimgray';
+        standardRunStatus.className = 'fas fa-arrow-down';
+        unixOutput.value = '';
+        unixOutputCopy.disabled = true;
+        unixOutputSwitch.disabled = true;
     } else if (valid === false) {
-        document.getElementById('standard-runstatus').style.color = '#bf4042';
-        document.getElementById('standard-runstatus').className = 'fas fa-times';
-        document.getElementById('unix-output').value = '';
-        document.getElementById('unix-output-copy').disabled = true;
-        document.getElementById('unix-output-switch').disabled = true;
+        standardRunStatus.style.color = '#bf4042';
+        standardRunStatus.className = 'fas fa-times';
+        unixOutput.value = '';
+        unixOutputCopy.disabled = true;
+        unixOutputSwitch.disabled = true;
     } else {
-        document.getElementById('standard-runstatus').style.color = '#009c3f';
-        document.getElementById('standard-runstatus').className = 'fas fa-arrow-down';
+        standardRunStatus.style.color = '#009c3f';
+        standardRunStatus.className = 'fas fa-arrow-down';
         let unixtime = new Date(standardtime).getTime();
         if (unixOutputState === 1) {
             unixtime = unixtime.toString().slice(0, -3);
         }
-        document.getElementById('unix-output').value = unixtime;
-        document.getElementById('unix-output-copy').disabled = false;
-        document.getElementById('unix-output-switch').disabled = false;
+        unixOutput.value = unixtime;
+        unixOutputCopy.disabled = false;
+        unixOutputSwitch.disabled = false;
     }
 }
 
@@ -76,27 +89,27 @@ function updateUnixTime() {
         output = output.toString().slice(0, -3);
     }
 
-    document.getElementById('unix-input').value = output;
+    unixInput.value = output;
 
     updateStandardOutput();
 }
 
 function updateStandardOutput() {
-    let standardtime = parseInt(document.getElementById('unix-input').value, 10) * 1000;
+    let standardtime = parseInt(unixInput.value, 10) * 1000;
     let valid = new Date(standardtime).getTime() > 0;
-    if (document.getElementById('unix-input').value.length === 0) {
-        document.getElementById('unix-runstatus').style.color = 'dimgray';
-        document.getElementById('unix-runstatus').className = 'fas fa-arrow-down';
-        document.getElementById('standard-output').value = '';
-        document.getElementById('standard-output-copy').disabled = true;
+    if (unixInput.value.length === 0) {
+        unixRunStatus.style.color = 'dimgray';
+        unixRunStatus.className = 'fas fa-arrow-down';
+        standardOutput.value = '';
+        standardOutputCopy.disabled = true;
     } else if (valid === false) {
-        document.getElementById('unix-runstatus').style.color = '#bf4042';
-        document.getElementById('unix-runstatus').className = 'fas fa-times';
-        document.getElementById('standard-output').value = '';
-        document.getElementById('standard-output-copy').disabled = true;
+        unixRunStatus.style.color = '#bf4042';
+        unixRunStatus.className = 'fas fa-times';
+        standardOutput.value = '';
+        standardOutputCopy.disabled = true;
     } else {
-        document.getElementById('unix-runstatus').style.color = '#009c3f';
-        document.getElementById('unix-runstatus').className = 'fas fa-arrow-down';
+        unixRunStatus.style.color = '#009c3f';
+        unixRunStatus.className = 'fas fa-arrow-down';
         const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         let time = new Date(parseInt(standardtime));
         let time2 = new Date(parseInt(standardtime.toString().slice(0, -3)));
@@ -126,14 +139,14 @@ function updateStandardOutput() {
         } else {
             output = month + ' ' + date + ', ' + year + ' ' + hours + ':' + minutes + ':' + sec + ' ' + timesuffix;
         }
-        document.getElementById('standard-output').value = output;
-        document.getElementById('standard-output-copy').disabled = false;
+        standardOutput.value = output;
+        standardOutputCopy.disabled = false;
     }
 }
 
 function switchUnixInput() {
     let title = document.getElementById('unix-input-title');
-    let button = document.getElementById('unix-input-switch');
+    let button = unixInputSwitch;
     if (unixInputState === 1) {
         unixInputState = 2;
         title.innerHTML = 'UNIX Time (milliseconds):';
@@ -148,7 +161,7 @@ function switchUnixInput() {
 
 function switchUnixOutput() {
     let title = document.getElementById('unix-output-title');
-    let button = document.getElementById('unix-output-switch');
+    let button = unixOutputSwitch;
     if (unixOutputState === 1) {
         unixOutputState = 2;
         title.innerHTML = 'UNIX Time (milliseconds):';

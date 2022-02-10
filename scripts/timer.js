@@ -1,28 +1,35 @@
-document.getElementById('pause-resume-timer').disabled = true;
+let startTimerButton = document.getElementById('start-timer');
+let pauseResumeTimer = document.getElementById('pause-resume-timer');
+let resetButton = document.getElementById('reset');
+let hoursButton = document.getElementById('hours');
+let minutesButton = document.getElementById('minutes');
+let secondsButton = document.getElementById('seconds');
+let timerDisplay = document.getElementById('timer');
+let timerTime = document.getElementById('timer-time');
 
 /* Add event listeners */
-document.getElementById('start-timer').addEventListener('click', startTimer);
-document.getElementById('pause-resume-timer').addEventListener('click', pauseResume);
-document.getElementById('reset').addEventListener('click', reset);
-document.getElementById('hours').addEventListener('input', function () {
-    let input = document.getElementById('hours');
+startTimerButton.addEventListener('click', startTimer);
+pauseResumeTimer.addEventListener('click', pauseResume);
+resetButton.addEventListener('click', reset);
+hoursButton.addEventListener('input', function () {
+    let input = hoursButton;
     input.value = input.value.replace(/((?![0-9]).)/g, '');
 });
-document.getElementById('hours').addEventListener('input', function () {
+hoursButton.addEventListener('input', function () {
     checkInput(this);
 });
-document.getElementById('minutes').addEventListener('input', function () {
-    let input = document.getElementById('minutes');
+minutesButton.addEventListener('input', function () {
+    let input = minutesButton;
     input.value = input.value.replace(/((?![0-9]).)/g, '');
 });
-document.getElementById('minutes').addEventListener('input', function () {
+minutesButton.addEventListener('input', function () {
     checkInput(this);
 });
-document.getElementById('seconds').addEventListener('input', function () {
-    let input = document.getElementById('seconds');
+secondsButton.addEventListener('input', function () {
+    let input = secondsButton;
     input.value = input.value.replace(/((?![0-9]).)/g, '');
 });
-document.getElementById('seconds').addEventListener('input', function () {
+secondsButton.addEventListener('input', function () {
     checkInput(this);
 });
 
@@ -38,14 +45,14 @@ function reset() {
     audio.pause();
     audio.currentTime = 0;
     timerState = 1;
-    document.getElementById('pause-resume-timer').innerHTML = 'Pause';
-    document.getElementById('timer-time').innerHTML = '';
-    document.getElementById('start-timer').disabled = false;
-    document.getElementById('pause-resume-timer').disabled = true;
-    document.getElementById('hours').value = '0';
-    document.getElementById('minutes').value = '1';
-    document.getElementById('seconds').value = '0';
-    document.getElementById('timer').innerHTML = '0h 0m 0s';
+    pauseResumeTimer.innerHTML = 'Pause';
+    timerTime.innerHTML = '';
+    startTimerButton.disabled = false;
+    pauseResumeTimer.disabled = true;
+    hoursButton.value = '0';
+    minutesButton.value = '1';
+    secondsButton.value = '0';
+    timerDisplay.innerHTML = '0h 0m 0s';
     showAlert('Reset!', 'success');
     resetResult('timer');
 }
@@ -56,9 +63,9 @@ function startTimer() {
     audio.pause();
     audio.currentTime = 0;
     timerState = 1;
-    let hours = parseInt(document.getElementById('hours').value);
-    let minutes = parseInt(document.getElementById('minutes').value);
-    let seconds = parseInt(document.getElementById('seconds').value);
+    let hours = parseInt(hoursButton.value);
+    let minutes = parseInt(minutesButton.value);
+    let seconds = parseInt(secondsButton.value);
     if (isNaN(hours) || isNaN(minutes) || isNaN(seconds)) {
         showAlert('Empty input!', 'error');
         showResult('timer', 'error');
@@ -66,8 +73,8 @@ function startTimer() {
         showAlert('Invalid input!', 'error');
         showResult('timer', 'error');
     } else {
-        document.getElementById('start-timer').disabled = true;
-        document.getElementById('pause-resume-timer').disabled = false;
+        startTimerButton.disabled = true;
+        pauseResumeTimer.disabled = false;
         let timeuntil = (hours * 3600 + minutes * 60 + seconds) * 1000;
 
         let curtime = new Date().getTime();
@@ -90,10 +97,10 @@ function timer() {
     minutesuntil = Math.floor((distance - hoursuntil * 3600) / 60);
     secondsuntil = Math.floor(distance - hoursuntil * 3600 - minutesuntil * 60);
 
-    document.getElementById('timer').innerHTML = `${hoursuntil}h ${minutesuntil}m ${secondsuntil}s`;
+    timerDisplay.innerHTML = `${hoursuntil}h ${minutesuntil}m ${secondsuntil}s`;
 
     if (distance <= 0) {
-        document.getElementById('timer').innerHTML = 'Ended!';
+        timerDisplay.innerHTML = 'Ended!';
         audio.play();
         audio.loop = true;
         clearInterval(runTimer);
@@ -119,7 +126,7 @@ function timer() {
 
     let timesuffix = fullhours >= 12 ? 'PM' : 'AM';
 
-    document.getElementById('timer-time').innerHTML = month + ' ' + date + ', ' + year + ' ' + hours + ':' + minutes + ':' + sec + ' ' + timesuffix;
+    timerTime.innerHTML = month + ' ' + date + ', ' + year + ' ' + hours + ':' + minutes + ':' + sec + ' ' + timesuffix;
 }
 
 let timerState = 1; // 1 = running, 2 = paused
@@ -127,11 +134,11 @@ let timerState = 1; // 1 = running, 2 = paused
 function pauseResume() {
     if (timerState === 1) {
         timerState = 2;
-        document.getElementById('pause-resume-timer').innerHTML = 'Resume';
+        pauseResumeTimer.innerHTML = 'Resume';
         clearInterval(runTimer);
     } else {
         timerState = 1;
-        document.getElementById('pause-resume-timer').innerHTML = 'Pause';
+        pauseResumeTimer.innerHTML = 'Pause';
 
         let hours2 = parseInt(hoursuntil);
         let minutes2 = parseInt(minutesuntil);

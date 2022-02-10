@@ -405,7 +405,7 @@ textarea {
     background-color: #252525;
     border: 1px solid #444;
     border-radius: 4px;
-    color: white;
+    color: #aaa;
     font-family: 'Fira Mono', monospace;
     height: 6rem;
     margin: 0.5rem 0;
@@ -529,7 +529,7 @@ button:hover:not(.fakeinput) {
     font-weight: 600;
     line-height: 150%;
     margin: 140px 0 0 40px;
-    padding: 15px 30px 10px 30px;
+    padding: 15px 30px 20px;
     position: static;
     text-align: left;
     width: 15%;
@@ -545,21 +545,24 @@ button:hover:not(.fakeinput) {
     display: none;
 }
 
-.invisibleinput[type='text'],
-.invisibleinput[type='number'] {
+.invisibleinput[type='text']:not(input[type='file']):not(input[type='checkbox']),
+.invisibleinput[type='number']:not(input[type='file']):not(input[type='checkbox']) {
     background-color: transparent;
     border: none;
     border-bottom: 1px solid dimgray;
+    border-radius: 0;
+    padding-bottom: 0px;
     color: dimgray;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 50px;
     font-weight: 500;
     text-align: right;
-    width: 4.2rem;
+    width: 3.5rem;
+    overflow: hidden;
 }
 
-.invisibleinput[type='text']:focus,
-.invisibleinput[type='number']:focus {
+.invisibleinput[type='text']:focus:not(input[type='file']):not(input[type='checkbox']),
+.invisibleinput[type='number']:focus:not(input[type='file']):not(input[type='checkbox']) {
     box-shadow: none;
     outline: none;
 }
@@ -691,4 +694,12 @@ code {
 
 .error {
     color: #ff5555;
+}
+
+hr {
+    border: 1px solid currentColor;
+    border-radius: 3px;
+    color: dimgray;
+    height: 0px;
+    width: 100%;
 }

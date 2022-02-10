@@ -1,11 +1,16 @@
 let ready = document.getElementById('ready');
-
 let key = document.getElementById('key');
+let keyCell = document.getElementById('key-cell');
 let keyRepeating = document.getElementById('key-repeating');
+let keyRepeatingCell = document.getElementById('key-repeating-cell');
 let keyLocation = document.getElementById('key-location');
+let keyLocationCell = document.getElementById('key-location-cell');
 let keyCode = document.getElementById('key-code');
+let keyCodeCell = document.getElementById('key-code-cell');
 let keyAscii = document.getElementById('key-ascii');
+let keyAsciiCell = document.getElementById('key-ascii-cell');
 let keyUnicode = document.getElementById('key-unicode');
+let keyUnicodeCell = document.getElementById('key-unicode-cell');
 
 let keyVal, keyRepeatingVal, keyLocationVal, KeyCodeVal, KeyAsciiVal, KeyUnicodeVal;
 
@@ -13,32 +18,26 @@ let valExist = 0; // 0 = no, 1 = yes
 
 /* Add event listeners */
 document.addEventListener('keydown', keyInfo);
-document.getElementById('key-cell').addEventListener('click', function () {
+keyCell.addEventListener('click', function () {
     copyKeycodeInfo(keyVal);
 });
-document.getElementById('key-repeating-cell').addEventListener('click', function () {
+keyRepeatingCell.addEventListener('click', function () {
     copyKeycodeInfo(keyRepeatingVal);
 });
-document.getElementById('key-location-cell').addEventListener('click', function () {
+keyLocationCell.addEventListener('click', function () {
     copyKeycodeInfo(keyLocationVal);
 });
-document.getElementById('key-code-cell').addEventListener('click', function () {
+keyCodeCell.addEventListener('click', function () {
     copyKeycodeInfo(keyCodeVal);
 });
-document.getElementById('key-ascii-cell').addEventListener('click', function () {
+keyAsciiCell.addEventListener('click', function () {
     copyKeycodeInfo(keyAsciiVal);
 });
-document.getElementById('key-unicode-cell').addEventListener('click', function () {
+keyUnicodeCell.addEventListener('click', function () {
     copyKeycodeInfo(keyUnicodeVal);
 });
-
-if (/*@cc_on!@*/ false) {
-    document.onfocusin = onFocus;
-    document.onfocusout = onBlur;
-} else {
-    window.onfocus = onFocus;
-    window.onblur = onBlur;
-}
+window.onfocus = onFocus;
+window.onblur = onBlur;
 
 function copyKeycodeInfo(variable) {
     if (valExist === 1) {

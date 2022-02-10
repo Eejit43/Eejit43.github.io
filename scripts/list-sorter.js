@@ -1,25 +1,36 @@
+let input = document.getElementById('input');
+let separator = document.getElementById('separator');
+let alphabetizeNormalButton = document.getElementById('alphabetize-normal');
+let numerizeButton = document.getElementById('numerize');
+let randomizeButton = document.getElementById('randomize');
+let reverseButton = document.getElementById('reverse');
+let clear = document.getElementById('clear');
+let result = document.getElementById('result');
+let copyResult = document.getElementById('copy-result');
+
 /* Add event listeners */
-document.getElementById('alphabetize-normal').addEventListener('click', alphabetizeNormal);
-document.getElementById('numerize').addEventListener('click', numerize);
-document.getElementById('randomize').addEventListener('click', randomize);
-document.getElementById('reverse').addEventListener('click', reverse);
-document.getElementById('clear').addEventListener('click', clearAll);
-document.getElementById('copy-result').addEventListener('click', function () {
+alphabetizeNormalButton.addEventListener('click', alphabetizeNormal);
+numerizeButton.addEventListener('click', numerize);
+randomizeButton.addEventListener('click', randomize);
+reverseButton.addEventListener('click', reverse);
+clear.addEventListener('click', clearAll);
+copyResult.addEventListener('click', function () {
     copyText('result', 'copy-result');
 });
 
 let clearMessageTimeout;
 
 function clearAll() {
-    document.getElementById('input').value = '';
-    document.getElementById('result').value = '';
-    document.getElementById('separator').value = '\\n';
-    document.getElementById('copy-result').disabled = true;
+    copyResult = document.getElementById('copy-result');
+    input.value = '';
+    result.value = '';
+    separator.value = '\\n';
+    copyResult.disabled = true;
     showAlert('Cleared!', 'success');
-    document.getElementById('clear').innerHTML = 'Cleared!';
+    clear.innerHTML = 'Cleared!';
     clearTimeout(clearMessageTimeout);
     clearMessageTimeout = setTimeout(function () {
-        document.getElementById('clear').innerHTML = 'Clear';
+        clear.innerHTML = 'Clear';
     }, 2000);
     resetResult('alphabetize');
     resetResult('numerize');
@@ -28,38 +39,32 @@ function clearAll() {
 }
 
 function alphabetizeNormal() {
-    let string = document.getElementById('input').value;
-    if (string.length === 0) {
+    if (input.value.length === 0) {
         showAlert('Empty input!', 'error');
         showResult('alphabetize', 'error');
     } else {
-        let separator = document.getElementById('separator').value;
-        separator = separator.replace('\\n', '\n');
-        let result = string.split(separator);
-        result = result.sort((a, b) => a.localeCompare(b)).join(separator);
-        document.getElementById('result').value = result;
+        let output = input.value.split(separator.value.replace('\\n', '\n'));
+        output = output.sort((a, b) => a.localeCompare(b)).join(separator.value.replace('\\n', '\n'));
+        result.value = output;
         showResult('alphabetize', 'success');
-        document.getElementById('copy-result').disabled = false;
+        copyResult.disabled = false;
     }
 }
 
 function numerize() {
-    let string = document.getElementById('input').value;
-    if (string.length === 0) {
+    if (input.value.length === 0) {
         showAlert('Empty input!', 'error');
         showResult('numerize', 'error');
     } else {
-        let separator = document.getElementById('separator').value;
-        separator = separator.replace('\\n', '\n');
-        let result = string.split(separator);
-        result = result
+        let output = input.value.split(separator.value.replace('\\n', '\n'));
+        output = output
             .map((x) => parseInt(x))
             .filter((x) => x === 0 || Boolean(x))
             .sort((a, b) => a - b)
-            .join(separator);
-        document.getElementById('result').value = result;
+            .join(separator.value.replace('\\n', '\n'));
+        result.value = output;
         showResult('numerize', 'success');
-        document.getElementById('copy-result').disabled = false;
+        copyResult.disabled = false;
     }
 }
 
@@ -72,33 +77,27 @@ function shuffleArray(arr) {
 }
 
 function randomize() {
-    let string = document.getElementById('input').value;
-    if (string.length === 0) {
+    if (input.value.length === 0) {
         showAlert('Empty input!', 'error');
         showResult('randomize', 'error');
     } else {
-        let separator = document.getElementById('separator').value;
-        separator = separator.replace('\\n', '\n');
-        let result = string.split(separator);
-        result = shuffleArray(result).join(separator);
-        document.getElementById('result').value = result;
+        let output = input.value.split(separator.value.replace('\\n', '\n'));
+        output = shuffleArray(output).join(separator.value.replace('\\n', '\n'));
+        result.value = output;
         showResult('randomize', 'success');
-        document.getElementById('copy-result').disabled = false;
+        copyResult.disabled = false;
     }
 }
 
 function reverse() {
-    let string = document.getElementById('input').value;
-    if (string.length === 0) {
+    if (input.value.length === 0) {
         showAlert('Empty input!', 'error');
         showResult('reverse', 'error');
     } else {
-        let separator = document.getElementById('separator').value;
-        separator = separator.replace('\\n', '\n');
-        let result = string.split(separator);
-        result = result.reverse().join(separator);
-        document.getElementById('result').value = result;
+        let output = input.value.split(separator.value.replace('\\n', '\n'));
+        output = output.reverse().join(separator.value.replace('\\n', '\n'));
+        result.value = output;
         showResult('reverse', 'success');
-        document.getElementById('copy-result').disabled = false;
+        copyResult.disabled = false;
     }
 }

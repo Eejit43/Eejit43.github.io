@@ -37,8 +37,6 @@ function updateValues() {
 }
 
 function reset() {
-    let characterCount, wordCount, sentenceCount, lineCount, paragraphCount;
-
     input.value = '';
 
     characterDisplay.innerHTML = '0';

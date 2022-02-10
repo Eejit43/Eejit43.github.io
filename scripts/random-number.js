@@ -1,18 +1,24 @@
+let minNumber = document.getElementById('min-number');
+let maxNumber = document.getElementById('max-number');
+let generate = document.getElementById('generate-number');
+let resetButton = document.getElementById('reset');
+let outputNumber = document.getElementById('output-number');
+
 /* Add event listeners */
-document.getElementById('generate-number').addEventListener('click', generateNumber);
-document.getElementById('reset').addEventListener('click', reset);
+generate.addEventListener('click', generateNumber);
+resetButton.addEventListener('click', reset);
 
 function reset() {
-    document.getElementById('min-number').value = '1';
-    document.getElementById('max-number').value = '10';
-    document.getElementById('output-number').innerHTML = '';
+    minNumber.value = '1';
+    maxNumber.value = '10';
+    outputNumber.innerHTML = '';
     showAlert('Cleared!', 'success');
     resetResult('generate');
 }
 
 function generateNumber() {
-    let min = Number(document.getElementById('min-number').value);
-    let max = Number(document.getElementById('max-number').value);
+    let min = Number(minNumber.value);
+    let max = Number(maxNumber.value);
     if (min.length === 0 || max.length === 0) {
         showAlert('Empty input!', 'error');
         showResult('generate', 'error');
@@ -21,7 +27,7 @@ function generateNumber() {
         showResult('generate', 'error');
     } else {
         let output = Math.floor(Math.random() * (max - min + 1) + min).toLocaleString();
-        document.getElementById('output-number').innerHTML = output;
+        outputNumber.innerHTML = output;
         showResult('generate', 'success');
     }
 }

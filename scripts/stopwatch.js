@@ -1,27 +1,24 @@
-/* Add event listeners */
-document.getElementById('start').addEventListener('click', startTimer);
-document.getElementById('stop').addEventListener('click', stopTimer);
-document.getElementById('reset').addEventListener('click', resetTimer);
-
 // Modified from https://jsfiddle.net/Larph/he10jyu9/
 
-const HRS = document.getElementById('hrs'),
-    MIN = document.getElementById('min'),
-    SEC = document.getElementById('sec'),
-    MIL = document.getElementById('mil');
+let startButton = document.getElementById('start');
+let stopButton = document.getElementById('stop');
+let resetButton = document.getElementById('reset');
 
-let hrs,
-    min,
-    sec,
-    mil,
-    dt,
-    ps,
-    pt,
-    tt,
-    t = 0,
-    running,
-    started = false,
-    iID;
+let hoursDisplay = document.getElementById('hours-display');
+let minutesDisplay = document.getElementById('minutes-display');
+let secondsDisplay = document.getElementById('seconds-display');
+let millisecondsDisplay = document.getElementById('milliseconds-display');
+
+/* Add event listeners */
+startButton.addEventListener('click', startTimer);
+stopButton.addEventListener('click', stopTimer);
+resetButton.addEventListener('click', resetTimer);
+
+let hrs, min, sec, mil, pt, tt, iID;
+let dt = (ps = 0);
+let t = 0;
+let running,
+    started = false;
 
 function timerCycle() {
     if (running) {
@@ -30,15 +27,15 @@ function timerCycle() {
         pt = t;
         tt = Math.floor(dt);
         mil = dt - tt;
-        MIL.textContent = mil.toFixed(3).slice(-3);
+        millisecondsDisplay.textContent = mil.toFixed(3).slice(-3);
         sec = tt % 60;
         if (sec === ps) return;
         ps = sec;
         min = Math.floor(tt / 60) % 60;
         hrs = Math.floor(tt / 3600);
-        HRS.textContent = ('0' + hrs).slice(-2);
-        MIN.textContent = ('0' + min).slice(-2);
-        SEC.textContent = ('0' + sec).slice(-2);
+        hoursDisplay.textContent = ('0' + hrs).slice(-2);
+        minutesDisplay.textContent = ('0' + min).slice(-2);
+        secondsDisplay.textContent = ('0' + sec).slice(-2);
     }
 }
 
@@ -76,10 +73,8 @@ function resetTimer() {
     started = running = false;
     stop();
     dt = ps = 0;
-    HRS.textContent = '00';
-    MIN.textContent = '00';
-    SEC.textContent = '00';
-    MIL.textContent = '000';
+    hoursDisplay.textContent = '00';
+    minutesDisplay.textContent = '00';
+    secondsDisplay.textContent = '00';
+    millisecondsDisplay.textContent = '000';
 }
-
-resetTimer();

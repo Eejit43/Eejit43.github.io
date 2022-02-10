@@ -1,12 +1,23 @@
 // Refer to https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for time zone names
 
+// If DST code modified from https://stackoverflow.com/questions/11887934/how-to-check-if-dst-daylight-saving-time-is-in-effect-and-if-so-the-offset
+Date.prototype.stdTimezoneOffset = function () {
+    let jan = new Date(this.getFullYear(), 0, 1);
+    let jul = new Date(this.getFullYear(), 6, 1);
+    return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
+};
+
+Date.prototype.isDstObserved = function () {
+    return this.getTimezoneOffset() < this.stdTimezoneOffset();
+};
+
 function showResult(element, variable) {
     if (document.getElementById(element).innerHTML !== eval(variable)) {
         document.getElementById(element).innerHTML = eval(variable);
     }
 }
 
-let finaltime, finaldate, unixtime, finaltimezone, jptime, crtime, gbtime, utctime;
+let finaltime, isDst, finaldate, unixtime, finaltimezone, jptime, crtime, gbtime, utctime;
 
 function time() {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -22,7 +33,6 @@ function time() {
     let hours = ((fullhours + 11) % 12) + 1;
     let minutes = currentTime.getMinutes();
     let sec = currentTime.getSeconds();
-    let msec = currentTime.getMilliseconds();
     unixtime = currentTime.getTime();
     let timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     let toffset = new Date().getTimezoneOffset();
@@ -47,23 +57,7 @@ function time() {
         sec = '0' + sec;
     }
 
-    // If DST code modified from https://stackoverflow.com/questions/11887934/how-to-check-if-dst-daylight-saving-time-is-in-effect-and-if-so-the-offset
-    Date.prototype.stdTimezoneOffset = function () {
-        let jan = new Date(this.getFullYear(), 0, 1);
-        let jul = new Date(this.getFullYear(), 6, 1);
-        return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
-    };
-
-    Date.prototype.isDstObserved = function () {
-        return this.getTimezoneOffset() < this.stdTimezoneOffset();
-    };
-
-    let today = new Date();
-    if (today.isDstObserved() && document.getElementById('dst').innerHTML !== 'In') {
-        document.getElementById('dst').innerHTML = 'In';
-    } else if (document.getElementById('dst').innerHTML !== 'Not') {
-        document.getElementById('dst').innerHTML = 'Not';
-    }
+    isDst = new Date().isDstObserved() ? 'In' : 'Not';
 
     let timesuffix = fullhours >= 12 ? 'PM' : 'AM';
 
@@ -72,6 +66,7 @@ function time() {
     finaltimezone = timezone + ' (UTC' + timeoffset + ')';
 
     showResult('time', 'finaltime');
+    showResult('dst', 'isDst');
     showResult('date', 'finaldate');
     showResult('unix', 'unixtime');
     showResult('timezone', 'finaltimezone');

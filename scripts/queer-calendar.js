@@ -1,13 +1,9 @@
 let eventsTitle = document.getElementById('events-title');
-
 let eventsDisplay = document.getElementById('events');
-
 let monthVal = document.getElementById('month');
 let dateVal = document.getElementById('date');
-
 let getDate = document.getElementById('get-date');
 let resetDate = document.getElementById('reset-date');
-
 let yearOverview = document.getElementById('year-overview');
 let yearOverviewList = document.getElementById('year-overview-list');
 

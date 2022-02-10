@@ -52,38 +52,22 @@
         </nav>
         <div class="toc">
             <span style="font-size: 22px; line-height: 180%">Table of Contents:</span>
-            <br />– <a href="#duplicate-line-remover">Duplicate Line Remover</a> <br />– <a href="#whitespace-remover">Whitespace Remover</a> <br />–
-            <a href="#neu-format-changer">NEU Lore Format to Wiki Format</a> <br />– <a href="#regex-tester">Regex Tester</a>
+            <br />– <a href="#duplicate-line-remover">Duplicate Line Remover</a> <br />– <a href="#whitespace-remover">Whitespace Remover</a> <br />– <a href="#regex-tester">Regex Tester</a>
         </div>
         <div class="toolbox" style="margin: 40px auto 30px">
             <h1 id="duplicate-line-remover">Duplicate Line Remover:</h1>
             <div class="tooltext">
                 Input:<br />
-                <textarea id="drl-regexInput"></textarea>
-                <br /><button id="run-dlr">Run regex <i id="drl-runResult"></i></button>
-                <button id="drl-clear">Clear</button>
+                <textarea id="dlr-regexInput"></textarea>
+                <br /><button id="run-dlr">Run regex <i id="dlr-runResult"></i></button>
+                <button id="dlr-clear">Clear</button>
             </div>
             <hr class="noscript-hidden" style="margin-top: 30px" />
-            <table class="regexoutput noscript-hidden">
-                <tbody>
-                    <tr>
-                        <td>
-                            <div class="tooltext">
-                                Output (removes duplicate newlines):<br />
-                                <textarea id="drl-result" style="width: 80%" readonly></textarea>
-                                <br /><button id="drl-copy-result" disabled>Copy</button>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="tooltext">
-                                Output (ignores duplicate newlines):<br />
-                                <textarea id="drl-result-2" style="width: 80%" readonly></textarea>
-                                <br /><button id="drl-copy-result-2" disabled>Copy</button>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="tooltext">
+                Output:<br />
+                <textarea id="dlr-result" style="width: 40%" readonly></textarea>
+                <br /><button id="dlr-copy-result" disabled>Copy</button>
+            </div>
             <noscript>
                 <style>
                     .tooltext,
@@ -145,57 +129,17 @@
             </noscript>
         </div>
         <div class="toolbox" style="margin: 60px auto 30px">
-            <h1 id="neu-format-changer"><span class="tooltip-text tooltip-bottom" data-tooltip="Not Enough Updates">NEU</span> Lore Format to Wiki Format:</h1>
-            <div class="tooltext">
-                NEU Format:<br />
-                <textarea id="neu-regexInput"></textarea>
-                <br /><button id="run-neu">Run regex <i id="neu-runResult"></i></button>
-                <button id="neu-clear">Clear</button>
-            </div>
-            <hr class="noscript-hidden" style="margin-top: 30px" />
-            <table class="regexoutput noscript-hidden">
-                <tbody>
-                    <tr>
-                        <td>
-                            <div class="tooltext">
-                                Tooltips Editor Format:<br />
-                                <textarea id="neu-result" style="width: 80%" readonly></textarea>
-                                <br /><button id="neu-copy-result" disabled>Copy</button>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="tooltext">
-                                Source Editor Format:<br />
-                                <textarea id="neu-result-2" style="width: 80%" readonly></textarea>
-                                <br /><button id="neu-copy-result-2" disabled>Copy</button>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <noscript>
-                <style>
-                    .tooltext,
-                    .info-table,
-                    .noscript-hidden {
-                        display: none !important;
-                    }
-                </style>
-                <span style="color: #ff5555; font-weight: bold; font-size: 300%">Oh no!</span>
-                <div class="warning" style="padding-bottom: 25px">Looks like this page's scripts could not be run. Try enabling JavaScript and reloading the page.</div>
-            </noscript>
-        </div>
-        <div class="toolbox" style="margin: 60px auto 30px">
             <h1 id="regex-tester">Regex Tester:</h1>
             <div class="tooltext">
                 Input:<br />
                 <span style="font-weight: 500; color: dimgray; font-size: 16px"
-                    ><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Cheatsheet" target="_blank">Regex</a>: <input id="rm-regex" style="width: 20rem" />　<a
+                    ><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Cheatsheet" target="_blank">Regex</a>:
+                    <input id="rm-regex" style="width: 20rem; max-width: 70%" />　<a
                         href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#advanced_searching_with_flags"
                         target="_blank"
                         >Flags</a
                     >: <input id="rm-flags" value="g" style="width: 4rem" /><br />
-                    Replace string (leave empty to delete): <input id="rm-replace" style="width: 20rem" /></span
+                    Replace string (leave empty to delete): <input id="rm-replace" style="width: 20rem; max-width: 70%" /></span
                 ><br />
                 <textarea id="rm-regexInput" style="min-width: 40%; width: 40%; max-width: 70%; min-height: 4rem; height: 6rem; max-height: 25rem; resize: both"></textarea>
                 <br /><button id="run-rm">Run regex <i id="rm-runResult"></i></button> <button id="rm-clear">Clear Input</button> <button id="rm-clear-2">Clear All</button>

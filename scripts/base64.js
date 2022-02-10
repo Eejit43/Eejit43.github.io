@@ -1,38 +1,44 @@
+let input = document.getElementById('input');
+let encodeButton = document.getElementById('encode');
+let decodeButton = document.getElementById('decode');
+let clear = document.getElementById('clear');
+let result = document.getElementById('result');
+let copyResult = document.getElementById('copy-result');
+
 /* Add event listeners */
-document.getElementById('encode').addEventListener('click', encode);
-document.getElementById('decode').addEventListener('click', decode);
-document.getElementById('clear').addEventListener('click', clearAll);
-document.getElementById('copy-result').addEventListener('click', function () {
+encodeButton.addEventListener('click', encode);
+decodeButton.addEventListener('click', decode);
+clear.addEventListener('click', clearAll);
+copyResult.addEventListener('click', function () {
     copyText('result', 'copy-result');
 });
 
 let clearMessageTimeout;
 
 function clearAll() {
-    document.getElementById('stringToModify').value = '';
-    document.getElementById('result').value = '';
-    document.getElementById('copy-result').disabled = true;
+    copyResult = document.getElementById('copy-result');
+    input.value = '';
+    result.value = '';
+    copyResult.disabled = true;
     showAlert('Cleared!', 'success');
-    document.getElementById('clear').innerHTML = 'Cleared!';
+    clear.innerHTML = 'Cleared!';
     clearTimeout(clearMessageTimeout);
     clearMessageTimeout = setTimeout(function () {
-        document.getElementById('clear').innerHTML = 'Clear';
+        clear.innerHTML = 'Clear';
     }, 2000);
     resetResult('e');
     resetResult('d');
 }
 
 function encode() {
-    let stringToEncode = document.getElementById('stringToModify').value;
-    if (stringToEncode.length === 0) {
+    if (input.value.length === 0) {
         showAlert('Empty input!', 'error');
         showResult('e', 'error');
     } else {
         try {
-            let decodedString = btoa(stringToEncode);
-            document.getElementById('result').value = decodedString;
+            result.value = btoa(input.value);
             showResult('e', 'success');
-            document.getElementById('copy-result').disabled = false;
+            copyResult.disabled = false;
         } catch (err) {
             showAlert('Malformed input!', 'error');
             showResult('e', 'error');
@@ -41,16 +47,14 @@ function encode() {
 }
 
 function decode() {
-    let stringToDecode = document.getElementById('stringToModify').value;
-    if (stringToDecode.length === 0) {
+    if (input.value.length === 0) {
         showAlert('Empty input!', 'error');
         showResult('d', 'error');
     } else {
         try {
-            let encodedString = atob(stringToDecode);
-            document.getElementById('result').value = encodedString;
+            result.value = atob(input.value);
             showResult('d', 'success');
-            document.getElementById('copy-result').disabled = false;
+            copyResult.disabled = false;
         } catch (err) {
             showAlert('Malformed input!', 'error');
             showResult('d', 'error');

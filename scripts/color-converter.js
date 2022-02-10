@@ -1,34 +1,55 @@
 // Some formulas modified from https://css-tricks.com/converting-color-spaces-in-javascript/
 
+let hexInput = document.getElementById('hex-input');
+let hexDisplay = document.getElementById('hex-display');
+let hexRgb = document.getElementById('hex-rgb');
+let hexRgbCopy = document.getElementById('hex-rgb-copy');
+let hexHsl = document.getElementById('hex-hsl');
+let hexHslCopy = document.getElementById('hex-hsl-copy');
+let rgbInput = document.getElementById('rgb-input');
+let rgbDisplay = document.getElementById('rgb-display');
+let rgbHex = document.getElementById('rgb-hex');
+let rgbHexCopy = document.getElementById('rgb-hex-copy');
+let rgbHsl = document.getElementById('rgb-hsl');
+let rgbHslCopy = document.getElementById('rgb-hsl-copy');
+let hslInput = document.getElementById('hsl-input');
+let hslDisplay = document.getElementById('hsl-display');
+let hslHex = document.getElementById('hsl-hex');
+let hslHexCopy = document.getElementById('hsl-hex-copy');
+let hslRgb = document.getElementById('hsl-rgb');
+let hslRgbCopy = document.getElementById('hsl-rgb-copy');
+
 /* Add event listeners */
-document.getElementById('hexInput').addEventListener('input', hex);
-document.getElementById('hex-rgb-copy').addEventListener('click', function () {
+hexInput.addEventListener('input', hex);
+hexRgbCopy.addEventListener('click', function () {
     copyText('hex-rgb', 'hex-rgb-copy');
 });
-document.getElementById('hex-hsl-copy').addEventListener('click', function () {
+hexHslCopy.addEventListener('click', function () {
     copyText('hex-hsl', 'hex-hsl-copy');
 });
-document.getElementById('rgbInput').addEventListener('input', rgb);
-document.getElementById('rgb-hex-copy').addEventListener('click', function () {
+rgbInput.addEventListener('input', rgb);
+rgbHexCopy.addEventListener('click', function () {
     copyText('rgb-hex', 'rgb-hex-copy');
 });
-document.getElementById('rgb-hsl-copy').addEventListener('click', function () {
+rgbHslCopy.addEventListener('click', function () {
     copyText('rgb-hsl', 'rgb-hsl-copy');
 });
-document.getElementById('hslInput').addEventListener('input', hsl);
-document.getElementById('hsl-hex-copy').addEventListener('click', function () {
+hslInput.addEventListener('input', hsl);
+hslHexCopy.addEventListener('click', function () {
     copyText('hsl-hex', 'hsl-hex-copy');
 });
-document.getElementById('hsl-rgb-copy').addEventListener('click', function () {
+hslRgbCopy.addEventListener('click', function () {
     copyText('hsl-rgb', 'hsl-rgb-copy');
 });
 
 function hex() {
-    let hex = document.getElementById('hexInput').value;
+    hexRgbCopy = document.getElementById('hex-rgb-copy');
+    hexHslCopy = document.getElementById('hex-hsl-copy');
+    let hex = hexInput.value;
     if (hex.match(/^#([\da-f]{3}){1,2}$/i)) {
         hex = hex.substring(1);
-        document.getElementById('hex-display').style.backgroundColor = '#' + hex;
-        document.getElementById('hex-display').innerHTML = '';
+        hexDisplay.style.backgroundColor = '#' + hex;
+        hexDisplay.innerHTML = '';
         // To RBG
         let r = 0,
             g = 0,
@@ -42,9 +63,9 @@ function hex() {
             g = '0x' + hex[2] + hex[3];
             b = '0x' + hex[4] + hex[5];
         }
-        document.getElementById('hex-rgb').value = 'rgb(' + +r + ',' + +g + ',' + +b + ')';
+        hexRgb.value = 'rgb(' + +r + ',' + +g + ',' + +b + ')';
 
-        document.getElementById('hex-rgb-copy').disabled = false;
+        hexRgbCopy.disabled = false;
         // To HSL
         r = 0;
         g = 0;
@@ -82,12 +103,12 @@ function hex() {
         s = +(s * 100).toFixed(1);
         l = +(l * 100).toFixed(1);
 
-        document.getElementById('hex-hsl').value = 'hsl(' + h + ',' + s + '%,' + l + '%)';
+        hexHsl.value = 'hsl(' + h + ',' + s + '%,' + l + '%)';
 
-        document.getElementById('hex-hsl-copy').disabled = false;
+        hexHslCopy.disabled = false;
     } else if (hex.match(/^([\da-f]{3}){1,2}$/i)) {
-        document.getElementById('hex-display').style.backgroundColor = '#' + hex;
-        document.getElementById('hex-display').innerHTML = '';
+        hexDisplay.style.backgroundColor = '#' + hex;
+        hexDisplay.innerHTML = '';
         // To RBG
         let r = 0,
             g = 0,
@@ -101,9 +122,9 @@ function hex() {
             g = '0x' + hex[2] + hex[3];
             b = '0x' + hex[4] + hex[5];
         }
-        document.getElementById('hex-rgb').value = 'rgb(' + +r + ',' + +g + ',' + +b + ')';
+        hexRgb.value = 'rgb(' + +r + ',' + +g + ',' + +b + ')';
 
-        document.getElementById('hex-rgb-copy').disabled = false;
+        hexRgbCopy.disabled = false;
         // To HSL
         r = 0;
         g = 0;
@@ -141,29 +162,30 @@ function hex() {
         s = +(s * 100).toFixed(1);
         l = +(l * 100).toFixed(1);
 
-        document.getElementById('hex-hsl').value = 'hsl(' + h + ',' + s + '%,' + l + '%)';
+        hexHsl.value = 'hsl(' + h + ',' + s + '%,' + l + '%)';
 
-        document.getElementById('hex-hsl-copy').disabled = false;
+        hexHslCopy.disabled = false;
     } else {
-        document.getElementById('hex-display').innerHTML =
-            hex === '' ? '' : '<i class="fas fa-times" style="color:#bf4042;padding-bottom:5px;vertical-align:middle;display:inline-flex;padding-bottom:20px;font-size:25px;"></i>';
-        document.getElementById('hex-display').style.backgroundColor = '';
-        document.getElementById('hex-rgb').value = '';
-        document.getElementById('hex-rgb-copy').disabled = true;
-        document.getElementById('hex-hsl').value = '';
-        document.getElementById('hex-hsl-copy').disabled = true;
+        hexDisplay.innerHTML = hex === '' ? '' : '<i class="fas fa-times" style="color:#bf4042;padding-bottom:5px;vertical-align:middle;display:inline-flex;padding-bottom:20px;font-size:25px;"></i>';
+        hexDisplay.style.backgroundColor = '';
+        hexRgb.value = '';
+        hexRgbCopy.disabled = true;
+        hexHsl.value = '';
+        hexHslCopy.disabled = true;
     }
 }
 
 function rgb() {
-    let rgb = document.getElementById('rgbInput').value;
+    rgbHexCopy = document.getElementById('rgb-hex-copy');
+    rgbHslCopy = document.getElementById('rgb-hsl-copy');
+    let rgb = rgbInput.value;
     if (
         rgb.match(
             /^rgb\((((((((1?[1-9]?\d)|10\d|(2[0-4]\d)|25[0-5]),\s?)){2}|((((1?[1-9]?\d)|10\d|(2[0-4]\d)|25[0-5])\s)){2})((1?[1-9]?\d)|10\d|(2[0-4]\d)|25[0-5]))|((((([1-9]?\d(\.\d+)?)|100|(\.\d+))%,\s?){2}|((([1-9]?\d(\.\d+)?)|100|(\.\d+))%\s){2})(([1-9]?\d(\.\d+)?)|100|(\.\d+))%))\)$/i
         )
     ) {
-        document.getElementById('rgb-display').style.backgroundColor = rgb;
-        document.getElementById('rgb-display').innerHTML = '';
+        rgbDisplay.style.backgroundColor = rgb;
+        rgbDisplay.innerHTML = '';
         // To Hex
         let sep = rgb.indexOf(',') > -1 ? ',' : ' ';
         rgb = rgb.substr(4).split(')')[0].split(sep);
@@ -176,11 +198,11 @@ function rgb() {
         if (g.length === 1) g = '0' + g;
         if (b.length === 1) b = '0' + b;
 
-        document.getElementById('rgb-hex').value = '#' + r + g + b;
+        rgbHex.value = '#' + r + g + b;
 
-        document.getElementById('rgb-hex-copy').disabled = false;
+        rgbHexCopy.disabled = false;
         // To HSL
-        rgb = document.getElementById('rgbInput').value;
+        rgb = rgbInput.value;
         sep = rgb.indexOf(',') > -1 ? ',' : ' ';
         rgb = rgb.substr(4).split(')')[0].split(sep);
 
@@ -214,29 +236,30 @@ function rgb() {
         s = +(s * 100).toFixed(1);
         l = +(l * 100).toFixed(1);
 
-        document.getElementById('rgb-hsl').value = 'hsl(' + h + ',' + s + '%,' + l + '%)';
+        rgbHsl.value = 'hsl(' + h + ',' + s + '%,' + l + '%)';
 
-        document.getElementById('rgb-hsl-copy').disabled = false;
+        rgbHslCopy.disabled = false;
     } else {
-        document.getElementById('rgb-display').innerHTML =
-            rgb === '' ? '' : '<i class="fas fa-times" style="color:#bf4042;padding-bottom:5px;vertical-align:middle;display:inline-flex;padding-bottom:20px;font-size:25px;"></i>';
-        document.getElementById('rgb-display').style.backgroundColor = '';
-        document.getElementById('rgb-hex').value = '';
-        document.getElementById('rgb-hex-copy').disabled = true;
-        document.getElementById('rgb-hsl').value = '';
-        document.getElementById('rgb-hsl-copy').disabled = true;
+        rgbDisplay.innerHTML = rgb === '' ? '' : '<i class="fas fa-times" style="color:#bf4042;padding-bottom:5px;vertical-align:middle;display:inline-flex;padding-bottom:20px;font-size:25px;"></i>';
+        rgbDisplay.style.backgroundColor = '';
+        rgbHex.value = '';
+        rgbHexCopy.disabled = true;
+        rgbHsl.value = '';
+        rgbHslCopy.disabled = true;
     }
 }
 
 function hsl() {
-    let hsl = document.getElementById('hslInput').value;
+    hslHexCopy = document.getElementById('hsl-hex-copy');
+    hslRgbCopy = document.getElementById('hsl-rgb-copy');
+    let hsl = hslInput.value;
     if (
         hsl.match(
             /^hsl\(((((([12]?[1-9]?\d)|[12]0\d|(3[0-5]\d))(\.\d+)?)|(\.\d+))(deg)?|(0|0?\.\d+)turn|(([0-6](\.\d+)?)|(\.\d+))rad)((,\s?(([1-9]?\d(\.\d+)?)|100|(\.\d+))%){2}|(\s(([1-9]?\d(\.\d+)?)|100|(\.\d+))%){2})\)$/i
         )
     ) {
-        document.getElementById('hsl-display').style.backgroundColor = hsl;
-        document.getElementById('hsl-display').innerHTML = '';
+        hslDisplay.style.backgroundColor = hsl;
+        hslDisplay.innerHTML = '';
         // To Hex
         let sep = hsl.indexOf(',') > -1 ? ',' : ' ';
         hsl = hsl.substr(4).split(')')[0].split(sep);
@@ -293,11 +316,11 @@ function hsl() {
         if (g.length === 1) g = '0' + g;
         if (b.length === 1) b = '0' + b;
 
-        document.getElementById('hsl-hex').value = '#' + r + g + b;
+        hslHex.value = '#' + r + g + b;
 
-        document.getElementById('hsl-hex-copy').disabled = false;
+        hslHexCopy.disabled = false;
         // To RGB
-        hsl = document.getElementById('hslInput').value;
+        hsl = hslInput.value;
         sep = hsl.indexOf(',') > -1 ? ',' : ' ';
         hsl = hsl.substr(4).split(')')[0].split(sep);
 
@@ -341,16 +364,15 @@ function hsl() {
         g = Math.round((g + m) * 255);
         b = Math.round((b + m) * 255);
 
-        document.getElementById('hsl-rgb').value = 'rgb(' + r + ',' + g + ',' + b + ')';
+        hslRgb.value = 'rgb(' + r + ',' + g + ',' + b + ')';
 
-        document.getElementById('hsl-rgb-copy').disabled = false;
+        hslRgbCopy.disabled = false;
     } else {
-        document.getElementById('hsl-display').innerHTML =
-            hsl === '' ? '' : '<i class="fas fa-times" style="color:#bf4042;padding-bottom:5px;vertical-align:middle;display:inline-flex;padding-bottom:20px;font-size:25px;"></i>';
-        document.getElementById('hsl-display').style.backgroundColor = '';
-        document.getElementById('hsl-hex').value = '';
-        document.getElementById('hsl-hex-copy').disabled = true;
-        document.getElementById('hsl-rgb').value = '';
-        document.getElementById('hsl-rgb-copy').disabled = true;
+        hslDisplay.innerHTML = hsl === '' ? '' : '<i class="fas fa-times" style="color:#bf4042;padding-bottom:5px;vertical-align:middle;display:inline-flex;padding-bottom:20px;font-size:25px;"></i>';
+        hslDisplay.style.backgroundColor = '';
+        hslHex.value = '';
+        hslHexCopy.disabled = true;
+        hslRgb.value = '';
+        hslRgbCopy.disabled = true;
     }
 }

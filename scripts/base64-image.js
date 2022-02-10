@@ -1,48 +1,59 @@
-let copyMessageTimeout, copyMessageTimeout2;
+let fileUploadButton = document.getElementById('file-upload');
+let fileUploadMessage = document.getElementById('file-message');
+let encodeButton = document.getElementById('encode');
+let clearButton = document.getElementById('clear');
+let b64Result = document.getElementById('b64-result');
+let b64CopyResult = document.getElementById('b64-copy-result');
+let b64OpenResult = document.getElementById('b64-open-result');
+let input = document.getElementById('string-input');
+let decodeButton = document.getElementById('decode');
+let clearButton2 = document.getElementById('clear2');
+let imageOutput = document.getElementById('image-output');
 
 /* Add event listeners */
-document.getElementById('file-upload').addEventListener('change', fileUpload);
-document.getElementById('encode').addEventListener('click', encode);
-document.getElementById('decode').addEventListener('click', decode);
-document.getElementById('clear').addEventListener('click', clear1);
-document.getElementById('clear2').addEventListener('click', clear2);
-document.getElementById('b64-copy-result').addEventListener('click', function () {
+fileUploadButton.addEventListener('change', fileUpload);
+encodeButton.addEventListener('click', encode);
+decodeButton.addEventListener('click', decode);
+clearButton.addEventListener('click', clear1);
+clearButton2.addEventListener('click', clear2);
+b64CopyResult.addEventListener('click', function () {
     copyText('b64-result', 'b64-copy-result');
 });
 
 let clearMessageTimeout, clearMessageTimeout2;
 
 function clear1() {
+    b64CopyResult = document.getElementById('b64-copy-result');
     validFile = 1;
-    document.getElementById('file-upload').value = '';
-    document.getElementById('file-message').innerHTML = '';
-    document.getElementById('b64-result').value = '';
-    document.getElementById('b64-copy-result').disabled = true;
-    document.getElementById('b64-open-result').disabled = true;
+    fileUploadButton.value = '';
+    fileUploadMessage.innerHTML = '';
+    b64Result.value = '';
+    b64CopyResult.disabled = true;
+    b64OpenResult.disabled = true;
     showAlert('Cleared!', 'success');
-    document.getElementById('clear').innerHTML = 'Cleared!';
+    clearButton.innerHTML = 'Cleared!';
     clearTimeout(clearMessageTimeout);
     clearMessageTimeout = setTimeout(function () {
-        document.getElementById('clear').innerHTML = 'Clear';
+        clearButton.innerHTML = 'Clear';
     }, 2000);
     resetResult('e');
 }
 
 function clear2() {
-    document.getElementById('stringToDecode').value = '';
-    document.getElementById('image-output').src = '';
+    input.value = '';
+    imageOutput.src = '';
     showAlert('Cleared!', 'success');
-    document.getElementById('clear2').innerHTML = 'Cleared!';
+    clearButton2.innerHTML = 'Cleared!';
     clearTimeout(clearMessageTimeout2);
     clearMessageTimeout = setTimeout(function () {
-        document.getElementById('clear2').innerHTML = 'Clear';
+        clearButton2.innerHTML = 'Clear';
     }, 2000);
     resetResult('d');
 }
 
 function fileUpload() {
-    let file = document.getElementById('file-upload');
-    let fileMsg = document.getElementById('file-message');
+    let file = fileUploadButton;
+    let fileMsg = fileUploadMessage;
     let fileName = file.value.split('\\').pop();
     fileMsg.innerHTML = 'Uploaded: ' + escapeHtml(fileName);
 }
@@ -63,12 +74,13 @@ function openBase64InNewTab(data, mimeType) {
 }
 
 function encode() {
-    let old_element = document.getElementById('b64-open-result');
-    let new_element = old_element.cloneNode(true);
-    old_element.parentNode.replaceChild(new_element, old_element);
+    let oldElement = document.getElementById('b64-open-result');
+    let newElement = oldElement.cloneNode(true);
+    oldElement.parentNode.replaceChild(newElement, oldElement);
+    b64OpenResult = document.getElementById('b64-open-result');
 
-    let image = document.getElementById('file-upload');
-    let output = document.getElementById('b64-result');
+    let image = fileUploadButton;
+    let output = b64Result;
     if (image.value) {
         let reader = new FileReader();
         reader.onloadend = function () {
@@ -77,11 +89,11 @@ function encode() {
             if (imageType === 'png' || imageType === 'jpg' || imageType === 'jpeg' || imageType === 'webp' || imageType === 'bmp' || imageType === 'gif') {
                 base64 = reader.result;
                 output.value = reader.result;
-                document.getElementById('b64-open-result').addEventListener('click', function () {
+                b64OpenResult.addEventListener('click', function () {
                     openBase64InNewTab(reader.result.replace(/data:image\/.*?;base64,/g, ''), 'image/' + imageType);
                 });
-                document.getElementById('b64-copy-result').disabled = false;
-                document.getElementById('b64-open-result').disabled = false;
+                b64CopyResult.disabled = false;
+                b64OpenResult.disabled = false;
                 showResult('e', 'success');
             } else {
                 showAlert('Invalid file type! (must be .png, .jpg, .jpeg, .webp, .bmp, or .gif)', 'error');
@@ -90,7 +102,7 @@ function encode() {
         };
         reader.readAsDataURL(image.files[0]);
     } else {
-        showAlert('Empty input!', 'error');
+        showAlert('No input!', 'error');
         showResult('e', 'error');
     }
 }
@@ -113,20 +125,19 @@ async function isBase64Image(string) {
 }
 
 async function displayImage(string) {
-    let image = document.getElementById('image-output');
+    let image = imageOutput;
     const valid = await isBase64Image(string);
     if (valid === true) {
         image.src = string;
     } else if (valid === false) {
-        document.getElementById('image-output').src = '';
+        imageOutput.src = '';
         showAlert('Malformed input!', 'error');
         showResult('d', 'error');
     }
 }
 
 function decode() {
-    let string = document.getElementById('stringToDecode').value;
-    let image = document.getElementById('image-output');
+    let string = input.value;
 
     if (/data:image\/.*?;base64,/.test(string) === false) {
         string = 'data:image/png;base64,' + string;

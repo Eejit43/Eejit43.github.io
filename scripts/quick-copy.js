@@ -1,35 +1,73 @@
+let clearClipboardButton = document.getElementById('clear-clipboard');
+let copyZws = document.getElementById('copy-zws');
+let copyNbsp = document.getElementById('copy-nbsp');
+let copyEms = document.getElementById('copy-ems');
+let copyEns = document.getElementById('copy-ens');
+let copyTs = document.getElementById('copy-ts');
+let clipboardWarning = document.getElementById('clipboard-warning');
+let copiedText = document.getElementById('copied-text');
+let selectClipboard = document.getElementById('select-clipboard');
+
 /* Add event listeners */
-document.getElementById('clearclipboard').addEventListener('click', clearClipboard);
-document.getElementById('copy-zws').addEventListener('click', function () {
-    copyVar('copy-zws', '​');
+clearClipboardButton.addEventListener('click', clearClipboard);
+copyZws.addEventListener('click', function () {
+    copyVar('copy-zws', '\u200b');
+    clipboardDisplay();
 });
-document.getElementById('copy-nbsp').addEventListener('click', function () {
+copyNbsp.addEventListener('click', function () {
     copyVar('copy-nbsp', '\u00a0');
+    clipboardDisplay();
 });
-document.getElementById('copy-ems').addEventListener('click', function () {
-    copyVar('copy-ems', ' ');
+copyEms.addEventListener('click', function () {
+    copyVar('copy-ems', '\u2003');
+    clipboardDisplay();
 });
-document.getElementById('copy-ens').addEventListener('click', function () {
-    copyVar('copy-ens', ' ');
+copyEns.addEventListener('click', function () {
+    copyVar('copy-ens', '\u2002');
+    clipboardDisplay();
 });
-document.getElementById('copy-ts').addEventListener('click', function () {
-    copyVar('copy-ts', ' ');
+copyTs.addEventListener('click', function () {
+    copyVar('copy-ts', '\u2009');
+    clipboardDisplay();
 });
-document.getElementById('selectclipboard').addEventListener('click', function () {
-    document.getElementById('copiedtext').select();
+selectClipboard.addEventListener('click', function () {
+    copiedText.select();
 });
+window.onfocus = onFocus;
+window.onblur = onBlur;
+
+let clipboardReadAllowed;
+
+function showWarning(message) {
+    if (clipboardWarning.innerHTML !== message) {
+        clipboardWarning.innerHTML = message;
+    }
+}
+
+function onFocus() {
+    if (clipboardReadAllowed) {
+        clipboardDisplay();
+    }
+}
+
+function onBlur() {
+    if (clipboardReadAllowed) {
+        showWarning('<i class="fas fa-exclamation-triangle"></i> Tab not focused, unable to read clipboard!<br>');
+    }
+}
 
 let clipboardTimeout, url;
 
 function clearClipboard() {
     clearTimeout(clipboardTimeout);
-    document.getElementById('clearclipboard').innerHTML = 'Cleared!';
+    clearClipboardButton.innerHTML = 'Cleared!';
     clipboardTimeout = setTimeout(function () {
-        document.getElementById('clearclipboard').innerHTML = 'Clear Clipboard';
+        clearClipboardButton.innerHTML = 'Clear Clipboard';
     }, 2000);
     navigator.clipboard.writeText('');
     url = undefined;
     showAlert('Cleared!', 'success');
+    clipboardDisplay();
 }
 
 navigator.permissions
@@ -39,8 +77,11 @@ navigator.permissions
     .then((result) => {
         if (result.state === 'granted' || result.state === 'prompt') {
             clipboardDisplay();
+            setInterval(clipboardDisplay, 1000);
+            clipboardReadAllowed = true;
         } else {
-            document.getElementById('clipboardwarning').innerHTML = '<i class="fas fa-exclamation-triangle"></i> Permission to read clipboard denied!<br>';
+            showWarning('<i class="fas fa-exclamation-triangle"></i> Permission to read clipboard denied!<br>');
+            clipboardReadAllowed = false;
         }
     });
 
@@ -49,51 +90,43 @@ async function clipboardDisplay() {
         .readText()
         .then((text) => {
             if (text.length === 0) {
-                document.getElementById('copiedtext').value = '';
-                document.getElementById('selectclipboard').disabled = true;
+                copiedText.value = '';
+                selectClipboard.disabled = true;
                 if (url === undefined) {
-                    document.getElementById('clipboardwarning').innerHTML = '<span style="color:#009c3f;"><i class="far fa-clipboard"></i> Your clipboard is empty!<br></span>';
-                    //console.log(url)
+                    showWarning('<span style="color:#009c3f;"><i class="far fa-clipboard"></i> Your clipboard is empty!<br></span>');
                 }
                 getImg();
             } else {
-                document.getElementById('copiedtext').value = text;
-                document.getElementById('clipboardwarning').innerHTML = '';
-                document.getElementById('selectclipboard').disabled = false;
+                copiedText.value = text;
+                showWarning('');
+                selectClipboard.disabled = false;
             }
         })
         .catch((err) => {
             if (err.toString().match(/focused/g)) {
-                document.getElementById('clipboardwarning').innerHTML = '<i class="fas fa-exclamation-triangle"></i> Tab not focused, unable to read clipboard!<br>';
+                showWarning('<i class="fas fa-exclamation-triangle"></i> Tab not focused, unable to read clipboard!<br>');
             } else if (err.toString().match(/denied/g)) {
-                document.getElementById('clipboardwarning').innerHTML = '<i class="fas fa-exclamation-triangle"></i> Permission to read clipboard denied!<br>';
+                showWarning('<i class="fas fa-exclamation-triangle"></i> Permission to read clipboard denied!<br>');
             } else {
-                document.getElementById('clipboardwarning').innerHTML = '<i class="fas fa-exclamation-triangle"></i> Unable to read clipboard!<br>';
+                showWarning('<i class="fas fa-exclamation-triangle"></i> Unable to read clipboard!<br>');
             }
         });
-    setTimeout(clipboardDisplay, 1000);
 }
 
 function getImg() {
     try {
-        navigator.permissions
-            .query({
-                name: 'clipboard-read',
-            })
-            .then((result) => {
-                if (result.state === 'granted' || result.state === 'prompt') {
-                    navigator.clipboard.read().then((data) => {
-                        for (let i = 0; i < data.length; i++) {
-                            data[i].getType('image/png').then((blob) => {
-                                // jshint ignore:line
-                                url = URL.createObjectURL(blob);
-                                document.getElementById(
-                                    'clipboardwarning'
-                                ).innerHTML = `<span style="color:#4b5663;"><i class="far fa-image"></i> Clipboard has image! (<a href='${url}' target="_blank">view</a>)<br></span>`;
-                            });
-                        }
+        navigator.clipboard
+            .read()
+            .then((data) => {
+                for (let i = 0; i < data.length; i++) {
+                    data[i].getType('image/png').then((blob) => {
+                        url = URL.createObjectURL(blob);
+                        clipboardWarning.innerHTML = `<span style="color:#4b5663;"><i class="far fa-image"></i> Clipboard has image! (<a href='${url}' target="_blank">view</a>)<br></span>`;
                     });
                 }
+            })
+            .catch((err) => {
+                url = undefined;
             });
     } catch (err) {
         url = undefined;
