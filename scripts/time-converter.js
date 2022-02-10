@@ -1,180 +1,105 @@
-let standardInput = document.getElementById('standard-input');
-let standardInputReset = document.getElementById('standard-input-reset');
-let unixInput = document.getElementById('unix-input');
-let unixInputReset = document.getElementById('unix-input-reset');
-let unixInputSwitch = document.getElementById('unix-input-switch');
-let unixOutputCopy = document.getElementById('unix-output-copy');
-let unixOutputSwitch = document.getElementById('unix-output-switch');
-let standardOutputCopy = document.getElementById('standard-output-copy');
-let standardRunStatus = document.getElementById('standard-runstatus');
-let standardOutput = document.getElementById('standard-output');
-let unixRunStatus = document.getElementById('unix-runstatus');
-let unixOutput = document.getElementById('unix-output');
+let inputType = document.getElementById('input-type');
+let input = document.getElementById('input');
+let resetButton = document.getElementById('reset');
+let message = document.getElementById('message');
+let outputType = document.getElementById('output-type');
+let output = document.getElementById('output');
+let copyOutput = document.getElementById('copy-output');
 
 /* Add event listeners */
-standardInput.addEventListener('input', updateUnixOutput);
-standardInputReset.addEventListener('click', updateStandardTime);
-unixInput.addEventListener('input', updateStandardOutput);
-unixInputReset.addEventListener('click', updateUnixTime);
-unixInputSwitch.addEventListener('click', switchUnixInput);
-unixOutputCopy.addEventListener('click', function () {
-    copyText('unix-output', 'unix-output-copy');
-});
-unixOutputSwitch.addEventListener('click', switchUnixOutput);
-standardOutputCopy.addEventListener('click', function () {
-    copyText('standard-output', 'standard-output-copy');
+inputType.addEventListener('change', convert);
+input.addEventListener('input', convert);
+resetButton.addEventListener('click', reset);
+outputType.addEventListener('change', convert);
+copyOutput.addEventListener('click', function () {
+    copyText('output', 'copy-output');
 });
 
-let unixInputState = 1; // 1 = seconds, 2 = milliseconds
-let unixOutputState = 1; // 1 = seconds, 2 = milliseconds
-
-function updateStandardTime() {
-    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    let currentTime = new Date();
-    let date = currentTime.getDate();
-    let month = months[currentTime.getMonth()];
-    let year = currentTime.getFullYear();
-    let fullhours = currentTime.getHours();
-    let hours = ((fullhours + 11) % 12) + 1;
-    let minutes = currentTime.getMinutes();
-    let sec = currentTime.getSeconds();
-
-    if (minutes < 10) {
-        minutes = '0' + minutes;
-    }
-    if (sec < 10) {
-        sec = '0' + sec;
-    }
-
-    let timesuffix = fullhours >= 12 ? 'PM' : 'AM';
-
-    let output = month + ' ' + date + ', ' + year + ' ' + hours + ':' + minutes + ':' + sec + ' ' + timesuffix;
-
-    standardInput.value = output;
-
-    updateUnixOutput();
+function reset() {
+    input.value = '';
+    output.value = '';
+    message.innerHTML = '';
+    inputType.value = 7;
+    outputType.value = 5;
+    copyOutput.disabled = true;
+    showAlert('Reset!', 'success');
 }
 
-function updateUnixOutput() {
-    let standardtime = standardInput.value;
-    let valid = new Date(standardtime).getTime() > 0;
-    if (standardtime.length === 0) {
-        standardRunStatus.style.color = 'dimgray';
-        standardRunStatus.className = 'fas fa-arrow-down';
-        unixOutput.value = '';
-        unixOutputCopy.disabled = true;
-        unixOutputSwitch.disabled = true;
-    } else if (valid === false) {
-        standardRunStatus.style.color = '#bf4042';
-        standardRunStatus.className = 'fas fa-times';
-        unixOutput.value = '';
-        unixOutputCopy.disabled = true;
-        unixOutputSwitch.disabled = true;
+math.createUnit('nauticalmile', { definition: '1852 meter', aliases: ['nmile', 'nauticalm'] });
+math.createUnit('nanometer', { definition: '0.001 micrometer', override: true });
+
+function convert() {
+    if (/^-?([0-9]\d*)(\.\d*|,\d*)*$/g.test(input.value) || /^-?\d*\.\d+$/g.test(input.value)) {
+        let inputNumber = Number(input.value.replace(/,/g, '').replace(/-\./g, '-0.').replace(/\.$/g, ''));
+
+        if (inputType.value === '1') {
+            inputTypeName = 'nanoseconds';
+        } else if (inputType.value === '2') {
+            inputTypeName = 'microseconds';
+        } else if (inputType.value === '3') {
+            inputTypeName = 'milliseconds';
+        } else if (inputType.value === '4') {
+            inputTypeName = 'seconds';
+        } else if (inputType.value === '5') {
+            inputTypeName = 'minutes';
+        } else if (inputType.value === '6') {
+            inputTypeName = 'hours';
+        } else if (inputType.value === '7') {
+            inputTypeName = 'days';
+        } else if (inputType.value === '8') {
+            inputTypeName = 'weeks';
+        } else if (inputType.value === '9') {
+            inputTypeName = 'months';
+        } else if (inputType.value === '10') {
+            inputTypeName = 'years';
+        } else if (inputType.value === '11') {
+            inputTypeName = 'decades';
+        } else if (inputType.value === '12') {
+            inputTypeName = 'centuries';
+        } else if (inputType.value === '13') {
+            inputTypeName = 'millennia';
+        }
+
+        if (outputType.value === '1') {
+            outputTypeName = 'nanoseconds';
+        } else if (outputType.value === '2') {
+            outputTypeName = 'microseconds';
+        } else if (outputType.value === '3') {
+            outputTypeName = 'milliseconds';
+        } else if (outputType.value === '4') {
+            outputTypeName = 'seconds';
+        } else if (outputType.value === '5') {
+            outputTypeName = 'minutes';
+        } else if (outputType.value === '6') {
+            outputTypeName = 'hours';
+        } else if (outputType.value === '7') {
+            outputTypeName = 'days';
+        } else if (outputType.value === '8') {
+            outputTypeName = 'weeks';
+        } else if (outputType.value === '9') {
+            outputTypeName = 'months';
+        } else if (outputType.value === '10') {
+            outputTypeName = 'years';
+        } else if (outputType.value === '11') {
+            outputTypeName = 'decades';
+        } else if (outputType.value === '12') {
+            outputTypeName = 'centuries';
+        } else if (outputType.value === '13') {
+            outputTypeName = 'millennia';
+        }
+
+        message.innerHTML = '';
+        output.value = math
+            .number(math.format(math.evaluate(`${input.value} ${inputTypeName} to ${outputTypeName}`), { notation: 'fixed', precision: 15 }).replace(/[^0-9-.]/g, ''))
+            .toLocaleString(undefined, { maximumFractionDigits: 12 });
+        copyOutput.disabled = false;
     } else {
-        standardRunStatus.style.color = '#009c3f';
-        standardRunStatus.className = 'fas fa-arrow-down';
-        let unixtime = new Date(standardtime).getTime();
-        if (unixOutputState === 1) {
-            unixtime = unixtime.toString().slice(0, -3);
-        }
-        unixOutput.value = unixtime;
-        unixOutputCopy.disabled = false;
-        unixOutputSwitch.disabled = false;
-    }
-}
-
-function updateUnixTime() {
-    let output = new Date().getTime();
-    if (unixInputState === 1) {
-        output = output.toString().slice(0, -3);
-    }
-
-    unixInput.value = output;
-
-    updateStandardOutput();
-}
-
-function updateStandardOutput() {
-    let standardtime = parseInt(unixInput.value, 10) * 1000;
-    let valid = new Date(standardtime).getTime() > 0;
-    if (unixInput.value.length === 0) {
-        unixRunStatus.style.color = 'dimgray';
-        unixRunStatus.className = 'fas fa-arrow-down';
-        standardOutput.value = '';
-        standardOutputCopy.disabled = true;
-    } else if (valid === false) {
-        unixRunStatus.style.color = '#bf4042';
-        unixRunStatus.className = 'fas fa-times';
-        standardOutput.value = '';
-        standardOutputCopy.disabled = true;
-    } else {
-        unixRunStatus.style.color = '#009c3f';
-        unixRunStatus.className = 'fas fa-arrow-down';
-        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-        let time = new Date(parseInt(standardtime));
-        let time2 = new Date(parseInt(standardtime.toString().slice(0, -3)));
-        if (unixInputState === 2) {
-            time = new Date(parseInt(standardtime.toString().slice(0, -3)));
-        }
-        let date = time.getDate();
-        let month = months[time.getMonth()];
-        let year = time.getFullYear();
-        let fullhours = time.getHours();
-        let hours = ((fullhours + 11) % 12) + 1;
-        let minutes = time.getMinutes();
-        let sec = time.getSeconds();
-        let msec = time2.getMilliseconds();
-
-        if (minutes < 10) {
-            minutes = '0' + minutes;
-        }
-        if (sec < 10) {
-            sec = '0' + sec;
-        }
-
-        let timesuffix = fullhours >= 12 ? 'PM' : 'AM';
-        let output;
-        if (unixInputState === 2) {
-            output = month + ' ' + date + ', ' + year + ' ' + hours + ':' + minutes + ':' + sec + '.' + msec + ' ' + timesuffix;
+        if (input.value !== '') {
+            message.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Input is not a number!<br>';
         } else {
-            output = month + ' ' + date + ', ' + year + ' ' + hours + ':' + minutes + ':' + sec + ' ' + timesuffix;
+            message.innerHTML = '';
         }
-        standardOutput.value = output;
-        standardOutputCopy.disabled = false;
+        output.value = '';
+        copyOutput.disabled = true;
     }
 }
-
-function switchUnixInput() {
-    let title = document.getElementById('unix-input-title');
-    let button = unixInputSwitch;
-    if (unixInputState === 1) {
-        unixInputState = 2;
-        title.innerHTML = 'UNIX Time (milliseconds):';
-        button.innerHTML = 'Switch to seconds';
-    } else if (unixInputState === 2) {
-        unixInputState = 1;
-        title.innerHTML = 'UNIX Time (seconds):';
-        button.innerHTML = 'Switch to milliseconds';
-    }
-    updateStandardOutput();
-}
-
-function switchUnixOutput() {
-    let title = document.getElementById('unix-output-title');
-    let button = unixOutputSwitch;
-    if (unixOutputState === 1) {
-        unixOutputState = 2;
-        title.innerHTML = 'UNIX Time (milliseconds):';
-        button.innerHTML = 'Switch to seconds';
-    } else if (unixOutputState === 2) {
-        unixOutputState = 1;
-        title.innerHTML = 'UNIX Time (seconds):';
-        button.innerHTML = 'Switch to milliseconds';
-    }
-    updateUnixOutput();
-}
-
-updateStandardTime();
-updateUnixOutput();
-updateUnixTime();
-updateStandardOutput();
