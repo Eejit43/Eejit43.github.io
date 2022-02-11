@@ -100,7 +100,7 @@ function timer() {
     timerDisplay.innerHTML = `${hoursuntil}h ${minutesuntil}m ${secondsuntil}s`;
 
     if (distance <= 0) {
-        timerDisplay.innerHTML = 'Ended!';
+        timerDisplay.innerHTML = 'Ended! <i class="fa-solid fa-bell fa-shake" style="color: gold"></i>';
         audio.play();
         audio.loop = true;
         clearInterval(runTimer);
