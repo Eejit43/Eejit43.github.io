@@ -18,12 +18,12 @@ html {
 }
 
 a {
-    color: #007bff;
+    color: #1777ca;
     text-decoration: none;
 }
 
 a:hover {
-    color: #0957b3;
+    color: #145791;
     text-decoration: none;
 }
 
@@ -192,6 +192,10 @@ body {
     color: #28497d;
     font-size: 20px;
     font-weight: 500;
+}
+
+.link404:hover {
+    color: #1d3d70;
 }
 
 .toolstable {
