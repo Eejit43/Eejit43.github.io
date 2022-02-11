@@ -87,7 +87,7 @@ function convert() {
         copyOutput.disabled = false;
     } else {
         if (input.value !== '') {
-            message.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Input is not a number!<br>';
+            message.innerHTML = '<i class="fa-solid fa-exclamation-triangle"></i> Input is not a number!<br>';
         } else {
             message.innerHTML = '';
         }

@@ -80,7 +80,7 @@ function rollBall() {
         }, 2000);
         result.innerHTML = `<hr>You asked: <span style="font-weight:500;color:dimgray;font-size:16px;">${escapeHtml(
             userQuestion.value
-        )}</span><br>Response: <span style="font-weight:500;color:#ffba24;font-size:16px;">Predicting... <i class="fas fa-spinner fa-pulse"></i></span>`;
+        )}</span><br>Response: <span style="font-weight:500;color:#ffba24;font-size:16px;">Predicting... <i class="fa-solid fa-spinner fa-spin-pulse"></i></span>`;
         setTimeout(function () {
             result.innerHTML = `<hr>You asked: <span style="font-weight:500;color:dimgray;font-size:16px;">${escapeHtml(
                 userQuestion.value

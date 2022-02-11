@@ -47,7 +47,7 @@ function showResult(id, type, color = undefined, icon = undefined) {
         icon = 'times';
     }
     element.style.color = color;
-    element.className = 'fas fa-' + icon;
+    element.className = 'fa-solid fa-' + icon;
     setTimeout(function () {
         element.style.color = '';
         element.className = '';

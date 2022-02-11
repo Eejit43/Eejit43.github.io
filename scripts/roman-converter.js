@@ -91,14 +91,14 @@ function convertInteger() {
         romanOutputCopy.disabled = false;
         romanOutputCopy2.disabled = false;
         integerArrow.style.color = '#009c3f';
-        integerArrow.className = 'fas fa-arrow-right';
+        integerArrow.className = 'fa-solid fa-arrow-right';
     } else {
         showAlert('Value must be greater than 0!', 'error');
         romanOutput.innerHTML = '​';
         romanOutputCopy.disabled = true;
         romanOutputCopy2.disabled = true;
         integerArrow.style.color = '#bf4042';
-        integerArrow.className = 'fas fa-times';
+        integerArrow.className = 'fa-solid fa-times';
     }
 }
 
@@ -110,7 +110,7 @@ function resetInteger() {
     integerConvert.disabled = true;
     integerReset.disabled = true;
     integerArrow.style.color = 'dimgray';
-    integerArrow.className = 'fas fa-arrow-right';
+    integerArrow.className = 'fa-solid fa-arrow-right';
     romanOutput.textContent = '​';
     romanOutputCopy.disabled = true;
     romanOutputCopy2.disabled = true;
@@ -131,13 +131,13 @@ function convertRoman() {
         integerOutput.value = deromanize(input);
         integerOutputCopy.disabled = false;
         romanArrow.style.color = '#009c3f';
-        romanArrow.className = 'fas fa-arrow-right';
+        romanArrow.className = 'fa-solid fa-arrow-right';
     } else {
         showAlert('Invalid roman numeral!', 'error');
         integerOutput.value = '';
         integerOutputCopy.disabled = true;
         romanArrow.style.color = '#bf4042';
-        romanArrow.className = 'fas fa-times';
+        romanArrow.className = 'fa-solid fa-times';
     }
 }
 
@@ -148,7 +148,7 @@ function resetRoman() {
     romanConvert.disabled = true;
     romanReset.disabled = true;
     romanArrow.style.color = 'dimgray';
-    romanArrow.className = 'fas fa-arrow-right';
+    romanArrow.className = 'fa-solid fa-arrow-right';
     integerOutput.value = '';
     integerOutputCopy.disabled = true;
 }

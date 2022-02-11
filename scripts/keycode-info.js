@@ -47,11 +47,11 @@ function copyKeycodeInfo(variable) {
 }
 
 function onBlur() {
-    ready.innerHTML = '<span style="color:#FF5555"><i class="fas fa-exclamation-triangle"></i> Focus the tab in order for keys to be identified!</span>';
+    ready.innerHTML = '<span style="color:#FF5555"><i class="fa-solid fa-exclamation-triangle"></i> Focus the tab in order for keys to be identified!</span>';
 }
 
 function onFocus() {
-    ready.innerHTML = '<span style="color:#009c3f"><i class="fas fa-check"></i> Ready to get key information!</span>';
+    ready.innerHTML = '<span style="color:#009c3f"><i class="fa-solid fa-check"></i> Ready to get key information!</span>';
 }
 
 function keyInfo(event) {

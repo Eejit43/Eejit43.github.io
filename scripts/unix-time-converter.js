@@ -60,19 +60,19 @@ function updateUnixOutput() {
     let valid = new Date(standardtime).getTime() > 0;
     if (standardtime.length === 0) {
         standardRunStatus.style.color = 'dimgray';
-        standardRunStatus.className = 'fas fa-arrow-down';
+        standardRunStatus.className = 'fa-solid fa-arrow-down';
         unixOutput.value = '';
         unixOutputCopy.disabled = true;
         unixOutputSwitch.disabled = true;
     } else if (valid === false) {
         standardRunStatus.style.color = '#bf4042';
-        standardRunStatus.className = 'fas fa-times';
+        standardRunStatus.className = 'fa-solid fa-times';
         unixOutput.value = '';
         unixOutputCopy.disabled = true;
         unixOutputSwitch.disabled = true;
     } else {
         standardRunStatus.style.color = '#009c3f';
-        standardRunStatus.className = 'fas fa-arrow-down';
+        standardRunStatus.className = 'fa-solid fa-arrow-down';
         let unixtime = new Date(standardtime).getTime();
         if (unixOutputState === 1) {
             unixtime = unixtime.toString().slice(0, -3);
@@ -99,17 +99,17 @@ function updateStandardOutput() {
     let valid = new Date(standardtime).getTime() > 0;
     if (unixInput.value.length === 0) {
         unixRunStatus.style.color = 'dimgray';
-        unixRunStatus.className = 'fas fa-arrow-down';
+        unixRunStatus.className = 'fa-solid fa-arrow-down';
         standardOutput.value = '';
         standardOutputCopy.disabled = true;
     } else if (valid === false) {
         unixRunStatus.style.color = '#bf4042';
-        unixRunStatus.className = 'fas fa-times';
+        unixRunStatus.className = 'fa-solid fa-times';
         standardOutput.value = '';
         standardOutputCopy.disabled = true;
     } else {
         unixRunStatus.style.color = '#009c3f';
-        unixRunStatus.className = 'fas fa-arrow-down';
+        unixRunStatus.className = 'fa-solid fa-arrow-down';
         const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         let time = new Date(parseInt(standardtime));
         let time2 = new Date(parseInt(standardtime.toString().slice(0, -3)));

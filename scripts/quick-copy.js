@@ -52,7 +52,7 @@ function onFocus() {
 
 function onBlur() {
     if (clipboardReadAllowed) {
-        showWarning('<i class="fas fa-exclamation-triangle"></i> Tab not focused, unable to read clipboard!<br>');
+        showWarning('<i class="fa-solid fa-exclamation-triangle"></i> Tab not focused, unable to read clipboard!<br>');
     }
 }
 
@@ -80,7 +80,7 @@ navigator.permissions
             setInterval(clipboardDisplay, 1000);
             clipboardReadAllowed = true;
         } else {
-            showWarning('<i class="fas fa-exclamation-triangle"></i> Permission to read clipboard denied!<br>');
+            showWarning('<i class="fa-solid fa-exclamation-triangle"></i> Permission to read clipboard denied!<br>');
             clipboardReadAllowed = false;
         }
     });
@@ -104,11 +104,11 @@ async function clipboardDisplay() {
         })
         .catch((err) => {
             if (err.toString().match(/focused/g)) {
-                showWarning('<i class="fas fa-exclamation-triangle"></i> Tab not focused, unable to read clipboard!<br>');
+                showWarning('<i class="fa-solid fa-exclamation-triangle"></i> Tab not focused, unable to read clipboard!<br>');
             } else if (err.toString().match(/denied/g)) {
-                showWarning('<i class="fas fa-exclamation-triangle"></i> Permission to read clipboard denied!<br>');
+                showWarning('<i class="fa-solid fa-exclamation-triangle"></i> Permission to read clipboard denied!<br>');
             } else {
-                showWarning('<i class="fas fa-exclamation-triangle"></i> Unable to read clipboard!<br>');
+                showWarning('<i class="fa-solid fa-exclamation-triangle"></i> Unable to read clipboard!<br>');
             }
         });
 }

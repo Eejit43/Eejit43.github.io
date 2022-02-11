@@ -84,7 +84,7 @@ function resetDecimal() {
     decimalConvert.disabled = true;
     decimalReset.disabled = true;
     decimalArrow.style.color = 'dimgray';
-    decimalArrow.className = 'fas fa-arrow-right';
+    decimalArrow.className = 'fa-solid fa-arrow-right';
     scientificOutput.value = '';
     scientificOutputCopy.innerHTML = 'Copy scientific e notation';
     scientificOutputCopy2.innerHTML = 'Copy scientific notation';
@@ -100,7 +100,7 @@ function resetScientific() {
     scientificConvert.disabled = true;
     scientificReset.disabled = true;
     scientificArrow.style.color = 'dimgray';
-    scientificArrow.className = 'fas fa-arrow-right';
+    scientificArrow.className = 'fa-solid fa-arrow-right';
     decimalOutput.value = '';
     decimalOutputCopy.innerHTML = 'Copy';
     decimalOutputCopy.disabled = true;
@@ -115,13 +115,13 @@ function convertDecimal() {
         scientificOutputCopy.disabled = false;
         scientificOutputCopy2.disabled = false;
         decimalArrow.style.color = '#009c3f';
-        decimalArrow.className = 'fas fa-arrow-right';
+        decimalArrow.className = 'fa-solid fa-arrow-right';
     } else {
         scientificOutput.value = '';
         scientificOutputCopy.disabled = true;
         scientificOutputCopy2.disabled = true;
         decimalArrow.style.color = '#bf4042';
-        decimalArrow.className = 'fas fa-times';
+        decimalArrow.className = 'fa-solid fa-times';
         showAlert('Invalid number!', 'error');
     }
 }
@@ -135,7 +135,7 @@ function convertScientific() {
         });
         decimalOutputCopy.disabled = false;
         scientificArrow.style.color = '#009c3f';
-        scientificArrow.className = 'fas fa-arrow-right';
+        scientificArrow.className = 'fa-solid fa-arrow-right';
     } else if (/^[+-]?\d(\.\d+)? ?[xX\*] ?10\^[+-]?\d+$/g.test(scientificInput.value.trim())) {
         decimalOutput.value = math.format(
             math.bignumber(
@@ -157,12 +157,12 @@ function convertScientific() {
         );
         decimalOutputCopy.disabled = false;
         scientificArrow.style.color = '#009c3f';
-        scientificArrow.className = 'fas fa-arrow-right';
+        scientificArrow.className = 'fa-solid fa-arrow-right';
     } else {
         decimalOutput.value = '';
         decimalOutputCopy.disabled = true;
         scientificArrow.style.color = '#bf4042';
-        scientificArrow.className = 'fas fa-times';
+        scientificArrow.className = 'fa-solid fa-times';
         showAlert('Invalid scientific notation!', 'error');
     }
 }
