@@ -1,8 +1,8 @@
 @import '/styles/tooltip-styles.css';
 
-/* For Font Awesome icons, see: https://fontawesome.com/v5.15/icons?d=gallery&p=2&m=free */
+/* For Font Awesome icons, see: https://fontawesome.com/v6/search?m=free&s=solid */
 
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+/* @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'); */
 
 @import url('https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css');
 
@@ -31,7 +31,7 @@ nav {
     align-items: center;
     background-color: #1b1e24 !important;
     display: flex;
-    font-size: 22px;
+    font-size: 20px;
     justify-content: space-between;
     left: 0;
     padding: 35px 25px;
