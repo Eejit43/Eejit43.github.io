@@ -97,7 +97,7 @@ nav {
 .timer,
 .timer:hover {
     color: #0b5394;
-    font-weight: 600;
+    font-weight: 700;
     margin-right: 100px;
 }
 
@@ -110,7 +110,6 @@ nav {
 
 .source {
     color: dimgray;
-    font-weight: 600;
 }
 
 .source:hover {

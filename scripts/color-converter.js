@@ -166,8 +166,7 @@ function hex() {
 
         hexHslCopy.disabled = false;
     } else {
-        hexDisplay.innerHTML =
-            hex === '' ? '' : '<i class="fa-solid fa-times" style="color:#bf4042;padding-bottom:5px;vertical-align:middle;display:inline-flex;padding-bottom:20px;font-size:25px;"></i>';
+        hexDisplay.innerHTML = hex === '' ? '' : '<i class="fa-solid fa-xmark" style="color: #bf4042; position: fixed; font-size: 30px; transform: translateX(-9.5px)"></i>';
         hexDisplay.style.backgroundColor = '';
         hexRgb.value = '';
         hexRgbCopy.disabled = true;
@@ -241,8 +240,7 @@ function rgb() {
 
         rgbHslCopy.disabled = false;
     } else {
-        rgbDisplay.innerHTML =
-            rgb === '' ? '' : '<i class="fa-solid fa-times" style="color:#bf4042;padding-bottom:5px;vertical-align:middle;display:inline-flex;padding-bottom:20px;font-size:25px;"></i>';
+        rgbDisplay.innerHTML = rgb === '' ? '' : '<i class="fa-solid fa-xmark" style="color: #bf4042; position: fixed; font-size: 30px; transform: translateX(-9.5px)"></i>';
         rgbDisplay.style.backgroundColor = '';
         rgbHex.value = '';
         rgbHexCopy.disabled = true;
@@ -370,8 +368,7 @@ function hsl() {
 
         hslRgbCopy.disabled = false;
     } else {
-        hslDisplay.innerHTML =
-            hsl === '' ? '' : '<i class="fa-solid fa-times" style="color:#bf4042;padding-bottom:5px;vertical-align:middle;display:inline-flex;padding-bottom:20px;font-size:25px;"></i>';
+        hslDisplay.innerHTML = hsl === '' ? '' : '<i class="fa-solid fa-xmark" style="color: #bf4042; position: fixed; font-size: 30px; transform: translateX(-9.5px)"></i>';
         hslDisplay.style.backgroundColor = '';
         hslHex.value = '';
         hslHexCopy.disabled = true;

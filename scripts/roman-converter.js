@@ -98,7 +98,7 @@ function convertInteger() {
         romanOutputCopy.disabled = true;
         romanOutputCopy2.disabled = true;
         integerArrow.style.color = '#bf4042';
-        integerArrow.className = 'fa-solid fa-times';
+        integerArrow.className = 'fa-solid fa-xmark';
     }
 }
 
@@ -137,7 +137,7 @@ function convertRoman() {
         integerOutput.value = '';
         integerOutputCopy.disabled = true;
         romanArrow.style.color = '#bf4042';
-        romanArrow.className = 'fa-solid fa-times';
+        romanArrow.className = 'fa-solid fa-xmark';
     }
 }
 

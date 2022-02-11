@@ -66,7 +66,7 @@ function updateUnixOutput() {
         unixOutputSwitch.disabled = true;
     } else if (valid === false) {
         standardRunStatus.style.color = '#bf4042';
-        standardRunStatus.className = 'fa-solid fa-times';
+        standardRunStatus.className = 'fa-solid fa-xmark';
         unixOutput.value = '';
         unixOutputCopy.disabled = true;
         unixOutputSwitch.disabled = true;
@@ -104,7 +104,7 @@ function updateStandardOutput() {
         standardOutputCopy.disabled = true;
     } else if (valid === false) {
         unixRunStatus.style.color = '#bf4042';
-        unixRunStatus.className = 'fa-solid fa-times';
+        unixRunStatus.className = 'fa-solid fa-xmark';
         standardOutput.value = '';
         standardOutputCopy.disabled = true;
     } else {

@@ -121,7 +121,7 @@ function convertDecimal() {
         scientificOutputCopy.disabled = true;
         scientificOutputCopy2.disabled = true;
         decimalArrow.style.color = '#bf4042';
-        decimalArrow.className = 'fa-solid fa-times';
+        decimalArrow.className = 'fa-solid fa-xmark';
         showAlert('Invalid number!', 'error');
     }
 }
@@ -162,7 +162,7 @@ function convertScientific() {
         decimalOutput.value = '';
         decimalOutputCopy.disabled = true;
         scientificArrow.style.color = '#bf4042';
-        scientificArrow.className = 'fa-solid fa-times';
+        scientificArrow.className = 'fa-solid fa-xmark';
         showAlert('Invalid scientific notation!', 'error');
     }
 }
