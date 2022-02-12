@@ -65,7 +65,7 @@
 .tooltip:after,
 [data-tooltip]:after {
     background-color: #000;
-    background-color: hsla(0, 0%, 20%, 0.9);
+    background-color: hsla(0, 0%, 17%, 0.9);
     border-radius: 5px;
     color: #fff;
     content: attr(data-tooltip);
@@ -94,7 +94,7 @@
 .tooltip:before,
 .tooltip-top:before {
     border-top-color: #000;
-    border-top-color: hsla(0, 0%, 20%, 0.9);
+    border-top-color: hsla(0, 0%, 17%, 0.9);
     margin-bottom: -12px;
     margin-left: -6px;
 }
@@ -135,7 +135,7 @@
 
 .tooltip-left:before {
     border-left-color: #000;
-    border-left-color: hsla(0, 0%, 20%, 0.9);
+    border-left-color: hsla(0, 0%, 17%, 0.9);
     border-top-color: transparent;
     margin-bottom: 0;
     margin-left: 0;
@@ -162,7 +162,7 @@
 
 .tooltip-bottom:before {
     border-bottom-color: #000;
-    border-bottom-color: hsla(0, 0%, 20%, 0.9);
+    border-bottom-color: hsla(0, 0%, 17%, 0.9);
     border-top-color: transparent;
     margin-bottom: 0;
     margin-top: -12px;
@@ -187,7 +187,7 @@
 
 .tooltip-right:before {
     border-right-color: #000;
-    border-right-color: hsla(0, 0%, 20%, 0.9);
+    border-right-color: hsla(0, 0%, 17%, 0.9);
     border-top-color: transparent;
     margin-bottom: 0;
     margin-left: -12px;
