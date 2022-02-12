@@ -88,7 +88,7 @@ async function getFromDate() {
                 let newArray = [];
                 for (let i = 0; i < events.length; i++) {
                     if (eventsRaw[i].flag !== null) {
-                        newArray.push(`– <img src="https://en.pronouns.page/flags/${eventsRaw[i].flag}.png" style="height: 1rem; border-radius: 0.18rem !important;"> ${events[i]}`);
+                        newArray.push(`– <img src="https://en.pronouns.page/flags/${eventsRaw[i].flag}.png" style="height: 1rem; border-radius: 0.18rem !important"> ${events[i]}`);
                     } else {
                         newArray.push(`– ${events[i]}`);
                     }
@@ -123,7 +123,7 @@ async function getCurrent() {
             let newArray = [];
             for (let i = 0; i < events.length; i++) {
                 if (eventsRaw[i].flag !== null) {
-                    newArray.push(`– <img src="https://en.pronouns.page/flags/${eventsRaw[i].flag}.png" style="height: 1rem; border-radius: 0.18rem !important;"> ${events[i]}`);
+                    newArray.push(`– <img src="https://en.pronouns.page/flags/${eventsRaw[i].flag}.png" style="height: 1rem; border-radius: 0.18rem !important"> ${events[i]}`);
                 } else {
                     newArray.push(`– ${events[i]}`);
                 }

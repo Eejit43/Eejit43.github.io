@@ -93,7 +93,7 @@ async function clipboardDisplay() {
                 copiedText.value = '';
                 selectClipboard.disabled = true;
                 if (url === undefined) {
-                    showWarning('<span style="color:#009c3f;"><i class="far fa-clipboard"></i> Your clipboard is empty!<br></span>');
+                    showWarning('<span style="color:#009c3f"><i class="far fa-clipboard"></i> Your clipboard is empty!<br></span>');
                 }
                 getImg();
             } else {
@@ -121,7 +121,7 @@ function getImg() {
                 for (let i = 0; i < data.length; i++) {
                     data[i].getType('image/png').then((blob) => {
                         url = URL.createObjectURL(blob);
-                        clipboardWarning.innerHTML = `<span style="color:#4b5663;"><i class="far fa-image"></i> Clipboard has image! (<a href='${url}' target="_blank">view</a>)<br></span>`;
+                        clipboardWarning.innerHTML = `<span style="color:#4b5663"><i class="far fa-image"></i> Clipboard has image! (<a href='${url}' target="_blank">view</a>)<br></span>`;
                     });
                 }
             })

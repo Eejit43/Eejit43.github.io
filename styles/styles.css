@@ -11,10 +11,10 @@
 html {
     background-color: #1f2229;
     /* Modified from https://www.gradientmagic.com/collection/basicgrid/gradient/1589410524740 */
-    background-image: repeating-linear-gradient(90deg, hsla(280, 0%, 67%, 0.06) 0px, hsla(280, 0%, 67%, 0.06) 1px, transparent 1px, transparent 96px),
-        repeating-linear-gradient(0deg, hsla(280, 0%, 67%, 0.06) 0px, hsla(280, 0%, 67%, 0.06) 1px, transparent 1px, transparent 96px),
-        repeating-linear-gradient(0deg, hsla(280, 0%, 67%, 0.09) 0px, hsla(280, 0%, 67%, 0.09) 1px, transparent 1px, transparent 12px),
-        repeating-linear-gradient(90deg, hsla(280, 0%, 67%, 0.09) 0px, hsla(280, 0%, 67%, 0.09) 1px, transparent 1px, transparent 12px), linear-gradient(90deg, rgb(31, 34, 41), rgb(31, 34, 41));
+    background-image: repeating-linear-gradient(90deg, hsla(280, 0%, 67%, 0.06) 0, hsla(280, 0%, 67%, 0.06) 1px, transparent 1px, transparent 96px),
+        repeating-linear-gradient(0deg, hsla(280, 0%, 67%, 0.06) 0, hsla(280, 0%, 67%, 0.06) 1px, transparent 1px, transparent 96px),
+        repeating-linear-gradient(0deg, hsla(280, 0%, 67%, 0.09) 0, hsla(280, 0%, 67%, 0.09) 1px, transparent 1px, transparent 12px),
+        repeating-linear-gradient(90deg, hsla(280, 0%, 67%, 0.09) 0, hsla(280, 0%, 67%, 0.09) 1px, transparent 1px, transparent 12px), linear-gradient(90deg, rgb(31, 34, 41), rgb(31, 34, 41));
 }
 
 a {
@@ -94,16 +94,18 @@ nav {
     }
 }
 
-.timer,
-.timer:hover {
-    color: #0b5394;
+.timer {
+    color: #145791;
     font-weight: 700;
     margin-right: 100px;
 }
 
+.timer:hover {
+    color: #0e4474;
+}
+
 @media only screen and (max-width: 600px) {
-    .timer,
-    .timer:hover {
+    .timer {
         margin-right: 20px;
     }
 }
@@ -229,7 +231,7 @@ body {
 }
 
 .tooltext {
-    color: #0b5394;
+    color: #145791;
     font-size: 20px;
     font-weight: 700;
     line-height: 200%;
@@ -554,14 +556,14 @@ button:hover:not(.fakeinput) {
     border: none;
     border-bottom: 1px solid dimgray;
     border-radius: 0;
-    padding-bottom: 0px;
     color: dimgray;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 50px;
     font-weight: 500;
+    overflow: hidden;
+    padding-bottom: 0;
     text-align: right;
     width: 3.5rem;
-    overflow: hidden;
 }
 
 .invisibleinput[type='text']:focus:not(input[type='file']):not(input[type='checkbox']),
@@ -631,7 +633,7 @@ button:hover:not(.fakeinput) {
 .color-box {
     display: flex;
     height: 10px;
-    margin: 15px 0px;
+    margin: 15px 0;
     width: 100%;
 }
 
@@ -703,6 +705,6 @@ hr {
     border: 1px solid currentColor;
     border-radius: 3px;
     color: dimgray;
-    height: 0px;
+    height: 0;
     width: 100%;
 }

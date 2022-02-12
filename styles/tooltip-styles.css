@@ -66,6 +66,7 @@
 [data-tooltip]:after {
     background-color: #000;
     background-color: hsla(0, 0%, 20%, 0.9);
+    border-radius: 5px;
     color: #fff;
     content: attr(data-tooltip);
     font-size: 14px;
