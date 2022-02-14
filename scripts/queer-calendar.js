@@ -96,7 +96,7 @@ async function getFromDate() {
                 if (newArray.length === 0) {
                     eventsDisplay.innerHTML = 'No events found on this date!';
                 } else {
-                    eventsDisplay.innerHTML = newArray.join('<br>');
+                    eventsDisplay.innerHTML = newArray.join('<br />');
                 }
             })
             .catch((err) => {});
@@ -131,7 +131,7 @@ async function getCurrent() {
             if (newArray.length === 0) {
                 eventsDisplay.innerHTML = 'No events found on this date!';
             } else {
-                eventsDisplay.innerHTML = newArray.join('<br>');
+                eventsDisplay.innerHTML = newArray.join('<br />');
             }
         })
         .catch((err) => {});

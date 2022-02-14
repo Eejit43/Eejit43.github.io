@@ -11,7 +11,7 @@ function getJoke() {
             return response.json();
         })
         .then((data) => {
-            joke.innerHTML = data.joke ? data.joke.replace(/\n/g, '<br>') : `${data.setup.replace(/\n/g, '<br>')}<br>${data.delivery.replace(/\n/g, '<br>')}`;
+            joke.innerHTML = data.joke ? data.joke.replace(/\n/g, '<br />') : `${data.setup.replace(/\n/g, '<br />')}<br />${data.delivery.replace(/\n/g, '<br />')}`;
         })
         .catch((err) => {});
 }

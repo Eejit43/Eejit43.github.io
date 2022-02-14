@@ -55,7 +55,7 @@ function getData(position) {
             }
             table = table.concat('</tbody</table>');
 
-            let output = `Based on information at latitide ${latitude}, longitude ${longitude}, ${distance} away.<br>Updated on ${updated}.<br><br>The tide is currently ${state}.<br>${next_extremes}.<br><br>${table}`;
+            let output = `Based on information at latitide ${latitude}, longitude ${longitude}, ${distance} away.<br />Updated on ${updated}.<br /><br />The tide is currently ${state}.<br />${next_extremes}.<br /><br />${table}`;
 
             result.innerHTML = output;
         })

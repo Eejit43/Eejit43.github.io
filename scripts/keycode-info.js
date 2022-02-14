@@ -70,16 +70,16 @@ function keyInfo(event) {
     keyLocation.innerHTML = event.location;
     keyLocationVal = event.location;
     if (String(event.location) === '0') {
-        keyLocation.innerHTML = '0<br>(general)';
+        keyLocation.innerHTML = '0<br />(general)';
     }
     if (String(event.location) === '1') {
-        keyLocation.innerHTML = '1<br>(left)';
+        keyLocation.innerHTML = '1<br />(left)';
     }
     if (String(event.location) === '2') {
-        keyLocation.innerHTML = '2<br>(right)';
+        keyLocation.innerHTML = '2<br />(right)';
     }
     if (String(event.location) === '3') {
-        keyLocation.innerHTML = '3<br>(numpad)';
+        keyLocation.innerHTML = '3<br />(numpad)';
     }
     keyCode.innerHTML = event.code;
     keyCodeVal = event.code;
