@@ -29,55 +29,23 @@ function getData(position) {
         })
         .then((pre_data) => {
             let data = pre_data.data[0];
-            let alerts = pre_data.alerts;
-            let latitude = data.lat;
-            let longitude = data.lon;
-            let sunrise = moment.utc(data.sunrise, 'HH:mm').local().format('hh:mm A');
-            let sunset = moment.utc(data.sunset, 'HH:mm').local().format('hh:mm A');
-            let updated = moment.unix(data.ts).local('').format('LLLL');
-            let station = data.station;
-            let city_name = data.city_name;
-            let country_code = data.country_code;
-            let state_code = data.state_code;
-            let wind_speed = data.wind_spd;
-            let wind_direction = data.wind_cdir_full;
-            let temp = data.temp;
-            let app_temp = data.app_temp;
-            let humidity = data.rh;
-            let dew_point = data.dewpt;
-            let clouds = data.clouds;
-            let precipitation = data.precip;
-            let snowfall = data.snow;
-            let weather_image = `<img height="25" width="25" style="transform: translateY(6px)" src="https://www.weatherbit.io/static/img/icons/${data.weather.icon}.png" alt="${data.weather.description}">`;
-            let weather_description = data.weather.description;
-            let visibility = data.vis;
-            let pressure = data.pres;
+
             let uv_index = data.uv;
-            if (uv_index > 0 && uv_index < 3) {
-                uv_index = `${uv_index} (<span style="color: #83c88b">Low</span>)`;
-            } else if (uv_index >= 3 && uv_index < 6) {
-                uv_index = `${uv_index} (<span style="color: #fedc00">Moderate</span>)`;
-            } else if (uv_index >= 6 && uv_index < 8) {
-                uv_index = `${uv_index} (<span style="color: #f89c1b">High</span>)`;
-            } else if (uv_index >= 8 && uv_index < 11) {
-                uv_index = `${uv_index} (<span style="color: #ee1d23">Very High</span>)`;
-            } else if (uv_index >= 11) {
-                uv_index = `${uv_index} (<span style="color: #d83484">Extreme</span>)`;
-            }
+            if (uv_index > 0 && uv_index < 3) uv_index = `${uv_index} (<span style="color: #83c88b">Low</span>)`;
+            if (uv_index >= 3 && uv_index < 6) uv_index = `${uv_index} (<span style="color: #fedc00">Moderate</span>)`;
+            if (uv_index >= 6 && uv_index < 8) uv_index = `${uv_index} (<span style="color: #f89c1b">High</span>)`;
+            if (uv_index >= 8 && uv_index < 11) uv_index = `${uv_index} (<span style="color: #ee1d23">Very High</span>)`;
+            if (uv_index >= 11) uv_index = `${uv_index} (<span style="color: #d83484">Extreme</span>)`;
+
             let air_quality = data.aqi;
-            if (air_quality >= 0 && air_quality < 51) {
-                air_quality = `${air_quality} (<span style="color: #a6ce39">Good</span>)`;
-            } else if (air_quality >= 51 && air_quality < 101) {
-                air_quality = `${air_quality} (<span style="color: #fff201">Moderate</span>)`;
-            } else if (air_quality >= 101 && air_quality < 151) {
-                air_quality = `${air_quality} (<span style="color: #f6901e">Unhealthy for Sensitive Groups</span>)`;
-            } else if (air_quality >= 151 && air_quality < 201) {
-                air_quality = `${air_quality} (<span style="color: #ed1d24">Unhealthy</span>)`;
-            } else if (air_quality >= 201 && air_quality < 301) {
-                air_quality = `${air_quality} (<span style="color: #a2064a">Very Unhealthy</span>)`;
-            } else if (air_quality >= 301) {
-                air_quality = `${air_quality} (<span style="color: #891a1c">Hazardous</span>)`;
-            }
+            if (air_quality >= 0 && air_quality < 51) air_quality = `${air_quality} (<span style="color: #a6ce39">Good</span>)`;
+            if (air_quality >= 51 && air_quality < 101) air_quality = `${air_quality} (<span style="color: #fff201">Moderate</span>)`;
+            if (air_quality >= 101 && air_quality < 151) air_quality = `${air_quality} (<span style="color: #f6901e">Unhealthy for Sensitive Groups</span>)`;
+            if (air_quality >= 151 && air_quality < 201) air_quality = `${air_quality} (<span style="color: #ed1d24">Unhealthy</span>)`;
+            if (air_quality >= 201 && air_quality < 301) air_quality = `${air_quality} (<span style="color: #a2064a">Very Unhealthy</span>)`;
+            if (air_quality >= 301) air_quality = `${air_quality} (<span style="color: #891a1c">Hazardous</span>)`;
+
+            let alerts = pre_data.alerts;
             if (alerts.length === 0) {
                 alerts = 'None';
             } else {
@@ -103,22 +71,22 @@ function getData(position) {
             }
 
             let output = [
-                `Information from ${city_name}, ${state_code} (${country_code}) – Latitude: ${latitude}, Longitude: ${longitude} – Station ID: ${station}`,
-                `Updated on ${updated}<br />`,
+                `Information from ${data.city_name}, ${data.state_code} (${data.country_code}) – Latitude: ${data.lat}, Longitude: ${data.lon} – Station ID: ${data.station}`,
+                `Updated on ${moment.unix(data.ts).local('').format('LLLL')}<br />`,
                 `Active Alerts: ${alerts}`,
                 `<textarea style="width: 40rem; max-width: 80%; margin-bottom: 25px; display: none" id="alert-display" readonly></textarea>`,
-                `Sunrise: ${sunrise}`,
-                `Sunset: ${sunset}`,
-                `Weather: ${weather_description} ${weather_image}`,
-                `Precipitation: ${precipitation} inches/hour`,
-                `Snowfall: ${snowfall} inches/hour`,
-                `Cloud Cover: ${clouds}%`,
-                `Wind: ${wind_speed} miles/hour (${wind_direction})`,
-                `Temperature: ${temp}°F (Feels like ${app_temp}°F)`,
-                `Relative Humidity: ${humidity}%`,
-                `Dew Point: ${dew_point}°F`,
-                `Visibility: ${visibility} miles`,
-                `Pressure: ${pressure} millibars`,
+                `Sunrise: ${moment.utc(data.sunrise, 'HH:mm').local().format('hh:mm A')}`,
+                `Sunset: ${moment.utc(data.sunset, 'HH:mm').local().format('hh:mm A')}`,
+                `Weather: ${data.weather.description} <img height="25" width="25" style="transform: translateY(6px)" src="https://www.weatherbit.io/static/img/icons/${data.weather.icon}.png" alt="${data.weather.description}">`,
+                `Precipitation: ${data.precip} inches/hour`,
+                `Snowfall: ${data.snow} inches/hour`,
+                `Cloud Cover: ${data.clouds}%`,
+                `Wind: ${data.wind_spd} miles/hour (${data.wind_cdir_full})`,
+                `Temperature: ${data.temp}°F (Feels like ${data.app_temp}°F)`,
+                `Relative Humidity: ${data.rh}%`,
+                `Dew Point: ${data.dewpt}°F`,
+                `Visibility: ${data.vis} miles`,
+                `Pressure: ${data.pres} millibars`,
                 `UV Index: ${uv_index}`,
                 `Air Quality: ${air_quality}`,
                 `Moon Phase: <span id="moon-phase">Loading...</span>`,
@@ -149,7 +117,7 @@ function getData(position) {
                     let html = `${phaseName} ${data.phase[day].isPhaseLimit ? '' : `(${lighting}% illuminated)`} ${data.phase[day].svg
                         .replace(/<a.*?>(.*?)<\/a>/g, '$1')
                         .replace(/style="pointer-events:all;cursor:pointer"/g, '')
-                        .replace(/<svg/g, '<svg style="transform: translateY(3px)"')}`;
+                        .replace(/<svg(.*?)>/g, `<svg style="transform: translateY(3px)"$1><title>${phaseName} moon</title>`)}`;
                     document.getElementById('moon-phase').innerHTML = html;
                 })
                 .catch((err) => {});
