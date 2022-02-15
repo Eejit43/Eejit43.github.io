@@ -75,7 +75,7 @@ function getData(position) {
                 air_quality = `${air_quality} (<span style="color: #ed1d24">Unhealthy</span>)`;
             } else if (air_quality >= 201 && air_quality < 301) {
                 air_quality = `${air_quality} (<span style="color: #a2064a">Very Unhealthy</span>)`;
-            } else if (air_quality >= 301 && air_quality <= 500) {
+            } else if (air_quality >= 301) {
                 air_quality = `${air_quality} (<span style="color: #891a1c">Hazardous</span>)`;
             }
             if (alerts.length === 0) {
@@ -102,45 +102,6 @@ function getData(position) {
                 alerts = abbrAlerts.join(', ');
             }
 
-            // Modifed from http://www.wdisseny.com/lluna/?lang=en
-            function getMoonPhaseInfo(obj, callback) {
-                var gets = [];
-                for (var i in obj) {
-                    gets.push(i + '=' + encodeURIComponent(obj[i]));
-                }
-                gets.push('LDZ=' + new Date(obj.year, obj.month - 1, 1) / 1000);
-                var xmlhttp = new XMLHttpRequest();
-                var url = 'https://www.icalendar37.net/lunar/api/?' + gets.join('&');
-                xmlhttp.onreadystatechange = function () {
-                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                        callback(JSON.parse(xmlhttp.responseText));
-                    }
-                };
-                xmlhttp.open('GET', url, true);
-                xmlhttp.send();
-            }
-
-            var moonConfig = {
-                lang: 'en',
-                month: new Date().getMonth() + 1,
-                year: new Date().getFullYear(),
-                size: 20,
-                lightColor: 'rgb(255,255,210)',
-                shadeColor: 'black',
-                texturize: false,
-            };
-
-            function moonCallback(moon) {
-                var day = new Date().getDate();
-                var html = `${moon.phase[day].phaseName} ${moon.phase[day].isPhaseLimit ? '' : `(${Math.round(moon.phase[day].lighting)}% illuminated)`} ${moon.phase[day].svg
-                    .replace(/<a.*?>(.*?)<\/a>/g, '$1')
-                    .replace(/style="pointer-events:all;cursor:pointer"/g, '')
-                    .replace(/<svg/g, '<svg style="transform: translateY(3px)"')}`;
-                document.getElementById('moon-phase').innerHTML = html;
-            }
-
-            getMoonPhaseInfo(moonConfig, moonCallback);
-
             let output = [
                 `Information from ${city_name}, ${state_code} (${country_code}) – Latitude: ${latitude}, Longitude: ${longitude} – Station ID: ${station}`,
                 `Updated on ${updated}<br />`,
@@ -166,6 +127,32 @@ function getData(position) {
             result.innerHTML = output.join('<br />');
 
             twemojiUpdate();
+
+            fetch(`https://www.icalendar37.net/lunar/api/?lang=en&month=2&year=2022&size=20&lightColor=rgb(255%2C255%2C210)&shadeColor=black&texturize=false&LDZ=${new Date(new Date().getFullYear(), new Date().getMonth(), 1) / 1000}`) // prettier-ignore
+                .then((response) => {
+                    return response.json();
+                })
+                .then((data) => {
+                    let day = new Date().getDate();
+                    let phaseName = data.phase[day].phaseName;
+                    let lighting = Math.round(data.phase[day].lighting);
+                    if (phaseName === 'Waxing' && lighting < 50) {
+                        phaseName = 'Waxing crescent';
+                    } else if (phaseName === 'Waxing' && lighting > 50) {
+                        phaseName = 'Waxing gibbous';
+                    }
+                    if (phaseName === 'Waning' && lighting < 50) {
+                        phaseName = 'Waning crescent';
+                    } else if (phaseName === 'Waning' && lighting > 50) {
+                        phaseName = 'Waning gibbous';
+                    }
+                    let html = `${phaseName} ${data.phase[day].isPhaseLimit ? '' : `(${lighting}% illuminated)`} ${data.phase[day].svg
+                        .replace(/<a.*?>(.*?)<\/a>/g, '$1')
+                        .replace(/style="pointer-events:all;cursor:pointer"/g, '')
+                        .replace(/<svg/g, '<svg style="transform: translateY(3px)"')}`;
+                    document.getElementById('moon-phase').innerHTML = html;
+                })
+                .catch((err) => {});
         })
         .catch((err) => {});
 }
