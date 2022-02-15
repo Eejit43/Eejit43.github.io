@@ -221,6 +221,6 @@ function deromanize(str) {
     };
     let output = 0;
     let i;
-    while (i = token.exec(str)) output += key[i[0]]; //prettier-ignore
+    while (i = token.exec(str)) output += key[i[0]]; // prettier-ignore
     return output;
 }
