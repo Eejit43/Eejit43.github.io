@@ -131,8 +131,8 @@ function getTimeUntil(date) {
         secondsfinal = seconds + ' seconds';
     }
 
-    if (distance <= 0 || distance >= 5184000000) {
-        // If already occurred or if over 60 days away
+    if (distance <= 0 || distance >= 60 * 86400000) {
+        // Don't show already occurred or if over 60 days away
         return '';
     } else {
         return daysfinal + hoursfinal + minutesfinal + secondsfinal;
