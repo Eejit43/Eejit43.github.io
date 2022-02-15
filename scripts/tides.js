@@ -48,20 +48,33 @@ function getData(position) {
             } else {
                 next_extreme = `most recent ${data.extremes[1].state.toLowerCase()} was at ${moment.unix(data.extremes[1].timestamp).local('').format('hh:mm A')}`;
             }
-            let next_extremes = `The ${closest_extreme}, and the ${next_extreme}`;
-            let table = '<table class="info-table" style="width: 40%; margin: 0 0 10px 10px"><thead><tr><th style="width: 300px">Time</th><th style="width: 100px">Type</th></tr></thead><tbody>';
+            let next_extremes = `The ${closest_extreme}, and the ${next_extreme}.`;
+            let table = [
+                `<table class="info-table" style="width: 40%; margin: 0 0 10px 10px">`,
+                `<thead>`,
+                `<tr>`,
+                `<th style="width: 300px">Time</th>`,
+                `<th style="width: 100px">Type</th>`,
+                `</tr>`,
+                `</thead>`,
+                `<tbody>`,
+            ];
             for (let i = 0; i < data.extremes.length; i++) {
-                table = table.concat(`<tr><td>${moment.unix(data.extremes[i].timestamp).local('').format('dddd, MMMM Do – h:mm A')}</td><td>${correctCase(data.extremes[i].state)}</td></tr>`);
+                table.push(`<tr>`, `<td>${moment.unix(data.extremes[i].timestamp).local('').format('dddd, MMMM Do – h:mm A')}</td>`, `<td>${correctCase(data.extremes[i].state)}</td>`, `</tr>`);
             }
-            table = table.concat('</tbody</table>');
+            table.push(`</tbody`, `</table>`);
 
-            let output = `Based on information at latitide ${latitude}, longitude ${longitude}, ${distance} away.<br />Updated on ${updated}.<br /><br />The tide is currently ${state}.<br />${next_extremes}.<br /><br />${table}`;
+            let output = [
+                `Based on information at latitide ${latitude}, longitude ${longitude}, ${distance} away.`,
+                `Updated on ${updated}.<br />`,
+                `The tide is currently ${state}.`,
+                `${next_extremes}<br />`,
+                `${table.join('')}`,
+            ];
 
-            result.innerHTML = output;
+            result.innerHTML = output.join('<br />');
         })
-        .catch((err) => {
-            console.log(err);
-        });
+        .catch((err) => {});
 }
 
 function correctCase(input) {

@@ -115,12 +115,9 @@ function navtime() {
 
     let timesuffix = fullhours >= 12 ? 'PM' : 'AM';
 
-    let timeemoji =
-        fullhours >= 7 && fullhours < 17
-            ? '<img draggable="false" class="emoji" alt="☀️" src="https://twemoji.maxcdn.com/v/13.1.0/svg/2600.svg">'
-            : '<img draggable="false" class="emoji" alt="🌒" src="https://twemoji.maxcdn.com/v/13.1.0/svg/1f312.svg">';
+    let timeemoji = fullhours >= 7 && fullhours < 17 ? '<img draggable="false" class="emoji" alt="☀️" src="https://twemoji.maxcdn.com/v/13.1.0/svg/2600.svg">' : '<img draggable="false" class="emoji" alt="🌒" src="https://twemoji.maxcdn.com/v/13.1.0/svg/1f312.svg">'; // prettier-ignore
 
-    let finaltime = hours + ':' + minutes + ':' + sec + ' ' + timesuffix + ' ' + timeemoji;
+    let finaltime = `${hours}:${minutes}:${sec} ${timesuffix} ${timeemoji}`;
 
     if (document.getElementById('navtime').innerHTML !== finaltime) {
         document.getElementById('navtime').innerHTML = finaltime;

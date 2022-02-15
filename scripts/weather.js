@@ -70,8 +70,7 @@ function getData(position) {
             } else if (air_quality >= 51 && air_quality < 101) {
                 air_quality = `${air_quality} (<span style="color: #fff201">Moderate</span>)`;
             } else if (air_quality >= 101 && air_quality < 151) {
-                air_quality = `${air_quality} (<span style="color: #f6901e">Unhealthy for
-        Sensitive Groups</span>)`;
+                air_quality = `${air_quality} (<span style="color: #f6901e">Unhealthy for Sensitive Groups</span>)`;
             } else if (air_quality >= 151 && air_quality < 201) {
                 air_quality = `${air_quality} (<span style="color: #ed1d24">Unhealthy</span>)`;
             } else if (air_quality >= 201 && air_quality < 301) {
@@ -98,67 +97,87 @@ function getData(position) {
                     );
                 }
                 for (let i = 0; i < newAlerts.length; i++) {
-                    abbrAlerts.push(
-                        `<span style="text-decoration: underline dotted; cursor: pointer" onclick="showAlert(${i})">${newAlerts[i].title.replace(/ issued.*/g, '')} (${newAlerts[i].severity})</span>`
-                    );
+                    abbrAlerts.push(`<span style="text-decoration: underline dotted; cursor: pointer" onclick="showWeatherAlert(${i})">${newAlerts[i].title.replace(/ issued.*/g, '')} (${newAlerts[i].severity})</span>`); // prettier-ignore
                 }
                 alerts = abbrAlerts.join(', ');
             }
 
-            // Modifed from https://gist.github.com/endel/dfe6bb2fbe679781948c
-            const Moon = {
-                phases: [
-                    'New Moon 🌑',
-                    'Waxing Crescent Moon (Illuminated area growing) 🌒',
-                    'First Quarter Moon 🌓',
-                    'Waxing Gibbous Moon (Illuminated area growing) 🌔',
-                    'Full Moon 🌕',
-                    'Waning Gibbous Moon (Illuminated area shrinking) 🌖',
-                    'Third Quarter Moon 🌗',
-                    'Waning Crescent Moon (Illuminated area shrinking) 🌘',
-                ],
-                phase: function (year, month, day) {
-                    let c = (e = jd = b = 0);
-
-                    if (month < 3) {
-                        year--;
-                        month += 12;
+            // Modifed from http://www.wdisseny.com/lluna/?lang=en
+            function getMoonPhaseInfo(obj, callback) {
+                var gets = [];
+                for (var i in obj) {
+                    gets.push(i + '=' + encodeURIComponent(obj[i]));
+                }
+                gets.push('LDZ=' + new Date(obj.year, obj.month - 1, 1) / 1000);
+                var xmlhttp = new XMLHttpRequest();
+                var url = 'https://www.icalendar37.net/lunar/api/?' + gets.join('&');
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        callback(JSON.parse(xmlhttp.responseText));
                     }
+                };
+                xmlhttp.open('GET', url, true);
+                xmlhttp.send();
+            }
 
-                    ++month;
-                    c = 365.25 * year;
-                    e = 30.6 * month;
-                    jd = c + e + day - 694039.09;
-                    jd /= 29.5305882;
-                    b = parseInt(jd);
-                    jd -= b;
-                    b = Math.round(jd * 8);
-
-                    if (b >= 8) b = 0;
-                    return Moon.phases[b];
-                },
+            var moonConfig = {
+                lang: 'en',
+                month: new Date().getMonth() + 1,
+                year: new Date().getFullYear(),
+                size: 20,
+                lightColor: 'rgb(255,255,210)',
+                shadeColor: 'black',
+                texturize: false,
             };
+
+            function moonCallback(moon) {
+                var day = new Date().getDate();
+                var html = `${moon.phase[day].phaseName} ${moon.phase[day].isPhaseLimit ? '' : `(${Math.round(moon.phase[day].lighting)}% illuminated)`} ${moon.phase[day].svg
+                    .replace(/<a.*?>(.*?)<\/a>/g, '$1')
+                    .replace(/style="pointer-events:all;cursor:pointer"/g, '')
+                    .replace(/<svg/g, '<svg style="transform: translateY(3px)"')}`;
+                document.getElementById('moon-phase').innerHTML = html;
+            }
+
+            getMoonPhaseInfo(moonConfig, moonCallback);
 
             let currentTime = new Date();
             let day = currentTime.getDate();
             let month = currentTime.getMonth() + 1;
             let year = currentTime.getFullYear();
 
-            let moon_phase = Moon.phase(year, month, day);
+            let moon_phase;
 
-            let output = `Information from ${city_name}, ${state_code} (${country_code}) – Latitude: ${latitude}, Longitude: ${longitude} – Station ID: ${station}<br />Updated on ${updated}<br /><br />Active Alerts: ${alerts}<br /><textarea style="width: 40rem; max-width: 80%; margin-bottom: 25px; display: none" id="alert-display" readonly></textarea><br />Sunrise: ${sunrise}<br />Sunset: ${sunset}<br />Weather: ${weather_description} ${weather_image}<br />Precipitation: ${precipitation} inches/hour<br />Snowfall: ${snowfall} inches/hour<br />Cloud Cover: ${clouds}%<br />Wind: ${wind_speed} miles/hour (${wind_direction})<br />Temperature: ${temp}°F (Feels like ${app_temp}°F)<br />Relative Humidity: ${humidity}%<br />Dew Point: ${dew_point}°F<br />Visibility: ${visibility} miles<br />Pressure: ${pressure} millibars<br />UV Index: ${uv_index}<br />Air Quality: ${air_quality}<br />Moon Phase: ${moon_phase}`;
+            let output = [
+                `Information from ${city_name}, ${state_code} (${country_code}) – Latitude: ${latitude}, Longitude: ${longitude} – Station ID: ${station}`,
+                `Updated on ${updated}<br />`,
+                `Active Alerts: ${alerts}`,
+                `<textarea style="width: 40rem; max-width: 80%; margin-bottom: 25px; display: none" id="alert-display" readonly></textarea>`,
+                `Sunrise: ${sunrise}`,
+                `Sunset: ${sunset}`,
+                `Weather: ${weather_description} ${weather_image}`,
+                `Precipitation: ${precipitation} inches/hour`,
+                `Snowfall: ${snowfall} inches/hour`,
+                `Cloud Cover: ${clouds}%`,
+                `Wind: ${wind_speed} miles/hour (${wind_direction})`,
+                `Temperature: ${temp}°F (Feels like ${app_temp}°F)`,
+                `Relative Humidity: ${humidity}%`,
+                `Dew Point: ${dew_point}°F`,
+                `Visibility: ${visibility} miles`,
+                `Pressure: ${pressure} millibars`,
+                `UV Index: ${uv_index}`,
+                `Air Quality: ${air_quality}`,
+                `Moon Phase: <span id="moon-phase">Loading...</span>`,
+            ];
 
-            result.innerHTML = output;
+            result.innerHTML = output.join('<br />');
 
             twemojiUpdate();
         })
-        .catch((err) => {
-            console.log(err);
-        });
+        .catch((err) => {});
 }
 
-function showAlert(alert) {
-    console.log('e');
+function showWeatherAlert(alert) {
     let alert_display = document.getElementById('alert-display');
     if (alert_display.value !== finalAlerts[alert] || alert_display.style.display !== 'unset') {
         alert_display.style.display = 'unset';
