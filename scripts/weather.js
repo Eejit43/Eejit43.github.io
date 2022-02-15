@@ -141,13 +141,6 @@ function getData(position) {
 
             getMoonPhaseInfo(moonConfig, moonCallback);
 
-            let currentTime = new Date();
-            let day = currentTime.getDate();
-            let month = currentTime.getMonth() + 1;
-            let year = currentTime.getFullYear();
-
-            let moon_phase;
-
             let output = [
                 `Information from ${city_name}, ${state_code} (${country_code}) – Latitude: ${latitude}, Longitude: ${longitude} – Station ID: ${station}`,
                 `Updated on ${updated}<br />`,
