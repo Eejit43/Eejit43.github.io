@@ -22,24 +22,24 @@ let hslRgbCopy = document.getElementById('hsl-rgb-copy');
 /* Add event listeners */
 hexInput.addEventListener('input', hex);
 hexRgbCopy.addEventListener('click', function () {
-    copyText('hex-rgb', 'hex-rgb-copy');
+    copyValue('hex-rgb', 'hex-rgb-copy');
 });
 hexHslCopy.addEventListener('click', function () {
-    copyText('hex-hsl', 'hex-hsl-copy');
+    copyValue('hex-hsl', 'hex-hsl-copy');
 });
 rgbInput.addEventListener('input', rgb);
 rgbHexCopy.addEventListener('click', function () {
-    copyText('rgb-hex', 'rgb-hex-copy');
+    copyValue('rgb-hex', 'rgb-hex-copy');
 });
 rgbHslCopy.addEventListener('click', function () {
-    copyText('rgb-hsl', 'rgb-hsl-copy');
+    copyValue('rgb-hsl', 'rgb-hsl-copy');
 });
 hslInput.addEventListener('input', hsl);
 hslHexCopy.addEventListener('click', function () {
-    copyText('hsl-hex', 'hsl-hex-copy');
+    copyValue('hsl-hex', 'hsl-hex-copy');
 });
 hslRgbCopy.addEventListener('click', function () {
-    copyText('hsl-rgb', 'hsl-rgb-copy');
+    copyValue('hsl-rgb', 'hsl-rgb-copy');
 });
 
 function hex() {

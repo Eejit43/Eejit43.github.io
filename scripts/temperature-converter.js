@@ -14,7 +14,7 @@ input.addEventListener('input', convert);
 resetButton.addEventListener('click', reset);
 outputType.addEventListener('change', convert);
 copyOutput.addEventListener('click', function () {
-    copyText('output', 'copy-output');
+    copyValue('output', 'copy-output');
 });
 
 function reset() {

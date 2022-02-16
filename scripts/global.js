@@ -10,11 +10,8 @@ twemojiUpdate();
 
 // Popup alert
 function showAlert(text, color) {
-    if (color === 'success') {
-        color = '#009c3f';
-    } else if (color === 'error') {
-        color = '#FF5555';
-    }
+    if (color === 'success') color = '#009c3f';
+    if (color === 'error') color = '#ff5555';
     Toastify({
         text: text,
         duration: 2000,
@@ -36,21 +33,20 @@ function showAlert(text, color) {
 // Button icon
 function showResult(id, type, color = undefined, icon = undefined) {
     let oldElement = document.getElementById(id + '-runResult');
-    // Reset any timeout
-    let element = oldElement.cloneNode(true);
-    oldElement.parentNode.replaceChild(element, oldElement);
+    let newElement = oldElement.cloneNode(true);
+    oldElement.parentNode.replaceChild(newElement, oldElement);
     if (type === 'success') {
         color = '#009c3f';
         icon = 'check';
     } else if (type === 'error') {
         color = '#ff5555';
-        icon = 'times';
+        icon = 'xmark';
     }
-    element.style.color = color;
-    element.className = 'fa-solid fa-' + icon;
+    newElement.style.color = color;
+    newElement.className = 'fa-solid fa-' + icon;
     setTimeout(function () {
-        element.style.color = '';
-        element.className = '';
+        newElement.style.color = '';
+        newElement.className = '';
     }, 2000);
 }
 
@@ -60,8 +56,25 @@ function resetResult(id) {
     element.className = '';
 }
 
+// Arrow icons
+function updateArrow(id, type, arrowType = 'right') {
+    let element = document.getElementById(id + '-arrow');
+    if (type === 'success') {
+        color = '#009c3f';
+        icon = `arrow-${arrowType}`;
+    } else if (type === 'error') {
+        color = '#ff5555';
+        icon = 'xmark';
+    } else if (type === 'reset') {
+        color = 'dimgray';
+        icon = `arrow-${arrowType}`;
+    }
+    element.style.color = color;
+    element.className = 'fa-solid fa-' + icon;
+}
+
 // Copy text
-function copyText(toCopy, button) {
+function copyValue(toCopy, button) {
     let oldElement = document.getElementById(button);
     let newElement = oldElement.cloneNode(true);
     oldElement.parentNode.replaceChild(newElement, oldElement);
@@ -74,11 +87,11 @@ function copyText(toCopy, button) {
     showAlert('Copied!', 'success');
 
     newElement.addEventListener('click', function () {
-        copyText(toCopy, button);
+        copyValue(toCopy, button);
     });
 }
 
-function copyVar(button, text) {
+function copyText(button, text) {
     let oldElement = document.getElementById(button);
     let newElement = oldElement.cloneNode(true);
     oldElement.parentNode.replaceChild(newElement, oldElement);
@@ -90,7 +103,23 @@ function copyVar(button, text) {
     showAlert('Copied!', 'success');
 
     newElement.addEventListener('click', function () {
-        copyVar(button, text);
+        copyText(button, text);
+    });
+}
+
+function copyVar(variable, button, message) {
+    let oldElement = document.getElementById(button);
+    let newElement = oldElement.cloneNode(true);
+    oldElement.parentNode.replaceChild(newElement, oldElement);
+    navigator.clipboard.writeText(eval(variable));
+    newElement.innerHTML = 'Copied!';
+    setTimeout(function () {
+        newElement.innerHTML = message;
+    }, 2000);
+    showAlert('Copied!', 'success');
+
+    newElement.addEventListener('click', function () {
+        copyVar(variable, button, message);
     });
 }
 

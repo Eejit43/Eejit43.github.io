@@ -17,7 +17,7 @@ decodeButton.addEventListener('click', decode);
 clearButton.addEventListener('click', clear1);
 clearButton2.addEventListener('click', clear2);
 b64CopyResult.addEventListener('click', function () {
-    copyText('b64-result', 'b64-copy-result');
+    copyValue('b64-result', 'b64-copy-result');
 });
 
 let clearMessageTimeout, clearMessageTimeout2;
@@ -60,16 +60,16 @@ function fileUpload() {
 
 // https://newbedev.com/base64-image-open-in-new-tab-window-is-not-allowed-to-navigate-top-frame-navigations-to-data-urls
 function openBase64InNewTab(data, mimeType) {
-    var byteCharacters = atob(data);
-    var byteNumbers = new Array(byteCharacters.length);
-    for (var i = 0; i < byteCharacters.length; i++) {
+    let byteCharacters = atob(data);
+    let byteNumbers = new Array(byteCharacters.length);
+    for (let i = 0; i < byteCharacters.length; i++) {
         byteNumbers[i] = byteCharacters.charCodeAt(i);
     }
-    var byteArray = new Uint8Array(byteNumbers);
-    var file = new Blob([byteArray], {
+    let byteArray = new Uint8Array(byteNumbers);
+    let file = new Blob([byteArray], {
         type: mimeType + ';base64',
     });
-    var fileURL = URL.createObjectURL(file);
+    let fileURL = URL.createObjectURL(file);
     window.open(fileURL);
 }
 

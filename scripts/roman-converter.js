@@ -58,30 +58,14 @@ romanInput.addEventListener('input', function () {
 romanConvert.addEventListener('click', convertRoman);
 romanReset.addEventListener('click', resetRoman);
 romanOutputCopy.addEventListener('click', function () {
-    copyText('romanOutputVal', 'roman-output-copy', 'Copy w/ macrons');
+    copyVar('romanOutputVal', 'roman-output-copy', 'Copy w/ macrons');
 });
 romanOutputCopy2.addEventListener('click', function () {
-    copyText('romanOutputVal2', 'roman-output-copy-2', 'Copy w/ underscores');
+    copyVar('romanOutputVal2', 'roman-output-copy-2', 'Copy w/ underscores');
 });
 integerOutputCopy.addEventListener('click', function () {
-    copyText('integerOutputVal', 'integer-output-copy', 'Copy');
+    copyVar('integerOutputVal', 'integer-output-copy', 'Copy');
 });
-
-function copyText(variable, button, message) {
-    let oldElement = document.getElementById(button);
-    let newElement = oldElement.cloneNode(true);
-    oldElement.parentNode.replaceChild(newElement, oldElement);
-    navigator.clipboard.writeText(eval(variable));
-    newElement.innerHTML = 'Copied!';
-    setTimeout(function () {
-        newElement.innerHTML = message;
-    }, 2000);
-    showAlert('Copied!', 'success');
-
-    newElement.addEventListener('click', function () {
-        copyText(variable, button, message);
-    });
-}
 
 function convertInteger() {
     romanOutputCopy = document.getElementById('roman-output-copy');
@@ -90,15 +74,13 @@ function convertInteger() {
         romanOutput.innerHTML = romanize(integerInput.value);
         romanOutputCopy.disabled = false;
         romanOutputCopy2.disabled = false;
-        integerArrow.style.color = '#009c3f';
-        integerArrow.className = 'fa-solid fa-arrow-right';
+        updateArrow('integer', 'success');
     } else {
         showAlert('Value must be greater than 0!', 'error');
         romanOutput.innerHTML = '​';
         romanOutputCopy.disabled = true;
         romanOutputCopy2.disabled = true;
-        integerArrow.style.color = '#bf4042';
-        integerArrow.className = 'fa-solid fa-xmark';
+        updateArrow('integer', 'error');
     }
 }
 
@@ -109,8 +91,7 @@ function resetInteger() {
     integerInput.value = '';
     integerConvert.disabled = true;
     integerReset.disabled = true;
-    integerArrow.style.color = 'dimgray';
-    integerArrow.className = 'fa-solid fa-arrow-right';
+    updateArrow('integer', 'reset');
     romanOutput.textContent = '​';
     romanOutputCopy.disabled = true;
     romanOutputCopy2.disabled = true;
@@ -130,14 +111,12 @@ function convertRoman() {
         integerOutputVal = deromanize(input);
         integerOutput.value = deromanize(input);
         integerOutputCopy.disabled = false;
-        romanArrow.style.color = '#009c3f';
-        romanArrow.className = 'fa-solid fa-arrow-right';
+        updateArrow('roman', 'success');
     } else {
         showAlert('Invalid roman numeral!', 'error');
         integerOutput.value = '';
         integerOutputCopy.disabled = true;
-        romanArrow.style.color = '#bf4042';
-        romanArrow.className = 'fa-solid fa-xmark';
+        updateArrow('roman', 'error');
     }
 }
 
@@ -147,8 +126,7 @@ function resetRoman() {
     romanInput.value = '';
     romanConvert.disabled = true;
     romanReset.disabled = true;
-    romanArrow.style.color = 'dimgray';
-    romanArrow.className = 'fa-solid fa-arrow-right';
+    updateArrow('roman', 'reset');
     integerOutput.value = '';
     integerOutputCopy.disabled = true;
 }

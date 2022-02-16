@@ -12,7 +12,7 @@ input.addEventListener('input', findInput);
 resetButton.addEventListener('click', reset);
 outputType.addEventListener('change', findInput);
 copyOutput.addEventListener('click', function () {
-    copyText('output', 'copy-output');
+    copyValue('output', 'copy-output');
 });
 
 function reset() {

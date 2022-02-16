@@ -10,7 +10,7 @@ toBinaryBtn.addEventListener('click', toBinary);
 fromBinaryBtn.addEventListener('click', fromBinary);
 clearBtn.addEventListener('click', clear);
 resultCopy.addEventListener('click', function () {
-    copyText('result', 'copy-result');
+    copyValue('result', 'copy-result');
 });
 
 function clear() {

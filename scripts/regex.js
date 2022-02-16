@@ -28,25 +28,25 @@ let rmCopyResult = document.getElementById('rm-copy-result');
 runDlr.addEventListener('click', runDlrRegex);
 dlrClearButton.addEventListener('click', dlrClear);
 dlrCopyResult.addEventListener('click', function () {
-    copyText('dlr-result', 'dlr-copy-result');
+    copyValue('dlr-result', 'dlr-copy-result');
 });
 runWr.addEventListener('click', runWrRegex);
 wrClearButton.addEventListener('click', wrClear);
 wrCopyResult.addEventListener('click', function () {
-    copyText('wr-result', 'wr-copy-result');
+    copyValue('wr-result', 'wr-copy-result');
 });
 wrCopyResult2.addEventListener('click', function () {
-    copyText('wr-result-2', 'wr-copy-result-2');
+    copyValue('wr-result-2', 'wr-copy-result-2');
 });
 wrCopyResult3.addEventListener('click', function () {
-    copyText('wr-result-3', 'wr-copy-result-3');
+    copyValue('wr-result-3', 'wr-copy-result-3');
 });
 runRm.addEventListener('click', runRmRegex);
 rmClear.addEventListener('click', rmClearInput);
 rmClear2.addEventListener('click', rmClearAll);
 rmSwitchButton.addEventListener('click', rmSwitch);
 rmCopyResult.addEventListener('click', function () {
-    copyText('rm-result', 'rm-copy-result');
+    copyValue('rm-result', 'rm-copy-result');
 });
 rmRegex.addEventListener('keyup', function (event) {
     if (event.key === 'Enter' || event.keyCode === 13) {

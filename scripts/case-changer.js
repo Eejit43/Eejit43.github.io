@@ -14,7 +14,7 @@ toTitleButton.addEventListener('click', toTitle);
 toSentenceButton.addEventListener('click', toSentence);
 clear.addEventListener('click', clearAll);
 copyResult.addEventListener('click', function () {
-    copyText('result', 'copy-result');
+    copyValue('result', 'copy-result');
 });
 
 let clearMessageTimeout;
@@ -59,7 +59,7 @@ function toLower() {
 }
 
 function titleCase(str) {
-    var i, j, lowers, uppers;
+    let i, j, lowers, uppers;
     str = str.replace(/([^\W_]+[^\s-]*) */g, function (txt) {
         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
     });

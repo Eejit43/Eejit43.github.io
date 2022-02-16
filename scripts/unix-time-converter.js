@@ -6,9 +6,7 @@ let unixInputSwitch = document.getElementById('unix-input-switch');
 let unixOutputCopy = document.getElementById('unix-output-copy');
 let unixOutputSwitch = document.getElementById('unix-output-switch');
 let standardOutputCopy = document.getElementById('standard-output-copy');
-let standardRunStatus = document.getElementById('standard-runstatus');
 let standardOutput = document.getElementById('standard-output');
-let unixRunStatus = document.getElementById('unix-runstatus');
 let unixOutput = document.getElementById('unix-output');
 
 /* Add event listeners */
@@ -18,11 +16,11 @@ unixInput.addEventListener('input', updateStandardOutput);
 unixInputReset.addEventListener('click', updateUnixTime);
 unixInputSwitch.addEventListener('click', switchUnixInput);
 unixOutputCopy.addEventListener('click', function () {
-    copyText('unix-output', 'unix-output-copy');
+    copyValue('unix-output', 'unix-output-copy');
 });
 unixOutputSwitch.addEventListener('click', switchUnixOutput);
 standardOutputCopy.addEventListener('click', function () {
-    copyText('standard-output', 'standard-output-copy');
+    copyValue('standard-output', 'standard-output-copy');
 });
 
 let unixInputState = 1; // 1 = seconds, 2 = milliseconds
@@ -59,20 +57,17 @@ function updateUnixOutput() {
     let standardtime = standardInput.value;
     let valid = new Date(standardtime).getTime() > 0;
     if (standardtime.length === 0) {
-        standardRunStatus.style.color = 'dimgray';
-        standardRunStatus.className = 'fa-solid fa-arrow-down';
+        updateArrow('standard', 'reset', 'down');
         unixOutput.value = '';
         unixOutputCopy.disabled = true;
         unixOutputSwitch.disabled = true;
     } else if (valid === false) {
-        standardRunStatus.style.color = '#bf4042';
-        standardRunStatus.className = 'fa-solid fa-xmark';
+        updateArrow('standard', 'error');
         unixOutput.value = '';
         unixOutputCopy.disabled = true;
         unixOutputSwitch.disabled = true;
     } else {
-        standardRunStatus.style.color = '#009c3f';
-        standardRunStatus.className = 'fa-solid fa-arrow-down';
+        updateArrow('standard', 'success', 'down');
         let unixtime = new Date(standardtime).getTime();
         if (unixOutputState === 1) {
             unixtime = unixtime.toString().slice(0, -3);
@@ -98,18 +93,15 @@ function updateStandardOutput() {
     let standardtime = parseInt(unixInput.value, 10) * 1000;
     let valid = new Date(standardtime).getTime() > 0;
     if (unixInput.value.length === 0) {
-        unixRunStatus.style.color = 'dimgray';
-        unixRunStatus.className = 'fa-solid fa-arrow-down';
+        updateArrow('unix', 'reset', 'down');
         standardOutput.value = '';
         standardOutputCopy.disabled = true;
     } else if (valid === false) {
-        unixRunStatus.style.color = '#bf4042';
-        unixRunStatus.className = 'fa-solid fa-xmark';
+        updateArrow('unix', 'error');
         standardOutput.value = '';
         standardOutputCopy.disabled = true;
     } else {
-        unixRunStatus.style.color = '#009c3f';
-        unixRunStatus.className = 'fa-solid fa-arrow-down';
+        updateArrow('unix', 'success', 'down');
         const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         let time = new Date(parseInt(standardtime));
         let time2 = new Date(parseInt(standardtime.toString().slice(0, -3)));

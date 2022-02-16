@@ -25,22 +25,6 @@ resultCopy3.addEventListener('click', function () {
     copyVar('resultVar3', 'copy-result-3', 'Copy with three space space');
 });
 
-function copyVar(variable, button, message) {
-    let oldElement = document.getElementById(button);
-    let newElement = oldElement.cloneNode(true);
-    oldElement.parentNode.replaceChild(newElement, oldElement);
-    navigator.clipboard.writeText(eval(variable));
-    newElement.innerHTML = 'Copied!';
-    setTimeout(function () {
-        newElement.innerHTML = message;
-    }, 2000);
-    showAlert('Copied!', 'success');
-
-    newElement.addEventListener('click', function () {
-        copyVar(variable, button, message);
-    });
-}
-
 function clear() {
     resultCopy = document.getElementById('copy-result');
     resultCopy2 = document.getElementById('copy-result-2');

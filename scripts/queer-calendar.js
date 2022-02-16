@@ -73,7 +73,7 @@ async function getFromDate() {
     }
 
     if (Number(monthInput) !== 0 && Number(dateInput) !== 0) {
-        eventsDisplay.innerHTML = '<span style="color:#FF5555">Loading data...</span>';
+        eventsDisplay.innerHTML = '<span class="error">Loading data...</span>';
 
         eventsTitle.innerHTML = `Events on ${year}/${monthInput}/${dateInput}:`;
 
@@ -107,7 +107,7 @@ async function getFromDate() {
 
 async function getCurrent() {
     eventsTitle.innerHTML = 'Current Events:';
-    eventsDisplay.innerHTML = '<span style="color:#FF5555">Loading data...</span>';
+    eventsDisplay.innerHTML = '<span class="error">Loading data...</span>';
 
     monthVal.value = '';
     dateVal.value = '';

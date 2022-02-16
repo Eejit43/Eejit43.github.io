@@ -16,7 +16,7 @@ let scientificOutputVal, scientificOutputVal2;
 
 /* Add event listeners */
 decimalInput.addEventListener('input', function () {
-    decimalInput.value = decimalInput.value
+    decimalInput.value = decimalInpuvalue
         .replace(/[^0-9\.\-\+]/g, '')
         .replace(/(\..*?)\./g, '$1')
         .replace(/(-.*?)-/g, '$1')
@@ -37,10 +37,10 @@ decimalInput.addEventListener('input', function () {
 decimalConvert.addEventListener('click', convertDecimal);
 decimalReset.addEventListener('click', resetDecimal);
 scientificOutputCopy.addEventListener('click', function () {
-    copyText('scientificOutputVal', 'scientific-output-copy', 'Copy scientific e notation');
+    copyVar('scientificOutputVal', 'scientific-output-copy', 'Copy scientific e notation');
 });
 scientificOutputCopy2.addEventListener('click', function () {
-    copyText('scientificOutputVal2', 'scientific-output-copy-2', 'Copy scientific notation');
+    copyVar('scientificOutputVal2', 'scientific-output-copy-2', 'Copy scientific notation');
 });
 scientificInput.addEventListener('input', function () {
     if (scientificInput.value.length > 0) {
@@ -57,23 +57,8 @@ scientificInput.addEventListener('input', function () {
 scientificConvert.addEventListener('click', convertScientific);
 scientificReset.addEventListener('click', resetScientific);
 decimalOutputCopy.addEventListener('click', function () {
-    copyText('decimalOutputVal', 'decimal-output-copy', 'Copy');
+    copyVar('decimalOutputVal', 'decimal-output-copy', 'Copy');
 });
-
-function copyText(variable, button, message) {
-    let oldElement = document.getElementById(button);
-    let newElement = oldElement.cloneNode(true);
-    oldElement.parentNode.replaceChild(newElement, oldElement);
-    navigator.clipboard.writeText(eval(variable));
-    newElement.innerHTML = 'Copied!';
-    setTimeout(function () {
-        newElement.innerHTML = message;
-    }, 2000);
-    showAlert('Copied!', 'success');
-    newElement.addEventListener('click', function () {
-        copyText(variable, button, message);
-    });
-}
 
 function resetDecimal() {
     scientificOutputVal = undefined;
@@ -83,8 +68,7 @@ function resetDecimal() {
     decimalInput.value = '';
     decimalConvert.disabled = true;
     decimalReset.disabled = true;
-    decimalArrow.style.color = 'dimgray';
-    decimalArrow.className = 'fa-solid fa-arrow-right';
+    updateArrow('decimal', 'reset');
     scientificOutput.value = '';
     scientificOutputCopy.innerHTML = 'Copy scientific e notation';
     scientificOutputCopy2.innerHTML = 'Copy scientific notation';
@@ -99,8 +83,7 @@ function resetScientific() {
     scientificInput.value = '';
     scientificConvert.disabled = true;
     scientificReset.disabled = true;
-    scientificArrow.style.color = 'dimgray';
-    scientificArrow.className = 'fa-solid fa-arrow-right';
+    updateArrow('scientific', 'reset');
     decimalOutput.value = '';
     decimalOutputCopy.innerHTML = 'Copy';
     decimalOutputCopy.disabled = true;
@@ -114,14 +97,12 @@ function convertDecimal() {
         scientificOutputVal2 = String(math.bignumber(decimalInput.value).toExponential()).replace('e+', ' x 10^').replace('e-', ' x 10^-');
         scientificOutputCopy.disabled = false;
         scientificOutputCopy2.disabled = false;
-        decimalArrow.style.color = '#009c3f';
-        decimalArrow.className = 'fa-solid fa-arrow-right';
+        updateArrow('decimal', 'success');
     } else {
         scientificOutput.value = '';
         scientificOutputCopy.disabled = true;
         scientificOutputCopy2.disabled = true;
-        decimalArrow.style.color = '#bf4042';
-        decimalArrow.className = 'fa-solid fa-xmark';
+        updateArrow('decimal', 'error');
         showAlert('Invalid number!', 'error');
     }
 }
@@ -156,13 +137,11 @@ function convertScientific() {
             { notation: 'fixed' }
         );
         decimalOutputCopy.disabled = false;
-        scientificArrow.style.color = '#009c3f';
-        scientificArrow.className = 'fa-solid fa-arrow-right';
+        updateArrow('scientific', 'success');
     } else {
         decimalOutput.value = '';
         decimalOutputCopy.disabled = true;
-        scientificArrow.style.color = '#bf4042';
-        scientificArrow.className = 'fa-solid fa-xmark';
+        updateArrow('scientific', 'error');
         showAlert('Invalid scientific notation!', 'error');
     }
 }

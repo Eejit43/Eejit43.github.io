@@ -11,23 +11,23 @@ let selectClipboard = document.getElementById('select-clipboard');
 /* Add event listeners */
 clearClipboardButton.addEventListener('click', clearClipboard);
 copyZws.addEventListener('click', function () {
-    copyVar('copy-zws', '\u200b');
+    copyText('copy-zws', '\u200b');
     clipboardDisplay();
 });
 copyNbsp.addEventListener('click', function () {
-    copyVar('copy-nbsp', '\u00a0');
+    copyText('copy-nbsp', '\u00a0');
     clipboardDisplay();
 });
 copyEms.addEventListener('click', function () {
-    copyVar('copy-ems', '\u2003');
+    copyText('copy-ems', '\u2003');
     clipboardDisplay();
 });
 copyEns.addEventListener('click', function () {
-    copyVar('copy-ens', '\u2002');
+    copyText('copy-ens', '\u2002');
     clipboardDisplay();
 });
 copyTs.addEventListener('click', function () {
-    copyVar('copy-ts', '\u2009');
+    copyText('copy-ts', '\u2009');
     clipboardDisplay();
 });
 selectClipboard.addEventListener('click', function () {

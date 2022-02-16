@@ -15,7 +15,7 @@ randomizeButton.addEventListener('click', randomize);
 reverseButton.addEventListener('click', reverse);
 clear.addEventListener('click', clearAll);
 copyResult.addEventListener('click', function () {
-    copyText('result', 'copy-result');
+    copyValue('result', 'copy-result');
 });
 
 let clearMessageTimeout;
