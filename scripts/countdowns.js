@@ -70,8 +70,6 @@ setInterval(function showCountdowns() {
 function getTimeUntil(date) {
     let countdownDate = new Date(`${date} 00:00:00`).getTime();
 
-    let daysfinal, hoursfinal, minutesfinal, secondsfinal, daysfinalsuffix, hoursfinalsuffix;
-
     let curtime = new Date().getTime();
 
     let distance = countdownDate - curtime;
@@ -81,60 +79,32 @@ function getTimeUntil(date) {
     let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    if (hours === 0 && minutes === 0 && seconds === 0) {
-        daysfinalsuffix = '';
-    } else {
-        daysfinalsuffix = ', ';
-    }
+    let daysfinal = days + ' days';
+    if (days === 1) daysfinal = days + ' day';
+    if (days === 0) daysfinal = '';
 
-    if (days === 1) {
-        daysfinal = days + ' day' + daysfinalsuffix;
-    } else if (days === 0) {
-        daysfinal = '';
-    } else {
-        daysfinal = days + ' days' + daysfinalsuffix;
-    }
+    let hoursfinal = hours + ' hours';
+    if (hours === 1) hoursfinal = hours + ' hour';
+    if (hours === 0) hoursfinal = '';
 
-    if (minutes === 0 && seconds === 0) {
-        hoursfinalsuffix = '';
-    } else {
-        hoursfinalsuffix = ', ';
-    }
+    let minutesfinal = minutes + ' minutes';
+    if (minutes === 1) minutesfinal = minutes + ' minute';
+    if (minutes === 0) minutesfinal = '';
 
-    if (hours === 1) {
-        hoursfinal = hours + ' hour' + hoursfinalsuffix;
-    } else if (hours === 0) {
-        hoursfinal = '';
-    } else {
-        hoursfinal = hours + ' hours' + hoursfinalsuffix;
-    }
+    let secondsfinal = seconds + ' seconds';
+    if (seconds === 1) secondsfinal = seconds + ' second';
+    if (seconds === 0) secondsfinal = '';
 
-    if (seconds === 0) {
-        minutesfinalsuffix = '';
-    } else {
-        minutesfinalsuffix = ', ';
-    }
-
-    if (minutes === 1) {
-        minutesfinal = minutes + ' minute' + minutesfinalsuffix;
-    } else if (minutes === 0) {
-        minutesfinal = '';
-    } else {
-        minutesfinal = minutes + ' minutes' + minutesfinalsuffix;
-    }
-
-    if (seconds === 1) {
-        secondsfinal = seconds + ' second';
-    } else if (seconds === 0) {
-        secondsfinal = '';
-    } else {
-        secondsfinal = seconds + ' seconds';
-    }
+    let result = [];
+    if (daysfinal !== '') result.push(daysfinal);
+    if (hoursfinal !== '') result.push(hoursfinal);
+    if (minutesfinal !== '') result.push(minutesfinal);
+    if (secondsfinal !== '') result.push(secondsfinal);
 
     if (distance <= 0 || distance >= 60 * 86400000) {
         // Don't show already occurred or if over 60 days away
         return '';
     } else {
-        return daysfinal + hoursfinal + minutesfinal + secondsfinal;
+        return result.join(', ');
     }
 }
