@@ -35,6 +35,10 @@ selectClipboard.addEventListener('click', function () {
 });
 window.onfocus = onFocus;
 window.onblur = onBlur;
+document.addEventListener('paste', (event) => {
+    let data = (event.clipboardData || window.clipboardData).getData('text/plain');
+    clipboardDisplayFromEvent(data);
+});
 
 let clipboardReadAllowed;
 
@@ -130,5 +134,20 @@ function getImg() {
             });
     } catch (err) {
         url = undefined;
+    }
+}
+
+function clipboardDisplayFromEvent(text) {
+    if (text.length === 0) {
+        copiedText.value = '';
+        selectClipboard.disabled = true;
+        if (url === undefined) {
+            showWarning('<span style="color:#009c3f"><i class="far fa-clipboard"></i> Your clipboard is empty!<br /></span>');
+        }
+        getImg();
+    } else {
+        copiedText.value = text;
+        showWarning('');
+        selectClipboard.disabled = false;
     }
 }
