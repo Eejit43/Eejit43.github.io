@@ -35,12 +35,8 @@ selectClipboard.addEventListener('click', function () {
 });
 window.onfocus = onFocus;
 window.onblur = onBlur;
-document.addEventListener('paste', (event) => {
-    let data = (event.clipboardData || window.clipboardData).getData('text/plain');
-    clipboardDisplayFromEvent(data);
-});
 
-let clipboardReadAllowed;
+let clipboardReadAllowed = false; // defaults to false, changed if needed on first request
 
 function showWarning(message) {
     if (clipboardWarning.innerHTML !== message) {
@@ -74,80 +70,90 @@ function clearClipboard() {
     clipboardDisplay();
 }
 
-navigator.permissions
-    .query({
-        name: 'clipboard-read',
-    })
-    .then((result) => {
-        if (result.state === 'granted' || result.state === 'prompt') {
-            clipboardDisplay();
-            setInterval(clipboardDisplay, 1000);
-            clipboardReadAllowed = true;
-        } else {
-            showWarning('<i class="fa-solid fa-exclamation-triangle"></i> Permission to read clipboard denied!<br />');
-            clipboardReadAllowed = false;
-        }
-    });
+function requestPermission() {
+    try {
+        navigator.permissions.query({ name: 'clipboard-read' }).then(function (result) {
+            handlePermission(result.state);
+            result.onchange = function () {
+                console.log(`Clipboard permission changed to "${result.state}", running handlePermission`);
+                handlePermission(result.state);
+            };
+        });
+    } catch (error) {
+        showWarning(
+            '<i class="fa-solid fa-exclamation-triangle"></i> Your browser does not support the <code>clipboard-read</code> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API#browser_compatibility" target="_blank">permission</a><br />'
+        );
+    }
+}
+
+requestPermission();
+
+let interval;
+function handlePermission(permission) {
+    if (permission === 'granted' || permission === 'prompt') {
+        clearInterval(interval);
+        clipboardDisplay();
+        if (clipboardReadAllowed === false) interval = setInterval(clipboardDisplay, 500);
+        clipboardReadAllowed = true;
+    } else if (permission === 'denied') {
+        clearInterval(interval);
+        clipboardReadAllowed = false;
+        showWarning('<i class="fa-solid fa-exclamation-triangle"></i> Permission to read clipboard denied!<br />');
+    }
+}
+
+clipboardDisplay();
 
 async function clipboardDisplay() {
     navigator.clipboard
-        .readText()
-        .then((text) => {
-            if (text.length === 0) {
-                copiedText.value = '';
-                selectClipboard.disabled = true;
-                if (url === undefined) {
-                    showWarning('<span style="color:#009c3f"><i class="far fa-clipboard"></i> Your clipboard is empty!<br /></span>');
+        .read()
+        .then((data) => {
+            for (let i = 0; i < data.length; i++) {
+                if (data[i].types.includes('text/plain')) {
+                    data[i].getType('text/plain').then((blob) => {
+                        const reader = new FileReader();
+                        reader.onload = function () {
+                            let text = reader.result;
+                            if (text.length === 0) {
+                                copiedText.value = '';
+                                selectClipboard.disabled = true;
+                            } else {
+                                copiedText.value = text;
+                                showWarning('');
+                                selectClipboard.disabled = false;
+                            }
+                        };
+                        reader.readAsText(blob);
+                    });
+                } else if (data[i].types.includes('image/png')) {
+                    data[i].getType('image/png').then((blob) => {
+                        url = URL.createObjectURL(blob);
+                        copiedText.value = '';
+                        selectClipboard.disabled = true;
+                        showWarning(`<span style="color:#4b5663"><i class="far fa-image"></i> Clipboard has image! (<a href='${url}' target="_blank">view</a>)<br /></span>`);
+                    });
+                } else {
+                    console.log('Clipboard does not contain valid data (determined via if/else)');
                 }
-                getImg();
-            } else {
-                copiedText.value = text;
-                showWarning('');
-                selectClipboard.disabled = false;
             }
         })
         .catch((err) => {
-            if (err.toString().match(/focused/g)) {
-                showWarning('<i class="fa-solid fa-exclamation-triangle"></i> Tab not focused, unable to read clipboard!<br />');
-            } else if (err.toString().match(/denied/g)) {
-                showWarning('<i class="fa-solid fa-exclamation-triangle"></i> Permission to read clipboard denied!<br />');
-            } else {
-                showWarning('<i class="fa-solid fa-exclamation-triangle"></i> Unable to read clipboard!<br />');
-            }
+            if (err.toString().match(/focused/g)) showWarning('<i class="fa-solid fa-exclamation-triangle"></i> Tab not focused, unable to read clipboard!<br />');
+            navigator.clipboard
+                .readText()
+                .then((text) => {
+                    if (text.length === 0) {
+                        copiedText.value = '';
+                        selectClipboard.disabled = true;
+                        showWarning('<span style="color:#009c3f"><i class="far fa-clipboard"></i> Your clipboard is empty!<br /></span>');
+                    } else {
+                        copiedText.value = text;
+                        showWarning('');
+                        selectClipboard.disabled = false;
+                    }
+                })
+                .catch((err) => {
+                    if (err.toString().match(/focused/g)) showWarning('<i class="fa-solid fa-exclamation-triangle"></i> Tab not focused, unable to read clipboard!<br />');
+                });
         });
-}
-
-function getImg() {
-    try {
-        navigator.clipboard
-            .read()
-            .then((data) => {
-                for (let i = 0; i < data.length; i++) {
-                    data[i].getType('image/png').then((blob) => {
-                        url = URL.createObjectURL(blob);
-                        clipboardWarning.innerHTML = `<span style="color:#4b5663"><i class="far fa-image"></i> Clipboard has image! (<a href='${url}' target="_blank">view</a>)<br /></span>`;
-                    });
-                }
-            })
-            .catch((err) => {
-                url = undefined;
-            });
-    } catch (err) {
-        url = undefined;
-    }
-}
-
-function clipboardDisplayFromEvent(text) {
-    if (text.length === 0) {
-        copiedText.value = '';
-        selectClipboard.disabled = true;
-        if (url === undefined) {
-            showWarning('<span style="color:#009c3f"><i class="far fa-clipboard"></i> Your clipboard is empty!<br /></span>');
-        }
-        getImg();
-    } else {
-        copiedText.value = text;
-        showWarning('');
-        selectClipboard.disabled = false;
-    }
 }
