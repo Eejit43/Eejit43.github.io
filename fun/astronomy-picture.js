@@ -92,8 +92,8 @@ function fetchApod(yearInput, monthInput, dateInput) {
                 result.push(
                     `Astronomy <strike>Picture</strike> Video of the Day for ${new Date(`${yearInput}-${monthInput}-${dateInput} 00:00:00`).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}.<br />`, // prettier-ignore
                     `<div style="text-align: center; font-size: 30px">${data.title}</div>`,
-                    `<div style="position: relative; overflow: hidden; margin: 15px auto -15px; width: 900px; max-width: 90%; padding-top: 56.25%;">`,
-                    `<iframe style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; width: 100%; height: 100%;" src="${data.url}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
+                    `<div style="position: relative; overflow: hidden; margin: 15px auto -15px; width: 900px; max-width: 90%; padding-top: 35%">`,
+                    `<iframe style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; width: 100%; height: 100%" src="${data.url}" title="Video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
                     `</div><br />`,
                     `${data.explanation.replace(/  /g, ' ')}`
                 );
