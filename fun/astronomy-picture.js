@@ -72,33 +72,111 @@ function checkApod(yearInput, monthInput, dateInput) {
     }
 }
 
+// https://gomakethings.com/converting-a-string-into-markup-with-vanilla-js/
+const DOMParserSupported = (function () {
+    if (!window.DOMParser) return false;
+    var parser = new DOMParser();
+    try {
+        parser.parseFromString('x', 'text/html');
+    } catch (err) {
+        return false;
+    }
+    return true;
+})();
+
+function stringToHTML(str) {
+    if (DOMParserSupported) {
+        var parser = new DOMParser();
+        var doc = parser.parseFromString(str, 'text/html');
+        return doc;
+    } else {
+        const dom = document.createElement('div');
+        dom.innerHTML = str;
+        return dom;
+    }
+}
+
 function fetchApod(yearInput, monthInput, dateInput) {
     resultElement.innerHTML = 'Loading...';
-    fetch(`https://api.nasa.gov/planetary/apod?api_key=zKDatvp1WcJI6msXG39REUkcXmf84Kiax5lHqge6&date=${yearInput ? yearInput : year}-${monthInput ? monthInput : month}-${dateInput ? dateInput : date}`) // prettier-ignore
+    yearInput = yearFull = yearInput ? String(yearInput) : String(year);
+    monthInput = monthFull = monthInput ? String(monthInput) : String(month);
+    dateInput = dateFull = dateInput ? String(dateInput) : String(date);
+    if (yearInput.length === 4) yearInput = yearInput.substring(2);
+    if (monthInput.length === 1) monthInput = 0 + monthInput;
+    if (dateInput.length === 1) dateInput = 0 + dateInput;
+    fetch(`https://aqueous-citadel-06363.herokuapp.com/https://apod.nasa.gov/apod/ap${yearInput}${monthInput}${dateInput}.html`)
         .then((response) => {
-            return response.json();
+            return response.text();
         })
-        .then((data) => {
-            let result = [];
-            if (data.media_type === 'image') {
-                result.push(
-                    `Astronomy Picture of the Day for ${new Date(`${yearInput}-${monthInput}-${dateInput} 00:00:00`).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}.<br />`, // prettier-ignore
-                    `<div style="text-align: center; font-size: 30px">${data.title}</div>`,
-                    `<img style="display: block; margin: 10px auto -25px; width: 900px; max-width: 90%" alt="${data.title}" src="${data.url}"><br />`,
-                    `<div style="text-align: center"><a href="${data.hdurl}" target="_blank">View high definition image</a></div><br />`,
-                    `${data.explanation.replace(/  /g, ' ')}`
-                );
-            } else if (data.media_type === 'video') {
-                result.push(
-                    `Astronomy <strike>Picture</strike> Video of the Day for ${new Date(`${yearInput}-${monthInput}-${dateInput} 00:00:00`).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}.<br />`, // prettier-ignore
-                    `<div style="text-align: center; font-size: 30px">${data.title}</div>`,
-                    `<div style="position: relative; overflow: hidden; margin: 15px auto -15px; width: 900px; max-width: 90%; padding-top: 35%">`,
-                    `<iframe style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; width: 100%; height: 100%" src="${data.url}" title="Video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
-                    `</div><br />`,
-                    `${data.explanation.replace(/  /g, ' ')}`
-                );
+        .then((pre_html) => {
+            pre_html = pre_html.replace(/\n/g, ' ').replace(/<a(.*?)>/g, '<a$1 target="_blank">');
+            html = stringToHTML(pre_html);
+
+            apodDate = new Date(`${yearFull}-${monthFull}-${dateFull} 00:00:00`).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+            mediaType = /img src/gi.test(pre_html) ? 'image' : 'video';
+
+            try {
+                if (html.querySelectorAll('center').length === 2) {
+                    title = stringToHTML(html.querySelector('center').innerHTML).querySelector('b').innerHTML.trim().replace(/<br>\n Credit:/g, ''); // prettier-ignore
+                } else {
+                    title = stringToHTML(html.querySelectorAll('center')[1].innerHTML).querySelector('b').innerHTML.trim().replace(/<br>\n Credit:/g, ''); // prettier-ignore
+                }
+            } catch (error) {
+                title = html.querySelector('title').innerHTML.split(' - ')[1].trim();
             }
+
+            credit = /Credit.*?<\/center>/gis.test(pre_html) ? pre_html.match(/Credit.*?<\/center>/gis)[0].trim().replace(/ <\/b>/gi, '').replace(/ ?<\/center>/gi, '') : false; // prettier-ignore
+
+            if (mediaType === 'video') {
+                media = `<div style="position: relative; overflow: hidden; margin: 15px auto; width: 900px; max-width: 90%; padding-top: 40%">${html.querySelector('iframe').outerHTML.replace(/src/g, 'style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; width: 100%; height: 100%" src')}</div>`; // prettier-ignore
+            } else {
+                links = html.querySelectorAll('a');
+                for (let i = 0; i < links.length; i++) {
+                    if (/img/g.test(links[i].innerHTML)) {
+                        media = stringToHTML(
+                            links[i].outerHTML.replace(/("|')image\//g, '$1https://apod.nasa.gov/apod/image/').replace(/img src=/g, 'img style="display: block; margin: 15px auto; width: 900px; max-width: 90%" src=')).querySelector('a'); // prettier-ignore
+                        break;
+                    }
+                }
+            }
+
+            try {
+                explanation = html.body.outerHTML
+                    .match(/Explanation:.*?Tomorrow|Explanation<\/b>:.*?Tomorrow|Explanation:.*?<hr>/gs)[0]
+                    .replace(/\n/g, ' ')
+                    .replace(/ {2,3}/g, ' ')
+                    .replace(/Explanation: ?<\/b> |Explanation<\/b>: /g, '')
+                    .replace(/ ?<br> ?<b> ?Tomorrow/g, '')
+                    .replace(/<b> Tomorrow/g, '')
+                    .replace(/<hr>/g, '')
+                    .replace(/<p> ?<\/p>/g, '<br />')
+                    .replace(/ ?<\/?p>/g, '<br />')
+                    .replace(/<center> /g, '')
+                    .replace(/<b> (.*?) <\/b>/g, '$1')
+                    .replace(/--/g, '–')
+                    .replace(/href="(?!http)(.*?)"/g, 'href="https://apod.nasa.gov/apod/$1"')
+                    .replace(/href="\/(.*?)"/g, 'href="https://apod.nasa.gov/$1"')
+                    .replace(/<br \/><br \/>Birthday Surprise.*?$/g, '')
+                    .replace(/( ?<br \/>)*?$/g, '')
+                    .replace(/(\w|>)\/ /g, '$1/')
+                    .replace(/ \.\.\./g, '...')
+                    .replace(/<br \/><br \/> Tomorrow/g, '');
+            } catch (error) {
+                console.error(error);
+            }
+
+            result = [];
+
+            result.push(
+                `Astronomy ${mediaType === 'image' ? 'Picture' : '<strike>Picture</strike> Video'} of the Day for ${apodDate}.<br />`,
+                `<div style="text-align: center; font-size: 30px">${title}</div>`,
+                `${mediaType === 'video' ? `${media} ${credit ? `<center>${credit}</center><br />` : ''}` : `${media.outerHTML} ${credit ? `<center>${credit}</center><br />` : ''}`}`,
+                `${explanation}`
+            );
             resultElement.innerHTML = result.join('');
         })
-        .catch((err) => {});
+        .catch((err) => {
+            showAlert('No APOD data found for this date!', 'error');
+        });
 }
