@@ -89,13 +89,13 @@ function requestPermission() {
 requestPermission();
 
 let interval;
-function handlePermission(permission) {
-    if (permission === 'granted' || permission === 'prompt') {
+function handlePermission(state) {
+    if (state === 'granted' || state === 'prompt') {
         clearInterval(interval);
         clipboardDisplay();
         if (clipboardReadAllowed === false) interval = setInterval(clipboardDisplay, 500);
         clipboardReadAllowed = true;
-    } else if (permission === 'denied') {
+    } else if (state === 'denied') {
         clearInterval(interval);
         clipboardReadAllowed = false;
         showWarning('<i class="fa-solid fa-exclamation-triangle"></i> Permission to read clipboard denied!<br />');

@@ -135,7 +135,7 @@ function fetchApod(yearInput, monthInput, dateInput) {
                 for (let i = 0; i < links.length; i++) {
                     if (/img/g.test(links[i].innerHTML)) {
                         media = stringToHTML(
-                            links[i].outerHTML.replace(/("|')image\//g, '$1https://apod.nasa.gov/apod/image/').replace(/img src=/g, 'img style="display: block; margin: 15px auto; width: 900px; max-width: 90%" src=')).querySelector('a'); // prettier-ignore
+                            links[i].outerHTML.replace(/("|')image\//g, '$1https://apod.nasa.gov/apod/image/').replace(/a href=/g, 'a style="display: block; margin: 15px auto; width: 900px; max-width: 90%" href=')).querySelector('a'); // prettier-ignore
                         break;
                     }
                 }
