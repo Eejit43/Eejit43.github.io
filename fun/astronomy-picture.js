@@ -63,12 +63,12 @@ checkApod(year, month, date);
 
 function checkApod(yearInput, monthInput, dateInput) {
     if (
-        new Date(`${yearInput}-${monthInput}-${dateInput} 00:00:00`) >= new Date(`1995-06-16 00:00:00`) &&
-        new Date(`${yearInput}-${monthInput}-${dateInput} 00:00:00`) <= new Date(`${year}-${month}-${date} 00:00:00`)
+        new Date(`${yearInput}/${monthInput}/${dateInput} 00:00:00`).getTime() >= new Date(`1995/06/16 00:00:00`).getTime() &&
+        new Date(`${yearInput}/${monthInput}/${dateInput} 00:00:00`).getTime() <= new Date(`${year}/${month}/${date} 00:00:00`).getTime()
     ) {
         fetchApod(yearInput, monthInput, dateInput);
     } else {
-        showAlert(`Date out of range! Must be between ${new Date(`1995-06-16 00:00:00`).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })} (inclusive) and ${new Date(`${year}-${month}-${date} 00:00:00`).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })} (inclusive)`, 'error'); // prettier-ignore
+        showAlert(`Date out of range! Must be between ${new Date(`1995/06/16 00:00:00`).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })} (inclusive) and ${new Date(`${year}/${month}/${date} 00:00:00`).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })} (inclusive)`, 'error'); // prettier-ignore
     }
 }
 
@@ -112,7 +112,7 @@ function fetchApod(yearInput, monthInput, dateInput) {
             pre_html = pre_html.replace(/\n/g, ' ').replace(/<a(.*?)>/g, '<a$1 target="_blank">');
             html = stringToHTML(pre_html);
 
-            apodDate = new Date(`${yearFull}-${monthFull}-${dateFull} 00:00:00`).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            apodDate = new Date(`${yearFull}/${monthFull}/${dateFull} 00:00:00`).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
             mediaType = /img src/gi.test(pre_html) ? 'image' : 'video';
 
