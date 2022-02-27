@@ -29,6 +29,33 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="/styles/styles.css" />
+        <style>
+            .warning404 {
+                color: lightgray;
+                font-size: 20px;
+                font-weight: 500;
+                line-height: 150%;
+                margin-top: 100px;
+            }
+
+            .link404 {
+                color: #28497d;
+                font-size: 20px;
+                font-weight: 500;
+            }
+
+            .link404:hover {
+                color: #1d3d70;
+            }
+
+            .image404 {
+                width: 500px;
+                max-width: 60%;
+                margin-top: 40px;
+                filter: drop-shadow(0 0 0.75rem dimgray);
+                border-radius: 3px;
+            }
+        </style>
 
         <!-- Scripts -->
         <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
@@ -55,6 +82,6 @@
         <br />
         <span style="color: #ff5555; font-weight: 600; font-size: 500%; position: relative; top: 100px">Oh no!</span>
         <div class="warning404">Looks like you've ended up in a weird place...<br /><a href="/" class="link404">Take me back to safety!</a></div>
-        <img src="/404.png" alt="404" style="width: 500px; max-width: 60%; margin-top: 40px; filter: drop-shadow(0 0 0.75rem dimgray); border-radius: 3px" />
+        <img src="/404.png" alt="404" class="image404" />
     </body>
 </html>
