@@ -171,3 +171,68 @@ window.onscroll = function () {
 };
 
 resizeNav();
+
+// String to HTML (modified from https://gomakethings.com/converting-a-string-into-markup-with-vanilla-js/)
+const DOMParserSupported = (function () {
+    if (!window.DOMParser) return false;
+    var parser = new DOMParser();
+    try {
+        parser.parseFromString('x', 'text/html');
+    } catch (err) {
+        return false;
+    }
+    return true;
+})();
+
+function stringToHTML(str) {
+    if (DOMParserSupported) {
+        var parser = new DOMParser();
+        var doc = parser.parseFromString(str, 'text/html');
+        return doc;
+    } else {
+        const dom = document.createElement('div');
+        dom.innerHTML = str;
+        return dom;
+    }
+}
+
+// Search Bar
+const searchResult = document.querySelector('.search-results');
+const searchText = document.querySelector('.search-text');
+
+let pages = [];
+
+function matchesKeywords(keywords, input) {
+    for (let i = 0; i < keywords.length; i++) {
+        if (keywords[i].includes(input)) return true;
+    }
+    return false;
+}
+
+fetch('/')
+    .then((response) => {
+        return response.text();
+    })
+    .then((pre_html) => {
+        html = stringToHTML(pre_html);
+        let rows = html.querySelectorAll('tr');
+        for (let i = 0; i < rows.length; i++) {
+            let outerHTML = html.querySelectorAll('tr')[i].outerHTML;
+            let title = outerHTML.match(/<\/(i|span)> .*?<\/a>/g)[0].replace(/<\/(i|span|a)> ?/g, ''); // prettier-ignore
+            let link = outerHTML.match(/href=".*?"><(i|span)/g)[0].replace(/(href="|"><(i|span))/g, ''); // prettier-ignore
+            let description = outerHTML.match(/<td>.*?<\/td>/g)[0].replace(/<\/?td>/g, '').replace(/<span.*?>(.*?)<\/span>/g, '$1'); // prettier-ignore
+            let keywords = outerHTML.match(/data-keywords=".*?"/g)[0].replace(/data-keywords="(.*?)"/g, '$1').toLowerCase().split(', '); // prettier-ignore
+            pages.push({ title: title, description: description, link: link, keywords: keywords });
+        }
+    });
+
+searchText.addEventListener('input', (e) => {
+    const value = searchText.value.toLowerCase();
+    let results = [];
+    pages.forEach((page) => {
+        if (page.title.toLowerCase().includes(value) || page.description.toLowerCase().includes(value) || page.link.toLowerCase().includes(value) || matchesKeywords(page.keywords, value)) {
+            results.push(`<tr><td><a href="${page.link}"><div class="results-title">${page.title}</div><div class="results-description">${page.description}</div></a></td></tr>`);
+        }
+    });
+    searchResult.innerHTML = value !== '' && results.length > 0 ? `<table><tbody>${results.join('')}</tbody></table>` : '';
+});

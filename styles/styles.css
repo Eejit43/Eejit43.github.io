@@ -31,7 +31,7 @@ html {
 
 body {
     font-family: 'Source Sans Pro', sans-serif;
-    margin: 0;
+    margin: 0px;
     padding-bottom: 40px;
 }
 
@@ -63,7 +63,7 @@ hr {
     border: 1px solid currentColor;
     border-radius: 3px;
     color: dimgray;
-    height: 0;
+    height: 0px;
     width: 100%;
 }
 
@@ -79,12 +79,12 @@ nav {
     display: flex;
     font-size: 20px;
     justify-content: space-between;
-    left: 0;
+    left: 0px;
     padding: 35px 25px;
     position: -webkit-fixed;
     position: fixed;
-    right: 0;
-    top: 0;
+    right: 0px;
+    top: 0px;
     transition: 0.4s;
     z-index: 5000;
 }
@@ -140,9 +140,114 @@ nav {
     }
 }
 
+.search-box {
+    background-color: #242424;
+    border: 2px solid #3b3b3f;
+    border-radius: 10px;
+    color: #c5c5cc;
+    float: right !important;
+    height: 30px;
+    padding: 5px;
+    position: absolute;
+    transform: translate(-100%, -20%);
+}
+.search-box .search-btn {
+    align-items: center;
+    color: #c5c5cc;
+    display: flex;
+    float: right;
+    height: 30px;
+    justify-content: center;
+    margin: auto;
+    transition: 0.4s;
+    width: 30px;
+}
+.search-box .search-text {
+    background-color: #242424 !important;
+    border: none !important;
+    color: #c5c5cc !important;
+    margin-top: -10px !important;
+    padding: 6px 0px !important;
+    transition: 0.4s;
+    width: 0px !important;
+}
+
+.search-box .search-text::placeholder {
+    color: #c5c5cc;
+}
+
+.search-box .search-text:-ms-input-placeholder {
+    color: #c5c5cc;
+}
+
+.search-box .search-text::-ms-input-placeholder {
+    color: #c5c5cc;
+}
+
+.search-results {
+    display: none;
+    z-index: -100;
+}
+
+.search-results table {
+    background-color: #242424;
+    border: 2px solid #3b3b3f;
+    border-radius: 10px;
+    color: #c5c5cc;
+    display: block;
+    font-size: 18px;
+    margin-top: 1px;
+    max-height: 500px;
+    overflow-y: scroll;
+    padding: 8px;
+    width: 300px;
+}
+
+.search-results table td {
+    border-top: 2px solid #4c6072;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+.search-results table tr:first-of-type > td {
+    border-top: none;
+    padding-top: 0px;
+}
+
+.search-results table tr:last-of-type > td {
+    padding-bottom: 0px;
+}
+
+.search-results table td .results-title {
+    font-size: 20px;
+    padding-bottom: 5px;
+}
+
+.search-results table td a {
+    color: #4c6072;
+}
+
+.search-results table td a:hover {
+    color: #364c5f;
+}
+
+.search-box:hover > .search-text,
+.search-text:focus {
+    box-shadow: none !important;
+    margin-left: 5px;
+    padding: 6px 8px !important;
+    width: 249px !important;
+}
+
+.search-box:hover > .search-results,
+.search-text:focus ~ .search-results {
+    display: unset;
+}
+
 .timer {
     color: #145791;
     font-weight: 700;
+    margin-left: 40px;
     margin-right: 100px;
 }
 
@@ -417,20 +522,20 @@ spoiler {
         align-items: center;
         background-color: #1f2225;
         border-radius: 3px;
-        bottom: 0;
+        bottom: 0px;
         content: '';
         display: flex;
         justify-content: center;
-        left: 0;
+        left: 0px;
         opacity: 1;
         position: absolute;
-        right: 0;
+        right: 0px;
         text-align: center;
-        top: 0;
+        top: 0px;
         transition: opacity 0.3s ease;
     }
     spoiler:hover::before {
-        opacity: 0;
+        opacity: 0px;
         transition: opacity 0.5s ease;
     }
 }
@@ -490,9 +595,15 @@ input:not(input[type='file']):not(input[type='checkbox']),
     cursor: pointer;
     font-family: 'Fira Code', monospace;
     font-size: 0.75rem;
+    -ms-overflow-style: none;
     padding: 0.2rem 0.3rem;
+    scrollbar-width: none;
     transition: all 0.2s ease;
     width: 15rem;
+}
+
+input::-webkit-scrollbar {
+    display: none;
 }
 
 input:focus:not(input[type='file']):not(input[type='checkbox']),
@@ -576,13 +687,13 @@ button:hover:not(.fakeinput) {
     background-color: transparent;
     border: none;
     border-bottom: 1px solid dimgray;
-    border-radius: 0;
+    border-radius: 0px;
     color: dimgray;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 50px;
     font-weight: 500;
     overflow: hidden;
-    padding-bottom: 0;
+    padding-bottom: 0px;
     text-align: right;
     width: 3.5rem;
 }
@@ -596,5 +707,23 @@ button:hover:not(.fakeinput) {
 .invisibleinput[type='number']::-webkit-inner-spin-button,
 .invisibleinput[type='number']::-webkit-outer-spin-button {
     -webkit-appearance: none;
-    margin: 0;
+    margin: 0px;
+}
+
+input[type='search']::-ms-clear {
+    display: none;
+    height: 0px;
+    width: 0px;
+}
+input[type='search']::-ms-reveal {
+    display: none;
+    height: 0px;
+    width: 0px;
+}
+
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
+    display: none;
 }
