@@ -224,6 +224,7 @@ fetch('/')
             let keywords = outerHTML.match(/data-keywords=".*?"/g)[0].replace(/data-keywords="(.*?)"/g, '$1').toLowerCase().split(', '); // prettier-ignore
             pages.push({ title: title, description: description, link: link, keywords: keywords });
         }
+        // updateDescriptions();
     });
 
 searchText.addEventListener('input', (e) => {
@@ -236,3 +237,14 @@ searchText.addEventListener('input', (e) => {
     });
     searchResult.innerHTML = value !== '' && results.length > 0 ? `<table><tbody>${results.join('')}</tbody></table>` : '';
 });
+
+// Setting description meta tags
+// function updateDescriptions() {
+//     pages.forEach((page) => {
+//         if (`https://eejitstools.com${page.link}` === document.querySelector('meta[property="og:url"]').getAttribute('content')) {
+//             document.querySelector('meta[name="description"]').setAttribute('content', page.description);
+//             document.querySelector('meta[property="og:description"]').setAttribute('content', page.description);
+//             document.querySelector('meta[name="twitter:description"]').setAttribute('content', page.description);
+//         }
+//     });
+// }
