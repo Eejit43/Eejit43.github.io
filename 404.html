@@ -30,15 +30,26 @@
         <!-- Styles -->
         <link rel="stylesheet" href="/styles/styles.css" />
         <style>
+            .title404 {
+                color: #ff5555;
+                font-weight: 600;
+                font-size: 500%;
+                display: block;
+                padding-top: 120px;
+                text-align: center;
+            }
+
             .warning404 {
+                text-align: center;
                 color: lightgray;
                 font-size: 20px;
                 font-weight: 500;
                 line-height: 150%;
-                margin-top: 100px;
+                margin-top: 10px;
             }
 
             .link404 {
+                text-align: center;
                 color: #28497d;
                 font-size: 20px;
                 font-weight: 500;
@@ -49,6 +60,8 @@
             }
 
             .image404 {
+                display: block;
+                margin: 0px auto;
                 width: 500px;
                 max-width: 60%;
                 margin-top: 40px;
@@ -63,7 +76,7 @@
         <script src="/scripts/global.js" defer></script>
         <script src="/scripts/navtime.js" defer></script>
     </head>
-    <body style="text-align: center">
+    <body>
         <nav id="navbar">
             <a href="/">
                 <span class="logo">
@@ -86,7 +99,7 @@
             </span>
         </nav>
         <br />
-        <span style="color: #ff5555; font-weight: 600; font-size: 500%; position: relative; top: 100px">Oh no!</span>
+        <span class="title404">Oh no!</span>
         <div class="warning404">Looks like you've ended up in a weird place...<br /><a href="/" class="link404">Take me back to safety!</a></div>
         <img src="/404.png" alt="404" class="image404" />
     </body>
