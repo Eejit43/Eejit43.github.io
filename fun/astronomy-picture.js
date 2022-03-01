@@ -110,8 +110,7 @@ function fetchApod(yearInput, monthInput, dateInput) {
                 links = html.querySelectorAll('a');
                 for (let i = 0; i < links.length; i++) {
                     if (/img/g.test(links[i].innerHTML)) {
-                        media = stringToHTML(
-                            links[i].outerHTML.replace(/("|')image\//g, '$1https://apod.nasa.gov/apod/image/').replace(/a href=/g, 'a style="display: block; margin: 15px auto; width: 900px; max-width: 90%" href=')).querySelector('a'); // prettier-ignore
+                        media = stringToHTML(links[i].outerHTML.replace(/("|')image\//g, '$1https://apod.nasa.gov/apod/image/').replace(/a href=/g, 'a style="display: block; margin: 15px auto; width: 900px; max-width: 90%" href=').replace(/<img/g, '<img style="width: 100%"').replace(/  /g, ' ').replace(/will download the/g, 'will open the')).querySelector('a'); // prettier-ignore
                         break;
                     }
                 }
