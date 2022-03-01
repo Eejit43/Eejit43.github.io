@@ -602,7 +602,8 @@ input:not(input[type='file']):not(input[type='checkbox']),
     width: 15rem;
 }
 
-input::-webkit-scrollbar {
+input::-webkit-scrollbar,
+.fakeinput::-webkit-scrollbar {
     display: none;
 }
 
