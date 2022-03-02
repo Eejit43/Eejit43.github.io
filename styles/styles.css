@@ -321,7 +321,6 @@ header {
     height: 40%;
     left: 10%;
     margin: 45px auto 30px;
-    overflow-y: scroll;
     width: 70%;
 }
 
@@ -338,6 +337,9 @@ header {
 }
 
 @media only screen and (max-width: 700px) {
+    .toolstable {
+        width: 85%;
+    }
     .toolstable td {
         font-size: 14px;
         padding: 12px;
