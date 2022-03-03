@@ -248,3 +248,17 @@ searchText.addEventListener('input', (e) => {
 //         }
 //     });
 // }
+
+// Keyboard shortcuts
+
+document.addEventListener('keydown', runKeyboardShortcut);
+
+function runKeyboardShortcut(event) {
+    if (event.altKey && event.code === 'KeyC') {
+        navigator.clipboard.writeText('');
+        showAlert('Cleared clipboard!', 'success');
+    } else if (event.code === 'Slash' && document.querySelector('.search-text') !== document.activeElement) {
+        document.querySelector('.search-text').focus();
+        event.preventDefault();
+    }
+}
