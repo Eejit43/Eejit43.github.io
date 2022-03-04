@@ -224,6 +224,7 @@ nav {
     padding-bottom: 5px;
 }
 
+.search-results table td,
 .search-results table td a {
     color: #4c6072;
 }

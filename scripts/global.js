@@ -226,7 +226,7 @@ fetch('/')
         }
     });
 
-searchText.addEventListener('input', (e) => {
+searchText.addEventListener('input', () => {
     const value = searchText.value.toLowerCase();
     let results = [];
     pages.forEach((page) => {
@@ -234,7 +234,16 @@ searchText.addEventListener('input', (e) => {
             results.push(`<tr><td><a href="${page.link}"><div class="results-title">${page.title}</div><div class="results-description">${page.description}</div></a></td></tr>`);
         }
     });
+    if (value !== '' && results.length === 0) results.push('<tr><td>No results found!</td></tr>');
     searchResult.innerHTML = value !== '' && results.length > 0 ? `<table><tbody>${results.join('')}</tbody></table>` : '';
+});
+
+searchText.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        try {
+            window.open(document.querySelector('.search-box .search-results table tbody tr td a').href, '_self');
+        } catch (err) {}
+    }
 });
 
 // Keyboard shortcuts
