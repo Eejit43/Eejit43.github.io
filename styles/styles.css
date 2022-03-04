@@ -20,6 +20,10 @@
  ================
 */
 
+* {
+    box-sizing: border-box;
+}
+
 html {
     background-color: #1f2229;
     /* Modified from https://www.gradientmagic.com/collection/basicgrid/gradient/1589410524740 */
@@ -143,7 +147,7 @@ nav {
     border-radius: 10px;
     color: #c5c5cc;
     float: right !important;
-    height: 30px;
+    height: 44px;
     padding: 5px;
     position: absolute;
     transform: translate(-100%, -20%);
@@ -355,10 +359,10 @@ header {
     color: gray;
     font-weight: 500;
     margin: 140px auto 0;
-    max-width: 91%;
+    max-width: 95%;
     padding: 10px 30px 20px 30px;
     text-align: left;
-    width: 91%;
+    width: 95%;
 }
 
 @media only screen and (max-width: 700px) {
@@ -454,7 +458,8 @@ header {
     padding: 15px 30px 20px;
     position: static;
     text-align: left;
-    width: 15%;
+    width: 290px;
+    max-width: 75%;
 }
 
 @media only screen and (max-width: 700px) {
@@ -486,14 +491,14 @@ header {
     }
 }
 
-.tab {
+tab {
     display: inline-block;
-    margin-left: 80px;
+    margin-left: 25px;
 }
 
 @media only screen and (max-width: 700px) {
-    .tab {
-        margin-left: 20px;
+    tab {
+        margin-left: 15px;
     }
 }
 
