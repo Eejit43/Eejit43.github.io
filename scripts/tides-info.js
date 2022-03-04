@@ -50,7 +50,7 @@ function getData(position) {
             }
             let next_extremes = `The ${closest_extreme}, and the ${next_extreme}.`;
             let table = [
-                `<table class="info-table" style="width: 40%; margin: 0 0 10px 10px">`,
+                `<table class="info-table" style="width: 40%; margin: 0 0 10px 10px">`, //
                 `<thead>`,
                 `<tr>`,
                 `<th style="width: 300px">Time</th>`,
@@ -65,7 +65,7 @@ function getData(position) {
             table.push(`</tbody`, `</table>`);
 
             let output = [
-                `Based on information at latitide ${latitude}, longitude ${longitude}, ${distance} away.`,
+                `Based on information at latitide ${latitude}, longitude ${longitude}, ${distance} away.`, //
                 `Updated on ${updated}.<br />`,
                 `The tide is currently ${state}.`,
                 `${next_extremes}<br />`,

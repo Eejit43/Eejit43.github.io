@@ -29,7 +29,6 @@ function reset() {
 
 function convert() {
     if (/^-?([0-9]\d*)(\.\d*|,\d*)*$/g.test(input.value) || /^-?\d*\.\d+$/g.test(input.value)) {
-        let inputNumber = Number(input.value.replace(/,/g, '').replace(/-\./g, '-0.').replace(/\.$/g, ''));
         if (inputType.value === '1') {
             inputTypeName = 'degF';
         } else if (inputType.value === '2') {

@@ -62,10 +62,7 @@ dateVal.placeholder = date;
 checkApod(year, month, date);
 
 function checkApod(yearInput, monthInput, dateInput) {
-    if (
-        new Date(`${yearInput}/${monthInput}/${dateInput} 00:00:00`).getTime() >= new Date(`1995/06/16 00:00:00`).getTime() &&
-        new Date(`${yearInput}/${monthInput}/${dateInput} 00:00:00`).getTime() <= new Date(`${year}/${month}/${date} 00:00:00`).getTime()
-    ) {
+    if (new Date(`${yearInput}/${monthInput}/${dateInput} 00:00:00`).getTime() >= new Date(`1995/06/16 00:00:00`).getTime() && new Date(`${yearInput}/${monthInput}/${dateInput} 00:00:00`).getTime() <= new Date(`${year}/${month}/${date} 00:00:00`).getTime()) {
         fetchApod(yearInput, monthInput, dateInput);
     } else {
         showAlert(`Date out of range! Must be between ${new Date(`1995/06/16 00:00:00`).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })} (inclusive) and ${new Date(`${year}/${month}/${date} 00:00:00`).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })} (inclusive)`, 'error'); // prettier-ignore
@@ -144,7 +141,7 @@ function fetchApod(yearInput, monthInput, dateInput) {
             result = [];
 
             result.push(
-                `Astronomy ${mediaType === 'image' ? 'Picture' : '<strike>Picture</strike> Video'} of the Day for ${apodDate}.<br />`,
+                `Astronomy ${mediaType === 'image' ? 'Picture' : '<strike>Picture</strike> Video'} of the Day for ${apodDate}.<br />`, //
                 `<div style="text-align: center; font-size: 30px">${title}</div>`,
                 `${mediaType === 'video' ? `${media} ${credit ? `<center>${credit}</center><br />` : ''}` : `${media.outerHTML} ${credit ? `<center>${credit}</center><br />` : ''}`}`,
                 `${explanation}`

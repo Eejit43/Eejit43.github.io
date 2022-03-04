@@ -64,42 +64,7 @@ function titleCase(str) {
         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
     });
 
-    lowers = [
-        'A',
-        'An',
-        'And',
-        'As',
-        'At',
-        'But',
-        'By',
-        'For',
-        'From',
-        'If',
-        'In',
-        'Into',
-        'Like',
-        'Near',
-        'Nor',
-        'Of',
-        'Off',
-        'On',
-        'Once',
-        'Onto',
-        'Or',
-        'Over',
-        'Past',
-        'So',
-        'Than',
-        'That',
-        'The',
-        'Till',
-        'To',
-        'Up',
-        'Upon',
-        'When',
-        'With',
-        'Yet',
-    ];
+    lowers = ['A', 'An', 'And', 'As', 'At', 'But', 'By', 'For', 'From', 'If', 'In', 'Into', 'Like', 'Near', 'Nor', 'Of', 'Off', 'On', 'Once', 'Onto', 'Or', 'Over', 'Past', 'So', 'Than', 'That', 'The', 'Till', 'To', 'Up', 'Upon', 'When', 'With', 'Yet'];
     for (i = 0, j = lowers.length; i < j; i++)
         str = str.replace(new RegExp('\\s' + lowers[i] + '\\s', 'g'), function (txt) {
             return txt.toLowerCase();

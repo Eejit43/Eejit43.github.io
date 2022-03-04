@@ -71,7 +71,7 @@ function getData(position) {
             }
 
             let output = [
-                `Information from ${data.city_name}, ${data.state_code} (${data.country_code}) – Latitude: ${data.lat}, Longitude: ${data.lon} – Station ID: ${data.station}`,
+                `Information from ${data.city_name}, ${data.state_code} (${data.country_code}) – Latitude: ${data.lat}, Longitude: ${data.lon} – Station ID: ${data.station}`, //
                 `Updated on ${moment.unix(data.ts).local('').format('LLLL')}<br />`,
                 `Active Alerts: ${alerts}`,
                 `<textarea style="width: 40rem; max-width: 80%; margin-bottom: 25px; display: none" id="alert-display" readonly></textarea>`,
