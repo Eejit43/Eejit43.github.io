@@ -43,7 +43,7 @@ let result = [];
 for (let i = 0; i < dates.length; i++) {
     if (getTimeUntil(dates[i].date) !== '') {
         result.push(
-            `Time until <span class="tooltip-text tooltip-bottom" data-tooltip="${new Date(`${dates[i].date} 00:00:00`).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}">${dates[i].name}</span>: <span id="${dates[i].id}">${getTimeUntil(dates[i].date)}</span> ${dates[i].emoji}` // prettier-ignore
+            `Time until <span class="tooltip-bottom" data-tooltip="${new Date(`${dates[i].date} 00:00:00`).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}">${dates[i].name}</span>: <span id="${dates[i].id}">${getTimeUntil(dates[i].date)}</span> ${dates[i].emoji}` // prettier-ignore
         );
     }
 }

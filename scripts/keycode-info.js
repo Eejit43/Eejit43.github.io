@@ -63,7 +63,7 @@ function keyInfo(event) {
         key.innerHTML = 'Space ( )';
     }
     if (String(event.key) === '\u00a0') {
-        key.innerHTML = '<span class="tooltip-text tooltip-bottom" data-tooltip="Non breaking space">NBSP</span> (\u00a0)';
+        key.innerHTML = '<span class="tooltip-bottom" data-tooltip="Non breaking space">NBSP</span> (\u00a0)';
     }
     keyRepeating.innerHTML = event.repeat;
     keyRepeatingVal = event.repeat;
