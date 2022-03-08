@@ -77,7 +77,7 @@ function fetchApod(yearInput, monthInput, dateInput) {
     if (yearInput.length === 4) yearInput = yearInput.substring(2);
     if (monthInput.length === 1) monthInput = 0 + monthInput;
     if (dateInput.length === 1) dateInput = 0 + dateInput;
-    fetch(`https://aqueous-citadel-06363.herokuapp.com/https://apod.nasa.gov/apod/ap${yearInput}${monthInput}${dateInput}.html`)
+    fetch(`https://eejitstools.herokuapp.com/https://apod.nasa.gov/apod/ap${yearInput}${monthInput}${dateInput}.html`)
         .then((response) => {
             return response.text();
         })
