@@ -701,7 +701,7 @@ button:hover:not(.fakeinput) {
     overflow: hidden;
     padding-bottom: 0px;
     text-align: right;
-    width: 3.5rem;
+    width: 1.35em;
 }
 
 .invisibleinput[type='text']:focus:not(input[type='file']):not(input[type='checkbox']),
