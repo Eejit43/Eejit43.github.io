@@ -90,7 +90,7 @@ function runDlrRegex() {
         showAlert('Empty input!', 'error');
         showResult('dlr', 'error');
     } else {
-        let output = dlrRegexInput.value.replace(/^(.*)(\r?\n\1)+$/gms, '$1');
+        let output = dlrRegexInput.value.replace(/^(.+)$(?=[\s\S]*^(\1)$[\s\S]*)/gm, '');
         showResult('dlr', 'success');
         dlrResult.value = output;
         dlrCopyResult.disabled = false;
