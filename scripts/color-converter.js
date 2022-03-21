@@ -166,7 +166,7 @@ function hex() {
 
         hexHslCopy.disabled = false;
     } else {
-        hexDisplay.innerHTML = hex === '' ? '' : '<i class="fa-solid fa-xmark" style="color: #bf4042; position: fixed; font-size: 30px; transform: translateX(-9.5px)"></i>';
+        hexDisplay.innerHTML = hex === '' ? '' : '<i class="fa-solid fa-xmark" style="color: #bf4042; font-size: 24px"></i>';
         hexDisplay.style.backgroundColor = '';
         hexRgb.value = '';
         hexRgbCopy.disabled = true;
@@ -236,7 +236,7 @@ function rgb() {
 
         rgbHslCopy.disabled = false;
     } else {
-        rgbDisplay.innerHTML = rgb === '' ? '' : '<i class="fa-solid fa-xmark" style="color: #bf4042; position: fixed; font-size: 30px; transform: translateX(-9.5px)"></i>';
+        rgbDisplay.innerHTML = rgb === '' ? '' : '<i class="fa-solid fa-xmark" style="color: #bf4042; font-size: 24px"></i>';
         rgbDisplay.style.backgroundColor = '';
         rgbHex.value = '';
         rgbHexCopy.disabled = true;
@@ -360,7 +360,7 @@ function hsl() {
 
         hslRgbCopy.disabled = false;
     } else {
-        hslDisplay.innerHTML = hsl === '' ? '' : '<i class="fa-solid fa-xmark" style="color: #bf4042; position: fixed; font-size: 30px; transform: translateX(-9.5px)"></i>';
+        hslDisplay.innerHTML = hsl === '' ? '' : '<i class="fa-solid fa-xmark" style="color: #bf4042; font-size: 24px"></i>';
         hslDisplay.style.backgroundColor = '';
         hslHex.value = '';
         hslHexCopy.disabled = true;
