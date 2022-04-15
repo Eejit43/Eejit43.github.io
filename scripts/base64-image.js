@@ -128,7 +128,7 @@ async function displayImage(string) {
     let image = imageOutput;
     const valid = await isBase64Image(string);
     if (valid === true) {
-        image.src = string;
+        image.src = escapeHtml(string);
     } else if (valid === false) {
         imageOutput.src = '';
         showAlert('Malformed input!', 'error');
