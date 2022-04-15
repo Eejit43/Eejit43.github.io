@@ -96,7 +96,7 @@ function getData(position) {
 
             twemojiUpdate();
 
-            fetch(`https://www.icalendar37.net/lunar/api/?lang=en&month=2&year=2022&size=20&lightColor=rgb(255%2C255%2C210)&shadeColor=black&texturize=false&LDZ=${new Date(new Date().getFullYear(), new Date().getMonth(), 1) / 1000}`) // prettier-ignore
+            fetch(`https://www.icalendar37.net/lunar/api/?lang=en&month=${new Date().getMonth() + 1}&year=${new Date().getFullYear()}&size=20&lightColor=rgb(255%2C255%2C210)&shadeColor=black&texturize=false&LDZ=${new Date(new Date().getFullYear(), new Date().getMonth(), 1) / 1000}`) // prettier-ignore
                 .then((response) => {
                     return response.json();
                 })

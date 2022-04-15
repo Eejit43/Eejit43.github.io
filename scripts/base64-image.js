@@ -109,7 +109,7 @@ function encode() {
 
 async function isBase64Image(string) {
     let image = new Image();
-    image.src = string;
+    image.src = escapeHtml(string);
     return await new Promise((resolve) => {
         image.onload = function () {
             if (image.height === 0 || image.width === 0) {
