@@ -4,4 +4,6 @@
 ![0-percent-optimized](https://forthebadge.com/images/badges/0-percent-optimized.svg)
 ![contains-tasty-spaghetti-code](https://forthebadge.com/images/badges/contains-tasty-spaghetti-code.svg)
 
+### Outdated, view the [new repository](https://github.com/Eejit43/eejitstools-v2)
+
 Some (kinda) handy tools I made whilst learning HTML, CSS, and JavaScript
